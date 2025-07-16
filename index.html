@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atom & Bits - Humanizing Digital | Ian Harman</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --warm: #e74c3c;
+            --light: #ecf0f1;
+            --text: #34495e;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--text);
+            margin-top: 0.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(118, 75, 162, 0.02) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 5rem 2rem;
+            background: white;
+            text-align: center;
+        }
+
+        .philosophy-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .philosophy-quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--accent);
+            margin: 2rem 0;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .philosophy-quote::before,
+        .philosophy-quote::after {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            opacity: 0.1;
+        }
+
+        .philosophy-quote::before {
+            top: -10px;
+            left: -20px;
+        }
+
+        .philosophy-quote::after {
+            bottom: -30px;
+            right: -20px;
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .case-study-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .case-study-header {
+            padding: 2.5rem 2.5rem 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .case-study-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .case-study-role {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .case-study-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 2rem 2.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(118, 75, 162, 0.02) 100%);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .case-study-content {
+            padding: 2.5rem;
+        }
+
+        .case-study-content h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .case-study-content h4:first-child {
+            margin-top: 0;
+        }
+
+        .case-study-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .case-study-content li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .case-study-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .case-study-tech {
+            padding: 1.5rem 2.5rem;
+            border-top: 1px solid rgba(102, 126, 234, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        @media (max-width: 1100px) {
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-card {
+                margin: 0 -1rem;
+                border-radius: 0;
+            }
+
+            .case-study-metrics {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Atom & Bits</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#contact">Connect</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="logo">Atom & Bits</h1>
+            <p class="tagline">Humanizing Digital</p>
+            <p class="hero-description">
+                The line between physical and digital worlds continues to blur. I'm Ian Harman, 
+                and I help organizations navigate this convergence with a human touch. 
+                With over 13 years of experience scaling businesses from $2M to $40M ARR, 
+                I bring technical expertise, strategic vision, and authentic leadership to every engagement.
+            </p>
+            <a href="#contact" class="cta-button">Let's Build Something Together</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">Bridging Worlds, Building Futures</h2>
+            <div class="about-grid fade-in">
+                <div class="about-text">
+                    <h3>From Healthcare Innovation to Digital Transformation</h3>
+                    <p>
+                        My journey has taken me from scaling a healthcare SaaS startup to leading digital transformation 
+                        at Tennessee's largest health plan, and pioneering AI-powered virtual care platforms. 
+                        Each experience has reinforced my belief: technology should enhance human connection, not replace it.
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        At Atom & Bits, I partner with organizations ready to transform their digital presence 
+                        while maintaining their authentic voice. Whether you're looking to productize your service, 
+                        scale your platform, or reimagine your customer experience, I bring the technical depth 
+                        and strategic insight to make it happen.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">$40M</div>
+                        <div class="stat-label">ARR Growth Achieved</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">13+</div>
+                        <div class="stat-label">Years of Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">User Adoption Increase</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">20%</div>
+                        <div class="stat-label">AI Efficiency Gains</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">How I Can Help</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">Product Strategy & Scaling</h3>
+                    <p>Transform your vision into a scalable reality. I help organizations build product roadmaps 
+                    that balance innovation with practical execution, ensuring sustainable growth from startup to scale.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🤖</div>
+                    <h3 class="service-title">AI & Digital Innovation</h3>
+                    <p>Leverage AI thoughtfully to enhance human capabilities. From virtual care platforms to 
+                    personalized user experiences, I implement AI solutions that augment your team, not replace them.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏗️</div>
+                    <h3 class="service-title">Digital Transformation</h3>
+                    <p>Navigate the complexity of digital change with confidence. I guide organizations through 
+                    transformation journeys that preserve your core values while embracing new possibilities.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">👥</div>
+                    <h3 class="service-title">Team Building & Leadership</h3>
+                    <p>Build high-performing teams that deliver. I help assemble and lead cross-functional teams 
+                    that combine technical excellence with human-centered design thinking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy" id="philosophy">
+        <div class="container">
+            <h2 class="section-title fade-in">The Human Element</h2>
+            <div class="philosophy-content fade-in">
+                <p>
+                    In a world increasingly mediated by screens and algorithms, authenticity becomes our greatest differentiator. 
+                    My approach centers on a simple truth: people value genuine connection.
+                </p>
+                <div class="philosophy-quote">
+                    We are created by the Creator for creation. We are here to create, connect, and build.
+                </div>
+                <p>
+                    This philosophy drives everything at Atom & Bits. Whether designing a digital experience or 
+                    implementing AI solutions, the goal remains constant: enhance human connection, 
+                    don't diminish it. Technology should feel natural, almost invisible—a bridge, not a barrier.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies" id="case-studies">
+        <div class="container">
+            <h2 class="section-title fade-in">Transformative Impact Across Industries</h2>
+            <p class="section-subtitle fade-in">Strategic leadership driving measurable results in healthcare, technology, and beyond</p>
+            
+            <div class="case-studies-grid">
+                <!-- BCBST Case Study -->
+                <div class="case-study-card fade-in">
+                    <div class="case-study-header">
+                        <h3>BlueCross BlueShield of Tennessee</h3>
+                        <span class="case-study-role">Group Product Manager | Digital Ecosystem</span>
+                    </div>
+                    <div class="case-study-metrics">
+                        <div class="metric">
+                            <span class="metric-value">$300M</span>
+                            <span class="metric-label">Annual Revenue Impact</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">3.4M</span>
+                            <span class="metric-label">Members Served</span>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <h4>Strategic Initiative</h4>
+                        <p>Led digital transformation for Tennessee's largest health plan, implementing AI-powered personalization and integrated communication platforms across web, mobile, and voice channels.</p>
+                        
+                        <h4>Key Achievements</h4>
+                        <ul>
+                            <li>Drove 100%+ increase in digital adoption through UX optimization</li>
+                            <li>Implemented connected device strategy supporting multi-million dollar client acquisitions</li>
+                            <li>Built cross-functional team delivering 60+ NPS across all lines of business</li>
+                            <li>Spearheaded AI/ML integration for member-level personalization</li>
+                        </ul>
+                        
+                        <h4>Impact</h4>
+                        <p>Digital initiatives directly contributed to $300M in annual revenue while improving member satisfaction and operational efficiency across the enterprise.</p>
+                    </div>
+                    <div class="case-study-tech">
+                        <span class="tech-tag">AI/ML</span>
+                        <span class="tech-tag">Digital Transformation</span>
+                        <span class="tech-tag">Healthcare</span>
+                    </div>
+                </div>
+
+                <!-- PerfectServe Case Study -->
+                <div class="case-study-card fade-in">
+                    <div class="case-study-header">
+                        <h3>PerfectServe</h3>
+                        <span class="case-study-role">Founding Product Manager | Healthcare SaaS</span>
+                    </div>
+                    <div class="case-study-metrics">
+                        <div class="metric">
+                            <span class="metric-value">$40M</span>
+                            <span class="metric-label">ARR Growth Achieved</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">150%</span>
+                            <span class="metric-label">YoY Utilization Increase</span>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <h4>Strategic Initiative</h4>
+                        <p>Scaled clinical communication platform from startup to market leader, pioneering Dynamic Intelligent Routing® technology for healthcare teams.</p>
+                        
+                        <h4>Key Achievements</h4>
+                        <ul>
+                            <li>Scaled company from $2M to $40M ARR as founding Product Manager</li>
+                            <li>Led 10+ major health system implementations driving 10% ARR increase</li>
+                            <li>Reduced customer acquisition costs by 75% through automation</li>
+                            <li>Achieved 150% YoY product utilization growth</li>
+                        </ul>
+                        
+                        <h4>Impact</h4>
+                        <p>Established PerfectServe as the industry standard for healthcare communication, now serving 500+ hospitals and 30,000 medical practices nationwide.</p>
+                    </div>
+                    <div class="case-study-tech">
+                        <span class="tech-tag">SaaS</span>
+                        <span class="tech-tag">Healthcare Tech</span>
+                        <span class="tech-tag">Product Strategy</span>
+                    </div>
+                </div>
+
+                <!-- TPN Health Case Study -->
+                <div class="case-study-card fade-in">
+                    <div class="case-study-header">
+                        <h3>TPN Health</h3>
+                        <span class="case-study-role">CTO Advisor | Behavioral Health Platform</span>
+                    </div>
+                    <div class="case-study-metrics">
+                        <div class="metric">
+                            <span class="metric-value">50%+</span>
+                            <span class="metric-label">Monthly User Growth</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">60K+</span>
+                            <span class="metric-label">Healthcare Professionals</span>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <h4>Strategic Initiative</h4>
+                        <p>Advising CEO on technical strategy and product scaling for national behavioral health platform connecting providers with continuing education and referral networks.</p>
+                        
+                        <h4>Key Achievements</h4>
+                        <ul>
+                            <li>Driving 50%+ monthly user growth through strategic product enhancements</li>
+                            <li>Scaling platform architecture to support 60,000+ behavioral health professionals</li>
+                            <li>Implementing data-driven features for provider matching and education delivery</li>
+                            <li>Building technical roadmap for national expansion</li>
+                        </ul>
+                        
+                        <h4>Impact</h4>
+                        <p>Positioning TPN Health as the premier digital platform for behavioral health professionals, improving patient outcomes through better provider connections and education.</p>
+                    </div>
+                    <div class="case-study-tech">
+                        <span class="tech-tag">Platform Architecture</span>
+                        <span class="tech-tag">Growth Strategy</span>
+                        <span class="tech-tag">Behavioral Health</span>
+                    </div>
+                </div>
+
+                <!-- Paragon Truss Case Study -->
+                <div class="case-study-card fade-in">
+                    <div class="case-study-header">
+                        <h3>Paragon Truss</h3>
+                        <span class="case-study-role">Enterprise GTM Strategy | Construction Tech</span>
+                    </div>
+                    <div class="case-study-metrics">
+                        <div class="metric">
+                            <span class="metric-value">$1M+</span>
+                            <span class="metric-label">Annual Contracts (Since March 2025)</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">Cloud-First</span>
+                            <span class="metric-label">Industry Disruption</span>
+                        </div>
+                    </div>
+                    <div class="case-study-content">
+                        <h4>Strategic Initiative</h4>
+                        <p>Leading enterprise go-to-market strategy for revolutionary cloud-based truss design software, disrupting traditional construction industry practices.</p>
+                        
+                        <h4>Key Achievements</h4>
+                        <ul>
+                            <li>Closed $1M+ in annual contracts within first months of engagement</li>
+                            <li>Positioned product as industry's first truly independent, cloud-based solution</li>
+                            <li>Developed enterprise sales strategy targeting major construction firms</li>
+                            <li>Won People's Choice Award at BCMC 2024</li>
+                        </ul>
+                        
+                        <h4>Impact</h4>
+                        <p>Transforming how the construction industry approaches truss design with cloud-first architecture, enabling unprecedented flexibility and collaboration.</p>
+                    </div>
+                    <div class="case-study-tech">
+                        <span class="tech-tag">Construction Tech</span>
+                        <span class="tech-tag">Cloud Architecture</span>
+                        <span class="tech-tag">Enterprise Sales</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Let's Create Something Meaningful</h2>
+            <div class="contact-content fade-in">
+                <p>
+                    Whether you're ready to transform your digital presence, scale your product, 
+                    or simply explore what's possible, I'd love to hear from you.
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <a href="mailto:Ian@atomandbits.com">Ian@atomandbits.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <a href="tel:8658035050">865.803.5050</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Chattanooga, Tennessee</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ianjharman" target="_blank" class="social-link" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/ihint" target="_blank" class="social-link" title="GitHub">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                        </svg>
+                    </a>
+                    <a href="https://x.com/ijharman" target="_blank" class="social-link" title="X (Twitter)">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                </div>
+                <a href="mailto:Ian@atomandbits.com" class="cta-button" style="margin-top: 2rem;">Start a Conversation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Atom & Bits, LLC. Humanizing Digital.</p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
