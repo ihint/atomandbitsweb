@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Atom &amp; Bits</title>
+    <meta name="description" content="Privacy policy for Atom &amp; Bits, LLC, including website inquiries and mobile app support.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --ink: #141f2b;
+            --navy: #1f4e79;
+            --navy-dark: #173a5c;
+            --text: #263241;
+            --muted: #586069;
+            --line: #d7dee8;
+            --line-strong: #b8c6d6;
+            --blue-soft: #d9eaf7;
+            --blue-wash: #f2f7fb;
+            --white: #ffffff;
+            --max: 980px;
+        }
+
+        body {
+            min-width: 320px;
+            background: var(--white);
+            color: var(--text);
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .site-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.92);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-inner,
+        .content,
+        .footer-inner {
+            width: min(var(--max), calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .nav-inner {
+            min-height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            color: var(--ink);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .brand-mark {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line-strong);
+            border-radius: 6px;
+            color: var(--navy);
+            font-size: 0.78rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--navy);
+        }
+
+        .nav-cta,
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 42px;
+            padding: 0 18px;
+            border: 1px solid var(--navy);
+            border-radius: 7px;
+            background: var(--navy);
+            color: var(--white);
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+        }
+
+        .nav-cta:hover,
+        .button:hover {
+            background: var(--navy-dark);
+            border-color: var(--navy-dark);
+            transform: translateY(-1px);
+        }
+
+        main {
+            padding: 128px 0 74px;
+        }
+
+        .eyebrow {
+            margin-bottom: 18px;
+            color: var(--navy);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 800px;
+            color: var(--ink);
+            font-size: clamp(2.6rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .lede {
+            max-width: 760px;
+            margin-top: 24px;
+            color: var(--muted);
+            font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+        }
+
+        .updated {
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .policy-body {
+            margin-top: 56px;
+            border-top: 1px solid var(--line);
+        }
+
+        .policy-section {
+            display: grid;
+            grid-template-columns: minmax(180px, 0.35fr) minmax(0, 0.65fr);
+            gap: 42px;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        h2 {
+            color: var(--ink);
+            font-size: 1.05rem;
+            line-height: 1.3;
+        }
+
+        p,
+        li {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .policy-section p + p,
+        .policy-section ul + p,
+        .policy-section p + ul {
+            margin-top: 14px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li + li {
+            margin-top: 8px;
+        }
+
+        .link {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .contact-panel {
+            margin-top: 42px;
+            padding: 26px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--blue-wash);
+        }
+
+        .contact-panel p {
+            max-width: 680px;
+            margin-bottom: 18px;
+            color: var(--muted);
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            background: var(--blue-wash);
+        }
+
+        .footer-inner {
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 18px;
+            font-weight: 700;
+        }
+
+        .footer-links a {
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        @media (max-width: 760px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            main {
+                padding-top: 110px;
+            }
+
+            .policy-section {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                padding: 24px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-inner">
+            <a class="brand" href="index.html" aria-label="Atom and Bits home">
+                <span class="brand-mark">A&amp;B</span>
+                <span>Atom &amp; Bits</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#work">Work</a></li>
+                <li><a href="index.html#philosophy">Approach</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <a class="nav-cta" href="mailto:Ian@atomandbits.com">Start a conversation</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="content">
+            <div class="eyebrow">Privacy</div>
+            <h1>Privacy policy for Atom &amp; Bits.</h1>
+            <p class="lede">Atom &amp; Bits, LLC keeps data collection limited to what is needed to operate the site, respond to inquiries, provide support, and improve products.</p>
+            <p class="updated">Last updated: May 30, 2026</p>
+
+            <div class="policy-body">
+                <section class="policy-section">
+                    <h2>Information we collect</h2>
+                    <div>
+                        <p>When you contact Atom &amp; Bits, we may receive the information you choose to share, such as your name, email address, organization, role, phone number, project context, and message content.</p>
+                        <p>For mobile apps published by Atom &amp; Bits, app data may include local progress, settings, purchase entitlement status, crash diagnostics, and anonymous product analytics when those services are configured.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section">
+                    <h2>How we use information</h2>
+                    <div>
+                        <ul>
+                            <li>Respond to inquiries and support requests.</li>
+                            <li>Provide consulting, advisory, or product-related services.</li>
+                            <li>Operate, maintain, and improve websites, apps, and related systems.</li>
+                            <li>Diagnose technical issues, crashes, and product reliability concerns.</li>
+                            <li>Maintain business records and comply with legal obligations.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="policy-section">
+                    <h2>Information we do not sell</h2>
+                    <div>
+                        <p>We do not sell personal information. We do not use mobile app data for third-party advertising, and we do not knowingly track users across other companies' apps or websites.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section">
+                    <h2>Mobile app purchases</h2>
+                    <div>
+                        <p>If an Atom &amp; Bits app offers an in-app purchase, the transaction is processed by Apple through the App Store and StoreKit. We do not collect or store payment card information.</p>
+                        <p>Purchase status may be cached locally on your device so the app can restore or verify access to purchased features.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section">
+                    <h2>Third-party services</h2>
+                    <div>
+                        <p>We may use service providers for app distribution, crash reporting, anonymous analytics, hosting, email, and business operations. These providers process information only as needed to provide their services.</p>
+                        <ul>
+                            <li>Apple App Store and StoreKit for distribution and purchases.</li>
+                            <li>Sentry for crash reporting, if configured.</li>
+                            <li>PostHog for anonymous product analytics, if configured.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="policy-section">
+                    <h2>Data retention</h2>
+                    <div>
+                        <p>Business inquiry and support records are retained as long as needed to manage the relationship, provide services, resolve issues, and meet legal or operational requirements. Local app data remains on your device until you delete the app or reset its data.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section">
+                    <h2>Children's privacy</h2>
+                    <div>
+                        <p>Some Atom &amp; Bits apps may be designed for broad audiences. We do not knowingly collect personal information from children under 13. If you believe a child provided personal information, contact us so we can review and delete it as appropriate.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section">
+                    <h2>Your choices</h2>
+                    <div>
+                        <p>You can remove local app data by deleting the app from your device. You can restore eligible purchases using the app's purchase restoration flow. You can also contact us to request access, correction, or deletion of information you previously shared with Atom &amp; Bits.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section">
+                    <h2>Changes</h2>
+                    <div>
+                        <p>We may update this policy from time to time. Updates will be posted on this page with a revised date.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="contact-panel">
+                <p>Questions about this policy or an Atom &amp; Bits product can be sent by email.</p>
+                <a class="button" href="mailto:support@atomandbits.com">Email support</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p>&copy; 2026 Atom &amp; Bits, LLC. Healthcare product and technology leadership.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="support.html">Support</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
