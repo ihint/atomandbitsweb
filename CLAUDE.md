@@ -4,11 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a personal website for Ian Harman's consultancy "Atom & Bits" - a single-page HTML website focused on humanizing digital transformation and product strategy services.
+This is a personal website for Ian Harman's consultancy "Atom & Bits" - a single-page HTML website focused on healthcare infrastructure, product and technology leadership, AI-enabled operations, provider networks, and founder-grade execution.
 
 ## Project Structure
 
-- `atom-bits-website.html` - Complete single-page website with inline CSS and JavaScript
+- `index.html` - Live static website with inline CSS and JavaScript
+- `atom-bits-website.html` - Historical mirror; keep synced with `index.html`
 - No build system or package.json - pure HTML/CSS/JS
 
 ## Technology Stack
@@ -26,23 +27,22 @@ This is a personal website for Ian Harman's consultancy "Atom & Bits" - a single
 - **Intersection Observer Animations**: Fade-in animations triggered by scroll
 - **Responsive Grid Layouts**: CSS Grid for case studies and services
 - **CSS Custom Properties**: Color theming system using CSS variables
-- **Gradient Design System**: Consistent gradient usage throughout
+- **Executive Visual System**: Navy, white, light-blue panels, crisp rules, restrained 8px radii
 
 ## Content Sections
 
-1. **Hero Section**: Introduction with animated background
-2. **About Section**: Personal background and statistics
-3. **Services Section**: Four main service offerings
-4. **Philosophy Section**: Core business philosophy
-5. **Case Studies Section**: Four detailed project case studies
-6. **Contact Section**: Contact information and social links
+1. **Hero Section**: Positioning, proof points, and operating-range panel
+2. **Services Section**: Fractional CTO/CPO, healthcare infrastructure, AI operations, and product-to-market translation
+3. **Selected Work Section**: TheraMatch/TPN.health, One to One Health, BCBST, PerfectServe, Paragon, and CraftingCopy
+4. **Approach Section**: Core operating philosophy
+5. **Contact Section**: Contact information and social links
 
 ## Development Notes
 
-- The website uses a color theme defined in CSS custom properties (`--primary`, `--accent`, `--warm`, etc.)
+- The website uses a color theme defined in CSS custom properties (`--ink`, `--navy`, `--blue-soft`, `--blue-wash`, `--line`, etc.)
 - All animations are CSS-based with JavaScript triggers
-- The design follows a "humanizing digital" philosophy with warm, approachable styling
-- Case studies include metrics, achievements, and technology tags
+- The design follows Ian's updated resume aesthetic: executive, crisp, navy/white, evidence-led, and less rounded than a generic SaaS landing page
+- Selected work should stay evidence-led and avoid unsupported metrics or hype
 - No external dependencies or build process required
 
 ## Deployment
