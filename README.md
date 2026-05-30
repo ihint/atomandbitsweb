@@ -2,7 +2,7 @@
 
 **Live Site:** [atomandbits.com](https://atomandbits.com)
 
-This is the official website for Atom & Bits, positioning Ian Harman as a founder-grade product and technology operator for healthcare infrastructure, provider networks, AI-enabled operations, and revenue-ready product systems.
+This is the official website for Atom & Bits, positioning Ian Harman as a founder-grade CTO and product operator for healthcare infrastructure, provider networks, AI-enabled operations, and revenue-ready product systems.
 
 ## Quick Start for Editing
 
@@ -21,16 +21,18 @@ This website is built as a single HTML file with embedded CSS and JavaScript - p
 5. **Mirror file**: Copy `index.html` to `atom-bits-website.html` after content or style changes
 
 ### Color Scheme
-The website uses a restrained executive palette aligned to Ian's resume:
-- `--ink`: #141f2b
-- `--navy`: #1f4e79
-- `--blue-soft`: #d9eaf7
-- `--blue-wash`: #f2f7fb
-- `--line`: #d7dee8
+The website uses a restrained executive palette aligned to Ian's CTO/founder positioning:
+- `--ink`: #152029
+- `--navy`: #0f5f68
+- `--accent`: #b65f3b
+- `--blue-soft`: #dcece8
+- `--blue-wash`: #f4f8f6
+- `--paper`: #fbfaf6
+- `--line`: #d8dfdc
 
 ### Sections to Customize
 1. **Hero Section**: Positioning, proof points, and operating-range panel
-2. **Services Section**: Fractional CTO/CPO, healthcare infrastructure, AI operations, and product-to-market work
+2. **Advisory Section**: Fractional CTO/CPO, healthcare infrastructure, AI operations, and product-to-market work
 3. **Selected Work Section**: TheraMatch/TPN.health, One to One Health, BCBST, PerfectServe, Paragon, and CraftingCopy
 4. **Approach Section**: Core operating philosophy
 5. **Contact Section**: Email, phone, LinkedIn, and company details

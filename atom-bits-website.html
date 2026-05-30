@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atom &amp; Bits | Healthcare Product &amp; Technology Leadership</title>
-    <meta name="description" content="Atom &amp; Bits helps healthcare and operations-heavy organizations build trusted infrastructure, provider networks, AI-enabled workflows, and revenue-ready product systems.">
+    <title>Atom &amp; Bits | Founder-Grade CTO &amp; Product Leadership</title>
+    <meta name="description" content="Atom &amp; Bits is Ian Harman's founder-grade CTO and product leadership practice for healthcare infrastructure, provider networks, AI-enabled operations, and revenue-ready product systems.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -16,15 +16,18 @@
         }
 
         :root {
-            --ink: #141f2b;
-            --navy: #1f4e79;
-            --navy-dark: #173a5c;
-            --text: #263241;
-            --muted: #586069;
-            --line: #d7dee8;
-            --line-strong: #b8c6d6;
-            --blue-soft: #d9eaf7;
-            --blue-wash: #f2f7fb;
+            --ink: #152029;
+            --navy: #0f5f68;
+            --navy-dark: #0a454c;
+            --accent: #b65f3b;
+            --accent-soft: #f1ddd3;
+            --text: #27323b;
+            --muted: #5e6971;
+            --line: #d8dfdc;
+            --line-strong: #b8c9c4;
+            --blue-soft: #dcece8;
+            --blue-wash: #f4f8f6;
+            --paper: #fbfaf6;
             --white: #ffffff;
             --max: 1180px;
         }
@@ -35,7 +38,7 @@
 
         body {
             min-width: 320px;
-            background: var(--white);
+            background: var(--paper);
             color: var(--text);
             font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             line-height: 1.55;
@@ -51,7 +54,7 @@
             position: fixed;
             inset: 0 0 auto;
             z-index: 20;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(251, 250, 246, 0.94);
             border-bottom: 1px solid var(--line);
             backdrop-filter: blur(18px);
         }
@@ -83,7 +86,7 @@
             place-items: center;
             border: 1px solid var(--line-strong);
             border-radius: 6px;
-            color: var(--navy);
+            color: var(--accent);
             font-size: 0.78rem;
             font-weight: 800;
             line-height: 1;
@@ -170,6 +173,7 @@
             display: flex;
             align-items: center;
             border-bottom: 1px solid var(--line);
+            background: var(--paper);
         }
 
         .hero-inner,
@@ -188,9 +192,28 @@
         h1 {
             max-width: 850px;
             color: var(--ink);
-            font-size: clamp(3rem, 6.3vw, 5.75rem);
+            font-size: clamp(2.9rem, 5.2vw, 4.85rem);
             font-weight: 800;
-            line-height: 0.98;
+            line-height: 1.01;
+        }
+
+        .founder-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .founder-kicker::before {
+            content: "";
+            width: 34px;
+            height: 2px;
+            background: var(--accent);
         }
 
         .hero-copy {
@@ -313,7 +336,7 @@
         }
 
         .section-label {
-            color: var(--navy);
+            color: var(--accent);
             font-size: 0.88rem;
             font-weight: 800;
             text-transform: uppercase;
@@ -393,6 +416,7 @@
             gap: 32px;
             background: var(--blue-wash);
             border-color: var(--line-strong);
+            box-shadow: inset 4px 0 0 var(--accent);
         }
 
         .work-card h3 {
@@ -688,7 +712,7 @@
                 <span>Atom &amp; Bits</span>
             </a>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#services">Services</a></li>
+                <li><a href="#services">Advisory</a></li>
                 <li><a href="#work">Work</a></li>
                 <li><a href="#philosophy">Approach</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -707,9 +731,10 @@
             <div class="hero-inner">
                 <div class="hero-grid">
                     <div>
-                        <h1 class="reveal">Healthcare infrastructure, product leadership, and AI systems for real operators.</h1>
+                        <p class="founder-kicker reveal">Ian Harman / founder, CTO, product operator</p>
+                        <h1 class="reveal">Founder-grade CTO and product leadership for healthcare infrastructure.</h1>
                         <p class="hero-copy reveal">
-                            Atom &amp; Bits helps healthcare and operations-heavy companies turn ambiguous workflows into trusted platforms, provider networks, AI-enabled operations, and revenue-ready systems.
+                            Atom &amp; Bits is how I bring founder, product, technology, and healthcare operating experience into companies building complex workflows: provider networks, payer systems, AI-enabled operations, and products buyers can trust.
                         </p>
                         <div class="hero-actions reveal">
                             <a class="button" href="mailto:Ian@atomandbits.com">Start a conversation</a>
@@ -717,38 +742,38 @@
                         </div>
                         <div class="proof-line reveal" aria-label="Selected proof points">
                             <div class="proof-item">
-                                <span class="proof-value">98%</span>
-                                <span class="proof-label">first-match success in behavioral-health matching</span>
+                                <span class="proof-value">Acquired</span>
+                                <span class="proof-label">TheraMatch to TPN.health</span>
                             </div>
                             <div class="proof-item">
                                 <span class="proof-value">90K+</span>
-                                <span class="proof-label">verified behavioral-health providers in platform context</span>
+                                <span class="proof-label">verified providers in platform context</span>
+                            </div>
+                            <div class="proof-item">
+                                <span class="proof-value">$2M to $40M</span>
+                                <span class="proof-label">revenue scale experience</span>
                             </div>
                             <div class="proof-item">
                                 <span class="proof-value">20%</span>
-                                <span class="proof-label">clinician time reduction from AI-enabled workflow</span>
-                            </div>
-                            <div class="proof-item">
-                                <span class="proof-value">13+</span>
-                                <span class="proof-label">years across healthcare product and technology</span>
+                                <span class="proof-label">clinician time reduction</span>
                             </div>
                         </div>
                     </div>
                     <aside class="operating-panel reveal" aria-label="Operating range">
                         <div class="panel-header">
-                            <h2>Where Atom &amp; Bits creates leverage</h2>
+                            <h2>Where the CTO / founder story is strongest</h2>
                         </div>
                         <div class="panel-row">
-                            <div class="panel-label">Healthcare infrastructure</div>
-                            <div class="panel-detail">Provider networks, care navigation, clearinghouse and EDI workflows, payments, HIPAA, and SOC 2 readiness.</div>
+                            <div class="panel-label">Zero-to-one builder</div>
+                            <div class="panel-detail">Co-founded and built clinically driven behavioral-health matching, then integrated the platform into a larger healthcare operating system.</div>
                         </div>
                         <div class="panel-row">
-                            <div class="panel-label">Product and engineering leadership</div>
-                            <div class="panel-detail">Roadmaps, platform architecture, team building, AI workflow design, vendor strategy, and delivery operating models.</div>
+                            <div class="panel-label">Scale operator</div>
+                            <div class="panel-detail">Led product, engineering, privacy, implementation, and digital platform work across startups, growth companies, and enterprise healthcare.</div>
                         </div>
                         <div class="panel-row">
-                            <div class="panel-label">Growth and transformation</div>
-                            <div class="panel-detail">Enterprise GTM, payer and partner integrations, product adoption, operational efficiency, and revenue enablement.</div>
+                            <div class="panel-label">Commercial translator</div>
+                            <div class="panel-detail">Turns hard technical and operational work into buyer-ready proof, executive narratives, delivery cadence, and revenue-enabling systems.</div>
                         </div>
                     </aside>
                 </div>
@@ -758,28 +783,28 @@
         <section class="section" id="services">
             <div class="section-inner">
                 <div class="section-head">
-                    <div class="section-label">Services</div>
+                    <div class="section-label">Advisory</div>
                     <div>
-                        <h2 class="section-title">Founder-grade help for the work between strategy, software, and operations.</h2>
-                        <p class="section-copy">The work is not just writing code or building decks. It is translating business constraints into product architecture, technical systems, operating cadence, and buyer-ready proof.</p>
+                        <h2 class="section-title">CTO-level help for the work between strategy, software, operations, and revenue.</h2>
+                        <p class="section-copy">The work is not just building features or writing strategy decks. It is translating business constraints into product architecture, technical systems, operating cadence, and proof a buyer or board can believe.</p>
                     </div>
                 </div>
                 <div class="services-list">
                     <div class="service-row reveal">
-                        <h3>Fractional CTO / CPO advisory</h3>
-                        <p>Executive-level product and technology leadership for founders, operators, and healthcare teams that need architecture, prioritization, vendor choices, and execution discipline.</p>
+                        <h3>Fractional CTO / CPO leadership</h3>
+                        <p>Executive-level product and technology help for founders and healthcare operators who need architecture, prioritization, vendor choices, hiring judgment, and execution discipline.</p>
                     </div>
                     <div class="service-row reveal">
-                        <h3>Healthcare infrastructure design</h3>
-                        <p>Provider-network systems, payer workflows, behavioral-health access, claims/payment operations, compliance posture, and platform integrations built for trust and operational reality.</p>
+                        <h3>Healthcare platform architecture</h3>
+                        <p>Provider-network systems, payer workflows, behavioral-health access, claims and payment operations, compliance posture, and platform integrations built for trust and operational reality.</p>
                     </div>
                     <div class="service-row reveal">
-                        <h3>AI-enabled operations</h3>
-                        <p>Practical AI workflows that reduce administrative load, improve throughput, and make teams more effective without turning the product into an AI gimmick.</p>
+                        <h3>AI-enabled operating systems</h3>
+                        <p>Practical AI workflows that reduce administrative load, improve throughput, and make clinical, operational, and customer-facing teams more effective without turning the product into a gimmick.</p>
                     </div>
                     <div class="service-row reveal">
                         <h3>Product-to-market translation</h3>
-                        <p>Positioning, enterprise GTM support, paid-pilot readiness, sales proof, and product packaging that connect what the platform can do to what a buyer will believe and fund.</p>
+                        <p>Positioning, enterprise GTM support, paid-pilot readiness, sales proof, and product packaging that connect what the platform can do to what a buyer will understand, believe, and fund.</p>
                     </div>
                 </div>
             </div>
@@ -790,8 +815,8 @@
                 <div class="section-head">
                     <div class="section-label">Selected work</div>
                     <div>
-                        <h2 class="section-title">A track record across founder builds, enterprise platforms, and healthcare operations.</h2>
-                        <p class="section-copy">The proof stack spans zero-to-one product creation, acquisition, healthcare infrastructure, product leadership, and measurable operating improvements.</p>
+                        <h2 class="section-title">The through line: build the system, earn trust, then scale it.</h2>
+                        <p class="section-copy">The proof stack spans zero-to-one product creation, acquisition, healthcare infrastructure, product leadership, enterprise adoption, and measurable operating improvements.</p>
                     </div>
                 </div>
                 <div class="work-grid">
@@ -799,7 +824,7 @@
                         <div>
                             <h3>TheraMatch and TPN.health</h3>
                             <div class="work-role">Co-Founder; VP Provider Networks &amp; Technology</div>
-                            <p>Built a clinically driven behavioral-health matching platform and brought it into the TPN ecosystem. Current work spans provider-network data systems, healthcare EDI, payments, payer requirements, and compliance-ready infrastructure.</p>
+                            <p>Co-founded a clinically driven behavioral-health matching platform and brought it into the TPN ecosystem. Current work spans provider-network data systems, healthcare EDI, payments, payer requirements, and compliance-ready infrastructure.</p>
                         </div>
                         <div class="metrics">
                             <div class="metric">
@@ -819,7 +844,7 @@
                     <article class="work-card reveal">
                         <h3>One to One Health</h3>
                         <div class="work-role">VP Product &amp; Engineering; Chief Privacy Officer</div>
-                        <p>Built a product and engineering function, launched virtual direct-primary-care capabilities, negotiated vendor savings, and delivered an AI-enabled clinical workflow that reduced clinician time per encounter by 20%.</p>
+                        <p>Built the product and engineering function, launched virtual direct-primary-care capabilities, negotiated vendor savings, and delivered an AI-enabled clinical workflow that reduced clinician time per encounter by 20%.</p>
                     </article>
                     <article class="work-card reveal">
                         <h3>BlueCross BlueShield of Tennessee</h3>
@@ -843,7 +868,7 @@
         <section class="section navy" id="philosophy">
             <div class="section-inner">
                 <div class="section-label">Approach</div>
-                <p class="quote reveal">Software becomes valuable when it becomes an operating system for the business.</p>
+                <p class="quote reveal">The strongest CTO story is not technical fluency alone. It is turning complex work into systems people trust enough to use, buy, and scale.</p>
                 <p class="quote-copy reveal">
                     The best systems do more than automate a task. They clarify the workflow, make trust inspectable, reduce operational drag, and create a platform the company can actually sell, support, and scale.
                 </p>
@@ -854,7 +879,7 @@
             <div class="section-inner">
                 <div class="contact-grid">
                     <div>
-                        <h2 class="reveal">Bring a messy product, platform, or operating problem.</h2>
+                        <h2 class="reveal">Bring the workflow that is too important to leave messy.</h2>
                         <p class="section-copy reveal">If the work sits at the intersection of healthcare, operations, AI, provider networks, customer experience, and revenue, it is probably the right kind of conversation.</p>
                         <div class="hero-actions reveal">
                             <a class="button" href="mailto:Ian@atomandbits.com">Email Ian</a>
