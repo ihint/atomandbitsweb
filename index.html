@@ -28,17 +28,17 @@
         }
 
         :root {
-            --ink: #152029;
-            --navy: #0f5f68;
-            --navy-dark: #0a454c;
-            --accent: #b65f3b;
+            --ink: #111827;
+            --navy: #1f4e79;
+            --navy-dark: #173a5c;
+            --accent: #ad5735;
             --accent-soft: #f1ddd3;
-            --text: #27323b;
-            --muted: #5e6971;
-            --line: #d8dfdc;
-            --line-strong: #b8c9c4;
-            --blue-soft: #dcece8;
-            --blue-wash: #f4f8f6;
+            --text: #263241;
+            --muted: #586069;
+            --line: #d7dee8;
+            --line-strong: #b8c6d6;
+            --blue-soft: #e7eef7;
+            --blue-wash: #f2f5f9;
             --paper: #fbfaf6;
             --white: #ffffff;
             --max: 1180px;
@@ -254,6 +254,7 @@
         .proof-item {
             padding: 18px 18px 18px 0;
             border-right: 1px solid var(--line);
+            text-decoration: none;
         }
 
         .proof-item:last-child {
@@ -269,6 +270,10 @@
             line-height: 1.05;
         }
 
+        .proof-value.compact {
+            font-size: clamp(1.2rem, 1.75vw, 1.65rem);
+        }
+
         .proof-label {
             display: block;
             margin-top: 7px;
@@ -276,6 +281,18 @@
             font-size: 0.85rem;
             font-weight: 600;
             line-height: 1.35;
+        }
+
+        .proof-item:hover .proof-value,
+        .proof-item:focus-visible .proof-value {
+            color: var(--accent);
+        }
+
+        .proof-note {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.45;
         }
 
         .operating-panel {
@@ -811,34 +828,35 @@
                         <p class="founder-kicker reveal">Ian Harman / founder, CTO, product operator</p>
                         <h1 class="reveal">Healthcare operating systems, from payer to payment.</h1>
                         <p class="hero-copy reveal">
-                            I have built inside a national payer, built product and engineering for care delivery, co-founded clinical-matching technology that was acquired, and now work across provider networks, eligibility context, claims, and reimbursement. Atom &amp; Bits brings that operating experience to the healthcare systems that cannot afford a gap between product and reality.
+                            I have led products inside a national payer, built product and engineering for care delivery, co-founded a matching product that was acquired, and built claims and payment systems. Atom &amp; Bits applies that work to healthcare problems with a clear business result.
                         </p>
                         <div class="hero-actions reveal">
                             <a class="button" href="mailto:Ian@atomandbits.com">Start a conversation</a>
-                            <a class="button secondary" href="/ian-harman/">Follow the operating path</a>
+                            <a class="button secondary" href="/ian-harman/">See the work and results</a>
                         </div>
-                        <div class="proof-line reveal" aria-label="Selected proof points">
-                            <div class="proof-item">
-                                <span class="proof-value">Acquired</span>
-                                <span class="proof-label">TheraMatch to TPN.health</span>
-                            </div>
-                            <div class="proof-item">
-                                <span class="proof-value">130K+</span>
-                                <span class="proof-label">verified providers reported by TPN.health</span>
-                            </div>
-                            <div class="proof-item">
-                                <span class="proof-value">5,000+</span>
-                                <span class="proof-label">claims-per-day platform capacity</span>
-                            </div>
-                            <div class="proof-item">
+                        <div class="proof-line reveal" aria-label="Selected results">
+                            <a class="proof-item" href="/work/one-to-one-health/">
                                 <span class="proof-value">20%</span>
-                                <span class="proof-label">clinician time reduction</span>
-                            </div>
+                                <span class="proof-label">less clinician time per encounter</span>
+                            </a>
+                            <a class="proof-item" href="/work/tpn-match/">
+                                <span class="proof-value">200×</span>
+                                <span class="proof-label">reported claims-processing capacity</span>
+                            </a>
+                            <a class="proof-item" href="/work/perfectserve/">
+                                <span class="proof-value compact">$2M to $40M</span>
+                                <span class="proof-label">annual revenue growth during product work</span>
+                            </a>
+                            <a class="proof-item" href="/work/theramatch/">
+                                <span class="proof-value">Acquired</span>
+                                <span class="proof-label">founder-built TheraMatch technology</span>
+                            </a>
                         </div>
+                        <p class="proof-note reveal">Company and team results. Each case states Ian's role and the evidence limit.</p>
                     </div>
                     <aside class="operating-panel reveal" aria-label="Operating range">
                         <div class="panel-header">
-                            <h2>The operating path behind the advice</h2>
+                            <h2>The work behind the advice</h2>
                         </div>
                         <div class="panel-row">
                             <div class="panel-label">Payer systems</div>
@@ -896,8 +914,8 @@
                 <div class="section-head">
                     <div class="section-label">Selected work</div>
                     <div>
-                        <h2 class="section-title">The experience is cumulative, not episodic.</h2>
-                        <p class="section-copy">Each chapter added another side of the healthcare transaction: payer operations, care delivery, clinical matching, network participation, access, claims, and payment.</p>
+                        <h2 class="section-title">The work produced results at each stage.</h2>
+                        <p class="section-copy">It cut clinician time, raised claims capacity, supported company growth, and built a product that was acquired.</p>
                     </div>
                 </div>
                 <div class="work-grid">
@@ -913,8 +931,8 @@
                                 <span>verified providers reported by TPN.health</span>
                             </div>
                             <div class="metric">
-                                <strong>5,000+</strong>
-                                <span>claims-per-day platform capacity</span>
+                                <strong>200×</strong>
+                                <span>reported claims-processing capacity</span>
                             </div>
                             <div class="metric">
                                 <strong>Acquired</strong>
@@ -933,7 +951,7 @@
                         <p>Led digital platforms across member, broker, employer, administrator, and sales workflows, including personalization, search, chat, CMS, mobile, and connected-device strategy.</p>
                     </article>
                     <article class="work-card reveal">
-                        <h3>PerfectServe</h3>
+                        <h3><a href="/work/perfectserve/">PerfectServe</a></h3>
                         <div class="work-role">Product Marketing Manager, Product Manager, Consultant</div>
                         <p>Contributed to growth from $2M to $40M in annual revenue through product, implementation, adoption, enterprise admin controls, and health-system rollout work.</p>
                     </article>
