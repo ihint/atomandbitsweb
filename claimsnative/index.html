@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claims Native | Cash to insurance without the maze</title>
+  <meta name="description" content="Claims Native turns a day of chiropractic visits into a short, safe approval queue, then prepares the exact next claim artifact without making your office learn the insurance maze.">
+  <link rel="canonical" href="https://atomandbits.com/claimsnative/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Claims Native | Cash to insurance without the maze">
+  <meta property="og:description" content="A dual-control claims workbench for independent chiropractic practices adding insurance.">
+  <meta property="og:url" content="https://atomandbits.com/claimsnative/">
+  <meta property="og:image" content="https://atomandbits.com/claimsnative/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claims Native | Cash to insurance without the maze">
+  <meta name="twitter:description" content="A dual-control claims workbench for independent chiropractic practices adding insurance.">
+  <meta name="twitter:image" content="https://atomandbits.com/claimsnative/og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --ink: #18231f;
+      --forest: #153f32;
+      --forest-light: #205945;
+      --copper: #a85f3a;
+      --copper-soft: #f1dfd2;
+      --paper: #f7f4ed;
+      --paper-deep: #eee9dd;
+      --card: #fffdf8;
+      --sage: #dfe9e2;
+      --muted: #5c6a64;
+      --line: #d3dcd5;
+      --white: #ffffff;
+      --max: 1180px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -80px;
+      z-index: 100;
+      padding: 10px 14px;
+      background: var(--forest);
+      color: var(--white);
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(211, 220, 213, 0.88);
+      background: rgba(247, 244, 237, 0.94);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner,
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      color: var(--forest);
+      text-decoration: none;
+    }
+
+    .brand strong {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 650;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links > a:not(.button) {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-links > a:not(.button):hover { color: var(--forest); }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      padding: 0 20px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid var(--forest);
+      border-radius: 5px;
+      background: var(--forest);
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      background: var(--forest-light);
+      border-color: var(--forest-light);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--forest);
+    }
+
+    .button.secondary:hover { background: var(--sage); }
+
+    :focus-visible {
+      outline: 3px solid var(--copper);
+      outline-offset: 3px;
+    }
+
+    .hero {
+      padding: 90px 0 72px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(390px, 0.78fr);
+      gap: 76px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--copper);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2 {
+      font-family: Fraunces, Georgia, serif;
+      color: var(--forest);
+      font-weight: 650;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 24px;
+      font-size: clamp(3.35rem, 6.5vw, 6rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: clamp(1.13rem, 2vw, 1.38rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .microcopy {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .workbench {
+      overflow: hidden;
+      border: 1px solid #b9c9bf;
+      border-radius: 8px;
+      background: var(--card);
+      box-shadow: 0 30px 70px rgba(24, 35, 31, 0.13);
+    }
+
+    .workbench-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: var(--sage);
+    }
+
+    .workbench-head strong { color: var(--forest); }
+
+    .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .live-dot::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--forest-light);
+    }
+
+    .workbench-summary {
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .workbench-summary span {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .workbench-summary p {
+      margin: 7px 0 0;
+      font-family: Fraunces, Georgia, serif;
+      color: var(--forest);
+      font-size: 1.35rem;
+      line-height: 1.3;
+    }
+
+    .queue-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .queue-row:last-child { border-bottom: none; }
+
+    .queue-row strong { display: block; color: var(--ink); }
+
+    .queue-row small { color: var(--muted); }
+
+    .badge {
+      height: fit-content;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--sage);
+      color: var(--forest);
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge.warning { background: var(--copper-soft); color: #743c21; }
+
+    .proof-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .proof {
+      min-height: 122px;
+      padding: 26px;
+      border-right: 1px solid var(--line);
+    }
+
+    .proof:last-child { border-right: none; }
+
+    .proof strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--forest);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.08rem;
+    }
+
+    .proof span { color: var(--muted); font-size: 0.9rem; }
+
+    .section { padding: 92px 0; }
+
+    .section.alt {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 80px;
+      margin-bottom: 48px;
+      align-items: start;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(2.25rem, 4.5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    .section-intro {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .step {
+      min-height: 260px;
+      padding: 26px 24px 28px 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .step + .step { padding-left: 24px; }
+
+    .step:last-child { border-right: none; }
+
+    .step-number {
+      display: block;
+      margin-bottom: 56px;
+      color: var(--copper);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .step h3 {
+      margin-bottom: 10px;
+      color: var(--forest);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 650;
+    }
+
+    .step p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .trust-card {
+      min-height: 250px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .trust-card.featured {
+      grid-row: span 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--forest);
+      color: var(--white);
+    }
+
+    .trust-card h3 {
+      margin-bottom: 12px;
+      color: var(--forest);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: 650;
+    }
+
+    .trust-card.featured h3 {
+      max-width: 12ch;
+      color: var(--white);
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      line-height: 1;
+    }
+
+    .trust-card p { margin-bottom: 0; color: var(--muted); }
+
+    .trust-card.featured p { color: #dbe8df; }
+
+    .trust-rule {
+      display: inline-block;
+      width: fit-content;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.35);
+      font-weight: 700;
+    }
+
+    .pilot-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.82fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .fit-panel,
+    .pilot-panel {
+      padding: 38px;
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .fit-panel h3,
+    .pilot-panel h3 {
+      margin-bottom: 18px;
+      color: var(--forest);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.8rem;
+      font-weight: 650;
+    }
+
+    .fit-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .fit-list li {
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .fit-list li::before {
+      content: "✓";
+      margin-right: 10px;
+      color: var(--forest-light);
+      font-weight: 700;
+    }
+
+    .price {
+      margin: 26px 0;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .price strong {
+      display: block;
+      color: var(--forest);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 2.25rem;
+      line-height: 1.1;
+    }
+
+    .price span { color: var(--muted); }
+
+    .pilot-panel p { color: var(--muted); }
+
+    .final-cta {
+      padding: 94px 0;
+      background: var(--forest);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      max-width: 830px;
+      margin: 0 auto 18px;
+      color: var(--white);
+    }
+
+    .final-cta p {
+      max-width: 620px;
+      margin: 0 auto 28px;
+      color: #dbe8df;
+      font-size: 1.12rem;
+    }
+
+    .final-cta .button {
+      border-color: var(--white);
+      background: var(--white);
+      color: var(--forest);
+    }
+
+    .final-cta .button:hover { background: var(--sage); }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      background: var(--forest);
+      color: #bfcfc5;
+      font-size: 0.86rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    footer a { color: var(--white); }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .section-head,
+      .pilot-grid { grid-template-columns: 1fr; gap: 42px; }
+
+      .hero { padding-top: 70px; }
+      .workbench { max-width: 620px; }
+      .proof-strip, .steps { grid-template-columns: repeat(2, 1fr); }
+      .proof:nth-child(2) { border-right: none; }
+      .proof:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .step:nth-child(2) { border-right: none; }
+      .step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    }
+
+    @media (max-width: 680px) {
+      body { font-size: 16px; }
+      .nav-inner, .container { width: min(100% - 28px, var(--max)); }
+      .nav-links > a:not(.button) { display: none; }
+      .nav-links .button { min-height: 40px; padding: 0 12px; font-size: 0.84rem; }
+      .brand span { display: none; }
+      .hero { padding: 58px 0 48px; }
+      h1 { font-size: clamp(3.15rem, 16vw, 4.4rem); }
+      .hero-grid { gap: 38px; }
+      .workbench { border-radius: 6px; }
+      .proof-strip, .steps, .trust-grid { grid-template-columns: 1fr; }
+      .proof, .proof:nth-child(2) { border-right: none; border-bottom: 1px solid var(--line); }
+      .proof:last-child { border-bottom: none; }
+      .section { padding: 68px 0; }
+      .step, .step + .step { min-height: 0; padding: 24px 0; border-right: none; border-bottom: 1px solid var(--line); }
+      .step-number { margin-bottom: 22px; }
+      .trust-card.featured { grid-row: auto; min-height: 370px; }
+      .fit-panel, .pilot-panel { padding: 26px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="/claimsnative/" aria-label="Claims Native home">
+        <strong>Claims Native</strong>
+        <span>by Atom &amp; Bits</span>
+      </a>
+      <div class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#pilot">Paid pilot</a>
+        <a class="button" href="mailto:Ian@atomandbits.com?subject=Claims%20Native%20working%20session">Book a working session</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">For independent chiropractic practices</p>
+          <h1>Cash to insurance without the maze.</h1>
+          <p class="hero-copy">Claims Native turns a day of visits into a short, safe approval queue, then prepares the exact next artifact—without asking your office manager to become a claims department.</p>
+          <div class="hero-actions">
+            <a class="button" href="mailto:Ian@atomandbits.com?subject=Claims%20Native%2090-day%20pilot">Discuss a 90-day pilot <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="https://aether-research-us-01.tail598a94.ts.net/" rel="noopener">Open partner demo</a>
+          </div>
+          <p class="microcopy">Built for Jane exports, commercial Tennessee payers, and practices adding insurance without adding a billing department.</p>
+        </div>
+
+        <div class="workbench" aria-label="Example Claims Native judgment queue">
+          <div class="workbench-head"><strong>Today</strong><span class="live-dot">Agents checked the day</span></div>
+          <div class="workbench-summary"><span>Shift summary</span><p>8 visits checked. 5 prepared, 2 need review, 1 is blocked.</p></div>
+          <div class="queue-row"><div><strong>Needs diagnosis</strong><small>Stopped before release</small></div><span class="badge warning">Human action</span></div>
+          <div class="queue-row"><div><strong>Ready for office approval</strong><small>Superbill package prepared</small></div><span class="badge">Prepared</span></div>
+          <div class="queue-row"><div><strong>Waiting for provider</strong><small>Office approval recorded</small></div><span class="badge">1 of 2</span></div>
+          <div class="queue-row"><div><strong>Stedi dry run complete</strong><small>No payer transmission</small></div><span class="badge">Released</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="proof-strip" aria-label="Claims Native operating principles">
+      <div class="proof"><strong>25–100 visits/week</strong><span>Purpose-built for a small independent office.</span></div>
+      <div class="proof"><strong>Two approvals</strong><span>Office and provider approve the same version.</span></div>
+      <div class="proof"><strong>Superbill first</strong><span>Electronic paths open as enrollment permits.</span></div>
+      <div class="proof"><strong>No invented diagnoses</strong><span>Missing clinical evidence stops the claim.</span></div>
+    </div>
+
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">One day in, one queue out</p><h2>The system does the claims work. Your team keeps control.</h2></div>
+          <p class="section-intro">Claims Native handles routing, checking, preparation, and follow-up inside the practice rules you set. People are asked only for judgment the system cannot safely make.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step"><span class="step-number">01 · Import</span><h3>Hand over the day</h3><p>Upload a Jane CSV. Every row is validated, and bad rows stay visible instead of disappearing.</p></article>
+          <article class="step"><span class="step-number">02 · Prepare</span><h3>Safe work happens</h3><p>Agents load practice context, scrub the claim, apply payer rules, and prepare the next artifact.</p></article>
+          <article class="step"><span class="step-number">03 · Decide</span><h3>Approve with evidence</h3><p>The office manager and provider see what changed, why it stopped, and what approval allows next.</p></article>
+          <article class="step"><span class="step-number">04 · Release</span><h3>Get a tangible result</h3><p>After both approvals, release a printable superbill package or an unmistakable electronic dry run.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="control">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Trust is the product</p><h2>Nothing consequential happens quietly.</h2></div>
+          <p class="section-intro">Every correction, rule, approval, and release is recorded. A claim cannot leave before the practice’s required approvals are present.</p>
+        </div>
+
+        <div class="trust-grid">
+          <article class="trust-card featured"><h3>Nothing leaves without you.</h3><span class="trust-rule">Office approval + provider approval + unchanged claim version</span></article>
+          <article class="trust-card"><h3>See the evidence</h3><p>Source row, service lines, diagnoses, fees, agent corrections, payer rules, and practice SOPs stay beside the recommendation.</p></article>
+          <article class="trust-card"><h3>Know what is not real</h3><p>A dry run is labeled as a dry run. Prepared, released, submitted, accepted, denied, and paid remain different states.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pilot">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">The first 90 days</p><h2>A paid pilot with a narrow definition of success.</h2></div>
+          <p class="section-intro">We launch with one practice, named approvers, a weekly visit export, and a short list of commercial payers. The goal is a repeatable, trusted release—not a sprawling billing transformation.</p>
+        </div>
+
+        <div class="pilot-grid">
+          <article class="fit-panel">
+            <h3>Best fit</h3>
+            <ul class="fit-list">
+              <li>Independent chiropractic practice</li>
+              <li>Cash-only today or newly adding insurance</li>
+              <li>Jane as the practice-management system</li>
+              <li>One office manager, no claims department</li>
+              <li>Owner-provider wants final control</li>
+              <li>Commercial Tennessee payers first</li>
+            </ul>
+          </article>
+
+          <article class="pilot-panel">
+            <h3>Launch and operate</h3>
+            <p>Practice setup, Jane mapping, fee schedule, payer paths, dual approval, superbill release, and a weekly working cadence.</p>
+            <div class="price"><strong>$4,500 launch</strong><span>then $597/month · 90-day pilot</span></div>
+            <a class="button" href="mailto:Ian@atomandbits.com?subject=Claims%20Native%2090-day%20pilot">Ask about the pilot <span aria-hidden="true">→</span></a>
+            <p class="microcopy">No guarantee of reimbursement, payer acceptance, or legal correctness. Live electronic transmission requires separate enrollment, credentials, and explicit configuration.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <h2>Bring one day of visits. Leave with the maze mapped.</h2>
+        <p>A short working session shows what Claims Native would prepare, what still needs a person, and what your first 90 days would actually require.</p>
+        <a class="button" href="mailto:Ian@atomandbits.com?subject=Claims%20Native%20working%20session">Book the working session <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>Claims Native is an Atom &amp; Bits product · Chattanooga, Tennessee</span>
+      <span><a href="/">Atom &amp; Bits</a> · <a href="mailto:Ian@atomandbits.com">Ian@atomandbits.com</a> · <a href="/privacy-policy.html">Privacy</a></span>
+    </div>
+  </footer>
+</body>
+</html>
