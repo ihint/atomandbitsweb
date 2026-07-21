@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare Operating Systems from Payer to Payment | Atom &amp; Bits</title>
-    <meta name="description" content="Atom & Bits is Ian Harman's founder-led healthcare technology and product practice, grounded in payer platforms, care delivery, clinical matching, provider networks, claims, and reimbursement.">
+    <title>Healthcare Product Leadership from Payer Rules to Payment | Atom &amp; Bits</title>
+    <meta name="description" content="Ian Harman helps healthcare teams make product and technology decisions using experience across payer systems, care delivery, provider networks, claims, and payment.">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <link rel="canonical" href="https://atomandbits.com/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Healthcare Operating Systems from Payer to Payment | Atom &amp; Bits">
-    <meta property="og:description" content="Founder-level healthcare technology and product leadership grounded in operating experience across the transaction.">
+    <meta property="og:title" content="Healthcare Product Leadership from Payer Rules to Payment | Atom &amp; Bits">
+    <meta property="og:description" content="Healthcare product and technology leadership backed by payer, care delivery, founder, claims, and payment work.">
     <meta property="og:url" content="https://atomandbits.com/">
-    <meta property="og:image" content="https://atomandbits.com/og.png">
+    <meta property="og:image" content="https://atomandbits.com/og-2026.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Atom &amp; Bits — Healthcare operating systems, from payer to payment.">
+    <meta property="og:image:alt" content="Atom &amp; Bits — healthcare product leadership from payer rules to payment.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://atomandbits.com/og.png">
+    <meta name="twitter:image" content="https://atomandbits.com/og-2026.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -180,10 +180,7 @@
         }
 
         .hero {
-            min-height: 100vh;
-            padding: 128px 0 72px;
-            display: flex;
-            align-items: center;
+            padding: 118px 0 64px;
             border-bottom: 1px solid var(--line);
             background: var(--paper);
         }
@@ -196,15 +193,15 @@
 
         .hero-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.72fr);
-            gap: 64px;
-            align-items: center;
+            grid-template-columns: minmax(0, 1.02fr) minmax(380px, 0.7fr);
+            gap: 58px;
+            align-items: start;
         }
 
         h1 {
-            max-width: 850px;
+            max-width: 760px;
             color: var(--ink);
-            font-size: clamp(2.9rem, 5.2vw, 4.85rem);
+            font-size: clamp(2.9rem, 4.9vw, 4.45rem);
             font-weight: 800;
             line-height: 1.01;
         }
@@ -230,76 +227,40 @@
 
         .hero-copy {
             max-width: 720px;
-            margin-top: 28px;
+            margin-top: 26px;
             color: var(--muted);
-            font-size: clamp(1.08rem, 1.6vw, 1.35rem);
-            line-height: 1.55;
+            font-size: clamp(1.02rem, 1.4vw, 1.18rem);
+            line-height: 1.5;
+        }
+
+        .hero-copy span,
+        .results-copy span,
+        .quote span,
+        .quote-copy span {
+            display: block;
+        }
+
+        .hero-copy span + span,
+        .results-copy span + span,
+        .quote span + span,
+        .quote-copy span + span {
+            margin-top: 7px;
         }
 
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
             gap: 14px;
-            margin-top: 34px;
+            margin-top: 30px;
         }
 
-        .proof-line {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            margin-top: 54px;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .proof-item {
-            padding: 18px 18px 18px 0;
-            border-right: 1px solid var(--line);
-            text-decoration: none;
-        }
-
-        .proof-item:last-child {
-            border-right: none;
-            padding-right: 0;
-        }
-
-        .proof-value {
-            display: block;
-            color: var(--navy);
-            font-size: clamp(1.45rem, 2.2vw, 2.05rem);
-            font-weight: 800;
-            line-height: 1.05;
-        }
-
-        .proof-value.compact {
-            font-size: clamp(1.2rem, 1.75vw, 1.65rem);
-        }
-
-        .proof-label {
-            display: block;
-            margin-top: 7px;
-            color: var(--muted);
-            font-size: 0.85rem;
-            font-weight: 600;
-            line-height: 1.35;
-        }
-
-        .proof-item:hover .proof-value,
-        .proof-item:focus-visible .proof-value {
-            color: var(--accent);
-        }
-
-        .proof-note {
-            margin-top: 12px;
-            color: var(--muted);
-            font-size: 0.78rem;
-            line-height: 1.45;
-        }
-
-        .operating-panel {
+        .results-panel {
+            margin-top: 36px;
             border: 1px solid var(--line-strong);
             border-radius: 8px;
             background: var(--white);
             box-shadow: 0 18px 55px rgba(20, 31, 43, 0.08);
+            overflow: hidden;
         }
 
         .panel-header {
@@ -314,32 +275,59 @@
             font-weight: 800;
         }
 
-        .panel-row {
+        .results-grid {
             display: grid;
-            grid-template-columns: 0.72fr 1fr;
-            min-height: 92px;
-            border-bottom: 1px solid var(--line);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        .panel-row:last-child {
+        .result-item {
+            min-height: 148px;
+            padding: 24px 22px;
+            border-right: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            text-decoration: none;
+        }
+
+        .result-item:nth-child(2n) {
+            border-right: none;
+        }
+
+        .result-item:nth-last-child(-n + 2) {
             border-bottom: none;
         }
 
-        .panel-label,
-        .panel-detail {
-            padding: 18px 20px;
-        }
-
-        .panel-label {
-            color: var(--ink);
-            font-size: 0.95rem;
+        .result-value {
+            display: block;
+            color: var(--navy);
+            font-size: clamp(1.8rem, 2.8vw, 2.75rem);
             font-weight: 800;
-            border-right: 1px solid var(--line);
+            line-height: 1.02;
         }
 
-        .panel-detail {
+        .result-value.compact {
+            font-size: clamp(1.55rem, 2.25vw, 2.2rem);
+        }
+
+        .result-label {
+            display: block;
+            margin-top: 10px;
             color: var(--muted);
-            font-size: 0.93rem;
+            font-size: 0.86rem;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        .result-item:hover .result-value,
+        .result-item:focus-visible .result-value {
+            color: var(--accent);
+        }
+
+        .results-note {
+            padding: 14px 20px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.76rem;
+            line-height: 1.45;
         }
 
         .section {
@@ -459,6 +447,15 @@
             background: var(--blue-wash);
             border-color: var(--line-strong);
             box-shadow: inset 4px 0 0 var(--accent);
+        }
+
+        .work-result {
+            margin-bottom: 12px;
+            color: var(--accent) !important;
+            font-size: 0.78rem !important;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
         .work-card h3 {
@@ -670,16 +667,9 @@
                 gap: 28px;
             }
 
-            .proof-line {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .proof-item:nth-child(2) {
-                border-right: none;
-            }
-
-            .proof-item:nth-child(-n + 2) {
-                border-bottom: 1px solid var(--line);
+            .results-panel {
+                max-width: 720px;
+                margin-top: 6px;
             }
 
             .work-grid {
@@ -701,7 +691,7 @@
             }
 
             h1 {
-                font-size: clamp(2.25rem, 10.6vw, 3rem);
+                font-size: clamp(2.35rem, 9.8vw, 3rem);
                 line-height: 1.02;
             }
 
@@ -715,34 +705,22 @@
                 margin-top: 26px;
             }
 
-            .proof-line,
             .metrics {
                 grid-template-columns: 1fr;
             }
 
-            .proof-item,
-            .proof-item:nth-child(2) {
-                border-right: none;
-                border-bottom: 1px solid var(--line);
-                padding-right: 0;
+            .result-item {
+                min-height: 130px;
+                padding: 18px 14px;
             }
 
-            .proof-item:last-child {
-                border-bottom: none;
+            .result-value,
+            .result-value.compact {
+                font-size: 1.65rem;
             }
 
-            .panel-row {
-                grid-template-columns: 1fr;
-            }
-
-            .panel-label {
-                border-right: none;
-                border-bottom: 1px solid var(--line);
-                padding-bottom: 10px;
-            }
-
-            .panel-detail {
-                padding-top: 12px;
+            .result-label {
+                font-size: 0.78rem;
             }
 
             .section {
@@ -811,7 +789,7 @@
                 <li><a href="/ian-harman/">Ian Harman</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a class="nav-cta" href="mailto:Ian@atomandbits.com">Start a conversation</a>
+            <a class="nav-cta" href="mailto:Ian@atomandbits.com?subject=Healthcare%20product%20decision">Discuss a product decision</a>
             <button class="mobile-menu-btn" type="button" aria-label="Toggle menu" aria-controls="nav-links" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -825,55 +803,30 @@
             <div class="hero-inner">
                 <div class="hero-grid">
                     <div>
-                        <p class="founder-kicker reveal">Ian Harman / founder, CTO, product operator</p>
-                        <h1 class="reveal">Healthcare operating systems, from payer to payment.</h1>
+                        <p class="founder-kicker reveal">Ian Harman / healthcare product leader</p>
+                        <h1 class="reveal">I build healthcare products from payer rules through payment.</h1>
                         <p class="hero-copy reveal">
-                            I have led products inside a national payer, built product and engineering for care delivery, co-founded a matching product that was acquired, and built claims and payment systems. Atom &amp; Bits applies that work to healthcare problems with a clear business result.
+                            <span>I led digital products at BCBST.</span>
+                            <span>I built product and engineering at One to One Health.</span>
+                            <span>I co-founded TheraMatch. TPN.health acquired it.</span>
+                            <span>At TPN.health, I work on networks, EDI, claims, and payment.</span>
                         </p>
                         <div class="hero-actions reveal">
-                            <a class="button" href="mailto:Ian@atomandbits.com">Start a conversation</a>
-                            <a class="button secondary" href="/ian-harman/">See the work and results</a>
+                            <a class="button" href="mailto:Ian@atomandbits.com?subject=Healthcare%20product%20decision">Discuss a product decision</a>
+                            <a class="button secondary" href="/ian-harman/">See Ian’s results</a>
                         </div>
-                        <div class="proof-line reveal" aria-label="Selected results">
-                            <a class="proof-item" href="/work/one-to-one-health/">
-                                <span class="proof-value">20%</span>
-                                <span class="proof-label">less clinician time per encounter</span>
-                            </a>
-                            <a class="proof-item" href="/work/tpn-match/">
-                                <span class="proof-value">200×</span>
-                                <span class="proof-label">reported claims-processing capacity</span>
-                            </a>
-                            <a class="proof-item" href="/work/perfectserve/">
-                                <span class="proof-value compact">$2M to $40M</span>
-                                <span class="proof-label">annual revenue growth during product work</span>
-                            </a>
-                            <a class="proof-item" href="/work/theramatch/">
-                                <span class="proof-value">Acquired</span>
-                                <span class="proof-label">founder-built TheraMatch technology</span>
-                            </a>
-                        </div>
-                        <p class="proof-note reveal">Company and team results. Each case states Ian's role and the evidence limit.</p>
                     </div>
-                    <aside class="operating-panel reveal" aria-label="Operating range">
+                    <aside class="results-panel reveal" aria-label="Selected results">
                         <div class="panel-header">
-                            <h2>The work behind the advice</h2>
+                            <h2>Selected results</h2>
                         </div>
-                        <div class="panel-row">
-                            <div class="panel-label">Payer systems</div>
-                            <div class="panel-detail">Led digital products across member, employer, broker, administrator, and sales workflows inside BlueCross BlueShield of Tennessee.</div>
+                        <div class="results-grid">
+                            <a class="result-item" href="/work/one-to-one-health/"><span class="result-value">20%</span><span class="result-label">less clinician time per encounter</span></a>
+                            <a class="result-item" href="/work/tpn-match/"><span class="result-value">200×</span><span class="result-label">reported claims-processing capacity</span></a>
+                            <a class="result-item" href="/work/perfectserve/"><span class="result-value compact">$2M to $40M</span><span class="result-label">annual revenue growth during product work</span></a>
+                            <a class="result-item" href="/work/theramatch/"><span class="result-value">Acquired</span><span class="result-label">TheraMatch technology acquired by TPN.health</span></a>
                         </div>
-                        <div class="panel-row">
-                            <div class="panel-label">Care delivery</div>
-                            <div class="panel-detail">Built product and engineering at One to One Health, including virtual care and an AI-enabled workflow that reduced clinician time.</div>
-                        </div>
-                        <div class="panel-row">
-                            <div class="panel-label">Founder to acquisition</div>
-                            <div class="panel-detail">Co-founded TheraMatch, translated a clinical thesis into a product, and carried the technology into its acquisition by TPN.health.</div>
-                        </div>
-                        <div class="panel-row">
-                            <div class="panel-label">Network to payment</div>
-                            <div class="panel-detail">Works across provider-network data, care navigation, payer requirements, EDI, claims, and reimbursement infrastructure at TPN.health.</div>
-                        </div>
+                        <p class="results-note">Company and team results. Each case states Ian’s role and the evidence limit.</p>
                     </aside>
                 </div>
             </div>
@@ -884,26 +837,26 @@
                 <div class="section-head">
                     <div class="section-label">Advisory</div>
                     <div>
-                        <h2 class="section-title">CTO-level help for the work between strategy, software, operations, and revenue.</h2>
-                        <p class="section-copy">The work is not just building features or writing strategy decks. It is translating business constraints into product architecture, technical systems, operating cadence, and proof a buyer or board can believe.</p>
+                        <h2 class="section-title">Use Ian’s payer, care-delivery, founder, and claims work to make the next product or technology decision.</h2>
+                        <p class="section-copy">Name the buyer, task, owner, test, and result before the team builds.</p>
                     </div>
                 </div>
                 <div class="services-list">
                     <a class="service-row reveal" href="/healthcare-fractional-cto/">
                         <h3>Fractional CTO / CPO leadership</h3>
-                        <p>Executive-level product and technology help for founders and healthcare operators who need architecture, prioritization, vendor choices, hiring judgment, and execution discipline.</p>
+                        <p>Set the product plan, system design, vendor choices, hiring plan, and weekly work.</p>
                     </a>
                     <a class="service-row reveal" href="/healthcare-product-strategy/">
                         <h3>Healthcare product strategy</h3>
-                        <p>Workflow, platform, buyer, pilot, and roadmap decisions that connect healthcare complexity to a product people can understand, trust, implement, and buy.</p>
+                        <p>Choose the buyer, problem, pilot, price, and proof before the team builds.</p>
                     </a>
                     <a class="service-row reveal" href="/healthcare-ai-operations/">
-                        <h3>AI-enabled operating systems</h3>
-                        <p>Practical AI workflows that reduce administrative load, improve throughput, and make clinical, operational, and customer-facing teams more effective without turning the product into a gimmick.</p>
+                        <h3>AI for healthcare work</h3>
+                        <p>Use AI to cut office work while people keep high-stakes decisions.</p>
                     </a>
                     <a class="service-row reveal" href="/guides/how-to-choose-a-healthcare-cto/">
                         <h3>Choosing the right leadership model</h3>
-                        <p>A practical guide to comparing advisors, agencies, fractional executives, and product partners—including the evidence and questions that reveal the right fit.</p>
+                        <p>Compare an advisor, agency, part-time leader, or product partner before you hire.</p>
                     </a>
                 </div>
             </div>
@@ -914,13 +867,14 @@
                 <div class="section-head">
                     <div class="section-label">Selected work</div>
                     <div>
-                        <h2 class="section-title">The work produced results at each stage.</h2>
-                        <p class="section-copy">It cut clinician time, raised claims capacity, supported company growth, and built a product that was acquired.</p>
+                        <h2 class="section-title">Ian’s product work changed time, claims capacity, revenue, and ownership.</h2>
+                        <p class="section-copy results-copy"><span>20% less clinician time per encounter.</span><span>200× reported claims-processing capacity.</span><span>Annual revenue grew from $2M to $40M during product work.</span><span>TPN.health acquired TheraMatch.</span></p>
                     </div>
                 </div>
                 <div class="work-grid">
                     <article class="work-card featured reveal">
                         <div>
+                            <p class="work-result">Acquired · 130K+ providers · 200× claims capacity</p>
                             <h3><a href="/work/theramatch/">TheraMatch</a> to <a href="/work/tpn-match/">TPN Match</a></h3>
                             <div class="work-role">Co-Founder; VP Provider Networks &amp; Technology</div>
                             <p>Co-founded a clinically driven behavioral-health matching platform and brought it into the TPN ecosystem. Current work spans provider-network data systems, healthcare EDI, payments, payer requirements, and compliance-ready infrastructure.</p>
@@ -941,21 +895,25 @@
                         </div>
                     </article>
                     <article class="work-card reveal">
+                        <p class="work-result">20% less clinician time per encounter</p>
                         <h3><a href="/work/one-to-one-health/">One to One Health</a></h3>
                         <div class="work-role">VP Product &amp; Engineering; Chief Privacy Officer</div>
                         <p>Built the product and engineering function, launched virtual direct-primary-care capabilities, negotiated vendor savings, and delivered an AI-enabled clinical workflow that reduced clinician time per encounter by 20%.</p>
                     </article>
                     <article class="work-card reveal">
+                        <p class="work-result">Five digital audiences inside one payer</p>
                         <h3><a href="/work/bcbst/">BlueCross BlueShield of Tennessee</a></h3>
                         <div class="work-role">Senior / Group Digital Product Manager</div>
                         <p>Led digital platforms across member, broker, employer, administrator, and sales workflows, including personalization, search, chat, CMS, mobile, and connected-device strategy.</p>
                     </article>
                     <article class="work-card reveal">
+                        <p class="work-result">$2M to $40M in annual revenue during product work</p>
                         <h3><a href="/work/perfectserve/">PerfectServe</a></h3>
                         <div class="work-role">Product Marketing Manager, Product Manager, Consultant</div>
                         <p>Contributed to growth from $2M to $40M in annual revenue through product, implementation, adoption, enterprise admin controls, and health-system rollout work.</p>
                     </article>
                     <article class="work-card reveal">
+                        <p class="work-result">Largest enterprise contract in company history</p>
                         <h3>Paragon Truss and CraftingCopy.ai</h3>
                         <div class="work-role">Advisor; fractional CTO / GTM partner</div>
                         <p>Helped operators clarify product direction, enterprise sales motion, AI workflow strategy, and technical execution. Paragon closed the largest enterprise contract in company history during the engagement.</p>
@@ -967,9 +925,11 @@
         <section class="section navy" id="philosophy">
             <div class="section-inner">
                 <div class="section-label">Approach</div>
-                <p class="quote reveal">The product is the operating system around the intelligence: workflow, evidence, authority, transactions, and the ability to explain what happens next.</p>
+                <p class="quote reveal"><span>Automate safe work.</span><span>Ask a person when judgment matters.</span><span>Record the rule, decision, and result.</span></p>
                 <p class="quote-copy reveal">
-                    The best systems do more than automate a task. They clarify the workflow, make trust inspectable, reduce operational drag, and create a platform the company can actually sell, support, and scale.
+                    <span>Show what happened and why.</span>
+                    <span>Name who must decide next.</span>
+                    <span>Give the team software it can sell, support, and improve.</span>
                 </p>
             </div>
         </section>
@@ -978,10 +938,10 @@
             <div class="section-inner">
                 <div class="contact-grid">
                     <div>
-                        <h2 class="reveal">Bring the workflow that is too important to leave messy.</h2>
-                        <p class="section-copy reveal">If the work sits at the intersection of healthcare, operations, AI, provider networks, customer experience, and revenue, it is probably the right kind of conversation.</p>
+                        <h2 class="reveal">Tell Ian which healthcare product decision your team cannot settle.</h2>
+                        <p class="section-copy reveal">Send the workflow, payer rule, claim step, or product choice. Ian will tell you if a working session, a short project, or part-time leadership fits.</p>
                         <div class="hero-actions reveal">
-                            <a class="button" href="mailto:Ian@atomandbits.com">Email Ian</a>
+                            <a class="button" href="mailto:Ian@atomandbits.com?subject=Healthcare%20product%20decision">Email Ian about the decision</a>
                             <a class="button secondary" href="https://www.linkedin.com/in/ianjharman" target="_blank" rel="noreferrer">LinkedIn</a>
                         </div>
                     </div>

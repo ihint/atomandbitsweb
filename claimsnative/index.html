@@ -3,19 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Claims Native | Grow beyond cash pay without a billing department</title>
-  <meta name="description" content="Claims Native is the revenue operating layer for independent outpatient care: practice rules become safe claim preparation, clear human decisions, and a reliable path from visit to release.">
+  <title>Claims Native | Offer insurance without hiring a billing team</title>
+  <meta name="description" content="Claims Native checks visits, prepares superbills or electronic claim drafts, and holds release until the practice records each required approval.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://atomandbits.com/claimsnative/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Claims Native | Grow beyond cash pay without a billing department">
-  <meta property="og:description" content="The revenue operating layer for independent care.">
+  <meta property="og:title" content="Claims Native | Offer insurance without hiring a billing team">
+  <meta property="og:description" content="Check visits, prepare the next claim file, and keep each release under practice control.">
   <meta property="og:url" content="https://atomandbits.com/claimsnative/">
-  <meta property="og:image" content="https://atomandbits.com/claimsnative/og.png">
+  <meta property="og:image" content="https://atomandbits.com/og-2026.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Atom &amp; Bits — healthcare product leadership from payer rules to payment.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Claims Native | Grow beyond cash pay without a billing department">
-  <meta name="twitter:description" content="The revenue operating layer for independent care.">
-  <meta name="twitter:image" content="https://atomandbits.com/claimsnative/og.png">
+  <meta name="twitter:title" content="Claims Native | Offer insurance without hiring a billing team">
+  <meta name="twitter:description" content="Check visits, prepare the next claim file, and keep each release under practice control.">
+  <meta name="twitter:image" content="https://atomandbits.com/og-2026.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -23,17 +26,17 @@
     * { box-sizing: border-box; }
 
     :root {
-      --ink: #18231f;
-      --forest: #153f32;
-      --forest-light: #205945;
-      --copper: #a85f3a;
-      --copper-soft: #f1dfd2;
-      --paper: #f7f4ed;
-      --paper-deep: #eee9dd;
-      --card: #fffdf8;
-      --sage: #dfe9e2;
-      --muted: #5c6a64;
-      --line: #d3dcd5;
+      --ink: #111827;
+      --navy: #1f4e79;
+      --navy-dark: #173a5c;
+      --copper: #ad5735;
+      --copper-soft: #f1ddd3;
+      --paper: #fbfaf6;
+      --paper-deep: #f2f5f9;
+      --card: #ffffff;
+      --blue-soft: #e7eef7;
+      --muted: #586069;
+      --line: #d7dee8;
       --white: #ffffff;
       --max: 1180px;
     }
@@ -59,7 +62,7 @@
       top: -80px;
       z-index: 100;
       padding: 10px 14px;
-      background: var(--forest);
+      background: var(--navy);
       color: var(--white);
     }
 
@@ -69,8 +72,8 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      border-bottom: 1px solid rgba(211, 220, 213, 0.88);
-      background: rgba(247, 244, 237, 0.94);
+      border-bottom: 1px solid rgba(215, 222, 232, 0.9);
+      background: rgba(251, 250, 246, 0.94);
       backdrop-filter: blur(16px);
     }
 
@@ -92,7 +95,7 @@
       display: flex;
       align-items: baseline;
       gap: 12px;
-      color: var(--forest);
+      color: var(--navy);
       text-decoration: none;
     }
 
@@ -123,7 +126,7 @@
       text-decoration: none;
     }
 
-    .nav-links > a:not(.button):hover { color: var(--forest); }
+    .nav-links > a:not(.button):hover { color: var(--navy); }
 
     .button {
       display: inline-flex;
@@ -132,9 +135,9 @@
       align-items: center;
       justify-content: center;
       gap: 9px;
-      border: 1px solid var(--forest);
+      border: 1px solid var(--navy);
       border-radius: 5px;
-      background: var(--forest);
+      background: var(--navy);
       color: var(--white);
       font-weight: 700;
       text-decoration: none;
@@ -143,16 +146,16 @@
 
     .button:hover {
       transform: translateY(-1px);
-      background: var(--forest-light);
-      border-color: var(--forest-light);
+      background: var(--navy-dark);
+      border-color: var(--navy-dark);
     }
 
     .button.secondary {
       background: transparent;
-      color: var(--forest);
+      color: var(--navy);
     }
 
-    .button.secondary:hover { background: var(--sage); }
+    .button.secondary:hover { background: var(--blue-soft); }
 
     :focus-visible {
       outline: 3px solid var(--copper);
@@ -160,15 +163,15 @@
     }
 
     .hero {
-      padding: 90px 0 72px;
+      padding: 74px 0 58px;
       border-bottom: 1px solid var(--line);
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(390px, 0.78fr);
-      gap: 76px;
-      align-items: center;
+      gap: 56px;
+      align-items: start;
     }
 
     .eyebrow {
@@ -194,14 +197,14 @@
 
     h1, h2 {
       font-family: Fraunces, Georgia, serif;
-      color: var(--forest);
+      color: var(--navy);
       font-weight: 650;
     }
 
     h1 {
-      max-width: 760px;
+      max-width: 700px;
       margin-bottom: 24px;
-      font-size: clamp(3.35rem, 6.5vw, 6rem);
+      font-size: clamp(3rem, 5.7vw, 5.2rem);
       line-height: 0.98;
       letter-spacing: -0.045em;
     }
@@ -210,8 +213,11 @@
       max-width: 680px;
       margin-bottom: 30px;
       color: var(--muted);
-      font-size: clamp(1.13rem, 2vw, 1.38rem);
+      font-size: clamp(1.05rem, 1.7vw, 1.25rem);
     }
+
+    .hero-copy span { display: block; }
+    .hero-copy span + span { margin-top: 6px; }
 
     .hero-actions {
       display: flex;
@@ -225,12 +231,19 @@
       font-size: 0.88rem;
     }
 
+    .pilot-facts {
+      margin: 18px 0 0;
+      color: var(--navy);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
     .workbench {
       overflow: hidden;
-      border: 1px solid #b9c9bf;
+      border: 1px solid #b8c6d6;
       border-radius: 8px;
       background: var(--card);
-      box-shadow: 0 30px 70px rgba(24, 35, 31, 0.13);
+      box-shadow: 0 30px 70px rgba(20, 31, 43, 0.12);
     }
 
     .workbench-head {
@@ -239,10 +252,10 @@
       justify-content: space-between;
       padding: 18px 20px;
       border-bottom: 1px solid var(--line);
-      background: var(--sage);
+      background: var(--blue-soft);
     }
 
-    .workbench-head strong { color: var(--forest); }
+    .workbench-head strong { color: var(--navy); }
 
     .live-dot {
       display: inline-flex;
@@ -258,7 +271,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--forest-light);
+      background: var(--navy-dark);
     }
 
     .workbench-summary {
@@ -277,7 +290,7 @@
     .workbench-summary p {
       margin: 7px 0 0;
       font-family: Fraunces, Georgia, serif;
-      color: var(--forest);
+      color: var(--navy);
       font-size: 1.35rem;
       line-height: 1.3;
     }
@@ -300,8 +313,8 @@
       height: fit-content;
       padding: 4px 8px;
       border-radius: 999px;
-      background: var(--sage);
-      color: var(--forest);
+      background: var(--blue-soft);
+      color: var(--navy);
       font-size: 0.72rem;
       font-weight: 700;
       white-space: nowrap;
@@ -327,7 +340,7 @@
     .proof strong {
       display: block;
       margin-bottom: 6px;
-      color: var(--forest);
+      color: var(--navy);
       font-family: Fraunces, Georgia, serif;
       font-size: 1.08rem;
     }
@@ -390,7 +403,7 @@
 
     .step h3 {
       margin-bottom: 10px;
-      color: var(--forest);
+      color: var(--navy);
       font-family: Fraunces, Georgia, serif;
       font-size: 1.25rem;
       font-weight: 650;
@@ -416,13 +429,13 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: var(--forest);
+      background: var(--navy);
       color: var(--white);
     }
 
     .trust-card h3 {
       margin-bottom: 12px;
-      color: var(--forest);
+      color: var(--navy);
       font-family: Fraunces, Georgia, serif;
       font-size: 1.55rem;
       font-weight: 650;
@@ -437,7 +450,7 @@
 
     .trust-card p { margin-bottom: 0; color: var(--muted); }
 
-    .trust-card.featured p { color: #dbe8df; }
+    .trust-card.featured p { color: #d9e4f1; }
 
     .trust-rule {
       display: inline-block;
@@ -464,7 +477,7 @@
     .fit-panel h3,
     .pilot-panel h3 {
       margin-bottom: 18px;
-      color: var(--forest);
+      color: var(--navy);
       font-family: Fraunces, Georgia, serif;
       font-size: 1.8rem;
       font-weight: 650;
@@ -486,7 +499,7 @@
     .fit-list li::before {
       content: "✓";
       margin-right: 10px;
-      color: var(--forest-light);
+      color: var(--navy-dark);
       font-weight: 700;
     }
 
@@ -499,7 +512,7 @@
 
     .price strong {
       display: block;
-      color: var(--forest);
+      color: var(--navy);
       font-family: Fraunces, Georgia, serif;
       font-size: 2.25rem;
       line-height: 1.1;
@@ -511,7 +524,7 @@
 
     .final-cta {
       padding: 94px 0;
-      background: var(--forest);
+      background: var(--navy);
       color: var(--white);
       text-align: center;
     }
@@ -525,23 +538,23 @@
     .final-cta p {
       max-width: 620px;
       margin: 0 auto 28px;
-      color: #dbe8df;
+      color: #d9e4f1;
       font-size: 1.12rem;
     }
 
     .final-cta .button {
       border-color: var(--white);
       background: var(--white);
-      color: var(--forest);
+      color: var(--navy);
     }
 
-    .final-cta .button:hover { background: var(--sage); }
+    .final-cta .button:hover { background: var(--blue-soft); }
 
     footer {
       padding: 28px 0;
       border-top: 1px solid rgba(255,255,255,0.18);
-      background: var(--forest);
-      color: #bfcfc5;
+      background: var(--navy);
+      color: #cbd8e6;
       font-size: 0.86rem;
     }
 
@@ -559,7 +572,7 @@
       .section-head,
       .pilot-grid { grid-template-columns: 1fr; gap: 42px; }
 
-      .hero { padding-top: 70px; }
+      .hero { padding-top: 62px; }
       .workbench { max-width: 620px; }
       .proof-strip, .steps { grid-template-columns: repeat(2, 1fr); }
       .proof:nth-child(2) { border-right: none; }
@@ -574,13 +587,16 @@
       .nav-links > a:not(.button) { display: none; }
       .nav-links .button { min-height: 40px; padding: 0 12px; font-size: 0.84rem; }
       .brand span { display: none; }
-      .hero { padding: 58px 0 48px; }
-      h1 { font-size: clamp(3.15rem, 16vw, 4.4rem); }
-      .hero-grid { gap: 38px; }
+      .hero { padding: 48px 0 44px; }
+      h1 { font-size: clamp(2.85rem, 14vw, 4rem); }
+      .hero-grid { gap: 32px; }
       .workbench { border-radius: 6px; }
-      .proof-strip, .steps, .trust-grid { grid-template-columns: 1fr; }
-      .proof, .proof:nth-child(2) { border-right: none; border-bottom: 1px solid var(--line); }
-      .proof:last-child { border-bottom: none; }
+      .steps, .trust-grid { grid-template-columns: 1fr; }
+      .proof { min-height: 148px; padding: 20px 16px; }
+      .proof:nth-child(2n) { border-right: none; }
+      .proof:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .proof:nth-last-child(-n+2) { border-bottom: none; }
+      .queue-row { padding: 13px 15px; }
       .section { padding: 68px 0; }
       .step, .step + .step { min-height: 0; padding: 24px 0; border-right: none; border-bottom: 1px solid var(--line); }
       .step-number { margin-bottom: 22px; }
@@ -604,7 +620,7 @@
         "url": "https://atomandbits.com/claimsnative/",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
-        "description": "A revenue operations workbench for independent outpatient practices that prepares claim artifacts, enforces human approvals, and records the decision history.",
+        "description": "Software for independent outpatient practices that checks visits, prepares claim files, enforces human approvals, and records each decision.",
         "creator": {"@id": "https://atomandbits.com/#organization"},
         "offers": {
           "@type": "Offer",
@@ -636,7 +652,7 @@
       <div class="nav-links">
         <a href="#how">How it works</a>
         <a href="#pilot">Paid pilot</a>
-        <a class="button" href="mailto:Ian@atomandbits.com?subject=Claims%20Native%20working%20session">Book a working session</a>
+        <a class="button" href="mailto:Ian@atomandbits.com?subject=Claims%20Native%2090-day%20pilot">Ask about the 90-day pilot</a>
       </div>
     </div>
   </nav>
@@ -645,13 +661,14 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">The revenue operating layer for independent care</p>
-          <h1>Grow beyond cash pay—without building a billing department.</h1>
-          <p class="hero-copy">Claims Native turns your practice rules into an operating system for the work between a visit and getting paid. It prepares what can be prepared, brings people in for the judgment only they should make, and carries every decision forward.</p>
+          <p class="eyebrow">Claims work for independent practices</p>
+          <h1>Offer insurance without hiring a billing team.</h1>
+          <p class="hero-copy"><span>Claims Native checks each visit against your rules.</span><span>It fixes safe errors and prepares the superbill or electronic claim draft.</span><span>It releases nothing until your office and provider approve it.</span><span>It records each rule, change, approval, and result.</span></p>
           <div class="hero-actions">
-            <a class="button" href="mailto:Ian@atomandbits.com?subject=Claims%20Native%20founding-practice%20pilot">Explore a founding-practice pilot <span aria-hidden="true">→</span></a>
+            <a class="button" href="#pilot">See the 90-day pilot <span aria-hidden="true">→</span></a>
             <a class="button secondary" href="https://aether-research-us-01.tail598a94.ts.net/" rel="noopener">Open partner demo</a>
           </div>
+          <p class="pilot-facts">90 days · $500 launch · $249/month · 200 visits/month</p>
           <p class="microcopy">Built first for small outpatient practices using simple visit exports. Each specialty, practice rule, and payer path is configured before use.</p>
         </div>
 
@@ -676,15 +693,15 @@
     <section class="section" id="how">
       <div class="container">
         <div class="section-head">
-          <div><p class="eyebrow">From visits to a reliable revenue motion</p><h2>A practice should not need a claims department to offer insurance.</h2></div>
-          <p class="section-intro">Claims Native handles routing, checking, preparation, and follow-up inside the rules you set. Your team sees the outcome, the evidence, and the one decision that genuinely needs a person.</p>
+          <div><p class="eyebrow">From visits to a claim package</p><h2>Offer insurance without adding a claims department.</h2></div>
+          <p class="section-intro">Claims Native routes, checks, and prepares each visit under the rules you set. Your team sees the result, the source, and the one decision that needs a person.</p>
         </div>
 
         <div class="steps">
-          <article class="step"><span class="step-number">01 · Bring the day in</span><h3>Hand over the work</h3><p>Upload a Jane-style visit export. Every row is validated, and bad rows stay visible instead of disappearing.</p></article>
-          <article class="step"><span class="step-number">02 · Prepare</span><h3>The groundwork gets done</h3><p>Claims Native loads practice context, checks the claim, applies configured rules, and prepares the next allowed artifact.</p></article>
-          <article class="step"><span class="step-number">03 · Decide</span><h3>People judge with evidence</h3><p>The office and provider see what changed, why the claim stopped, and exactly what their approval allows next.</p></article>
-          <article class="step"><span class="step-number">04 · Move forward</span><h3>Get a tangible result</h3><p>After every required approval, release a printable superbill package or an unmistakable electronic dry run.</p></article>
+          <article class="step"><span class="step-number">01 · Import</span><h3>Upload the day</h3><p>Upload a Jane-style visit export. Claims Native checks every row and shows each bad row.</p></article>
+          <article class="step"><span class="step-number">02 · Prepare</span><h3>Check and prepare</h3><p>Claims Native loads your rules, checks the claim, fixes safe errors, and prepares the next allowed file.</p></article>
+          <article class="step"><span class="step-number">03 · Review</span><h3>Review the evidence</h3><p>The office and provider see what changed, why the claim stopped, and what each approval allows.</p></article>
+          <article class="step"><span class="step-number">04 · Release</span><h3>Release the approved result</h3><p>After each required approval, Claims Native releases a printable superbill or a clearly marked electronic dry run.</p></article>
         </div>
       </div>
     </section>
@@ -692,14 +709,14 @@
     <section class="section alt" id="control">
       <div class="container">
         <div class="section-head">
-          <div><p class="eyebrow">A practice-owned operating memory</p><h2>Software should make the practice more capable—not more dependent.</h2></div>
-          <p class="section-intro">Your SOPs, fees, payer rules, corrections, approvals, and outcomes become a usable decision history. Nothing consequential happens quietly, and a claim cannot leave before the practice’s required approvals are present.</p>
+          <div><p class="eyebrow">Rules and decisions in one place</p><h2>Keep your rules, approvals, and claim history in one place.</h2></div>
+          <p class="section-intro">Claims Native keeps each SOP, fee, payer rule, correction, approval, and result beside the claim. It cannot release a claim before the practice records each required approval.</p>
         </div>
 
         <div class="trust-grid">
-          <article class="trust-card featured"><h3>Your practice stays in charge.</h3><span class="trust-rule">Office approval + provider approval + unchanged claim version</span></article>
-          <article class="trust-card"><h3>Institutional memory, even in a small office</h3><p>Source data, service lines, corrections, fees, payer rules, practice SOPs, and prior decisions stay beside the recommendation.</p></article>
-          <article class="trust-card"><h3>Growth without false promises</h3><p>A dry run is labeled as a dry run. Prepared, released, submitted, accepted, denied, and paid remain meaningfully different states.</p></article>
+          <article class="trust-card featured"><h3>Your practice keeps the final say.</h3><span class="trust-rule">Office approval + provider approval + unchanged claim version</span></article>
+          <article class="trust-card"><h3>Keep the source beside the decision</h3><p>Source data, service lines, corrections, fees, payer rules, SOPs, and prior decisions stay beside the recommendation.</p></article>
+          <article class="trust-card"><h3>Name each state truthfully</h3><p>A dry run stays a dry run. Prepared, released, submitted, accepted, denied, and paid keep their exact meanings.</p></article>
         </div>
       </div>
     </section>
@@ -707,8 +724,8 @@
     <section class="section" id="pilot">
       <div class="container">
         <div class="section-head">
-          <div><p class="eyebrow">Founding-practice pilot</p><h2>Prove the operating model before you scale it.</h2></div>
-          <p class="section-intro">We begin with one practice, named approvers, one visit-export format, and a small set of configured workflows. The goal is a repeatable, trusted release—not a sprawling billing transformation.</p>
+          <div><p class="eyebrow">90-day pilot</p><h2>Test the work for 90 days before you add volume.</h2></div>
+          <p class="section-intro">We start with one practice, named approvers, one visit-export format, and a small set of claim paths. The pilot tests whether the team can release the right file with less office work.</p>
         </div>
 
         <div class="pilot-grid">
@@ -725,8 +742,8 @@
           </article>
 
           <article class="pilot-panel">
-            <h3>A smaller first bet</h3>
-            <p>Guided setup for one location, one visit-export format, two approvers, up to 200 visits per month, superbill release, configured dry-run paths, and a weekly launch cadence. Additional visits are $1.25 each.</p>
+            <h3>One clear first step</h3>
+            <p>Guided setup covers one location, one visit-export format, two approvers, up to 200 visits per month, superbill release, dry-run claim paths, and one weekly review. Additional visits cost $1.25 each.</p>
             <div class="price"><strong>$500 guided launch</strong><span>then $249/month · 90-day founding pilot</span></div>
             <a class="button" href="mailto:Ian@atomandbits.com?subject=Claims%20Native%20founding-practice%20pilot">Ask about the pilot <span aria-hidden="true">→</span></a>
             <p class="microcopy">No percentage of collections. No guarantee of reimbursement, payer acceptance, or legal correctness. Live electronic transmission requires enrollment, credentials, and explicit configuration; the current default is a non-transmitted dry run.</p>
@@ -737,9 +754,9 @@
 
     <section class="final-cta">
       <div class="container">
-        <h2>Build the insurance capability your practice can actually own.</h2>
-        <p>Bring one day of visits. A short working session will show what Claims Native can prepare, where your people stay in control, and whether a focused 90-day pilot fits.</p>
-        <a class="button" href="mailto:Ian@atomandbits.com?subject=Claims%20Native%20working%20session">Book the working session <span aria-hidden="true">→</span></a>
+        <h2>Offer insurance without giving up control.</h2>
+        <p>Bring one day of visits. We will show what Claims Native can prepare, what still needs a person, and whether the 90-day pilot fits.</p>
+        <a class="button" href="mailto:Ian@atomandbits.com?subject=Claims%20Native%2090-day%20pilot">Ask about the 90-day pilot <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>

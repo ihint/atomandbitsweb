@@ -31,7 +31,7 @@ The website uses a restrained executive palette aligned to Ian's CTO/founder pos
 - `--line`: #d7dee8
 
 ### Sections to Customize
-1. **Hero Section**: Positioning, proof points, and operating-range panel
+1. **Hero Section**: Positioning and four linked proof points
 2. **Advisory Section**: Fractional CTO/CPO, healthcare infrastructure, AI operations, and product-to-market work
 3. **Selected Work Section**: TheraMatch/TPN.health, One to One Health, BCBST, PerfectServe, Paragon, and CraftingCopy
 4. **Approach Section**: Core operating philosophy

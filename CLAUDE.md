@@ -42,7 +42,7 @@ This is a personal website for Ian Harman's consultancy "Atom & Bits" - a single
 - The website uses a color theme defined in CSS custom properties (`--ink`, `--navy`, `--blue-soft`, `--blue-wash`, `--line`, etc.)
 - All animations are CSS-based with JavaScript triggers
 - The design follows Ian's CTO/founder aesthetic: clear, evidence-led, editorial, and less rounded than a generic SaaS landing page
-- Keep forest green in Claims Native. Do not use it as an Atom & Bits brand color.
+- Use the Atom & Bits navy, paper, and copper palette in Claims Native. Keep the serif product wordmark to distinguish the product.
 - Selected work should stay evidence-led and avoid unsupported metrics or hype
 - No external dependencies or build process required
 
