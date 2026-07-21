@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atom &amp; Bits | Founder-Grade CTO &amp; Product Leadership</title>
     <meta name="description" content="Atom &amp; Bits is Ian Harman's founder-grade CTO and product leadership practice for healthcare infrastructure, provider networks, AI-enabled operations, and revenue-ready product systems.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://atomandbits.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Atom &amp; Bits | Healthcare CTO &amp; Product Leadership">
+    <meta property="og:description" content="Founder-level healthcare technology, product strategy, and AI operating-system leadership for consequential work.">
+    <meta property="og:url" content="https://atomandbits.com/">
+    <meta name="twitter:card" content="summary">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -381,6 +388,19 @@
             gap: 52px;
             padding: 30px 0;
             border-bottom: 1px solid var(--line);
+            text-decoration: none;
+            transition: color 160ms ease, padding 160ms ease;
+        }
+
+        .service-row:hover,
+        .service-row:focus-visible {
+            padding-left: 12px;
+            color: var(--navy);
+        }
+
+        .service-row:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 4px;
         }
 
         .service-row h3 {
@@ -703,11 +723,43 @@
             }
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://atomandbits.com/#organization",
+          "name": "Atom & Bits, LLC",
+          "url": "https://atomandbits.com/",
+          "email": "Ian@atomandbits.com",
+          "telephone": "+1-865-803-5050",
+          "description": "Founder-level healthcare technology, product strategy, and AI operating-system leadership.",
+          "founder": {"@id": "https://atomandbits.com/#ian-harman"},
+          "areaServed": "United States"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://atomandbits.com/#ian-harman",
+          "name": "Ian Harman",
+          "jobTitle": "Founder, CTO, and Product Operator",
+          "url": "https://atomandbits.com/",
+          "sameAs": ["https://www.linkedin.com/in/ianjharman"]
+        },
+        {
+          "@type": "WebSite",
+          "name": "Atom & Bits",
+          "url": "https://atomandbits.com/",
+          "publisher": {"@id": "https://atomandbits.com/#organization"}
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <nav class="site-nav" aria-label="Primary navigation">
         <div class="nav-inner">
-            <a class="brand" href="#home" aria-label="Atom and Bits home">
+            <a class="brand" href="/" aria-label="Atom and Bits home">
                 <span class="brand-mark">A&amp;B</span>
                 <span>Atom &amp; Bits</span>
             </a>
@@ -790,22 +842,22 @@
                     </div>
                 </div>
                 <div class="services-list">
-                    <div class="service-row reveal">
+                    <a class="service-row reveal" href="/healthcare-fractional-cto/">
                         <h3>Fractional CTO / CPO leadership</h3>
                         <p>Executive-level product and technology help for founders and healthcare operators who need architecture, prioritization, vendor choices, hiring judgment, and execution discipline.</p>
-                    </div>
-                    <div class="service-row reveal">
-                        <h3>Healthcare platform architecture</h3>
-                        <p>Provider-network systems, payer workflows, behavioral-health access, claims and payment operations, compliance posture, and platform integrations built for trust and operational reality.</p>
-                    </div>
-                    <div class="service-row reveal">
+                    </a>
+                    <a class="service-row reveal" href="/healthcare-product-strategy/">
+                        <h3>Healthcare product strategy</h3>
+                        <p>Workflow, platform, buyer, pilot, and roadmap decisions that connect healthcare complexity to a product people can understand, trust, implement, and buy.</p>
+                    </a>
+                    <a class="service-row reveal" href="/healthcare-ai-operations/">
                         <h3>AI-enabled operating systems</h3>
                         <p>Practical AI workflows that reduce administrative load, improve throughput, and make clinical, operational, and customer-facing teams more effective without turning the product into a gimmick.</p>
-                    </div>
-                    <div class="service-row reveal">
-                        <h3>Product-to-market translation</h3>
-                        <p>Positioning, enterprise GTM support, paid-pilot readiness, sales proof, and product packaging that connect what the platform can do to what a buyer will understand, believe, and fund.</p>
-                    </div>
+                    </a>
+                    <a class="service-row reveal" href="/guides/how-to-choose-a-healthcare-cto/">
+                        <h3>Choosing the right leadership model</h3>
+                        <p>A practical guide to comparing advisors, agencies, fractional executives, and product partners—including the evidence and questions that reveal the right fit.</p>
+                    </a>
                 </div>
             </div>
         </section>
@@ -913,8 +965,10 @@
         <div class="footer-inner">
             <p>&copy; 2026 Atom &amp; Bits, LLC. Healthcare product and technology leadership.</p>
             <div class="footer-links">
-                <a href="privacy-policy.html">Privacy</a>
-                <a href="support.html">Support</a>
+                <a href="/guides/how-to-choose-a-healthcare-cto/">Buyer guide</a>
+                <a href="/claimsnative/">Claims Native</a>
+                <a href="/privacy-policy.html">Privacy</a>
+                <a href="/support.html">Support</a>
             </div>
         </div>
     </footer>
