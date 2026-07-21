@@ -27,7 +27,7 @@ This is a personal website for Ian Harman's consultancy "Atom & Bits" - a single
 - **Intersection Observer Animations**: Fade-in animations triggered by scroll
 - **Responsive Grid Layouts**: CSS Grid for case studies and services
 - **CSS Custom Properties**: Color theming system using CSS variables
-- **Executive Visual System**: Ink, teal, paper, copper accents, crisp rules, restrained 8px radii
+- **Executive Visual System**: Ink, navy, paper, copper accents, crisp rules, restrained 8px radii
 
 ## Content Sections
 
@@ -41,7 +41,8 @@ This is a personal website for Ian Harman's consultancy "Atom & Bits" - a single
 
 - The website uses a color theme defined in CSS custom properties (`--ink`, `--navy`, `--blue-soft`, `--blue-wash`, `--line`, etc.)
 - All animations are CSS-based with JavaScript triggers
-- The design follows Ian's updated CTO/founder aesthetic: executive, crisp, evidence-led, editorial, and less rounded than a generic SaaS landing page
+- The design follows Ian's CTO/founder aesthetic: clear, evidence-led, editorial, and less rounded than a generic SaaS landing page
+- Keep forest green in Claims Native. Do not use it as an Atom & Bits brand color.
 - Selected work should stay evidence-led and avoid unsupported metrics or hype
 - No external dependencies or build process required
 

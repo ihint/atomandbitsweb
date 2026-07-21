@@ -22,13 +22,13 @@ This website is built as a single HTML file with embedded CSS and JavaScript - p
 
 ### Color Scheme
 The website uses a restrained executive palette aligned to Ian's CTO/founder positioning:
-- `--ink`: #152029
-- `--navy`: #0f5f68
-- `--accent`: #b65f3b
-- `--blue-soft`: #dcece8
-- `--blue-wash`: #f4f8f6
+- `--ink`: #111827
+- `--navy`: #1f4e79
+- `--accent`: #ad5735
+- `--blue-soft`: #e7eef7
+- `--blue-wash`: #f2f5f9
 - `--paper`: #fbfaf6
-- `--line`: #d8dfdc
+- `--line`: #d7dee8
 
 ### Sections to Customize
 1. **Hero Section**: Positioning, proof points, and operating-range panel
