@@ -238,7 +238,7 @@
       font-weight: 700;
     }
 
-    .workbench {
+    .revenue-calculator {
       overflow: hidden;
       border: 1px solid #b8c6d6;
       border-radius: 8px;
@@ -246,7 +246,7 @@
       box-shadow: 0 30px 70px rgba(20, 31, 43, 0.12);
     }
 
-    .workbench-head {
+    .calculator-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -255,72 +255,82 @@
       background: var(--blue-soft);
     }
 
-    .workbench-head strong { color: var(--navy); }
+    .calculator-head strong { color: var(--navy); }
 
-    .live-dot {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
+    .calculator-head span {
       color: var(--muted);
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 600;
     }
 
-    .live-dot::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--navy-dark);
-    }
-
-    .workbench-summary {
+    .calculator-form {
+      display: grid;
+      gap: 14px;
       padding: 20px;
-      border-bottom: 1px solid var(--line);
     }
 
-    .workbench-summary span {
-      color: var(--muted);
-      font-size: 0.8rem;
+    .calculator-field-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .calculator-form label {
+      display: grid;
+      gap: 5px;
+      color: var(--ink);
+      font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+    }
+
+    .calculator-form label small {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 400;
+    }
+
+    .calculator-form input,
+    .calculator-form select {
+      width: 100%;
+      min-height: 46px;
+      padding: 9px 11px;
+      border: 1px solid #aebdce;
+      border-radius: 5px;
+      background: var(--white);
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .calculator-form input:hover,
+    .calculator-form select:hover { border-color: var(--navy); }
+
+    .calculator-result {
+      padding: 20px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .calculator-result > span {
+      display: block;
+      color: #d9e4f1;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .workbench-summary p {
-      margin: 7px 0 0;
+    .calculator-result output {
+      display: block;
+      margin-top: 5px;
       font-family: Fraunces, Georgia, serif;
-      color: var(--navy);
-      font-size: 1.35rem;
-      line-height: 1.3;
+      font-size: clamp(2.7rem, 5vw, 4rem);
+      font-weight: 650;
+      line-height: 1;
+      letter-spacing: -0.04em;
     }
 
-    .queue-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .queue-row:last-child { border-bottom: none; }
-
-    .queue-row strong { display: block; color: var(--ink); }
-
-    .queue-row small { color: var(--muted); }
-
-    .badge {
-      height: fit-content;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: var(--blue-soft);
-      color: var(--navy);
-      font-size: 0.72rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .badge.warning { background: var(--copper-soft); color: #743c21; }
+    .calculator-result p { margin: 8px 0 0; color: #d9e4f1; font-size: 0.82rem; }
+    .calculator-note { margin: 0; padding: 0 20px 18px; color: var(--muted); font-size: 0.72rem; }
 
     .proof-strip {
       display: grid;
@@ -573,7 +583,7 @@
       .pilot-grid { grid-template-columns: 1fr; gap: 42px; }
 
       .hero { padding-top: 62px; }
-      .workbench { max-width: 620px; }
+      .revenue-calculator { max-width: 620px; }
       .proof-strip, .steps { grid-template-columns: repeat(2, 1fr); }
       .proof:nth-child(2) { border-right: none; }
       .proof:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
@@ -590,13 +600,13 @@
       .hero { padding: 48px 0 44px; }
       h1 { font-size: clamp(2.85rem, 14vw, 4rem); }
       .hero-grid { gap: 32px; }
-      .workbench { border-radius: 6px; }
+      .revenue-calculator { border-radius: 6px; }
       .steps, .trust-grid { grid-template-columns: 1fr; }
       .proof { min-height: 148px; padding: 20px 16px; }
       .proof:nth-child(2n) { border-right: none; }
       .proof:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
       .proof:nth-last-child(-n+2) { border-bottom: none; }
-      .queue-row { padding: 13px 15px; }
+      .calculator-field-row { grid-template-columns: 1fr; }
       .section { padding: 68px 0; }
       .step, .step + .step { min-height: 0; padding: 24px 0; border-right: none; border-bottom: 1px solid var(--line); }
       .step-number { margin-bottom: 22px; }
@@ -650,6 +660,7 @@
         <span>by Atom &amp; Bits</span>
       </a>
       <div class="nav-links">
+        <a href="#calculator">Calculator</a>
         <a href="#how">How it works</a>
         <a href="#pilot">Paid pilot</a>
         <a class="button" href="mailto:Ian@atomandbits.com?subject=Claims%20Native%2090-day%20pilot">Ask about the 90-day pilot</a>
@@ -665,21 +676,29 @@
           <h1>Offer insurance without hiring a billing team.</h1>
           <p class="hero-copy"><span>Claims Native checks each visit against your rules.</span><span>It fixes safe errors and prepares the superbill or electronic claim draft.</span><span>It releases nothing until your office and provider approve it.</span><span>It records each rule, change, approval, and result.</span></p>
           <div class="hero-actions">
-            <a class="button" href="#pilot">See the 90-day pilot <span aria-hidden="true">→</span></a>
+            <a class="button" href="#calculator">Calculate missed revenue <span aria-hidden="true">→</span></a>
             <a class="button secondary" href="https://aether-research-us-01.tail598a94.ts.net/" rel="noopener">Open partner demo</a>
           </div>
           <p class="pilot-facts">90 days · $500 launch · $249/month · 200 visits/month</p>
           <p class="microcopy">Built first for small outpatient practices using simple visit exports. Each specialty, practice rule, and payer path is configured before use.</p>
         </div>
 
-        <div class="workbench" aria-label="Example Claims Native judgment queue">
-          <div class="workbench-head"><strong>Today</strong><span class="live-dot">The day is checked</span></div>
-          <div class="workbench-summary"><span>Shift summary</span><p>8 visits checked. 5 prepared, 2 need review, 1 is blocked.</p></div>
-          <div class="queue-row"><div><strong>Needs diagnosis</strong><small>Stopped before release</small></div><span class="badge warning">Human action</span></div>
-          <div class="queue-row"><div><strong>Ready for office approval</strong><small>Superbill package prepared</small></div><span class="badge">Prepared</span></div>
-          <div class="queue-row"><div><strong>Waiting for provider</strong><small>Office approval recorded</small></div><span class="badge">1 of 2</span></div>
-          <div class="queue-row"><div><strong>Stedi dry run complete</strong><small>No payer transmission</small></div><span class="badge">Released</span></div>
-        </div>
+        <aside class="revenue-calculator" id="calculator" aria-labelledby="calculator-title">
+          <div class="calculator-head"><strong id="calculator-title">Estimate missed revenue</strong><span>Updates as you type</span></div>
+          <div class="calculator-form">
+            <div class="calculator-field-row">
+              <label for="lost-patients">Patients turned away<input id="lost-patients" type="number" inputmode="decimal" min="0" step="1" value="2"></label>
+              <label for="loss-period">How often?<select id="loss-period"><option value="day">Each workday</option><option value="week" selected>Each week</option><option value="month">Each month</option></select></label>
+            </div>
+            <label for="patient-value">Revenue per patient<input id="patient-value" type="number" inputmode="decimal" min="0" step="1" value="750"><small>Expected revenue across the full course of care</small></label>
+          </div>
+          <div class="calculator-result" aria-live="polite" aria-atomic="true">
+            <span>Estimated annual revenue missed</span>
+            <output id="annual-revenue" for="lost-patients loss-period patient-value">$78,000</output>
+            <p id="revenue-summary">About $6,500 each month from 104 patients a year.</p>
+          </div>
+          <p class="calculator-note">Planning estimate only. Uses 260 workdays, 52 weeks, or 12 months and does not account for payer rules, denials, patient cost share, collection rates, or added costs.</p>
+        </aside>
       </div>
     </section>
 
@@ -767,5 +786,36 @@
       <span><a href="/">Atom &amp; Bits</a> · <a href="mailto:Ian@atomandbits.com">Ian@atomandbits.com</a> · <a href="/privacy-policy.html">Privacy</a></span>
     </div>
   </footer>
+  <script>
+    (function () {
+      var patientsInput = document.getElementById('lost-patients');
+      var periodInput = document.getElementById('loss-period');
+      var valueInput = document.getElementById('patient-value');
+      var annualOutput = document.getElementById('annual-revenue');
+      var summaryOutput = document.getElementById('revenue-summary');
+      var factors = { day: 260, week: 52, month: 12 };
+      var money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+      var number = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 });
+
+      function safeNumber(input) {
+        var parsed = Number(input.value);
+        return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+      }
+
+      function updateEstimate() {
+        var annualPatients = safeNumber(patientsInput) * factors[periodInput.value];
+        var annualRevenue = annualPatients * safeNumber(valueInput);
+        annualOutput.value = money.format(annualRevenue);
+        annualOutput.textContent = money.format(annualRevenue);
+        summaryOutput.textContent = 'About ' + money.format(annualRevenue / 12) + ' each month from ' + number.format(annualPatients) + ' patients a year.';
+      }
+
+      [patientsInput, periodInput, valueInput].forEach(function (input) {
+        input.addEventListener('input', updateEstimate);
+        input.addEventListener('change', updateEstimate);
+      });
+      updateEstimate();
+    }());
+  </script>
 </body>
 </html>
