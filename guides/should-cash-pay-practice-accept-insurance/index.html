@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Should a Cash-Pay Practice Accept Insurance? A Decision Framework</title>
+  <meta name="description" content="Use four decision gates to test whether accepting insurance fits your cash-pay practice: demand, economics, operating fit, and a safe way back out.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://atomandbits.com/guides/should-cash-pay-practice-accept-insurance/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Should your cash-pay practice accept insurance?">
+  <meta property="og:description" content="A four-gate decision framework for testing demand, economics, operating fit, and reversibility before changing the practice.">
+  <meta property="og:url" content="https://atomandbits.com/guides/should-cash-pay-practice-accept-insurance/">
+  <meta property="og:image" content="https://atomandbits.com/og-2026-v3.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Atom &amp; Bits — healthcare product leadership from payer rules to payment.">
+  <meta property="article:published_time" content="2026-08-19">
+  <meta property="article:modified_time" content="2026-08-19">
+  <meta property="article:author" content="Ian Harman">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Should a cash-pay practice accept insurance?">
+  <meta name="twitter:description" content="Use four decision gates before you add insurance to a cash-pay practice.">
+  <meta name="twitter:image" content="https://atomandbits.com/og-2026-v3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --ink: #111827;
+      --navy: #1f4e79;
+      --navy-dark: #173a5c;
+      --copper: #ad5735;
+      --copper-soft: #f1ddd3;
+      --paper: #fbfaf6;
+      --paper-deep: #f2f5f9;
+      --card: #ffffff;
+      --blue-soft: #e7eef7;
+      --muted: #586069;
+      --line: #d7dee8;
+      --white: #ffffff;
+      --max: 1120px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 12px;
+      z-index: 100;
+      padding: 10px 14px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    :focus-visible {
+      outline: 3px solid var(--copper);
+      outline-offset: 3px;
+    }
+
+    .container,
+    .nav-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(215, 222, 232, 0.9);
+      background: rgba(251, 250, 246, 0.95);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .brand strong {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 650;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--navy); }
+
+    .breadcrumbs {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .breadcrumbs a { color: var(--navy); }
+
+    .hero {
+      padding: 46px 0 72px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(330px, 0.68fr);
+      gap: 58px;
+      align-items: start;
+    }
+
+    .eyebrow,
+    .section-label {
+      margin: 0 0 18px;
+      color: var(--copper);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      width: 34px;
+      height: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2 {
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+    }
+
+    h1 {
+      max-width: 790px;
+      margin-bottom: 24px;
+      font-size: clamp(3rem, 5.7vw, 5rem);
+      line-height: 0.99;
+      letter-spacing: -0.045em;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: clamp(2.15rem, 4.3vw, 3.7rem);
+      line-height: 1.06;
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 650;
+      line-height: 1.2;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.8vw, 1.27rem);
+    }
+
+    .byline {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .byline a { color: var(--navy); font-weight: 700; }
+
+    .answer-card {
+      padding: 30px;
+      border: 1px solid #b8c6d6;
+      border-top: 4px solid var(--copper);
+      background: var(--card);
+      box-shadow: 0 24px 55px rgba(20, 31, 43, 0.1);
+    }
+
+    .answer-card h2 {
+      font-size: clamp(2rem, 3.7vw, 3rem);
+      line-height: 1.05;
+    }
+
+    .answer-card p { color: var(--muted); }
+
+    .answer-card strong { color: var(--ink); }
+
+    .answer-card ol {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: gates;
+    }
+
+    .answer-card li {
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      counter-increment: gates;
+      font-weight: 600;
+    }
+
+    .answer-card li::before {
+      margin-right: 10px;
+      color: var(--copper);
+      content: "0" counter(gates);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .section { padding: 86px 0; }
+
+    .section.alt {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .section.dark {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .section.dark h2,
+    .section.dark h3 { color: var(--white); }
+
+    .section.dark .section-intro,
+    .section.dark p { color: #d9e4f1; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 72px;
+      margin-bottom: 44px;
+      align-items: start;
+    }
+
+    .section-intro {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 1.14rem;
+    }
+
+    .gates {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .gate {
+      min-height: 300px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .gate-number {
+      display: block;
+      margin-bottom: 44px;
+      color: var(--copper);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .gate p { color: var(--muted); }
+
+    .gate ul,
+    .check-panel ul,
+    .proof-panel ul {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .gate li,
+    .check-panel li,
+    .proof-panel li {
+      position: relative;
+      padding: 10px 0 10px 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .gate li::before,
+    .check-panel li::before,
+    .proof-panel li::before {
+      position: absolute;
+      left: 0;
+      color: var(--copper);
+      content: "—";
+    }
+
+    .formula {
+      margin: 0 0 18px;
+      padding: 22px 24px;
+      border-left: 3px solid var(--copper);
+      background: var(--copper-soft);
+    }
+
+    .formula strong {
+      display: block;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.22rem;
+    }
+
+    .formula span { color: var(--muted); }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--blue-soft);
+      color: var(--navy);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    td:first-child {
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.12rem;
+      font-weight: 650;
+    }
+
+    .checks,
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .check-panel,
+    .proof-panel {
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .check-panel h3,
+    .proof-panel h3 { font-size: 1.55rem; }
+
+    .proof-panel.can { border-top: 4px solid var(--navy); }
+    .proof-panel.cannot { border-top: 4px solid var(--copper); }
+
+    .evidence-note {
+      margin-top: 26px;
+      padding: 24px 26px;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .evidence-note p { margin-bottom: 0; }
+    .evidence-note a { color: var(--white); font-weight: 700; }
+
+    .faq-list {
+      max-width: 900px;
+      margin: 0 auto;
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-list details { border-bottom: 1px solid var(--line); }
+
+    .faq-list summary {
+      padding: 23px 42px 23px 0;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .faq-list p { max-width: 780px; margin: -7px 0 23px; color: var(--muted); }
+
+    .cta {
+      padding: 84px 0;
+      border-top: 1px solid var(--line);
+      background: var(--paper-deep);
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .cta h2 { max-width: 760px; }
+    .cta p { max-width: 700px; margin-bottom: 0; color: var(--muted); }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 22px;
+      border: 1px solid var(--navy);
+      border-radius: 5px;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform 150ms ease, background 150ms ease;
+    }
+
+    .button:hover { transform: translateY(-1px); background: var(--navy-dark); }
+
+    .cta-note {
+      grid-column: 1 / -1;
+      margin: -22px 0 0 !important;
+      font-size: 0.86rem;
+    }
+
+    footer {
+      padding: 28px 0;
+      background: var(--navy);
+      color: #cbd8e6;
+      font-size: 0.86rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    footer a { color: var(--white); }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .section-head,
+      .cta-inner { grid-template-columns: 1fr; gap: 34px; }
+      .button { width: fit-content; }
+      .cta-note { margin-top: -10px !important; }
+    }
+
+    @media (max-width: 680px) {
+      body { font-size: 16px; }
+      .container, .nav-inner { width: min(100% - 28px, var(--max)); }
+      .nav-links a:nth-child(-n+2) { display: none; }
+      .brand span { display: none; }
+      .hero { padding: 34px 0 54px; }
+      h1 { font-size: clamp(2.75rem, 14vw, 4rem); }
+      .gates,
+      .checks,
+      .proof-grid { grid-template-columns: 1fr; }
+      .section { padding: 64px 0; }
+      .gate, .check-panel, .proof-panel, .answer-card { padding: 25px; }
+      .gate { min-height: 0; }
+      .gate-number { margin-bottom: 26px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://atomandbits.com/guides/should-cash-pay-practice-accept-insurance/#article",
+        "headline": "Should a Cash-Pay Practice Accept Insurance? A Decision Framework",
+        "description": "A four-gate decision framework for testing patient demand, economics, operating fit, and reversibility before a cash-pay practice accepts insurance.",
+        "datePublished": "2026-08-19",
+        "dateModified": "2026-08-19",
+        "mainEntityOfPage": "https://atomandbits.com/guides/should-cash-pay-practice-accept-insurance/",
+        "author": {"@id": "https://atomandbits.com/#ian-harman"},
+        "publisher": {"@id": "https://atomandbits.com/#organization"},
+        "about": ["Cash-pay practices", "Insurance decision framework", "Medical billing operations"],
+        "breadcrumb": {"@id": "https://atomandbits.com/guides/should-cash-pay-practice-accept-insurance/#breadcrumb"}
+      },
+      {
+        "@type": "Person",
+        "@id": "https://atomandbits.com/#ian-harman",
+        "name": "Ian Harman",
+        "url": "https://atomandbits.com/ian-harman/",
+        "jobTitle": "Founder, CTO, and Product Operator"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://atomandbits.com/#organization",
+        "name": "Atom & Bits, LLC",
+        "url": "https://atomandbits.com/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://atomandbits.com/guides/should-cash-pay-practice-accept-insurance/#breadcrumb",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Atom & Bits", "item": "https://atomandbits.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Guides"},
+          {"@type": "ListItem", "position": 3, "name": "Should a cash-pay practice accept insurance?", "item": "https://atomandbits.com/guides/should-cash-pay-practice-accept-insurance/"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "When should a cash-pay practice accept insurance?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Accept insurance when measured patient demand, conservative economics, available operating capacity, and a narrow test all support the change. Do not decide from gross revenue alone."}
+          },
+          {
+            "@type": "Question",
+            "name": "What should a practice measure before accepting insurance?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Measure insurance requests, likely visit volume, current cash revenue that may be displaced, staff time, billing and technology costs, exception volume, and the work left unresolved."}
+          },
+          {
+            "@type": "Question",
+            "name": "Can a pilot prove that insurance will be profitable?",
+            "acceptedAnswer": {"@type": "Answer", "text": "No. A pilot can test source data, claim preparation, review time, exception rates, and artifact quality. It cannot guarantee payer access, reimbursement, payment, posting, or net profit."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="/claimsnative/" aria-label="Claims Native home">
+        <strong>Claims Native</strong>
+        <span>Field guide</span>
+      </a>
+      <div class="nav-links">
+        <a href="#gates">Four gates</a>
+        <a href="#checks">Practical checks</a>
+        <a href="#pilot-proof">Pilot proof</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <p class="breadcrumbs"><a href="/">Atom &amp; Bits</a> / Guides / Should a cash-pay practice accept insurance?</p>
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">A decision guide for independent practices</p>
+            <h1>Should your cash-pay practice accept insurance?</h1>
+            <p class="hero-copy">Do not start with the size of the insured market. Start with four questions: Is demand real? Do conservative economics work? Can the practice absorb the new work? Can you test the change without trapping the whole business in it?</p>
+            <p class="byline">By <a href="/ian-harman/">Ian Harman</a> · Healthcare EDI, claims, and product operator · August 19, 2026</p>
+          </div>
+
+          <aside class="answer-card" aria-labelledby="short-answer">
+            <p class="section-label">Short answer</p>
+            <h2 id="short-answer">Accept insurance only if a narrow test clears four gates.</h2>
+            <p>Gross opportunity is a reason to investigate, not a reason to change the practice.</p>
+            <ol>
+              <li>Measured demand</li>
+              <li>Conservative economics</li>
+              <li>Operating fit</li>
+              <li>Reversible scope</li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gates">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">The four-gate test</p><h2>Pass each gate before you widen the plan.</h2></div>
+          <p class="section-intro">A strong answer may still be “not yet.” The point is to expose the assumptions that could turn new visits into new margin, new work, or both.</p>
+        </div>
+
+        <div class="gates">
+          <article class="gate">
+            <span class="gate-number">Gate 01 · Demand</span>
+            <h3>Count lost demand, not broad interest.</h3>
+            <p>Track real booking calls, referral requests, and existing patient questions for at least four normal weeks.</p>
+            <ul>
+              <li>How many people did not book because you were cash-pay?</li>
+              <li>Which payer or plan did they name?</li>
+              <li>Would the insured visit replace a cash visit or fill unused capacity?</li>
+            </ul>
+          </article>
+
+          <article class="gate">
+            <span class="gate-number">Gate 02 · Economics</span>
+            <h3>Model contribution, not billed charges.</h3>
+            <p>Use low, base, and high scenarios. Mark every payer amount and collection assumption as unknown until supported.</p>
+            <ul>
+              <li>Subtract added staff time, technology, service, and follow-up costs.</li>
+              <li>Subtract cash revenue displaced by the same schedule slot.</li>
+              <li>Keep patient cost share and uncollected balances visible.</li>
+            </ul>
+          </article>
+
+          <article class="gate">
+            <span class="gate-number">Gate 03 · Operating fit</span>
+            <h3>Name the work that begins after the visit.</h3>
+            <p>Insurance adds setup, claim preparation, review, exceptions, external status, and financial close. Each queue needs an owner.</p>
+            <ul>
+              <li>Who approves clinical and charge details?</li>
+              <li>Who resolves missing data and rejected work?</li>
+              <li>How much unresolved work can the practice carry?</li>
+            </ul>
+          </article>
+
+          <article class="gate">
+            <span class="gate-number">Gate 04 · Reversibility</span>
+            <h3>Limit the first decision.</h3>
+            <p>Define one location, one configured insurance lane, named approvers, a visit cap, and an end date.</p>
+            <ul>
+              <li>What result would make you stop?</li>
+              <li>What work remains if the pilot ends?</li>
+              <li>What proof is required before adding another lane?</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="economics">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">A simple planning model</p><h2>Separate opportunity from net value.</h2></div>
+          <p class="section-intro">The first number should tell you whether to investigate. The second should tell you whether the work could fit the business.</p>
+        </div>
+
+        <div class="formula">
+          <strong>Planning contribution per insured visit</strong>
+          <span>= collection scenario − care delivery cost − insurance operating cost − displaced cash contribution</span>
+        </div>
+
+        <div class="table-wrap" role="region" aria-label="Insurance decision scorecard" tabindex="0">
+          <table>
+            <thead><tr><th>Signal</th><th>Test now</th><th>Wait or narrow</th><th>Evidence to keep</th></tr></thead>
+            <tbody>
+              <tr><td>Demand</td><td>Repeated, payer-specific requests and unused capacity</td><td>General interest or a full cash schedule</td><td>Weekly counts by source and named plan, without patient details</td></tr>
+              <tr><td>Economics</td><td>Low case can cover variable work and does not rely on billed charges</td><td>Model depends on best-case payment or ignores displaced cash work</td><td>Assumption sheet with low, base, and high cases</td></tr>
+              <tr><td>Operations</td><td>Named owners can handle approval and exceptions inside set limits</td><td>No owner for rejects, denials, balances, or close</td><td>Queue map, time log, and unresolved-work count</td></tr>
+              <tr><td>Control</td><td>One lane, visit cap, end date, and stop rule</td><td>All payers, all visits, or no defined exit</td><td>Pilot scope and weekly decision record</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="checks">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Practical checks</p><h2>Do this before you contact a payer or hire help.</h2></div>
+          <p class="section-intro">These checks turn a broad strategy question into facts the owner can inspect.</p>
+        </div>
+
+        <div class="checks">
+          <article class="check-panel">
+            <p class="section-label">Demand and schedule</p>
+            <h3>Count the actual trade.</h3>
+            <ul>
+              <li>Log insurance-related booking losses for four normal weeks.</li>
+              <li>Mark whether each visit would fill open time or displace cash demand.</li>
+              <li>Group by named payer or plan, referral source, and service type.</li>
+              <li>Use counts only. Do not record patient names, dates of birth, member IDs, charts, or other PHI.</li>
+            </ul>
+          </article>
+
+          <article class="check-panel">
+            <p class="section-label">Cost and control</p>
+            <h3>Price the work around the visit.</h3>
+            <ul>
+              <li>Time intake, claim review, corrections, follow-up, and close.</li>
+              <li>List one-time setup costs apart from per-visit costs.</li>
+              <li>Set a maximum weekly queue and a stop rule before launch.</li>
+              <li>Require a named office approver and a named clinical approver when the claim needs both.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="pilot-proof">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">What the current pilot can prove</p><h2>A pilot answers operating questions first.</h2></div>
+          <p class="section-intro">Claims Native starts with one configured lane and keeps claim states and human authority visible.</p>
+        </div>
+
+        <div class="proof-grid">
+          <article class="proof-panel can">
+            <p class="section-label">It can test</p>
+            <h3>The path to a reviewed artifact.</h3>
+            <ul>
+              <li>Whether the visit export contains the required source fields</li>
+              <li>How often configured rules stop a visit</li>
+              <li>Office and provider review time</li>
+              <li>Whether the approved source matches the superbill or electronic dry run</li>
+              <li>How much work remains unresolved each week</li>
+            </ul>
+          </article>
+
+          <article class="proof-panel cannot">
+            <p class="section-label">It cannot guarantee</p>
+            <h3>The downstream financial result.</h3>
+            <ul>
+              <li>Payer access, enrollment, or network status</li>
+              <li>Payer acceptance or adjudication</li>
+              <li>Allowed amounts, reimbursement, parity, or patient collection</li>
+              <li>Payment, posting, or net profit</li>
+              <li>Results outside the configured lane</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="evidence-note"><p>See the scope and proof plan for the <a href="/claimsnative/90-day-pilot/">90-day pilot</a>. This framework comes from <a href="/ian-harman/">Ian Harman's</a> work across payer products, provider networks, healthcare EDI, claims, and payment operations. See why <a href="/insights/why-automated-claims-need-control-states/">claim states must stay explicit</a> and read the <a href="/work/tpn-match/">TPN Match operating case</a>. This guide is not legal, coding, billing, contracting, or reimbursement advice.</p></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="questions">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Common questions</p><h2>Make the decision from evidence.</h2></div>
+          <p class="section-intro">The same answer will not fit every specialty, payer mix, location, or schedule.</p>
+        </div>
+
+        <div class="faq-list">
+          <details><summary>When should a cash-pay practice accept insurance?</summary><p>Accept insurance when measured patient demand, conservative economics, available operating capacity, and a narrow test all support the change. Do not decide from gross revenue alone.</p></details>
+          <details><summary>What should a practice measure before accepting insurance?</summary><p>Measure insurance requests, likely visit volume, current cash revenue that may be displaced, staff time, billing and technology costs, exception volume, and the work left unresolved.</p></details>
+          <details><summary>Can a pilot prove that insurance will be profitable?</summary><p>No. A pilot can test source data, claim preparation, review time, exception rates, and artifact quality. It cannot guarantee payer access, reimbursement, payment, posting, or net profit.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+        <div>
+          <p class="eyebrow">Start with one number</p>
+          <h2>Estimate the demand worth testing.</h2>
+          <p>Use patient counts and planning ranges to size the question before you change the practice.</p>
+        </div>
+        <a class="button" href="/claimsnative/insurance-opportunity/">Use the opportunity calculator <span aria-hidden="true">→</span></a>
+        <p class="cta-note">Planning estimate only. No revenue or reimbursement guarantee. Do not enter or send names, dates of birth, member IDs, charts, or other PHI.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>&copy; 2026 Atom &amp; Bits, LLC.</span>
+      <span><a href="/ian-harman/">Ian Harman</a> · <a href="/claimsnative/">Claims Native</a> · <a href="/privacy-policy.html">Privacy</a></span>
+    </div>
+  </footer>
+</body>
+</html>

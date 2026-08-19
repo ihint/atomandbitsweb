@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>90-Day Insurance Lane Pilot | Claims Native</title>
+  <meta name="description" content="Test one insurance lane for 90 days without hiring a billing department. One export, two approvers, configured claim paths, and a weekly proof review.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://atomandbits.com/claimsnative/90-day-pilot/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Claims Native">
+  <meta property="og:title" content="Test one insurance lane for 90 days">
+  <meta property="og:description" content="Turn one visit export into a short approval queue and the next claim package without hiring a billing department.">
+  <meta property="og:url" content="https://atomandbits.com/claimsnative/90-day-pilot/">
+  <meta property="og:image" content="https://atomandbits.com/claimsnative/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Claims Native 90-day insurance lane pilot">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Test one insurance lane for 90 days">
+  <meta name="twitter:description" content="One visit export, a short approval queue, two named approvers, and the next claim package.">
+  <meta name="twitter:image" content="https://atomandbits.com/claimsnative/og.png">
+  <meta name="twitter:image:alt" content="Claims Native 90-day insurance lane pilot">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --ink: #111827;
+      --navy: #1f4e79;
+      --navy-dark: #173a5c;
+      --copper: #97482d;
+      --copper-soft: #f1ddd3;
+      --paper: #fbfaf6;
+      --paper-deep: #f2f5f9;
+      --card: #ffffff;
+      --blue-soft: #e7eef7;
+      --muted: #515c68;
+      --line: #d7dee8;
+      --white: #ffffff;
+      --max: 1180px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 12px;
+      z-index: 100;
+      padding: 10px 14px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    :focus-visible {
+      outline: 3px solid var(--copper);
+      outline-offset: 3px;
+    }
+
+    .container,
+    .nav-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(215, 222, 232, 0.9);
+      background: rgba(251, 250, 246, 0.94);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .brand strong {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 650;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links > a:not(.button) {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-links > a:not(.button):hover { color: var(--navy); }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 20px;
+      border: 1px solid var(--navy);
+      border-radius: 5px;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: var(--navy-dark);
+      background: var(--navy-dark);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--navy);
+    }
+
+    .button.secondary:hover { background: var(--blue-soft); }
+
+    .button.light {
+      border-color: var(--white);
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    .button.light:hover { background: var(--blue-soft); }
+
+    .button.outline-light {
+      border-color: var(--white);
+      background: transparent;
+      color: var(--white);
+    }
+
+    .button.outline-light:hover {
+      border-color: var(--white);
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    h1,
+    h2,
+    h3,
+    p { margin-top: 0; }
+
+    h1,
+    h2 {
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin-bottom: 24px;
+      font-size: clamp(3rem, 5.7vw, 5.25rem);
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(2.25rem, 4.5vw, 4rem);
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+    }
+
+    h3 {
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.42rem;
+      font-weight: 650;
+      line-height: 1.2;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--copper);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 34px;
+      height: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    .hero {
+      padding: 76px 0 62px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.16fr) minmax(350px, 0.72fr);
+      gap: 60px;
+      align-items: start;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.8vw, 1.27rem);
+    }
+
+    .hero-actions,
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-note {
+      max-width: 690px;
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .offer-card {
+      overflow: hidden;
+      border: 1px solid #b8c6d6;
+      border-radius: 8px;
+      background: var(--card);
+      box-shadow: 0 30px 70px rgba(20, 31, 43, 0.12);
+    }
+
+    .offer-head {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+      background: var(--blue-soft);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .offer-price {
+      padding: 24px 22px 20px;
+    }
+
+    .offer-price strong {
+      display: block;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2.3rem, 4vw, 3.25rem);
+      letter-spacing: -0.035em;
+      line-height: 1;
+    }
+
+    .offer-price > span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+    }
+
+    .offer-list {
+      margin: 20px 0 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .offer-list li {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.93rem;
+    }
+
+    .offer-list li::before {
+      color: var(--copper);
+      content: "—";
+      font-weight: 700;
+    }
+
+    .offer-action {
+      padding: 20px 22px 22px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .offer-action .button { width: 100%; }
+
+    .offer-action p {
+      margin: 10px 0 0;
+      color: #d9e4f1;
+      font-size: 0.78rem;
+      text-align: center;
+    }
+
+    .scope-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .scope-item {
+      min-height: 116px;
+      padding: 24px;
+      border-right: 1px solid var(--line);
+    }
+
+    .scope-item:last-child { border-right: 0; }
+
+    .scope-item strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.05rem;
+    }
+
+    .scope-item span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .section { padding: 92px 0; }
+
+    .section.alt {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 80px;
+      margin-bottom: 48px;
+      align-items: start;
+    }
+
+    .section-intro {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .flow li {
+      position: relative;
+      min-height: 220px;
+      padding: 25px 20px 26px;
+      border-right: 1px solid var(--line);
+    }
+
+    .flow li:first-child { padding-left: 0; }
+    .flow li:last-child { border-right: 0; }
+
+    .flow li:not(:last-child)::after {
+      position: absolute;
+      top: 29px;
+      right: -7px;
+      z-index: 1;
+      width: 14px;
+      height: 14px;
+      border-top: 2px solid var(--copper);
+      border-right: 2px solid var(--copper);
+      background: var(--paper);
+      content: "";
+      transform: rotate(45deg);
+    }
+
+    .flow-step {
+      display: block;
+      margin-bottom: 44px;
+      color: var(--copper);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .flow strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.08rem;
+      line-height: 1.2;
+    }
+
+    .flow p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .definition {
+      margin: 32px 0 0;
+      padding: 20px 22px;
+      border-left: 3px solid var(--copper);
+      background: var(--paper-deep);
+      color: var(--muted);
+    }
+
+    .definition strong { color: var(--navy); }
+
+    .fit-grid,
+    .input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .fit-card,
+    .input-card {
+      padding: 34px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .fit-card.not-fit { background: var(--paper-deep); }
+
+    .fit-card h3,
+    .input-card h3 { margin-bottom: 18px; }
+
+    .plain-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .plain-list li {
+      position: relative;
+      padding: 13px 0 13px 25px;
+      border-top: 1px solid var(--line);
+    }
+
+    .plain-list li::before {
+      position: absolute;
+      left: 0;
+      color: var(--copper);
+      content: "+";
+      font-weight: 700;
+    }
+
+    .not-fit .plain-list li::before,
+    .exclusion-list li::before { content: "—"; }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .phase {
+      min-height: 310px;
+      padding: 28px 24px 30px 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .phase + .phase { padding-left: 24px; }
+    .phase:last-child { border-right: 0; }
+
+    .phase-time {
+      display: block;
+      margin-bottom: 54px;
+      color: var(--copper);
+      font-size: 0.77rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .phase h3 { margin-bottom: 12px; }
+
+    .phase p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .timing-note {
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .proof-card {
+      min-height: 230px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .proof-number {
+      display: block;
+      margin-bottom: 36px;
+      color: var(--copper);
+      font-size: 0.77rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .proof-card h3 { margin-bottom: 10px; }
+
+    .proof-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .evidence-rule {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.4fr) 1fr;
+      gap: 36px;
+      margin-top: 22px;
+      padding: 30px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .evidence-rule h3 {
+      margin: 0;
+      color: var(--white);
+      font-size: 1.7rem;
+    }
+
+    .evidence-rule p {
+      margin: 0;
+      color: #d9e4f1;
+    }
+
+    .scope-box {
+      margin-top: 24px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .scope-box h3 { color: var(--white); }
+
+    .scope-box p {
+      max-width: 900px;
+      margin: 0;
+      color: #d9e4f1;
+    }
+
+    .scope-box p + p { margin-top: 12px; }
+
+    .faq-list {
+      max-width: 920px;
+      margin: 0 auto;
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-list details { border-bottom: 1px solid var(--line); }
+
+    .faq-list summary {
+      padding: 24px 44px 24px 0;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.28rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .faq-list details p {
+      max-width: 820px;
+      margin: -8px 0 24px;
+      color: var(--muted);
+    }
+
+    .final-cta {
+      padding: 94px 0;
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      max-width: 850px;
+      margin: 0 auto 18px;
+      color: var(--white);
+    }
+
+    .final-cta p {
+      max-width: 650px;
+      margin: 0 auto 28px;
+      color: #d9e4f1;
+      font-size: 1.12rem;
+    }
+
+    .final-cta .cta-actions { justify-content: center; }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      background: var(--navy);
+      color: #cbd8e6;
+      font-size: 0.86rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    footer a { color: var(--white); }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .section-head { grid-template-columns: 1fr; gap: 42px; }
+
+      .offer-card { max-width: 620px; }
+      .scope-strip { grid-template-columns: repeat(3, 1fr); }
+      .scope-item:nth-child(3) { border-right: 0; }
+      .scope-item:nth-child(-n+3) { border-bottom: 1px solid var(--line); }
+      .scope-item:nth-child(5) { border-right: 0; }
+      .flow { grid-template-columns: repeat(3, 1fr); }
+      .flow li:nth-child(3) { border-right: 0; }
+      .flow li:nth-child(-n+3) { border-bottom: 1px solid var(--line); }
+      .flow li:nth-child(3)::after { display: none; }
+      .flow li:nth-child(4) { padding-left: 0; }
+      .timeline { grid-template-columns: repeat(2, 1fr); }
+      .phase:nth-child(2) { border-right: 0; }
+      .phase:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .phase:nth-child(3) { padding-left: 0; }
+    }
+
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      .container, .nav-inner { width: min(100% - 28px, var(--max)); }
+      .nav-links > a:not(.button) { display: none; }
+      .nav-links .button { min-height: 40px; padding: 0 12px; font-size: 0.84rem; }
+      .brand span { display: none; }
+      .hero { padding: 50px 0 46px; }
+      h1 { font-size: clamp(2.75rem, 14vw, 4rem); }
+      .hero-grid { gap: 32px; }
+      .scope-strip { grid-template-columns: 1fr 1fr; }
+      .scope-item { min-height: 132px; padding: 20px 16px; }
+      .scope-item:nth-child(2n) { border-right: 0; }
+      .scope-item:nth-child(3) { border-right: 1px solid var(--line); }
+      .scope-item:nth-child(-n+4) { border-bottom: 1px solid var(--line); }
+      .section { padding: 68px 0; }
+      .flow,
+      .fit-grid,
+      .input-grid,
+      .timeline,
+      .proof-grid,
+      .evidence-rule { grid-template-columns: 1fr; }
+      .flow li,
+      .flow li:first-child,
+      .flow li:nth-child(4) {
+        min-height: 0;
+        padding: 24px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .flow li::after { display: none; }
+      .flow-step { margin-bottom: 18px; }
+      .fit-card,
+      .input-card,
+      .proof-card { padding: 26px; }
+      .phase,
+      .phase + .phase,
+      .phase:nth-child(3) {
+        min-height: 0;
+        padding: 26px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .phase-time { margin-bottom: 20px; }
+      .evidence-rule { gap: 14px; padding: 26px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 430px) {
+      .scope-strip { grid-template-columns: 1fr; }
+      .scope-item,
+      .scope-item:nth-child(3) {
+        min-height: 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .hero-actions .button,
+      .cta-actions .button { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does the current pilot do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It turns one visit export into a short approval queue, applies practice rules, records separate office and provider approvals, and prepares the next claim package for the configured claim path."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the pilot cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "$500 guided launch, then $249 per month for 90 days. The monthly fee includes 200 visits; each additional visit is $1.25."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does release mean the payer got the claim?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Release means both named approvers completed the configured review and the next claim package is ready for its configured path. A test or dry run does not count as transmission. Payer receipt or acceptance counts only with source evidence."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long will a payer take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Claims Native does not promise exact payer timing. External acknowledgments, claim status, adjudication, remittance, and payment may fall inside or outside the 90-day pilot."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the pilot guarantee an outcome?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The pilot does not guarantee claim acceptance, reimbursement, payment amount, payment date, revenue, or legal or coding correctness. The practice keeps clinical, coding, and release authority."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens after 90 days?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "At the end of 90 days, we review workflow, practice time, artifact quality, unresolved work, and any payer or payment result backed by source evidence. The practice then decides whether to stop, adjust, or expand. Post-visit insurance revenue operations are a direction after proof, not part of this pilot."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="/claimsnative/" aria-label="Claims Native home">
+        <strong>Claims Native</strong>
+        <span>by Atom &amp; Bits</span>
+      </a>
+      <div class="nav-links">
+        <a href="#fit">Fit</a>
+        <a href="#plan">90 days</a>
+        <a href="#proof">Proof</a>
+        <a class="button" href="/claimsnative/insurance-opportunity/#review">Review my lane</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">90-day guided pilot</p>
+          <h1 id="hero-title">Test one insurance lane without hiring a billing department.</h1>
+          <p class="hero-copy">Give one location a controlled way to turn completed visits into reviewed claim packages. Start narrow, measure the work for 90 days, and decide what to do next.</p>
+          <div class="hero-actions">
+            <a class="button" href="/claimsnative/insurance-opportunity/#review">Review my insurance lane <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="/claimsnative/">Explore Claims Native</a>
+          </div>
+          <p class="hero-note">One location. One export format. Two named approvers. No promise of payer acceptance, payment, or timing.</p>
+        </div>
+
+        <aside class="offer-card" aria-labelledby="offer-title">
+          <div class="offer-head" id="offer-title">Founding-practice pilot</div>
+          <div class="offer-price">
+            <strong>$500</strong>
+            <span>guided launch, then <b>$249/month</b> for 90 days</span>
+            <ul class="offer-list">
+              <li>200 visits per month included</li>
+              <li>$1.25 per additional visit</li>
+              <li>Configured claim paths</li>
+              <li>One weekly review</li>
+            </ul>
+          </div>
+          <div class="offer-action">
+            <a class="button light" href="/claimsnative/insurance-opportunity/#review">Start with a lane review</a>
+            <p>The review confirms fit before guided launch.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="scope-strip" aria-label="Pilot scope">
+      <div class="scope-item"><strong>One location</strong><span>A clear operating boundary.</span></div>
+      <div class="scope-item"><strong>One export format</strong><span>A stable source for visit data.</span></div>
+      <div class="scope-item"><strong>Two approvers</strong><span>One office and one provider.</span></div>
+      <div class="scope-item"><strong>Claim paths</strong><span>Configured before work starts.</span></div>
+      <div class="scope-item"><strong>Weekly review</strong><span>Proof, blocks, and next steps.</span></div>
+    </div>
+
+    <section class="section" id="workflow" aria-labelledby="workflow-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Current product</p>
+            <h2 id="workflow-title">One visit export becomes the next claim package.</h2>
+          </div>
+          <p class="section-intro">The pilot uses one focused flow. Your practice keeps the clinical, coding, and release decisions. Claims Native keeps the work visible and moves each visit to its next clear state.</p>
+        </div>
+
+        <ol class="flow" aria-label="Current Claims Native pilot workflow">
+          <li><span class="flow-step">01</span><strong>Visit export</strong><p>One agreed format starts the work.</p></li>
+          <li><span class="flow-step">02</span><strong>Short queue</strong><p>Only work that needs review stays in view.</p></li>
+          <li><span class="flow-step">03</span><strong>Practice rules</strong><p>Set rules guide holds, corrections, and next steps.</p></li>
+          <li><span class="flow-step">04</span><strong>Office approval</strong><p>The named office approver checks practice facts.</p></li>
+          <li><span class="flow-step">05</span><strong>Provider approval</strong><p>The named provider keeps clinical authority.</p></li>
+          <li><span class="flow-step">06</span><strong>Next package</strong><p>A prepared package moves to its configured path.</p></li>
+        </ol>
+
+        <p class="definition"><strong>What release means:</strong> both named approvals are complete and the next claim package is ready for its configured path. Release alone does not prove transmission, payer receipt, acceptance, adjudication, or payment.</p>
+      </div>
+    </section>
+
+    <section class="section alt" id="fit" aria-labelledby="fit-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Fit comes first</p>
+            <h2 id="fit-title">A narrow pilot needs a narrow lane.</h2>
+          </div>
+          <p class="section-intro">The pilot fits a practice that can hold the first lane steady long enough to judge the workflow. It does not fit a practice seeking a full billing service on day one.</p>
+        </div>
+
+        <div class="fit-grid">
+          <article class="fit-card">
+            <h3>Best fit</h3>
+            <ul class="plain-list">
+              <li>An independent outpatient or specialty practice</li>
+              <li>One location with a stable visit export</li>
+              <li>One insurance lane worth testing before hiring</li>
+              <li>One office approver and one provider approver</li>
+              <li>A team willing to set rules and join a weekly review</li>
+              <li>A practice that wants proof before it expands</li>
+            </ul>
+          </article>
+
+          <article class="fit-card not-fit">
+            <h3>Not a fit</h3>
+            <ul class="plain-list">
+              <li>Several locations, exports, or lanes at launch</li>
+              <li>A request to replace all billing work at once</li>
+              <li>No named office or provider approver</li>
+              <li>No stable source for visit and claim facts</li>
+              <li>A need for fixed payer or payment dates</li>
+              <li>A requirement for guaranteed revenue or reimbursement</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="plan" aria-labelledby="plan-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">90-day outline</p>
+            <h2 id="plan-title">Set the lane, run the work, review the proof.</h2>
+          </div>
+          <p class="section-intro">The phases set the work we control. External payer events follow their own timing, so the pilot does not tie completion to a promised response or payment date.</p>
+        </div>
+
+        <div class="timeline">
+          <article class="phase">
+            <span class="phase-time">Launch · before week 1</span>
+            <h3>Choose and configure</h3>
+            <p>Confirm the location, export, two approvers, required inputs, practice rules, and claim paths. The $500 guided launch covers this setup.</p>
+          </article>
+          <article class="phase">
+            <span class="phase-time">Weeks 1–2</span>
+            <h3>Check the lane</h3>
+            <p>Review sample visits, test required fields, tune holds, and make sure office and provider decisions stay separate.</p>
+          </article>
+          <article class="phase">
+            <span class="phase-time">Weeks 3–8</span>
+            <h3>Run and review</h3>
+            <p>Move live visit exports through the queue. Each week, review time, corrections, released packages, blocks, and owners.</p>
+          </article>
+          <article class="phase">
+            <span class="phase-time">Weeks 9–13</span>
+            <h3>Judge the proof</h3>
+            <p>Compare workflow results, practice time, artifact quality, unresolved work, and any external outcome backed by source evidence.</p>
+          </article>
+        </div>
+
+        <p class="timing-note">A payer acknowledgment, status, remittance, or payment may arrive during the pilot, after it, or not at all. We report the state shown by the source and leave unknown results unknown.</p>
+      </div>
+    </section>
+
+    <section class="section alt" id="proof" aria-labelledby="proof-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Proof plan</p>
+            <h2 id="proof-title">Judge the lane on work you can see.</h2>
+          </div>
+          <p class="section-intro">The weekly review records what moved, how much practice time it took, what the packages contained, and what remained unresolved.</p>
+        </div>
+
+        <div class="proof-grid">
+          <article class="proof-card">
+            <span class="proof-number">01 · Flow</span>
+            <h3>Workflow works</h3>
+            <p>Count visits that move from export through both approvals to the configured package. Record failed steps, retries, and fixes.</p>
+          </article>
+          <article class="proof-card">
+            <span class="proof-number">02 · Time</span>
+            <h3>Practice time</h3>
+            <p>Track office review time, provider review time, weekly review time, and any work that falls outside the queue.</p>
+          </article>
+          <article class="proof-card">
+            <span class="proof-number">03 · Quality</span>
+            <h3>Prepared and released artifacts</h3>
+            <p>Check package completeness, correction reasons, approval records, and the quality of each prepared or released artifact.</p>
+          </article>
+          <article class="proof-card">
+            <span class="proof-number">04 · Open work</span>
+            <h3>Unresolved work</h3>
+            <p>Keep blocked visits, missing facts, unknown external results, owners, age, and next steps in the weekly record.</p>
+          </article>
+        </div>
+
+        <div class="evidence-rule">
+          <h3>Source evidence sets the result.</h3>
+          <p>Payer or payment outcomes count only when source evidence supports them. That evidence may include a clearinghouse or payer acknowledgment, a claim-status response, a remittance, or a deposit record. A prepared package, approval event, test, or dry run is not payer or payment proof.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="inputs" aria-labelledby="inputs-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Before work starts</p>
+            <h2 id="inputs-title">Your practice supplies the facts and authority.</h2>
+          </div>
+          <p class="section-intro">The guided launch checks these inputs before visits enter the pilot. Missing inputs may hold the lane or make it a poor fit.</p>
+        </div>
+
+        <div class="input-grid">
+          <article class="input-card">
+            <h3>Required practice inputs</h3>
+            <ul class="plain-list">
+              <li>One sample and ongoing visit export in the agreed format</li>
+              <li>The chosen insurance lane and its configured claim paths</li>
+              <li>Practice, billing, provider, location, and identifier details needed for the package</li>
+              <li>Patient, coverage, visit, and service facts from named sources</li>
+              <li>Written rules for missing facts, holds, corrections, and release</li>
+              <li>One named office approver and one named provider approver</li>
+              <li>A weekly review time and secure way to share allowed data</li>
+              <li>Source evidence for any payer or payment result the practice wants counted</li>
+            </ul>
+          </article>
+
+          <article class="input-card">
+            <h3>Clear exclusions</h3>
+            <ul class="plain-list exclusion-list">
+              <li>Payer contracting, credentialing, and enrollment</li>
+              <li>Clinical judgment or diagnosis, procedure, and modifier choices</li>
+              <li>More than one location, export format, or launch lane</li>
+              <li>Denial appeals, payment posting, patient statements, and collections</li>
+              <li>Any claim that lacks both named approvals</li>
+              <li>Treating a test or dry run as proof of transmission</li>
+              <li>Any promise of payer acceptance, timing, reimbursement, payment, or revenue</li>
+              <li>Legal, regulatory, coding, or coverage guarantees</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="scope-box">
+          <h3>One proof point before a broader direction</h3>
+          <p>The current pilot ends at the next claim package and the evidence the lane produces. Post-visit insurance revenue operations are a direction after proof, not part of this 90-day scope.</p>
+          <p>The practice keeps clinical, coding, financial, and release authority. Claims Native makes no guarantee of claim acceptance, legal correctness, reimbursement, payment amount, payment date, or added revenue.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="questions" aria-labelledby="questions-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Pilot questions</p>
+            <h2 id="questions-title">Know what the 90 days can prove.</h2>
+          </div>
+          <p class="section-intro">The pilot tests a controlled practice workflow. It does not turn outside payer timing into a promise.</p>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>What does the current pilot do?</summary>
+            <p>It turns one visit export into a short approval queue, applies practice rules, records separate office and provider approvals, and prepares the next claim package for the configured claim path.</p>
+          </details>
+          <details>
+            <summary>What does the pilot cost?</summary>
+            <p>$500 guided launch, then $249 per month for 90 days. The monthly fee includes 200 visits; each additional visit is $1.25.</p>
+          </details>
+          <details>
+            <summary>Does release mean the payer got the claim?</summary>
+            <p>No. Release means both named approvers completed the configured review and the next claim package is ready for its configured path. A test or dry run does not count as transmission. Payer receipt or acceptance counts only with source evidence.</p>
+          </details>
+          <details>
+            <summary>How long will a payer take?</summary>
+            <p>Claims Native does not promise exact payer timing. External acknowledgments, claim status, adjudication, remittance, and payment may fall inside or outside the 90-day pilot.</p>
+          </details>
+          <details>
+            <summary>Does the pilot guarantee an outcome?</summary>
+            <p>No. The pilot does not guarantee claim acceptance, reimbursement, payment amount, payment date, revenue, or legal or coding correctness. The practice keeps clinical, coding, and release authority.</p>
+          </details>
+          <details>
+            <summary>What happens after 90 days?</summary>
+            <p>At the end of 90 days, we review workflow, practice time, artifact quality, unresolved work, and any payer or payment result backed by source evidence. The practice then decides whether to stop, adjust, or expand. Post-visit insurance revenue operations are a direction after proof, not part of this pilot.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="cta-title">
+      <div class="container">
+        <h2 id="cta-title">Start with one lane and a clear proof plan.</h2>
+        <p>Bring one export format, one location, and the lane you want to test. The Insurance Opportunity Review will confirm whether the 90-day pilot fits.</p>
+        <div class="cta-actions">
+          <a class="button light" href="/claimsnative/insurance-opportunity/#review">Review my insurance lane <span aria-hidden="true">→</span></a>
+          <a class="button outline-light" href="/claimsnative/">Explore Claims Native</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>Claims Native is an Atom &amp; Bits product · Chattanooga, Tennessee</span>
+      <span><a href="/">Atom &amp; Bits</a> · <a href="mailto:Ian@atomandbits.com">Ian@atomandbits.com</a> · <a href="/privacy-policy.html">Privacy</a></span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can You Accept Insurance Without Hiring a Biller? | Practice Guide</title>
+  <meta name="description" content="A practical ownership test for practices that want to accept insurance without hiring a biller: map each queue, stop rule, proof, and backup before launch.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://atomandbits.com/guides/accept-insurance-without-hiring-biller/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Can a practice accept insurance without hiring a biller?">
+  <meta property="og:description" content="Use the no-orphan-work test to decide whether a small practice can cover every insurance queue without a new hire.">
+  <meta property="og:url" content="https://atomandbits.com/guides/accept-insurance-without-hiring-biller/">
+  <meta property="og:image" content="https://atomandbits.com/og-2026-v3.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Atom &amp; Bits — healthcare product leadership from payer rules to payment.">
+  <meta property="article:published_time" content="2026-08-19">
+  <meta property="article:modified_time" content="2026-08-19">
+  <meta property="article:author" content="Ian Harman">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Accept insurance without hiring a biller">
+  <meta name="twitter:description" content="A queue-by-queue ownership test for an independent practice.">
+  <meta name="twitter:image" content="https://atomandbits.com/og-2026-v3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --ink: #111827;
+      --navy: #1f4e79;
+      --navy-dark: #173a5c;
+      --copper: #ad5735;
+      --copper-soft: #f1ddd3;
+      --paper: #fbfaf6;
+      --paper-deep: #f2f5f9;
+      --card: #ffffff;
+      --blue-soft: #e7eef7;
+      --muted: #586069;
+      --line: #d7dee8;
+      --white: #ffffff;
+      --max: 1120px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 12px;
+      z-index: 100;
+      padding: 10px 14px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    :focus-visible {
+      outline: 3px solid var(--copper);
+      outline-offset: 3px;
+    }
+
+    .container,
+    .nav-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(215, 222, 232, 0.9);
+      background: rgba(251, 250, 246, 0.95);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .brand strong {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 650;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--navy); }
+
+    .breadcrumbs {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .breadcrumbs a { color: var(--navy); }
+
+    .hero {
+      padding: 46px 0 70px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.72fr);
+      gap: 58px;
+      align-items: start;
+    }
+
+    .eyebrow,
+    .section-label {
+      margin: 0 0 18px;
+      color: var(--copper);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      width: 34px;
+      height: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2 {
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin-bottom: 24px;
+      font-size: clamp(3rem, 5.7vw, 5rem);
+      line-height: 0.99;
+      letter-spacing: -0.045em;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: clamp(2.15rem, 4.3vw, 3.7rem);
+      line-height: 1.06;
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 650;
+      line-height: 1.2;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.8vw, 1.27rem);
+    }
+
+    .byline {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .byline a { color: var(--navy); font-weight: 700; }
+
+    .ownership-card {
+      overflow: hidden;
+      border: 1px solid #b8c6d6;
+      background: var(--card);
+      box-shadow: 0 24px 55px rgba(20, 31, 43, 0.1);
+    }
+
+    .ownership-card-head {
+      padding: 24px 26px;
+      border-bottom: 1px solid var(--line);
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .ownership-card-head .section-label { margin-bottom: 10px; color: #efc6b7; }
+
+    .ownership-card-head h2 {
+      margin-bottom: 0;
+      color: var(--white);
+      font-size: clamp(2rem, 3.7vw, 3rem);
+      line-height: 1.05;
+    }
+
+    .ownership-chain {
+      margin: 0;
+      padding: 0 26px;
+      list-style: none;
+    }
+
+    .ownership-chain li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .ownership-chain li:last-child { border-bottom: 0; }
+
+    .ownership-chain span {
+      color: var(--copper);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .ownership-chain strong {
+      display: block;
+      color: var(--navy);
+    }
+
+    .ownership-chain small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .ownership-card-foot {
+      padding: 18px 26px;
+      border-top: 1px solid var(--line);
+      background: var(--copper-soft);
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .section { padding: 86px 0; }
+
+    .section.alt {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .section.dark {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .section.dark h2,
+    .section.dark h3 { color: var(--white); }
+
+    .section.dark .section-intro,
+    .section.dark p { color: #d9e4f1; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 72px;
+      margin-bottom: 44px;
+      align-items: start;
+    }
+
+    .section-intro {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 1.14rem;
+    }
+
+    .framework {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .framework-step {
+      min-height: 230px;
+      padding: 25px 20px;
+      border-right: 1px solid var(--line);
+    }
+
+    .framework-step:last-child { border-right: 0; }
+
+    .framework-step span {
+      display: block;
+      margin-bottom: 44px;
+      color: var(--copper);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .framework-step p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+    .queue-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    table {
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--blue-soft);
+      color: var(--navy);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    td:first-child {
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.12rem;
+      font-weight: 650;
+    }
+
+    .decision-grid,
+    .readiness-grid,
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .decision-card,
+    .readiness-card,
+    .proof-card {
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .decision-card.fit { border-top: 4px solid var(--navy); }
+    .decision-card.change { border-top: 4px solid var(--copper); }
+
+    .decision-card ul,
+    .readiness-card ol,
+    .proof-card ul {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .decision-card li,
+    .proof-card li {
+      position: relative;
+      padding: 10px 0 10px 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .decision-card li::before,
+    .proof-card li::before {
+      position: absolute;
+      left: 0;
+      color: var(--copper);
+      content: "—";
+    }
+
+    .readiness-card {
+      background: var(--card);
+    }
+
+    .readiness-card li {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 12px;
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+      counter-increment: drill;
+      color: var(--muted);
+    }
+
+    .readiness-card ol { counter-reset: drill; }
+
+    .readiness-card li::before {
+      color: var(--copper);
+      content: "0" counter(drill);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .no-phi {
+      margin-top: 22px;
+      padding: 20px 22px;
+      border-left: 3px solid var(--copper);
+      background: var(--copper-soft);
+    }
+
+    .proof-card {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .proof-card li { border-color: rgba(255,255,255,0.2); color: #d9e4f1; }
+    .proof-card.can { border-top: 4px solid #9fb8d2; }
+    .proof-card.cannot { border-top: 4px solid #d98969; }
+
+    .proof-rule {
+      margin: 24px 0 0;
+      padding: 22px 24px;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .proof-rule p { margin-bottom: 0; }
+    .proof-rule a { color: var(--white); font-weight: 700; }
+
+    .faq-list {
+      max-width: 900px;
+      margin: 0 auto;
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-list details { border-bottom: 1px solid var(--line); }
+
+    .faq-list summary {
+      padding: 23px 42px 23px 0;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .faq-list p { max-width: 780px; margin: -7px 0 23px; color: var(--muted); }
+
+    .cta {
+      padding: 84px 0;
+      border-top: 1px solid var(--line);
+      background: var(--paper-deep);
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .cta h2 { max-width: 760px; }
+    .cta p { max-width: 700px; margin-bottom: 0; color: var(--muted); }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 22px;
+      border: 1px solid var(--navy);
+      border-radius: 5px;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform 150ms ease, background 150ms ease;
+    }
+
+    .button:hover { transform: translateY(-1px); background: var(--navy-dark); }
+
+    .cta-note {
+      grid-column: 1 / -1;
+      margin: -22px 0 0 !important;
+      font-size: 0.86rem;
+    }
+
+    footer {
+      padding: 28px 0;
+      background: var(--navy);
+      color: #cbd8e6;
+      font-size: 0.86rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    footer a { color: var(--white); }
+
+    @media (max-width: 980px) {
+      .framework { grid-template-columns: repeat(2, 1fr); }
+      .framework-step:nth-child(2n) { border-right: 0; }
+      .framework-step:last-child { grid-column: 1 / -1; border-top: 1px solid var(--line); }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .section-head,
+      .cta-inner { grid-template-columns: 1fr; gap: 34px; }
+      .button { width: fit-content; }
+      .cta-note { margin-top: -10px !important; }
+    }
+
+    @media (max-width: 680px) {
+      body { font-size: 16px; }
+      .container, .nav-inner { width: min(100% - 28px, var(--max)); }
+      .nav-links a:nth-child(-n+2) { display: none; }
+      .brand span { display: none; }
+      .hero { padding: 34px 0 54px; }
+      h1 { font-size: clamp(2.75rem, 14vw, 4rem); }
+      .framework,
+      .decision-grid,
+      .readiness-grid,
+      .proof-grid { grid-template-columns: 1fr; }
+      .framework-step { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .framework-step:last-child { grid-column: auto; border-top: 0; border-bottom: 0; }
+      .framework-step span { margin-bottom: 24px; }
+      .section { padding: 64px 0; }
+      .decision-card, .readiness-card, .proof-card, .ownership-card-head { padding: 25px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://atomandbits.com/guides/accept-insurance-without-hiring-biller/#article",
+        "headline": "Can You Accept Insurance Without Hiring a Biller?",
+        "description": "A queue-by-queue ownership test for practices that want to accept insurance without hiring a biller.",
+        "datePublished": "2026-08-19",
+        "dateModified": "2026-08-19",
+        "mainEntityOfPage": "https://atomandbits.com/guides/accept-insurance-without-hiring-biller/",
+        "author": {"@id": "https://atomandbits.com/#ian-harman"},
+        "publisher": {"@id": "https://atomandbits.com/#organization"},
+        "about": ["Insurance operations", "Medical billing staffing", "Independent practices"],
+        "breadcrumb": {"@id": "https://atomandbits.com/guides/accept-insurance-without-hiring-biller/#breadcrumb"}
+      },
+      {
+        "@type": "Person",
+        "@id": "https://atomandbits.com/#ian-harman",
+        "name": "Ian Harman",
+        "url": "https://atomandbits.com/ian-harman/",
+        "jobTitle": "Founder, CTO, and Product Operator"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://atomandbits.com/#organization",
+        "name": "Atom & Bits, LLC",
+        "url": "https://atomandbits.com/"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://atomandbits.com/guides/accept-insurance-without-hiring-biller/#breadcrumb",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Atom & Bits", "item": "https://atomandbits.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Guides"},
+          {"@type": "ListItem", "position": 3, "name": "Accept insurance without hiring a biller", "item": "https://atomandbits.com/guides/accept-insurance-without-hiring-biller/"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can a small practice accept insurance without hiring a biller?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Possibly. A practice can avoid a new hire only when every insurance queue has a named owner, a trigger, a stop rule, evidence of completion, and backup coverage. Software can move work but cannot hold the practice's clinical or financial authority."}
+          },
+          {
+            "@type": "Question",
+            "name": "What work still belongs to the practice?",
+            "acceptedAnswer": {"@type": "Answer", "text": "The practice must retain authority over clinical facts, charges, release decisions, access, contracts, patient communication, and financial records, even when software or a service does routine work."}
+          },
+          {
+            "@type": "Question",
+            "name": "What can the current Claims Native pilot prove?",
+            "acceptedAnswer": {"@type": "Answer", "text": "The pilot can measure source-data quality, review time, exception volume, approval flow, and artifact accuracy for one configured lane. It cannot guarantee payer access, reimbursement, payment, posting, or a no-hire result at wider scale."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="/claimsnative/" aria-label="Claims Native home">
+        <strong>Claims Native</strong>
+        <span>Field guide</span>
+      </a>
+      <div class="nav-links">
+        <a href="#framework">Ownership test</a>
+        <a href="#queues">Work queues</a>
+        <a href="#pilot-proof">Pilot proof</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <p class="breadcrumbs"><a href="/">Atom &amp; Bits</a> / Guides / Accept insurance without hiring a biller</p>
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">An operating guide for independent practices</p>
+            <h1>Can you accept insurance without hiring a biller?</h1>
+            <p class="hero-copy">Possibly, but “no hire” cannot mean “no owner.” A small practice can use software, a service, or a narrow mix of both only when every insurance queue has a named person, a clear stop, proof of what happened, and backup when that person is away.</p>
+            <p class="byline">By <a href="/ian-harman/">Ian Harman</a> · Healthcare EDI, claims, and product operator · August 19, 2026</p>
+          </div>
+
+          <aside class="ownership-card" aria-labelledby="short-answer">
+            <div class="ownership-card-head"><p class="section-label">Short answer</p><h2 id="short-answer">Use the no-orphan-work test.</h2></div>
+            <ol class="ownership-chain">
+              <li><span>01</span><div><strong>Trigger</strong><small>What event creates the work?</small></div></li>
+              <li><span>02</span><div><strong>Owner</strong><small>Who is accountable now?</small></div></li>
+              <li><span>03</span><div><strong>Stop rule</strong><small>When must routine work stop?</small></div></li>
+              <li><span>04</span><div><strong>Evidence</strong><small>What proves the state?</small></div></li>
+              <li><span>05</span><div><strong>Backup</strong><small>Who covers absence and overflow?</small></div></li>
+            </ol>
+            <div class="ownership-card-foot">If one box is blank, the work still needs a biller, service, owner, or smaller scope.</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="framework">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">The ownership contract</p><h2>Define five facts for every queue.</h2></div>
+          <p class="section-intro">A tool can sort, check, prepare, and route work. It cannot sign a contract, approve a diagnosis, make a financial decision, or become accountable when the queue stalls.</p>
+        </div>
+
+        <div class="framework">
+          <article class="framework-step"><span>01 · Trigger</span><h3>Start</h3><p>Name the source event: enrollment task, visit export, missing field, external response, or deposit.</p></article>
+          <article class="framework-step"><span>02 · Owner</span><h3>Decide</h3><p>Name one role that can act now. “The front desk” or “the vendor” is too broad.</p></article>
+          <article class="framework-step"><span>03 · Stop</span><h3>Bound</h3><p>State when automation or routine work must pause for clinical, financial, or access authority.</p></article>
+          <article class="framework-step"><span>04 · Evidence</span><h3>Prove</h3><p>Keep the source, version, action, actor, time, and external response that support the state.</p></article>
+          <article class="framework-step"><span>05 · Backup</span><h3>Cover</h3><p>Set queue limits, absence cover, and an escalation path before work accumulates.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="queues">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">The work inventory</p><h2>Map the whole operating loop.</h2></div>
+          <p class="section-intro">Preparing a claim is one part of the job. A no-hire plan fails when it covers the first file but leaves setup, exceptions, or close without an owner.</p>
+        </div>
+
+        <div class="queue-wrap" role="region" aria-label="Insurance work ownership table" tabindex="0">
+          <table>
+            <thead><tr><th>Queue</th><th>Work that appears</th><th>Authority the practice keeps</th><th>Proof to require</th></tr></thead>
+            <tbody>
+              <tr><td>Readiness</td><td>Practice, provider, location, access, route, fee, and policy setup</td><td>Contracts, representations, access grants, and launch choice</td><td>Configured scope, effective dates, owner, and unresolved gaps</td></tr>
+              <tr><td>Visit intake</td><td>Patient, coverage, provider, service, diagnosis, unit, and charge fields</td><td>Source correction and privacy rules</td><td>Source record, import result, duplicate check, and missing-field list</td></tr>
+              <tr><td>Claim review</td><td>Configured edits, documentation checks, charge review, and exceptions</td><td>Clinical facts, coding judgment, and charge approval</td><td>Exact version, office approval, provider approval when required, and rule results</td></tr>
+              <tr><td>Release</td><td>Superbill, portal work, or electronic claim path</td><td>Release choice and route authority</td><td>Released artifact and a truthful prepared, dry-run, or submitted state</td></tr>
+              <tr><td>External result</td><td>Transport response, acknowledgment, reject, denial, or status gap</td><td>Correction, appeal, retry, and patient communication choices</td><td>Raw response, mapped state, next action, and responsible owner</td></tr>
+              <tr><td>Financial close</td><td>Remittance, deposit, patient balance, adjustment, and ledger work</td><td>Financial policy and books</td><td>Matched evidence, approved adjustment, unresolved variance, and close date</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fit">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Choose the staffing model</p><h2>No hire is a scope choice, not a goal by itself.</h2></div>
+          <p class="section-intro">Use the model that covers the real queue at a cost and risk the practice can carry.</p>
+        </div>
+
+        <div class="decision-grid">
+          <article class="decision-card fit">
+            <p class="section-label">A no-hire test may fit when</p>
+            <h3>The first lane is small and controlled.</h3>
+            <ul>
+              <li>One location and one configured insurance lane</li>
+              <li>A clean export from the practice system</li>
+              <li>Named office and clinical approvers with weekly capacity</li>
+              <li>A visit cap, queue limit, and end date</li>
+              <li>A defined owner for work outside the software's scope</li>
+            </ul>
+          </article>
+
+          <article class="decision-card change">
+            <p class="section-label">Add a biller or service when</p>
+            <h3>The work needs daily judgment or broad cover.</h3>
+            <ul>
+              <li>Many payers, providers, locations, or service types enter at once</li>
+              <li>Enrollment, access, or contract work is not settled</li>
+              <li>The practice cannot cover corrections and external follow-up</li>
+              <li>Patient balances and financial close lack an owner</li>
+              <li>The queue exceeds the pilot cap or stays unresolved</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="checks">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Practical readiness drill</p><h2>Run the week before you run the lane.</h2></div>
+          <p class="section-intro">A short tabletop test will show where responsibility is missing before real patient work reaches the queue.</p>
+        </div>
+
+        <div class="readiness-grid">
+          <article class="readiness-card">
+            <p class="section-label">60-minute queue test</p>
+            <h3>Walk five sample visits through the map.</h3>
+            <ol>
+              <li>Include one clean visit, one missing field, one clinical question, one duplicate, and one route question.</li>
+              <li>Name the owner and backup at each stop.</li>
+              <li>Write the exact evidence that moves the work to the next state.</li>
+              <li>Time each person and record what only they can decide.</li>
+              <li>Stop if any queue has no owner, limit, or proof.</li>
+            </ol>
+          </article>
+
+          <article class="readiness-card">
+            <p class="section-label">Weekly capacity test</p>
+            <h3>Price attention, not just software.</h3>
+            <ol>
+              <li>Set the maximum visits and unresolved items the practice can carry.</li>
+              <li>Reserve time for office and provider review.</li>
+              <li>Set response times for routine and urgent exceptions.</li>
+              <li>Decide what pauses new intake when the queue crosses its limit.</li>
+              <li>Compare that labor with a service or part-time hire.</li>
+            </ol>
+          </article>
+        </div>
+
+        <p class="no-phi"><strong>No-PHI drill:</strong> Use invented or fully de-identified sample visits. Do not place patient names, dates of birth, addresses, member IDs, charts, images, or other PHI in a planning worksheet, calculator, email, or first-fit review.</p>
+      </div>
+    </section>
+
+    <section class="section dark" id="pilot-proof">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">What the current pilot can prove</p><h2>Test whether the queue fits the team you have.</h2></div>
+          <p class="section-intro">Claims Native can test one configured lane from a practice-system export to a reviewed superbill or clearly labeled electronic dry run.</p>
+        </div>
+
+        <div class="proof-grid">
+          <article class="proof-card can">
+            <p class="section-label">It can measure</p>
+            <h3>The work inside the pilot boundary.</h3>
+            <ul>
+              <li>Required source fields and import failures</li>
+              <li>Configured rule stops and exception volume</li>
+              <li>Office and provider approval time</li>
+              <li>Artifact accuracy against the approved version</li>
+              <li>Weekly queue size and unresolved work</li>
+            </ul>
+          </article>
+
+          <article class="proof-card cannot">
+            <p class="section-label">It cannot prove</p>
+            <h3>The full no-hire operation.</h3>
+            <ul>
+              <li>Payer access, enrollment, or contract terms</li>
+              <li>Payer acceptance, adjudication, or appeal results</li>
+              <li>Reimbursement, payment, posting, or patient collection</li>
+              <li>Queue load outside the configured lane</li>
+              <li>That the practice will never need a biller or service</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="proof-rule"><p>The pilot can show whether a no-hire model is plausible at a defined volume. It makes no financial or staffing guarantee. Review the scope and proof plan for the <a href="/claimsnative/90-day-pilot/">90-day pilot</a>. The framework reflects <a href="/ian-harman/">Ian Harman's</a> work across payer products, provider networks, EDI, claims, and payment operations. Read the <a href="/insights/why-automated-claims-need-control-states/">control-state model</a> and the <a href="/work/tpn-match/">TPN Match operating case</a>. This guide is not legal, coding, billing, contracting, staffing, or reimbursement advice.</p></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="questions">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Common questions</p><h2>Keep the owner in the answer.</h2></div>
+          <p class="section-intro">A no-hire plan can reduce fixed payroll. It does not remove accountable work.</p>
+        </div>
+
+        <div class="faq-list">
+          <details><summary>Can a small practice accept insurance without hiring a biller?</summary><p>Possibly. A practice can avoid a new hire only when every insurance queue has a named owner, a trigger, a stop rule, evidence of completion, and backup coverage. Software can move work but cannot hold the practice's clinical or financial authority.</p></details>
+          <details><summary>What work still belongs to the practice?</summary><p>The practice must retain authority over clinical facts, charges, release decisions, access, contracts, patient communication, and financial records, even when software or a service does routine work.</p></details>
+          <details><summary>What can the current Claims Native pilot prove?</summary><p>The pilot can measure source-data quality, review time, exception volume, approval flow, and artifact accuracy for one configured lane. It cannot guarantee payer access, reimbursement, payment, posting, or a no-hire result at wider scale.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+        <div>
+          <p class="eyebrow">Size the first lane</p>
+          <h2>See whether the opportunity justifies the operating test.</h2>
+          <p>Start with practice-level counts and planning ranges. Then compare the likely queue with the team you already have.</p>
+        </div>
+        <a class="button" href="/claimsnative/insurance-opportunity/">Use the opportunity calculator <span aria-hidden="true">→</span></a>
+        <p class="cta-note">Planning estimate only. No payer, revenue, reimbursement, payment, or staffing guarantee. Do not enter or send names, dates of birth, member IDs, charts, or other PHI.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>&copy; 2026 Atom &amp; Bits, LLC.</span>
+      <span><a href="/ian-harman/">Ian Harman</a> · <a href="/claimsnative/">Claims Native</a> · <a href="/privacy-policy.html">Privacy</a></span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Insurance Claim Pilot for Independent Chiropractors | Claims Native</title>
+  <meta name="description" content="Turn a Jane-style visit export into reviewed chiropractic claim packages with CMT and X-ray checks, separate approvals, and a superbill or electronic dry run.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://atomandbits.com/claimsnative/chiropractors/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="A controlled insurance claim pilot for independent chiropractors">
+  <meta property="og:description" content="Test one configured chiropractic claim lane from a Jane-style visit export to a reviewed superbill or clearly labeled electronic dry run.">
+  <meta property="og:url" content="https://atomandbits.com/claimsnative/chiropractors/">
+  <meta property="og:image" content="https://atomandbits.com/og-2026-v3.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Atom &amp; Bits — healthcare product leadership from payer rules to payment.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Insurance claim pilot for independent chiropractors">
+  <meta name="twitter:description" content="A controlled path from a Jane-style visit export to a reviewed superbill or electronic dry run.">
+  <meta name="twitter:image" content="https://atomandbits.com/og-2026-v3.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --ink: #111827;
+      --navy: #1f4e79;
+      --navy-dark: #173a5c;
+      --copper: #ad5735;
+      --copper-soft: #f1ddd3;
+      --paper: #fbfaf6;
+      --paper-deep: #f2f5f9;
+      --card: #ffffff;
+      --blue-soft: #e7eef7;
+      --muted: #586069;
+      --line: #d7dee8;
+      --white: #ffffff;
+      --max: 1160px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.58;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 12px;
+      z-index: 100;
+      padding: 10px 14px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    :focus-visible {
+      outline: 3px solid var(--copper);
+      outline-offset: 3px;
+    }
+
+    .container,
+    .nav-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(215, 222, 232, 0.9);
+      background: rgba(251, 250, 246, 0.95);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .brand strong {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 650;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+    }
+
+    .nav-links > a:not(.button) {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-links > a:not(.button):hover { color: var(--navy); }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 20px;
+      border: 1px solid var(--navy);
+      border-radius: 5px;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: var(--navy-dark);
+      background: var(--navy-dark);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--navy);
+    }
+
+    .button.secondary:hover { background: var(--blue-soft); }
+
+    .breadcrumbs {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .breadcrumbs a { color: var(--navy); }
+
+    .hero {
+      padding: 46px 0 70px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.72fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow,
+    .section-label {
+      margin: 0 0 18px;
+      color: var(--copper);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      width: 34px;
+      height: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2 {
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+    }
+
+    h1 {
+      max-width: 790px;
+      margin-bottom: 24px;
+      font-size: clamp(3rem, 5.8vw, 5.15rem);
+      line-height: 0.99;
+      letter-spacing: -0.045em;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: clamp(2.2rem, 4.4vw, 3.85rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 650;
+      line-height: 1.2;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.8vw, 1.28rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .microcopy {
+      margin: 15px 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .visit-card {
+      overflow: hidden;
+      border: 1px solid #b8c6d6;
+      border-radius: 8px;
+      background: var(--card);
+      box-shadow: 0 28px 68px rgba(20, 31, 43, 0.12);
+    }
+
+    .visit-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: var(--blue-soft);
+    }
+
+    .visit-card-head strong { color: var(--navy); }
+
+    .visit-card-head span {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .visit-list {
+      margin: 0;
+      padding: 0 20px;
+      list-style: none;
+    }
+
+    .visit-list li {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .visit-list li:last-child { border-bottom: 0; }
+
+    .visit-list span {
+      color: var(--copper);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .visit-list strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--navy);
+    }
+
+    .visit-list small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .visit-card-foot {
+      padding: 17px 20px;
+      background: var(--navy);
+      color: #d9e4f1;
+      font-size: 0.84rem;
+    }
+
+    .control-strip {
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .control-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .control-item {
+      min-height: 124px;
+      padding: 26px;
+      border-right: 1px solid var(--line);
+    }
+
+    .control-item:last-child { border-right: 0; }
+
+    .control-item strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.12rem;
+    }
+
+    .control-item span { color: var(--muted); font-size: 0.91rem; }
+
+    .section { padding: 88px 0; }
+
+    .section.alt {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.83fr 1.17fr;
+      gap: 70px;
+      margin-bottom: 44px;
+      align-items: start;
+    }
+
+    .section-intro {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 1.14rem;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+    }
+
+    .workflow-step {
+      min-height: 285px;
+      padding: 27px 24px 28px 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .workflow-step + .workflow-step { padding-left: 24px; }
+    .workflow-step:last-child { border-right: 0; }
+
+    .step-number {
+      display: block;
+      margin-bottom: 48px;
+      color: var(--copper);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .workflow-step p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+    .rule-grid,
+    .approval-grid,
+    .output-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .rule-card,
+    .approval-card,
+    .output-card {
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .rule-card ul,
+    .approval-card ul,
+    .output-card ul {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .rule-card li,
+    .approval-card li,
+    .output-card li {
+      position: relative;
+      padding: 11px 0 11px 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .rule-card li::before,
+    .approval-card li::before,
+    .output-card li::before {
+      position: absolute;
+      left: 0;
+      color: var(--copper);
+      content: "—";
+    }
+
+    .rule-stop {
+      margin: 22px 0 0;
+      padding: 18px 20px;
+      border-left: 3px solid var(--copper);
+      background: var(--copper-soft);
+      color: var(--ink);
+    }
+
+    .approval-card.office { border-top: 4px solid var(--navy); }
+    .approval-card.provider { border-top: 4px solid var(--copper); }
+
+    .approval-tag {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .version-rule {
+      margin: 22px 0 0;
+      padding: 22px 24px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .version-rule strong {
+      display: block;
+      margin-bottom: 4px;
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.25rem;
+    }
+
+    .output-card {
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      background: var(--card);
+    }
+
+    .output-card .output-label {
+      margin-bottom: 36px;
+      color: var(--copper);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .output-card p { color: var(--muted); }
+
+    .dry-run-label {
+      width: fit-content;
+      margin-top: auto;
+      padding: 8px 10px;
+      border: 1px solid var(--copper);
+      color: var(--copper);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .limits-panel {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 44px;
+      padding: 36px;
+      border: 1px solid var(--line);
+      background: var(--paper-deep);
+    }
+
+    .limits-panel p { margin-bottom: 0; color: var(--muted); }
+
+    .author-row {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 44px;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .author-row strong { color: var(--navy); }
+    .author-row p { margin-bottom: 0; color: var(--muted); }
+    .author-row a { color: var(--navy); font-weight: 700; }
+
+    .faq-list {
+      max-width: 900px;
+      margin: 0 auto;
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-list details { border-bottom: 1px solid var(--line); }
+
+    .faq-list summary {
+      padding: 23px 42px 23px 0;
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .faq-list p { max-width: 780px; margin: -7px 0 23px; color: var(--muted); }
+
+    .final-cta {
+      padding: 88px 0;
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      max-width: 820px;
+      margin: 0 auto 18px;
+      color: var(--white);
+    }
+
+    .final-cta p {
+      max-width: 650px;
+      margin: 0 auto 28px;
+      color: #d9e4f1;
+      font-size: 1.1rem;
+    }
+
+    .final-cta .button {
+      border-color: var(--white);
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    .final-cta .button:hover { background: var(--blue-soft); }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      background: var(--navy);
+      color: #cbd8e6;
+      font-size: 0.86rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    footer a { color: var(--white); }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .section-head,
+      .limits-panel,
+      .author-row { grid-template-columns: 1fr; gap: 34px; }
+
+      .workflow { grid-template-columns: repeat(2, 1fr); }
+      .workflow-step:nth-child(2) { border-right: 0; }
+      .workflow-step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    }
+
+    @media (max-width: 680px) {
+      body { font-size: 16px; }
+      .container, .nav-inner { width: min(100% - 28px, var(--max)); }
+      .nav-links > a:not(.button) { display: none; }
+      .nav-links .button { min-height: 40px; padding: 0 12px; font-size: 0.84rem; }
+      .brand span { display: none; }
+      .hero { padding: 34px 0 52px; }
+      h1 { font-size: clamp(2.8rem, 14vw, 4rem); }
+      .hero-grid { gap: 34px; }
+      .control-grid,
+      .workflow,
+      .rule-grid,
+      .approval-grid,
+      .output-grid { grid-template-columns: 1fr; }
+      .control-item { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .control-item:last-child { border-bottom: 0; }
+      .workflow-step,
+      .workflow-step + .workflow-step { min-height: 0; padding: 24px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .step-number { margin-bottom: 22px; }
+      .section { padding: 66px 0; }
+      .rule-card, .approval-card, .output-card, .limits-panel { padding: 25px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://atomandbits.com/claimsnative/chiropractors/#webpage",
+        "url": "https://atomandbits.com/claimsnative/chiropractors/",
+        "name": "Insurance Claim Pilot for Independent Chiropractors",
+        "description": "A controlled pilot that turns a Jane-style visit export into reviewed chiropractic claim packages with CMT and X-ray checks, separate office and provider approval, and a superbill or electronic dry run.",
+        "isPartOf": {"@id": "https://atomandbits.com/claimsnative/#software"},
+        "about": {"@id": "https://atomandbits.com/claimsnative/chiropractors/#service"},
+        "breadcrumb": {"@id": "https://atomandbits.com/claimsnative/chiropractors/#breadcrumb"}
+      },
+      {
+        "@type": "Service",
+        "@id": "https://atomandbits.com/claimsnative/chiropractors/#service",
+        "name": "Claims Native chiropractic claim pilot",
+        "url": "https://atomandbits.com/claimsnative/chiropractors/",
+        "provider": {"@id": "https://atomandbits.com/#organization"},
+        "audience": {"@type": "Audience", "audienceType": "Independent chiropractic practices"},
+        "description": "A one-lane pilot for visit export review, configured CMT and X-ray checks, separate office and provider approval, and generation of a superbill or clearly labeled electronic dry run.",
+        "serviceOutput": ["Reviewed claim package", "Superbill", "Electronic claim dry run"]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://atomandbits.com/claimsnative/chiropractors/#breadcrumb",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Claims Native", "item": "https://atomandbits.com/claimsnative/"},
+          {"@type": "ListItem", "position": 2, "name": "Chiropractors", "item": "https://atomandbits.com/claimsnative/chiropractors/"}
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://atomandbits.com/#organization",
+        "name": "Atom & Bits, LLC",
+        "url": "https://atomandbits.com/"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does the chiropractic pilot submit claims to a payer?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Not by default. The pilot can produce a superbill or a clearly labeled electronic dry run. A dry run is not transmitted and does not show payer acceptance or adjudication."}
+          },
+          {
+            "@type": "Question",
+            "name": "What do the CMT and X-ray checks do?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Configured checks compare CMT code selection with documented treated regions and compare X-ray body area and view details with available order, report, and visit evidence. A mismatch stops for provider review."}
+          },
+          {
+            "@type": "Question",
+            "name": "Why are office and provider approvals separate?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Office staff review administrative and charge details. The provider reviews diagnoses, treated regions, and clinical support. Both approvals attach to the exact reviewed version."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="/claimsnative/" aria-label="Claims Native home">
+        <strong>Claims Native</strong>
+        <span>by Atom &amp; Bits</span>
+      </a>
+      <div class="nav-links">
+        <a href="#workflow">Workflow</a>
+        <a href="#rules">Review rules</a>
+        <a href="#outputs">Outputs</a>
+        <a class="button" href="/claimsnative/insurance-opportunity/">Estimate the opportunity</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <p class="breadcrumbs"><a href="/claimsnative/">Claims Native</a> / Chiropractors</p>
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">For independent chiropractic practices</p>
+            <h1>Test one insurance claim lane without giving up review.</h1>
+            <p class="hero-copy">Claims Native turns a Jane-style visit export into a review queue built for chiropractic care. It checks configured CMT and X-ray rules, requires separate office and provider approval, then creates a superbill or a clearly labeled electronic dry run.</p>
+            <div class="hero-actions">
+              <a class="button" href="/claimsnative/insurance-opportunity/">Estimate your insurance opportunity <span aria-hidden="true">→</span></a>
+              <a class="button secondary" href="/claimsnative/90-day-pilot/">See the 90-day pilot</a>
+            </div>
+            <p class="microcopy">Start with one location, one configured lane, and named office and provider approvers. The pilot does not promise payer access or a financial outcome.</p>
+          </div>
+
+          <aside class="visit-card" aria-labelledby="visit-card-title">
+            <div class="visit-card-head"><strong id="visit-card-title">One day of visits</strong><span>Review path</span></div>
+            <ol class="visit-list">
+              <li><span>01</span><div><strong>Jane-style export received</strong><small>Visit, provider, service, diagnosis, and charge fields enter one batch.</small></div></li>
+              <li><span>02</span><div><strong>Configured rules run</strong><small>CMT region and X-ray evidence gaps stop for review.</small></div></li>
+              <li><span>03</span><div><strong>Two people approve</strong><small>Office and provider decisions remain separate.</small></div></li>
+              <li><span>04</span><div><strong>One artifact leaves review</strong><small>Superbill or electronic dry run, with its state shown.</small></div></li>
+            </ol>
+            <div class="visit-card-foot">Prepared is not submitted. Submitted is not accepted. Accepted is not paid.</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <div class="control-strip" aria-label="Pilot controls">
+      <div class="container control-grid">
+        <div class="control-item"><strong>One configured lane</strong><span>Keep the visit type, route, rules, and exceptions narrow enough to inspect.</span></div>
+        <div class="control-item"><strong>Two approval roles</strong><span>Office facts and provider judgment do not share one approval.</span></div>
+        <div class="control-item"><strong>Truthful output state</strong><span>A superbill and an electronic dry run stay distinct from payer results.</span></div>
+      </div>
+    </div>
+
+    <section class="section" id="workflow">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">From visit export to artifact</p><h2>A short path with visible stops.</h2></div>
+          <p class="section-intro">The pilot does not try to cover every payer, code, or visit. It tests whether one configured slice of your current visit flow can produce reviewable claim work without hiding missing facts.</p>
+        </div>
+
+        <div class="workflow">
+          <article class="workflow-step"><span class="step-number">01 · Import</span><h3>Read the Jane-style visit export</h3><p>Map the practice's visit, patient reference, provider, location, service, diagnosis, unit, and charge fields. Duplicates and missing required fields stop before review.</p></article>
+          <article class="workflow-step"><span class="step-number">02 · Check</span><h3>Apply the lane's rules</h3><p>Run configured service, diagnosis, documentation, and charge checks. The system points to the source field and rule behind each stop.</p></article>
+          <article class="workflow-step"><span class="step-number">03 · Approve</span><h3>Keep authority separate</h3><p>Office staff approve administrative facts and charges. The treating provider approves clinical code and documentation support for the exact claim version.</p></article>
+          <article class="workflow-step"><span class="step-number">04 · Produce</span><h3>Create the selected artifact</h3><p>Generate a superbill for the practice or patient workflow, or create a test electronic claim marked as a dry run. Keep the audit history with it.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="rules">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Chiropractic review rules</p><h2>Check what matters. Do not invent what is missing.</h2></div>
+          <p class="section-intro">Each rule is configured for the pilot lane. It can compare source facts and stop the work. It cannot create a diagnosis, rewrite the chart, or replace provider judgment.</p>
+        </div>
+
+        <div class="rule-grid">
+          <article class="rule-card">
+            <p class="section-label">CMT review</p>
+            <h3>Match the code to documented care.</h3>
+            <ul>
+              <li>Compare the selected 98940, 98941, or 98942 code with the count of documented treated spinal regions.</li>
+              <li>Check that the diagnosis links and visit evidence required by the configured lane are present.</li>
+              <li>Stop when the code, documented regions, units, or configured modifier rule do not agree.</li>
+            </ul>
+          </article>
+
+          <article class="rule-card">
+            <p class="section-label">X-ray review</p>
+            <h3>Match the line to available image evidence.</h3>
+            <ul>
+              <li>Compare the body area and view count on the service line with the available order, report, and visit record.</li>
+              <li>Check the service date, diagnosis link, and configured same-day or frequency rule.</li>
+              <li>Stop when evidence is missing, contradictory, or outside the configured lane.</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="rule-stop"><strong>Safe stop:</strong> The queue names the mismatch and the person who must resolve it. It does not select a more payable code or fill a clinical gap.</p>
+      </div>
+    </section>
+
+    <section class="section" id="approvals">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Separate authority</p><h2>Office approval is not provider approval.</h2></div>
+          <p class="section-intro">The two roles answer different questions. The pilot records both decisions and ties each one to the reviewed version.</p>
+        </div>
+
+        <div class="approval-grid">
+          <article class="approval-card office">
+            <span class="approval-tag">Office approval</span>
+            <h3>Are the administrative facts right?</h3>
+            <ul>
+              <li>Patient and coverage fields in scope for the configured lane</li>
+              <li>Rendering provider, location, visit date, and charge details</li>
+              <li>Duplicate, missing-field, and office-policy exceptions</li>
+            </ul>
+          </article>
+
+          <article class="approval-card provider">
+            <span class="approval-tag">Provider approval</span>
+            <h3>Does the claim match the care?</h3>
+            <ul>
+              <li>Diagnosis selection and links to service lines</li>
+              <li>CMT regions and code choice</li>
+              <li>X-ray body area, views, and available clinical support</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="version-rule"><strong>A material edit starts a new review version.</strong>Changing a diagnosis, service, unit, charge, provider, or route clears any approval that no longer applies.</div>
+      </div>
+    </section>
+
+    <section class="section alt" id="outputs">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Two honest outputs</p><h2>Choose the artifact. Keep its status plain.</h2></div>
+          <p class="section-intro">The pilot ends its default scope at a reviewed artifact. What happens after that depends on the practice's route, access, contracts, and payer process.</p>
+        </div>
+
+        <div class="output-grid">
+          <article class="output-card">
+            <span class="output-label">Option 01</span>
+            <h3>Reviewed superbill</h3>
+            <p>A human-readable claim package for the practice or patient workflow. It contains the approved visit and coding details but is not itself proof that a payer received a claim.</p>
+            <div class="dry-run-label">Released superbill</div>
+          </article>
+
+          <article class="output-card">
+            <span class="output-label">Option 02</span>
+            <h3>Electronic claim dry run</h3>
+            <p>A test 837P built from the approved version so the practice can inspect field mapping and rule output. The file is not transmitted in dry-run mode.</p>
+            <div class="dry-run-label">Dry run · not submitted</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="limits">
+      <div class="container">
+        <div class="limits-panel">
+          <div><p class="eyebrow">What this pilot can show</p><h2>Measure the work before you widen it.</h2></div>
+          <p>The pilot can show whether the Jane-style export maps cleanly, how often configured CMT and X-ray rules stop a visit, how long each approval takes, and whether the final artifact matches its approved source. It does not grant payer access, prove network status, promise parity, reimbursement, payment, or posting, or run without named human authority.</p>
+        </div>
+
+        <div class="author-row">
+          <strong>Built from claims operating work, not a billing claim.</strong>
+          <p><a href="/ian-harman/">Ian Harman</a> works across provider networks, payer rules, healthcare EDI, claims, and payment operations. Read the <a href="/insights/why-automated-claims-need-control-states/">control-state framework</a> and the <a href="/work/tpn-match/">TPN Match operating case</a>. This page is product information, not coding, billing, legal, or reimbursement advice.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="questions">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Common questions</p><h2>Know where the test stops.</h2></div>
+          <p class="section-intro">A narrow pilot is useful only when the practice can tell what it tested and what remains unknown.</p>
+        </div>
+
+        <div class="faq-list">
+          <details><summary>Does the chiropractic pilot submit claims to a payer?</summary><p>Not by default. The pilot can produce a superbill or a clearly labeled electronic dry run. A dry run is not transmitted and does not show payer acceptance or adjudication.</p></details>
+          <details><summary>What do the CMT and X-ray checks do?</summary><p>Configured checks compare CMT code selection with documented treated regions and compare X-ray body area and view details with available order, report, and visit evidence. A mismatch stops for provider review.</p></details>
+          <details><summary>Why are office and provider approvals separate?</summary><p>Office staff review administrative and charge details. The provider reviews diagnoses, treated regions, and clinical support. Both approvals attach to the exact reviewed version.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <h2>Start with the opportunity, then test one lane.</h2>
+        <p>Use practice-level counts and ranges for the first review. Do not send patient names, dates of birth, charts, member IDs, or other PHI.</p>
+        <a class="button" href="/claimsnative/insurance-opportunity/">Estimate your insurance opportunity <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>Claims Native is an Atom &amp; Bits product · Chattanooga, Tennessee</span>
+      <span><a href="/claimsnative/">Claims Native</a> · <a href="/claimsnative/90-day-pilot/">90-day pilot</a> · <a href="/privacy-policy.html">Privacy</a></span>
+    </div>
+  </footer>
+</body>
+</html>

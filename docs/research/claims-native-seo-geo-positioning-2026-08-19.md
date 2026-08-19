@@ -4,31 +4,33 @@ Date: 2026-08-19
 
 ## Decision
 
-Lead with the buyer's business problem:
+Lead with the buyer's business problem and the product that exists now:
 
-> Start accepting insurance without building a billing department.
+> Add insurance without adding a billing department.
 
 The site should show this sequence:
 
-1. A cash-pay practice wants to start accepting insurance.
-2. It does not want to hire a biller or build a billing operation.
-3. Accepting insurance adds claims, denials, follow-up, and payment reconciliation.
-4. Claims Native gives the practice one fully autonomous AI front office that owns the operating queue.
-5. The pilot measures collected revenue, practice time, fees, and unresolved work before expansion.
+1. An independent practice wants to test whether insurance fits its business.
+2. It does not want to add a billing department before it has proof.
+3. Claims Native turns a visit export into a short approval queue.
+4. Practice rules shape the next claim artifact. Office staff and providers approve separate decisions.
+5. A 90-day pilot measures workflow, practice time, artifact quality, and unresolved work before expansion.
 
-Lead with the cash-pay practice problem. Present the fully autonomous AI front office as the answer. Keep EDI, data models, control states, and claim-file formats out of the opening message.
+Lead with the practice problem. State the current product boundary in the first screen. Keep post-visit insurance revenue operations as a direction after live proof, not a current claim.
 
 ## Positioning
 
-**Category:** The fully autonomous AI front office for insurance.
+**Current category:** A controlled insurance-launch workflow for independent practices.
 
-**Plain-language category:** Insurance operations for cash-pay practices without a billing department.
+**Category direction:** Post-visit insurance revenue operations.
 
-**Core promise:** Claims Native helps cash-pay practices start accepting insurance without hiring a biller or building billing operations.
+**Core promise:** Claims Native helps independent outpatient practices add insurance without adding a billing department.
 
-**Experience:** Claims Native owns the insurance operating queue through one fully autonomous front-office experience. Human operations may support the work behind the scenes without becoming another team the practice must hire and manage.
+**Current experience:** Claims Native turns visit exports into a short approval queue, applies practice rules, and prepares the next claim artifact. Office staff and providers keep approval authority.
 
-**Reason to believe:** A controlled pilot starts with the practice's real visit flow, rules, named decision-makers, and one insurance lane. It measures work and outcomes before expansion.
+**Earned promise:** Carry a completed visit through payer response, payment, and practice-system posting only after each stage has live proof.
+
+**Reason to believe:** A controlled pilot starts with one visit export, one configured path, practice rules, and two named approvers. It measures work and evidence before expansion.
 
 ## Search intent map
 
@@ -36,14 +38,14 @@ These are intent hypotheses, not search-volume claims.
 
 | Page role | Buyer question | Natural target language |
 | --- | --- | --- |
-| Product page | How can my cash-pay practice start accepting insurance without hiring a biller? | accept insurance without a biller; start accepting insurance in a cash-pay practice; AI front office for insurance |
+| Product page | How can my practice add insurance without adding a billing department? | accept insurance without a biller; add insurance to a cash-pay practice |
 | Opportunity calculator | How much revenue am I losing by not taking insurance? | insurance revenue calculator; patients turned away because of insurance |
-| Guide | What does it cost a small practice to accept insurance? | cost of accepting insurance; medical billing overhead for small practices |
-| Guide | What work starts after a practice accepts insurance? | medical billing workflow; claim follow-up; denial management; payment reconciliation |
-| Comparison | Should I hire, outsource, or use a platform? | in-house vs outsourced medical billing; medical billing service alternatives |
+| Chiropractor page | How can an independent chiropractor test one insurance claim lane? | chiropractic insurance claim pilot; Jane visit export to superbill |
+| Decision guide | Should my cash-pay practice accept insurance? | should a cash-pay practice accept insurance; insurance decision framework |
+| Operating guide | Can I accept insurance without hiring a biller? | accept insurance without hiring a biller; billing department alternatives |
 | Pilot page | How can I test insurance before changing my whole practice? | medical billing pilot; start accepting insurance in a private practice |
 
-The first page should answer the product question and link to the calculator. Supporting guides should be added only when they contain first-hand operating detail, examples, measured pilot findings, or useful decision tools.
+The hub should route visitors to the calculator, specialty page, pilot, and distinct decision guides. Add more pages only when they contain first-hand operating detail, measured pilot findings, or a useful decision tool.
 
 ## SEO and generative search guidance
 
@@ -59,12 +61,14 @@ Perplexity recommends allowing `PerplexityBot` for pages to surface and link in 
 
 ## Technical changes for the product page
 
-- Use a title and description centered on accepting insurance without a billing department.
-- Put the monthly opportunity and the Insurance Opportunity Review in the first screen.
+- Use a title and description centered on adding insurance without adding a billing department.
+- Route the main call to action to a dedicated opportunity calculator and review page.
 - Use one descriptive H1 and question-led H2 sections.
-- Keep the buyer problem, autonomous experience, workflow, and pilot terms in server-delivered HTML.
+- Keep the buyer problem, current workflow, approval boundary, pilot terms, and future direction in server-delivered HTML.
 - Keep canonical, index/follow, Open Graph, and Twitter metadata aligned with visible copy.
 - Keep `SoftwareApplication` and `Organization` structured data aligned with the page. Add visible FAQ content before adding `FAQPage` data.
+- Keep the review handoff user-controlled until a lead processor is approved. Do not collect PHI.
+- Emit privacy-safe funnel events without form values. Connect them to an analytics destination only after approval.
 - Keep `OAI-SearchBot` allowed. The wildcard rule already allows Googlebot, PerplexityBot, and Claude's robots-respecting crawlers.
 - Do not add `llms.txt` as an SEO measure.
 - Update the sitemap date because the product page changed materially.
@@ -73,8 +77,8 @@ Perplexity recommends allowing `PerplexityBot` for pages to surface and link in 
 
 Measure business evidence, not impressions alone:
 
-1. Calculator-to-review conversion.
-2. Review requests from qualified independent practices.
+1. Calculator starts and completions.
+2. Review intent and sent review requests from qualified independent practices.
 3. Completed reviews with a confirmed operating problem.
 4. Practices willing to share a sample workflow or data.
 5. Pilot requests and paid pilots.

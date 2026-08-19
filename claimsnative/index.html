@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Start Accepting Insurance Without a Billing Department | Claims Native</title>
-  <meta name="description" content="Claims Native is the fully autonomous AI front office for cash-pay practices ready to accept insurance without hiring a biller or building billing operations.">
+  <title>Add Insurance Without a Billing Department | Claims Native</title>
+  <meta name="description" content="Claims Native helps independent outpatient practices add insurance without adding a billing department. Turn visit exports into a short approval queue and prepare the next claim artifact.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://atomandbits.com/claimsnative/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Start accepting insurance without building a billing department">
-  <meta property="og:description" content="See what insured patients may be worth, then put claims, follow-up, denials, and reconciliation in one AI front office.">
+  <meta property="og:title" content="Add insurance without adding a billing department">
+  <meta property="og:description" content="Claims Native turns visit exports into a short approval queue, applies practice rules, and prepares the next claim artifact while your team keeps control.">
   <meta property="og:url" content="https://atomandbits.com/claimsnative/">
   <meta property="og:image" content="https://atomandbits.com/og-2026-v3.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Atom &amp; Bits — healthcare product leadership from payer rules to payment.">
+  <meta property="og:image:alt" content="Claims Native by Atom &amp; Bits for independent outpatient practices.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Start accepting insurance without building a billing department">
-  <meta name="twitter:description" content="The fully autonomous AI front office for cash-pay practices ready to accept insurance.">
+  <meta name="twitter:title" content="Add insurance without adding a billing department">
+  <meta name="twitter:description" content="Turn visit exports into a short approval queue and prepare the next claim artifact while your practice keeps control.">
   <meta name="twitter:image" content="https://atomandbits.com/og-2026-v3.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -522,6 +522,8 @@
       font-weight: 700;
     }
 
+    .fit-panel .button { margin-top: 24px; }
+
     .price {
       margin: 26px 0;
       padding: 24px 0;
@@ -654,25 +656,26 @@
     "@graph": [
       {
         "@type": "SoftwareApplication",
+        "@id": "https://atomandbits.com/claimsnative/#software",
         "name": "Claims Native",
         "url": "https://atomandbits.com/claimsnative/",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
-        "description": "The fully autonomous AI front office for cash-pay practices that want to start accepting insurance without hiring a biller or building billing operations.",
+        "description": "Claims Native helps independent outpatient practices add insurance without adding a billing department. It turns visit exports into a short approval queue, applies practice rules, and prepares the next claim artifact while office staff and providers keep control.",
         "audience": {
           "@type": "Audience",
           "audienceType": "Independent outpatient and specialty practices"
         },
         "featureList": [
-          "Insurance opportunity estimate",
-          "Insurance setup and payer readiness",
-          "Claim preparation, submission, and follow-up",
-          "Denial and payment reconciliation"
+          "Visit export intake",
+          "Practice rule application",
+          "Short approval queue",
+          "Next claim artifact preparation"
         ],
         "creator": {"@id": "https://atomandbits.com/#organization"},
         "offers": {
           "@type": "Offer",
-          "name": "Founding-practice pilot",
+          "name": "90-day guided pilot",
           "price": "249",
           "priceCurrency": "USD",
           "description": "$500 guided launch, then $249 per month for a 90-day founding-practice pilot. Includes 200 visits per month; additional visits are $1.25 each."
@@ -687,7 +690,7 @@
       {
         "@type": "Service",
         "name": "Insurance Opportunity Review",
-        "url": "https://atomandbits.com/claimsnative/#review",
+        "url": "https://atomandbits.com/claimsnative/insurance-opportunity/",
         "provider": {"@id": "https://atomandbits.com/#organization"},
         "audience": {
           "@type": "Audience",
@@ -700,18 +703,34 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Can a small practice accept insurance without hiring a biller?",
+            "name": "Can a small practice add insurance without hiring a biller?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Claims Native gives a cash-pay practice one fully autonomous AI front office to own insurance operations without requiring the practice to hire and manage a biller."
+              "text": "Claims Native helps independent outpatient practices add insurance without adding a billing department. Office staff and providers still review decisions and keep control."
             }
           },
           {
             "@type": "Question",
-            "name": "What work does accepting insurance add to a practice?",
+            "name": "What does Claims Native do today?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The work may include payer readiness, eligibility, claim preparation, submission, rejection and denial follow-up, remittance review, payment matching, patient balances, and posting."
+              "text": "It turns visit exports into a short approval queue, applies practice rules, and prepares the next claim artifact. It does not claim to handle payer setup, eligibility, live submission, follow-up, denials, payment, or posting today."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the electronic claim path live?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Electronic claim work stays in dry-run mode until live evidence proves the route and the practice enables it. Your named office and clinical reviewers approve the required decisions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the future direction?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The category direction is post-visit insurance revenue operations. The earned promise, not a current capability, is a completed visit carried through payer response, payment, and practice-system posting only after each stage has live proof."
             }
           },
           {
@@ -719,7 +738,15 @@
             "name": "Does Claims Native guarantee more revenue or reimbursement?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. The calculator is a planning estimate. Coverage, payer rules, denials, patient cost share, collection rates, displaced cash revenue, fees, and practice labor all affect the result."
+              "text": "No. The calculator is a planning estimate, not a revenue promise. The pilot does not guarantee submission, payer acceptance, reimbursement, revenue, or legal correctness."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the 90-day pilot test?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It tests one narrow path from visit export through practice rules, approvals, and the next claim artifact. The practice measures office time, fees, and unresolved work before it decides whether to expand."
             }
           }
         ]
@@ -738,10 +765,10 @@
         <span>by Atom &amp; Bits</span>
       </a>
       <div class="nav-links">
-        <a href="#calculator">Opportunity</a>
-        <a href="#how">The problem</a>
-        <a href="#pilot">Paid pilot</a>
-        <a class="button" href="#review">Get an opportunity review</a>
+        <a href="/claimsnative/insurance-opportunity/">Opportunity</a>
+        <a href="/claimsnative/90-day-pilot/">90-day pilot</a>
+        <a href="/claimsnative/chiropractors/">Chiropractors</a>
+        <a class="button" href="/claimsnative/insurance-opportunity/">Review your opportunity</a>
       </div>
     </div>
   </nav>
@@ -750,15 +777,15 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">The fully autonomous AI front office for cash-pay practices</p>
-          <h1>Start accepting insurance without building a billing department.</h1>
-          <p class="hero-copy"><span>Cash-pay practices often turn away patients who want to use insurance.</span><span>Accepting them usually means hiring a biller or building an operation for claims, denials, follow-up, and reconciliation.</span><span>Claims Native handles that work through one fully autonomous AI front-office experience.</span></p>
+          <p class="eyebrow">Available now for independent outpatient practices</p>
+          <h1>Add insurance without adding a billing department.</h1>
+          <p class="hero-copy"><span>Claims Native turns visit exports into a short approval queue.</span><span>It applies your practice rules and prepares the next claim artifact.</span><span>Office staff and providers review the decisions and keep control.</span></p>
           <div class="hero-actions">
-            <a class="button" href="#calculator">See what insurance may be worth <span aria-hidden="true">→</span></a>
-            <a class="button secondary" href="#pilot">See the 90-day test</a>
+            <a class="button" href="/claimsnative/insurance-opportunity/">Review your insurance opportunity <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="/claimsnative/90-day-pilot/">See the 90-day pilot</a>
           </div>
-          <p class="pilot-facts">Keep the patients · skip the billing department · see where the money stands</p>
-          <p class="microcopy">Start with one location and one insurance lane. Claims Native owns the operating queue while your practice keeps clinical and financial authority.</p>
+          <p class="pilot-facts">$500 guided launch · $249/month · 200 visits/month</p>
+          <p class="microcopy">Start with one location and one narrow path. Electronic claim work stays in dry-run mode until live evidence proves the route and the practice enables it. Claims Native does not guarantee a payer or revenue result.</p>
         </div>
 
         <aside class="revenue-calculator" id="calculator" aria-labelledby="calculator-title">
@@ -774,33 +801,33 @@
             <span>Potential patient revenue turned away</span>
             <output id="monthly-revenue" for="lost-patients loss-period patient-value">$6,500/month</output>
             <p id="revenue-summary">About <strong id="annual-revenue">$78,000 a year</strong> from <span id="annual-patients">104</span> patients.</p>
-            <a class="button" id="review-cta" href="mailto:Ian@atomandbits.com?subject=Insurance%20Opportunity%20Review">Get an Insurance Opportunity Review <span aria-hidden="true">→</span></a>
-            <small>Opens a prefilled email with your estimate.</small>
+            <a class="button" href="/claimsnative/insurance-opportunity/">Review your insurance opportunity <span aria-hidden="true">→</span></a>
+            <small>Continue on the dedicated opportunity page.</small>
           </div>
           <p class="calculator-note">Planning estimate only, not a revenue promise. This is gross potential patient revenue, not net income. It uses 260 workdays, 52 weeks, or 12 months and does not account for coverage, payer rules, denials, patient cost share, collection rates, displaced cash revenue, or added costs.</p>
         </aside>
       </div>
     </section>
 
-    <div class="proof-strip" aria-label="Claims Native business outcomes">
-      <div class="proof"><strong>Find missed revenue</strong><span>Estimate the insured patients your practice turns away.</span></div>
-      <div class="proof"><strong>Start without hiring</strong><span>Add an insurance lane without adding billing payroll.</span></div>
-      <div class="proof"><strong>Put the queue on autopilot</strong><span>Claims, follow-up, denials, and reconciliation move through one front office.</span></div>
-      <div class="proof"><strong>See where cash stands</strong><span>Know what moved, what stopped, and what comes next.</span></div>
+    <div class="proof-strip" aria-label="Current Claims Native scope">
+      <div class="proof"><strong>Size the opportunity</strong><span>Estimate the insured patients your practice turns away.</span></div>
+      <div class="proof"><strong>Use visit exports</strong><span>Start from data your practice can already provide.</span></div>
+      <div class="proof"><strong>Keep approvals short</strong><span>Show office staff and providers the decisions they need to make.</span></div>
+      <div class="proof"><strong>Dry-run first</strong><span>Prove the route before any electronic claim work goes live.</span></div>
     </div>
 
     <section class="section" id="how">
       <div class="container">
         <div class="section-head">
           <div><p class="eyebrow">The cash-pay practice problem</p><h2>You want to accept insurance. You do not want to build a billing operation.</h2></div>
-          <p class="section-intro">The risk is not one more tool. It is hiring a biller and managing payer rules, claim follow-up, denials, and payment work before you know whether insurance will pay off.</p>
+          <p class="section-intro">The risk is hiring a biller and adding a new operation before you know whether one insurance lane fits your practice.</p>
         </div>
 
         <div class="steps">
           <article class="step"><span class="step-number">01 · Missed revenue</span><h3>Insured patients go elsewhere</h3><p>People may never book, or they leave when they learn the practice is cash-pay.</p></article>
           <article class="step"><span class="step-number">02 · Added payroll</span><h3>A biller becomes a fixed cost</h3><p>You must hire, train, manage, and cover billing work before the new revenue is clear.</p></article>
-          <article class="step"><span class="step-number">03 · Added operation</span><h3>Every visit starts payer work</h3><p>Eligibility, claims, corrections, rejections, denials, and follow-up all need an owner.</p></article>
-          <article class="step"><span class="step-number">04 · Harder cash</span><h3>Payments must match the work</h3><p>Remittances, deposits, patient balances, and posting must agree before you know what you collected.</p></article>
+          <article class="step"><span class="step-number">03 · Added operation</span><h3>Every visit adds rules and handoffs</h3><p>Payer requirements create work beyond care delivery, and each handoff needs a clear owner.</p></article>
+          <article class="step"><span class="step-number">04 · Proof required</span><h3>An artifact is only one stage</h3><p>Payer response and cash evidence come later. Each stage needs live proof before you rely on it.</p></article>
         </div>
       </div>
     </section>
@@ -808,14 +835,14 @@
     <section class="section alt" id="control">
       <div class="container">
         <div class="section-head">
-          <div><p class="eyebrow">The AI front office for insurance</p><h2>One front office moves the work from patient to payment.</h2></div>
-          <p class="section-intro">Claims Native owns the operating queue, completes routine work, routes exceptions behind the scenes, and gives your practice one clear view of the result.</p>
+          <div><p class="eyebrow">Product now</p><h2>Visit exports become a short queue your practice can approve.</h2></div>
+          <p class="section-intro">Claims Native applies defined practice rules and prepares the next claim artifact. Office staff and providers see the choices that need their review and keep control.</p>
         </div>
 
         <div class="trust-grid">
-          <article class="trust-card featured"><h3>The work moves without you chasing it.</h3><span class="trust-rule">Patient + payer + claim + follow-up + payment</span></article>
-          <article class="trust-card"><h3>Your team gets decisions, not billing queues</h3><p>The AI front office handles the routine path and brings your practice only the clinical or financial choices it must make.</p></article>
-          <article class="trust-card"><h3>Revenue stays visible</h3><p>Submitted, accepted, denied, paid, and posted remain separate. You can see what happened and what comes next.</p></article>
+          <article class="trust-card featured"><h3>Prepare the next artifact, one controlled step at a time.</h3><span class="trust-rule">Visit export → practice rules → approval → claim artifact</span></article>
+          <article class="trust-card"><h3>Practice rules shape each item</h3><p>Defined rules sort routine data and show the office or provider what still needs a decision.</p></article>
+          <article class="trust-card"><h3>Your practice keeps authority</h3><p>Named office and clinical reviewers approve the required choices before the artifact moves forward.</p></article>
         </div>
       </div>
     </section>
@@ -823,15 +850,15 @@
     <section class="section" id="approach">
       <div class="container">
         <div class="section-head">
-          <div><p class="eyebrow">A measured first step</p><h2>Start with one insurance lane. Let Claims Native run it.</h2></div>
-          <p class="section-intro">We set up a narrow path, then the AI front office owns the day-to-day flow while your practice measures the value.</p>
+          <div><p class="eyebrow">Future direction — not current capability</p><h2>Post-visit insurance revenue operations.</h2></div>
+          <p class="section-intro">This is the category direction, not a claim about today’s product. Claims Native must prove each stage live before the scope can extend beyond approval and artifact preparation.</p>
         </div>
 
         <div class="steps">
-          <article class="step"><span class="step-number">01 · Size</span><h3>Estimate the opportunity</h3><p>Count the insured patients you turn away and estimate the gross patient revenue they may represent.</p></article>
-          <article class="step"><span class="step-number">02 · Set up</span><h3>Choose one insurance lane</h3><p>Set the location, payer path, visit flow, practice rules, and required decisions.</p></article>
-          <article class="step"><span class="step-number">03 · Run</span><h3>Put the work in motion</h3><p>Claims Native owns the queue across claim work, follow-up, denials, payment evidence, and reconciliation.</p></article>
-          <article class="step"><span class="step-number">04 · Measure</span><h3>Judge net value</h3><p>Compare collected revenue, practice time, fees, and unresolved work before you expand.</p></article>
+          <article class="step"><span class="step-number">01 · Current</span><h3>Start with the completed visit</h3><p>Use a visit export as the source for a narrow, reviewable workflow.</p></article>
+          <article class="step"><span class="step-number">02 · Current</span><h3>Prepare the next artifact</h3><p>Apply practice rules, gather required decisions, and prepare the claim artifact.</p></article>
+          <article class="step"><span class="step-number">03 · Proof gate</span><h3>Prove payer response live</h3><p>Do not present downstream work as live until the route and result have direct evidence.</p></article>
+          <article class="step"><span class="step-number">04 · Earned promise</span><h3>Reach payment and system posting</h3><p>The earned promise, not a current capability, is a completed visit carried through payer response, payment, and practice-system posting only after live proof.</p></article>
         </div>
       </div>
     </section>
@@ -839,8 +866,8 @@
     <section class="section alt" id="pilot">
       <div class="container">
         <div class="section-head">
-          <div><p class="eyebrow">90-day pilot</p><h2>Spend 90 days testing insurance revenue, not recruiting a biller.</h2></div>
-          <p class="section-intro">The pilot lets a cash-pay practice start an insurance lane through one AI front office. We keep the first lane narrow so the economics stay visible.</p>
+          <div><p class="eyebrow">90-day paid pilot</p><h2>Test one post-visit workflow without hiring a billing department.</h2></div>
+          <p class="section-intro">The pilot starts with visit exports, practice rules, a short approval queue, and the next claim artifact. It does not promise a live end-to-end insurance operation.</p>
         </div>
 
         <div class="pilot-grid">
@@ -849,19 +876,21 @@
             <ul class="fit-list">
               <li>Independent outpatient or specialty practice</li>
               <li>Roughly 25–100 visits per week</li>
-              <li>Cash-pay today and ready to begin accepting insurance</li>
+              <li>Ready to test one narrow insurance path</li>
               <li>Jane or another export-friendly practice system</li>
-              <li>Does not want to hire a biller or build billing operations</li>
+              <li>Does not want to add a billing department</li>
               <li>Named office and clinical approvers</li>
+              <li>Comfortable starting with a dry run</li>
             </ul>
+            <a class="button secondary" href="/claimsnative/chiropractors/">See the chiropractor path <span aria-hidden="true">→</span></a>
           </article>
 
           <article class="pilot-panel">
-            <h3>Insurance Opportunity Review</h3>
-            <p>First, we review your estimate and map the added work. If the numbers and workflow fit, guided setup covers one location, one insurance lane, two named decision-makers, up to 200 visits per month, and one weekly performance review. Additional visits cost $1.25 each.</p>
+            <h3>90-day guided pilot</h3>
+            <p>Guided setup covers one location, one narrow insurance path, two named decision-makers, up to 200 visits per month, and one weekly review. Additional visits cost $1.25 each.</p>
             <div class="price"><strong>$500 guided launch</strong><span>then $249/month · 90-day founding pilot</span></div>
-            <a class="button" href="mailto:Ian@atomandbits.com?subject=Insurance%20Opportunity%20Review">Get an Insurance Opportunity Review <span aria-hidden="true">→</span></a>
-            <p class="microcopy">No percentage of collections. No guarantee of reimbursement, payer acceptance, or legal correctness. Results depend on payer enrollment, coverage, service mix, patient responsibility, and practice decisions.</p>
+            <a class="button" href="/claimsnative/90-day-pilot/">Review the 90-day pilot <span aria-hidden="true">→</span></a>
+            <p class="microcopy">Electronic claim work stays in dry-run mode until live evidence proves the route and the practice enables it. No percentage of collections. Claims Native does not guarantee submission, payer acceptance, reimbursement, revenue, or legal correctness. Results depend on payer rules, coverage, service mix, patient responsibility, and practice decisions.</p>
           </article>
         </div>
       </div>
@@ -875,20 +904,43 @@
         </div>
 
         <div class="faq-list">
-          <details><summary>Can a small practice accept insurance without hiring a biller?</summary><p>Yes. Claims Native gives a cash-pay practice one fully autonomous AI front office to own insurance operations without requiring the practice to hire and manage a biller.</p></details>
-          <details><summary>What work does accepting insurance add to a practice?</summary><p>The work may include payer readiness, eligibility, claim preparation, submission, rejection and denial follow-up, remittance review, payment matching, patient balances, and posting.</p></details>
-          <details><summary>Does Claims Native handle billing and reconciliation?</summary><p>Claims Native serves as the AI front office. It coordinates payer setup, claim work, follow-up, denials, payment evidence, and reconciliation. When judgment is needed, it routes the exception behind the scenes and keeps your practice focused on the decision.</p></details>
-          <details><summary>Does Claims Native guarantee more revenue or reimbursement?</summary><p>No. The calculator is a planning estimate. Coverage, payer rules, denials, patient cost share, collection rates, displaced cash revenue, fees, and practice labor all affect the result.</p></details>
-          <details><summary>What does the 90-day pilot test?</summary><p>It tests one narrow claim path with real practice data. The practice measures collected revenue, office time, fees, and unresolved work before it decides whether to expand.</p></details>
+          <details><summary>Can a small practice add insurance without hiring a biller?</summary><p>Claims Native helps independent outpatient practices add insurance without adding a billing department. Office staff and providers still review decisions and keep control.</p></details>
+          <details><summary>What does Claims Native do today?</summary><p>It turns visit exports into a short approval queue, applies practice rules, and prepares the next claim artifact. It does not claim to handle payer setup, eligibility, live submission, follow-up, denials, payment, or posting today.</p></details>
+          <details><summary>Is the electronic claim path live?</summary><p>Electronic claim work stays in dry-run mode until live evidence proves the route and the practice enables it. Your named office and clinical reviewers approve the required decisions.</p></details>
+          <details><summary>What is the future direction?</summary><p>The category direction is post-visit insurance revenue operations. The earned promise, not a current capability, is a completed visit carried through payer response, payment, and practice-system posting only after each stage has live proof.</p></details>
+          <details><summary>Does Claims Native guarantee more revenue or reimbursement?</summary><p>No. The calculator is a planning estimate, not a revenue promise. The pilot does not guarantee submission, payer acceptance, reimbursement, revenue, or legal correctness.</p></details>
+          <details><summary>What does the 90-day pilot test?</summary><p>It tests one narrow path from visit export through practice rules, approvals, and the next claim artifact. The practice measures office time, fees, and unresolved work before it decides whether to expand.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="guides">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Decision guides</p><h2>Decide whether insurance fits before you build the operation.</h2></div>
+          <p class="section-intro">Use these guides to test the business case and the work your practice must still own.</p>
+        </div>
+
+        <div class="pilot-grid">
+          <article class="fit-panel">
+            <h3>Should your cash-pay practice accept insurance?</h3>
+            <p>Use demand, margin, capacity, and proof gates to make the decision.</p>
+            <a class="button secondary" href="/guides/should-cash-pay-practice-accept-insurance/">Read the decision guide <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="fit-panel">
+            <h3>Can you do it without hiring a biller?</h3>
+            <p>Map the queues, approvals, and stop rules before you choose a staffing model.</p>
+            <a class="button secondary" href="/guides/accept-insurance-without-hiring-biller/">Read the operating guide <span aria-hidden="true">→</span></a>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="final-cta" id="review">
       <div class="container">
-        <h2>Start accepting insurance without building the billing operation.</h2>
-        <p>Bring your estimate and one day of visits. We will map the revenue opportunity and the first insurance lane for your AI front office.</p>
-        <a class="button" href="mailto:Ian@atomandbits.com?subject=Insurance%20Opportunity%20Review">Get an Insurance Opportunity Review <span aria-hidden="true">→</span></a>
+        <h2>See if one narrow insurance path fits your practice.</h2>
+        <p>Start with the opportunity, your visit export, and the decisions your office and providers need to keep.</p>
+        <a class="button" href="/claimsnative/insurance-opportunity/">Review your insurance opportunity <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>
@@ -907,7 +959,6 @@
       var monthlyOutput = document.getElementById('monthly-revenue');
       var annualOutput = document.getElementById('annual-revenue');
       var annualPatientsOutput = document.getElementById('annual-patients');
-      var reviewCta = document.getElementById('review-cta');
       var factors = { day: 260, week: 52, month: 12 };
       var money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
       var number = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 });
@@ -917,41 +968,15 @@
         return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
       }
 
-      function getAttribution() {
-        var params = new URLSearchParams(window.location.search);
-        var campaign = [params.get('utm_source'), params.get('utm_medium'), params.get('utm_campaign')].filter(Boolean);
-        if (campaign.length) return campaign.join(' / ');
-        if (document.referrer) {
-          try { return new URL(document.referrer).hostname; } catch (error) { return 'Referral'; }
-        }
-        return 'Direct or unknown';
-      }
-
       function updateEstimate() {
         var annualPatients = safeNumber(patientsInput) * factors[periodInput.value];
         var annualRevenue = annualPatients * safeNumber(valueInput);
         var monthlyRevenue = annualRevenue / 12;
-        var subject = 'Insurance Opportunity Review — ' + money.format(monthlyRevenue) + '/month estimate';
-        var body = [
-          'I used the Claims Native opportunity calculator.',
-          '',
-          'Estimated potential patient revenue: ' + money.format(monthlyRevenue) + '/month (' + money.format(annualRevenue) + '/year)',
-          'Assumption: ' + number.format(safeNumber(patientsInput)) + ' insured patients turned away each ' + periodInput.value + ' at ' + money.format(safeNumber(valueInput)) + ' per patient.',
-          'Attribution: ' + getAttribution(),
-          '',
-          'Practice name:',
-          'Specialty:',
-          'City/state:',
-          'Insurance today (cash only, superbill, mixed, or in-network):',
-          'Biggest concern about accepting insurance:',
-          'Best contact:'
-        ].join('\n');
 
         monthlyOutput.value = money.format(monthlyRevenue) + '/month';
         monthlyOutput.textContent = money.format(monthlyRevenue) + '/month';
         annualOutput.textContent = money.format(annualRevenue) + ' a year';
         annualPatientsOutput.textContent = number.format(annualPatients);
-        reviewCta.href = 'mailto:Ian@atomandbits.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       }
 
       [patientsInput, periodInput, valueInput].forEach(function (input) {

@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Insurance Opportunity Calculator | Claims Native</title>
+  <meta name="description" content="Estimate the gross revenue insured patients may represent, then prepare an email for an Insurance Opportunity Review.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://atomandbits.com/claimsnative/insurance-opportunity/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Claims Native">
+  <meta property="og:title" content="What might insurance be worth to your practice?">
+  <meta property="og:description" content="Estimate monthly and annual gross potential from insured patients your practice turns away.">
+  <meta property="og:url" content="https://atomandbits.com/claimsnative/insurance-opportunity/">
+  <meta property="og:image" content="https://atomandbits.com/claimsnative/og.png">
+  <meta property="og:image:alt" content="Claims Native by Atom &amp; Bits">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What might insurance be worth to your practice?">
+  <meta name="twitter:description" content="Estimate monthly and annual gross potential from insured patients your practice turns away.">
+  <meta name="twitter:image" content="https://atomandbits.com/claimsnative/og.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --ink: #111827;
+      --navy: #1f4e79;
+      --navy-dark: #173a5c;
+      --copper: #ad5735;
+      --copper-soft: #f1ddd3;
+      --paper: #fbfaf6;
+      --paper-deep: #f2f5f9;
+      --card: #ffffff;
+      --blue-soft: #e7eef7;
+      --muted: #586069;
+      --line: #d7dee8;
+      --white: #ffffff;
+      --success: #2d654b;
+      --max: 1120px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 12px;
+      z-index: 100;
+      padding: 10px 14px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    :focus-visible {
+      outline: 3px solid var(--copper);
+      outline-offset: 3px;
+    }
+
+    .container,
+    .nav-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(215, 222, 232, 0.9);
+      background: rgba(251, 250, 246, 0.94);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .brand strong {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 650;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--navy); }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 20px;
+      border: 1px solid var(--navy);
+      border-radius: 5px;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: var(--navy-dark);
+      background: var(--navy-dark);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--navy);
+    }
+
+    .button.secondary:hover { background: var(--blue-soft); }
+
+    .hero {
+      padding: 76px 0 54px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-copy {
+      max-width: 820px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--copper);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 34px;
+      height: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2, h3 {
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin-bottom: 24px;
+      font-size: clamp(3rem, 6vw, 5.35rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(2.2rem, 4.5vw, 3.75rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      margin-bottom: 12px;
+      font-size: 1.35rem;
+    }
+
+    .lede {
+      max-width: 710px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+    }
+
+    .section { padding: 78px 0; }
+
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1.12fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .panel-head {
+      padding: 24px 26px;
+      border-bottom: 1px solid var(--line);
+      background: var(--blue-soft);
+    }
+
+    .panel-head h2 {
+      margin: 0;
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .panel-head p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .calculator-fields {
+      display: grid;
+      gap: 20px;
+      margin: 0;
+      padding: 28px 26px;
+      border: 0;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field label,
+    .field-label {
+      color: var(--ink);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .field small,
+    .field-help {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 12px;
+      border: 1px solid #aebdce;
+      border-radius: 5px;
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    textarea {
+      min-height: 116px;
+      resize: vertical;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover { border-color: var(--navy); }
+
+    .result-panel {
+      overflow: hidden;
+      border-color: #b8c6d6;
+      box-shadow: 0 30px 70px rgba(20, 31, 43, 0.1);
+    }
+
+    .result-main {
+      padding: 30px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .result-kicker {
+      display: block;
+      margin-bottom: 7px;
+      color: #d9e4f1;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .result-main output {
+      display: block;
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 650;
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
+
+    .result-main p {
+      margin: 10px 0 0;
+      color: #d9e4f1;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .metric {
+      min-height: 122px;
+      padding: 22px 24px;
+      border-right: 1px solid var(--line);
+    }
+
+    .metric:last-child { border-right: 0; }
+
+    .metric span {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .metric output {
+      color: var(--navy);
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(1.55rem, 3vw, 2.15rem);
+      font-weight: 650;
+      line-height: 1.1;
+    }
+
+    .formula-block { padding: 24px; }
+
+    .formula-block h3 {
+      margin-bottom: 7px;
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .formula {
+      margin: 0;
+      padding: 16px;
+      border-left: 3px solid var(--copper);
+      background: var(--paper-deep);
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.87rem;
+      overflow-wrap: anywhere;
+    }
+
+    .result-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .result-action p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .limits {
+      margin-top: 28px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: var(--paper-deep);
+    }
+
+    .limits-head {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .limits h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+
+    .limits-copy > p {
+      margin-bottom: 14px;
+      color: var(--muted);
+    }
+
+    .limits strong { color: var(--ink); }
+
+    .exclusions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 28px;
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .review-section {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .review-head {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 64px;
+      margin-bottom: 42px;
+      align-items: start;
+    }
+
+    .review-intro {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .privacy-callout {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--copper);
+      background: var(--copper-soft);
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .review-form {
+      max-width: 900px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px 22px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .form-grid > legend { grid-column: 1 / -1; }
+
+    .field.full { grid-column: 1 / -1; }
+
+    .required-note {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .form-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .form-actions p {
+      max-width: 540px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .draft-review {
+      margin-top: 30px;
+      padding: 26px;
+      border: 1px solid #b8c6d6;
+      background: var(--paper-deep);
+    }
+
+    .draft-review[hidden] { display: none; }
+
+    .draft-review h3 { margin-bottom: 8px; }
+
+    .draft-status {
+      margin: 0 0 18px;
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .draft-preview {
+      max-height: 320px;
+      margin: 0 0 20px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      overflow: auto;
+      white-space: pre-wrap;
+    }
+
+    .draft-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .draft-actions p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .pilot-band {
+      padding: 64px 0;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .pilot-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .pilot-band h2 {
+      max-width: 660px;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    .pilot-band p {
+      max-width: 690px;
+      margin: 0;
+      color: #d9e4f1;
+    }
+
+    .pilot-band .button {
+      flex: 0 0 auto;
+      border-color: var(--white);
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    .pilot-band .button:hover { background: var(--blue-soft); }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      background: var(--navy);
+      color: #cbd8e6;
+      font-size: 0.86rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    footer a { color: var(--white); }
+
+    @media (max-width: 900px) {
+      .calculator-layout,
+      .limits-head,
+      .review-head { grid-template-columns: 1fr; }
+
+      .calculator-layout { gap: 24px; }
+      .limits-head, .review-head { gap: 18px; }
+      .result-panel { max-width: 720px; }
+      .pilot-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 680px) {
+      body { font-size: 16px; }
+      .container, .nav-inner { width: min(100% - 28px, var(--max)); }
+      .brand span, .nav-links a:first-child { display: none; }
+      .nav-links { gap: 12px; }
+      .hero { padding: 50px 0 42px; }
+      h1 { font-size: clamp(2.75rem, 13vw, 4rem); }
+      .section { padding: 60px 0; }
+      .panel-head, .calculator-fields, .result-main, .formula-block { padding-left: 20px; padding-right: 20px; }
+      .metrics, .form-grid, .exclusions { grid-template-columns: 1fr; }
+      .metric { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .metric:last-child { border-bottom: 0; }
+      .result-action, .form-actions, .draft-actions { align-items: stretch; flex-direction: column; }
+      .result-action .button, .form-actions .button, .draft-actions .button { width: 100%; }
+      .limits, .draft-review { padding: 22px 20px; }
+      .field.full { grid-column: auto; }
+      .pilot-band { padding: 54px 0; }
+      .pilot-band .button { width: 100%; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="/claimsnative/" aria-label="Claims Native home">
+        <strong>Claims Native</strong>
+        <span>by Atom &amp; Bits</span>
+      </a>
+      <div class="nav-links">
+        <a href="#calculator">Calculator</a>
+        <a href="/claimsnative/90-day-pilot/" data-pilot-cta>90-day pilot</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="hero">
+      <div class="container hero-copy">
+        <p class="eyebrow">Insurance opportunity calculator</p>
+        <h1>What might insurance be worth to your practice?</h1>
+        <p class="lede">Estimate the gross revenue represented by insured patients you turn away. Then decide whether an Insurance Opportunity Review is worth your time.</p>
+      </div>
+    </header>
+
+    <section class="section" id="calculator" aria-labelledby="calculator-heading">
+      <div class="container">
+        <div class="calculator-layout">
+          <div class="panel">
+            <div class="panel-head">
+              <h2 id="calculator-heading">Enter your practice estimate</h2>
+              <p>Use full-course revenue, not the price of one visit.</p>
+            </div>
+
+            <fieldset class="calculator-fields">
+              <legend class="field-label">Opportunity inputs</legend>
+
+              <div class="field">
+                <label for="turned-away">Insured patients turned away</label>
+                <input id="turned-away" name="turned-away" type="number" inputmode="decimal" min="0" step="0.5" value="2" aria-describedby="turned-away-help">
+                <small id="turned-away-help">Your best estimate for the frequency below.</small>
+              </div>
+
+              <div class="field">
+                <label for="frequency">Frequency</label>
+                <select id="frequency" name="frequency">
+                  <option value="workday">Each workday</option>
+                  <option value="week" selected>Each week</option>
+                  <option value="month">Each month</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="course-revenue">Full-course revenue per patient (USD)</label>
+                <input id="course-revenue" name="course-revenue" type="number" inputmode="decimal" min="0" step="1" value="750" aria-describedby="course-revenue-help">
+                <small id="course-revenue-help">Expected gross revenue across that patient's full course of care.</small>
+              </div>
+            </fieldset>
+          </div>
+
+          <section class="panel result-panel" aria-labelledby="result-heading">
+            <div class="result-main" aria-live="polite" aria-atomic="true">
+              <span class="result-kicker" id="result-heading">Monthly gross potential</span>
+              <output id="monthly-potential" for="turned-away frequency course-revenue">$6,500</output>
+              <p>Annualized from the frequency you selected.</p>
+            </div>
+
+            <div class="metrics">
+              <div class="metric">
+                <span>Annual gross potential</span>
+                <output id="annual-potential" for="turned-away frequency course-revenue">$78,000</output>
+              </div>
+              <div class="metric">
+                <span>Annual patient count</span>
+                <output id="annual-patients" for="turned-away frequency">104</output>
+              </div>
+            </div>
+
+            <div class="formula-block">
+              <h3>Exact formula</h3>
+              <p class="formula" id="exact-formula">2 patients × 52 weeks × $750 = $78,000 per year; $78,000 ÷ 12 = $6,500 per month.</p>
+              <div class="result-action">
+                <p>Annual factors: 260 workdays, 52 weeks, or 12 months.</p>
+                <a class="button secondary" id="use-estimate" href="#review">Use this estimate <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="limits" aria-labelledby="limits-heading">
+          <div class="limits-head">
+            <h2 id="limits-heading">A planning estimate, not a revenue promise.</h2>
+            <div class="limits-copy">
+              <p><strong>This is gross potential revenue, not net income or expected collections.</strong> It assumes each turned-away patient completes the full course of care at the value you entered.</p>
+              <p>The estimate does not account for:</p>
+              <ul class="exclusions">
+                <li>Payer enrollment, network status, or contract dates</li>
+                <li>Coverage, eligibility, or service limits</li>
+                <li>Allowed amounts and payer fee schedules</li>
+                <li>Claim rejections, denials, or payer adjustments</li>
+                <li>Patient cost share or uncollected balances</li>
+                <li>Billing, software, setup, or staffing costs</li>
+                <li>Practice capacity or clinical fit</li>
+                <li>Cash-pay visits displaced by insured visits</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section review-section" id="review" aria-labelledby="review-heading">
+      <div class="container">
+        <div class="review-head">
+          <div>
+            <p class="eyebrow">Insurance Opportunity Review</p>
+            <h2 id="review-heading">Add context for a useful first conversation.</h2>
+          </div>
+          <div>
+            <p class="review-intro">This static page does not send or store the form. It builds an email addressed to Ian@atomandbits.com so you can review it first.</p>
+            <p class="privacy-callout" id="phi-warning">Do not submit patient information. Do not include names, dates of birth, diagnoses, insurance IDs, or other health information.</p>
+          </div>
+        </div>
+
+        <noscript>
+          <p class="privacy-callout">JavaScript is needed to build the email draft. You can email Ian@atomandbits.com directly. Do not include patient information.</p>
+        </noscript>
+
+        <form class="review-form" id="review-form">
+          <p class="required-note">All fields are required. No request is sent when you fill out this form or review the draft.</p>
+
+          <fieldset class="form-grid" aria-describedby="phi-warning">
+            <legend class="field-label">Practice and contact details</legend>
+
+            <div class="field">
+              <label for="practice-name">Practice name</label>
+              <input id="practice-name" name="practice-name" type="text" autocomplete="organization" maxlength="120" required>
+            </div>
+
+            <div class="field">
+              <label for="specialty">Specialty</label>
+              <input id="specialty" name="specialty" type="text" autocomplete="off" maxlength="100" required>
+            </div>
+
+            <div class="field">
+              <label for="location">City and state</label>
+              <input id="location" name="location" type="text" autocomplete="address-level2" maxlength="100" required>
+            </div>
+
+            <div class="field">
+              <label for="visits-week">Visits per week</label>
+              <input id="visits-week" name="visits-week" type="number" inputmode="numeric" min="0" step="1" max="10000" required>
+            </div>
+
+            <div class="field">
+              <label for="practice-system">Practice system</label>
+              <input id="practice-system" name="practice-system" type="text" maxlength="100" aria-describedby="practice-system-help" required>
+              <small id="practice-system-help">For example: Jane, ChiroTouch, or none.</small>
+            </div>
+
+            <div class="field">
+              <label for="insurance-status">Insurance status</label>
+              <select id="insurance-status" name="insurance-status" required>
+                <option value="">Select one</option>
+                <option>Cash-pay only</option>
+                <option>Cash-pay with superbills</option>
+                <option>Out of network</option>
+                <option>In network</option>
+                <option>Mixed</option>
+                <option>Planning or unsure</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="biggest-concern">Biggest concern about accepting insurance</label>
+              <textarea id="biggest-concern" name="biggest-concern" maxlength="500" aria-describedby="concern-help" required></textarea>
+              <small id="concern-help">Keep this about your practice. Do not include patient information.</small>
+            </div>
+
+            <div class="field">
+              <label for="contact-name">Your name</label>
+              <input id="contact-name" name="contact-name" type="text" autocomplete="name" maxlength="100" required>
+            </div>
+
+            <div class="field">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="contact-email" type="email" autocomplete="email" maxlength="254" required>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button class="button" type="submit">Review email draft <span aria-hidden="true">→</span></button>
+            <p>This creates a draft on this page. It does not send data to Claims Native or Atom &amp; Bits.</p>
+          </div>
+        </form>
+
+        <section class="draft-review" id="draft-review" aria-labelledby="draft-heading" aria-live="polite" hidden>
+          <h3 id="draft-heading">Review your email</h3>
+          <p class="draft-status">Your draft is ready. Nothing has been sent.</p>
+          <pre class="draft-preview" id="draft-preview"></pre>
+          <div class="draft-actions">
+            <a class="button" id="open-email" href="mailto:Ian@atomandbits.com">Open email draft <span aria-hidden="true">→</span></a>
+            <p>Your email app will open next. No request is sent until you review and send the email there.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="pilot-band" aria-labelledby="pilot-heading">
+      <div class="container pilot-inner">
+        <div>
+          <h2 id="pilot-heading">Want to see how a narrow 90-day test works?</h2>
+          <p>Review the pilot scope, fit, and limits before you decide whether to start a conversation.</p>
+        </div>
+        <a class="button" href="/claimsnative/90-day-pilot/" data-pilot-cta>See the 90-day pilot <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>Claims Native is an Atom &amp; Bits product · Chattanooga, Tennessee</span>
+      <span><a href="/claimsnative/">Claims Native home</a> · <a href="mailto:Ian@atomandbits.com">Ian@atomandbits.com</a> · <a href="/privacy-policy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var patientsInput = document.getElementById('turned-away');
+      var frequencyInput = document.getElementById('frequency');
+      var revenueInput = document.getElementById('course-revenue');
+      var monthlyOutput = document.getElementById('monthly-potential');
+      var annualOutput = document.getElementById('annual-potential');
+      var annualPatientsOutput = document.getElementById('annual-patients');
+      var formulaOutput = document.getElementById('exact-formula');
+      var useEstimate = document.getElementById('use-estimate');
+      var reviewForm = document.getElementById('review-form');
+      var draftReview = document.getElementById('draft-review');
+      var draftPreview = document.getElementById('draft-preview');
+      var openEmail = document.getElementById('open-email');
+
+      var annualFactors = { workday: 260, week: 52, month: 12 };
+      var periodLabels = { workday: 'workdays', week: 'weeks', month: 'months' };
+      var money = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+      });
+      var count = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 });
+      var hasStarted = false;
+      var hasCompleted = false;
+      var hasShownIntent = false;
+
+      function track(eventName) {
+        if (window.dataLayer && typeof window.dataLayer.push === 'function') {
+          window.dataLayer.push({ event: eventName });
+        }
+        window.dispatchEvent(new CustomEvent(eventName));
+      }
+
+      function nonNegativeNumber(input) {
+        var value = Number(input.value);
+        return Number.isFinite(value) && value >= 0 ? value : 0;
+      }
+
+      function estimate() {
+        var patients = nonNegativeNumber(patientsInput);
+        var courseRevenue = nonNegativeNumber(revenueInput);
+        var factor = annualFactors[frequencyInput.value];
+        var annualPatients = patients * factor;
+        var annualGross = annualPatients * courseRevenue;
+        var monthlyGross = annualGross / 12;
+
+        return {
+          patients: patients,
+          courseRevenue: courseRevenue,
+          factor: factor,
+          period: frequencyInput.value,
+          annualPatients: annualPatients,
+          annualGross: annualGross,
+          monthlyGross: monthlyGross
+        };
+      }
+
+      function clearDraft() {
+        if (draftReview.hidden) return;
+        draftReview.hidden = true;
+        draftPreview.textContent = '';
+        openEmail.href = 'mailto:Ian@atomandbits.com';
+      }
+
+      function renderEstimate() {
+        var result = estimate();
+
+        monthlyOutput.value = money.format(result.monthlyGross);
+        monthlyOutput.textContent = money.format(result.monthlyGross);
+        annualOutput.value = money.format(result.annualGross);
+        annualOutput.textContent = money.format(result.annualGross);
+        annualPatientsOutput.value = count.format(result.annualPatients);
+        annualPatientsOutput.textContent = count.format(result.annualPatients);
+        formulaOutput.textContent = count.format(result.patients) + ' patients × ' + result.factor + ' ' + periodLabels[result.period] + ' × ' + money.format(result.courseRevenue) + ' = ' + money.format(result.annualGross) + ' per year; ' + money.format(result.annualGross) + ' ÷ 12 = ' + money.format(result.monthlyGross) + ' per month.';
+        clearDraft();
+      }
+
+      function noteCalculatorUse() {
+        if (!hasStarted) {
+          hasStarted = true;
+          track('calculator_started');
+        }
+        renderEstimate();
+      }
+
+      function completeCalculator() {
+        if (!hasStarted) {
+          hasStarted = true;
+          track('calculator_started');
+        }
+        if (!hasCompleted) {
+          hasCompleted = true;
+          track('calculator_completed');
+        }
+      }
+
+      function utmLines() {
+        var params = new URLSearchParams(window.location.search);
+        return ['utm_source', 'utm_medium', 'utm_campaign'].reduce(function (lines, key) {
+          var value = params.get(key);
+          if (value) lines.push(key + ': ' + value);
+          return lines;
+        }, []);
+      }
+
+      function fieldValue(id) {
+        return document.getElementById(id).value.trim();
+      }
+
+      function buildEmail() {
+        var result = estimate();
+        var subject = 'Insurance Opportunity Review — ' + fieldValue('practice-name');
+        var bodyLines = [
+          'I would like to review the insurance opportunity for my practice.',
+          '',
+          'ESTIMATE',
+          'Monthly gross potential: ' + money.format(result.monthlyGross),
+          'Annual gross potential: ' + money.format(result.annualGross),
+          'Annual patient count: ' + count.format(result.annualPatients),
+          'Formula: ' + count.format(result.patients) + ' patients × ' + result.factor + ' ' + periodLabels[result.period] + ' × ' + money.format(result.courseRevenue) + ' = ' + money.format(result.annualGross) + ' per year; ' + money.format(result.annualGross) + ' ÷ 12 = ' + money.format(result.monthlyGross) + ' per month.',
+          'Estimate note: Planning estimate, not a revenue promise. Gross potential revenue, not net income or expected collections.',
+          '',
+          'PRACTICE',
+          'Practice name: ' + fieldValue('practice-name'),
+          'Specialty: ' + fieldValue('specialty'),
+          'City/state: ' + fieldValue('location'),
+          'Visits per week: ' + fieldValue('visits-week'),
+          'Practice system: ' + fieldValue('practice-system'),
+          'Insurance status: ' + fieldValue('insurance-status'),
+          'Biggest concern: ' + fieldValue('biggest-concern'),
+          '',
+          'CONTACT',
+          'Name: ' + fieldValue('contact-name'),
+          'Email: ' + fieldValue('contact-email')
+        ];
+        var attribution = utmLines();
+
+        if (attribution.length) {
+          bodyLines.push('', 'ATTRIBUTION');
+          Array.prototype.push.apply(bodyLines, attribution);
+        }
+
+        return {
+          subject: subject,
+          body: bodyLines.join('\n')
+        };
+      }
+
+      [patientsInput, frequencyInput, revenueInput].forEach(function (input) {
+        input.addEventListener('input', noteCalculatorUse);
+        input.addEventListener('change', noteCalculatorUse);
+      });
+
+      useEstimate.addEventListener('click', function () {
+        completeCalculator();
+      });
+
+      reviewForm.addEventListener('input', clearDraft);
+      reviewForm.addEventListener('change', clearDraft);
+
+      reviewForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        completeCalculator();
+
+        var email = buildEmail();
+        draftPreview.textContent = 'To: Ian@atomandbits.com\nSubject: ' + email.subject + '\n\n' + email.body;
+        openEmail.href = 'mailto:Ian@atomandbits.com?subject=' + encodeURIComponent(email.subject) + '&body=' + encodeURIComponent(email.body);
+        draftReview.hidden = false;
+
+        if (!hasShownIntent) {
+          hasShownIntent = true;
+          track('review_intent');
+        }
+
+        draftReview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      document.querySelectorAll('[data-pilot-cta]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          track('pilot_cta_clicked');
+        });
+      });
+
+      renderEstimate();
+    }());
+  </script>
+</body>
+</html>
