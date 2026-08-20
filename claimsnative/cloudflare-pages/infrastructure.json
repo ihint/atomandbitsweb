@@ -18,8 +18,7 @@
     "project": "claimsnative",
     "production_branch": "main",
     "domains": [
-      "claimsnative.com",
-      "www.claimsnative.com"
+      "claimsnative.com"
     ]
   },
   "dns_records": [
