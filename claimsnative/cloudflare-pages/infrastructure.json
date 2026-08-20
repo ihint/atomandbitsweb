@@ -6,7 +6,13 @@
     "name_servers": [
       "amit.ns.cloudflare.com",
       "anita.ns.cloudflare.com"
-    ]
+    ],
+    "settings": {
+      "always_use_https": "on",
+      "min_tls_version": "1.2",
+      "ssl": "full",
+      "tls_1_3": "on"
+    }
   },
   "pages": {
     "project": "claimsnative",
@@ -52,6 +58,40 @@
       "to": "https://claimsnative.com${path}",
       "status": 301,
       "preserve_query_string": true
+    }
+  ],
+  "legacy_redirects": [
+    {
+      "zone_id": "af05e25ce3f69fa37ec9cca2f386000a",
+      "ruleset_id": "cd6d75fe06af4d2cb35a21ff37cfe5b8",
+      "from": "https://atomandbits.com/claimsnative/",
+      "to": "https://claimsnative.com/",
+      "status": 301,
+      "enabled": false
+    },
+    {
+      "zone_id": "af05e25ce3f69fa37ec9cca2f386000a",
+      "ruleset_id": "cd6d75fe06af4d2cb35a21ff37cfe5b8",
+      "from": "https://atomandbits.com/claimsnative/insurance-opportunity/",
+      "to": "https://claimsnative.com/insurance-opportunity/",
+      "status": 301,
+      "enabled": false
+    },
+    {
+      "zone_id": "af05e25ce3f69fa37ec9cca2f386000a",
+      "ruleset_id": "cd6d75fe06af4d2cb35a21ff37cfe5b8",
+      "from": "https://atomandbits.com/claimsnative/90-day-pilot/",
+      "to": "https://claimsnative.com/90-day-pilot/",
+      "status": 301,
+      "enabled": false
+    },
+    {
+      "zone_id": "af05e25ce3f69fa37ec9cca2f386000a",
+      "ruleset_id": "cd6d75fe06af4d2cb35a21ff37cfe5b8",
+      "from": "https://atomandbits.com/claimsnative/chiropractors/",
+      "to": "https://claimsnative.com/chiropractors/",
+      "status": 301,
+      "enabled": false
     }
   ]
 }
