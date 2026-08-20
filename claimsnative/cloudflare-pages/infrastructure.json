@@ -1,0 +1,57 @@
+{
+  "account_id": "363b04abf5bd2e74dd087c6f8390b32d",
+  "zone": {
+    "id": "9805c0d8e141cdc422ba214450d4dbb0",
+    "name": "claimsnative.com",
+    "name_servers": [
+      "amit.ns.cloudflare.com",
+      "anita.ns.cloudflare.com"
+    ]
+  },
+  "pages": {
+    "project": "claimsnative",
+    "production_branch": "main",
+    "domains": [
+      "claimsnative.com",
+      "www.claimsnative.com"
+    ]
+  },
+  "dns_records": [
+    {
+      "type": "CNAME",
+      "name": "claimsnative.com",
+      "content": "claimsnative.pages.dev",
+      "proxied": true
+    },
+    {
+      "type": "CNAME",
+      "name": "www.claimsnative.com",
+      "content": "claimsnative.pages.dev",
+      "proxied": true
+    },
+    {
+      "type": "MX",
+      "name": "claimsnative.com",
+      "content": "smtp.google.com",
+      "priority": 1
+    },
+    {
+      "type": "TXT",
+      "name": "claimsnative.com",
+      "content": "google-site-verification=8QBN1LiNehPrbWJq-PdkI7-sM1syUc2B1npcd-ylv7k"
+    },
+    {
+      "type": "TXT",
+      "name": "www.claimsnative.com",
+      "content": "google-site-verification=8QBN1LiNehPrbWJq-PdkI7-sM1syUc2B1npcd-ylv7k"
+    }
+  ],
+  "redirects": [
+    {
+      "from_host": "www.claimsnative.com",
+      "to": "https://claimsnative.com${path}",
+      "status": 301,
+      "preserve_query_string": true
+    }
+  ]
+}
