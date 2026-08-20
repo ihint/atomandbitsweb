@@ -45,7 +45,7 @@ These are intent hypotheses, not search-volume claims.
 | Operating guide | Can I accept insurance without hiring a biller? | accept insurance without hiring a biller; billing department alternatives |
 | Pilot page | How can I test insurance before changing my whole practice? | medical billing pilot; start accepting insurance in a private practice |
 
-The hub should route visitors to the calculator, specialty page, pilot, and distinct decision guides. Add more pages only when they contain first-hand operating detail, measured pilot findings, or a useful decision tool.
+The hub, specialty page, pilot, and decision guides should route buyers to one calculator and review path. Add more pages only when they contain first-hand operating detail, measured pilot findings, or a useful decision tool.
 
 ## SEO and generative search guidance
 
@@ -62,9 +62,9 @@ Perplexity recommends allowing `PerplexityBot` for pages to surface and link in 
 ## Technical changes for the product page
 
 - Use a title and description centered on adding insurance without adding a billing department.
-- Route the main call to action to a dedicated opportunity calculator and review page.
+- Use one main call to action: “See what insurance may be worth.” Route it to the dedicated opportunity calculator and review page.
 - Use one descriptive H1 and question-led H2 sections.
-- Keep the buyer problem, current workflow, approval boundary, pilot terms, and future direction in server-delivered HTML.
+- Keep the current workflow and pilot terms in the main story. Label post-visit insurance revenue operations as future direction until live evidence supports it.
 - Keep canonical, index/follow, Open Graph, and Twitter metadata aligned with visible copy.
 - Keep `SoftwareApplication` and `Organization` structured data aligned with the page. Add visible FAQ content before adding `FAQPage` data.
 - Keep the review handoff user-controlled until a lead processor is approved. Do not collect PHI.
