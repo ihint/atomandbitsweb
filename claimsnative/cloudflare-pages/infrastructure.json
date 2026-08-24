@@ -56,9 +56,19 @@
       "from_host": "www.claimsnative.com",
       "to": "https://claimsnative.com${path}",
       "status": 301,
-      "preserve_query_string": true
+      "preserve_query_string": true,
+      "worker": {
+        "name": "claims-native-www-redirect",
+        "config": "claimsnative/cloudflare-www-redirect/wrangler.jsonc"
+      }
     }
   ],
+  "release": {
+    "workflow": ".github/workflows/claimsnative-cloudflare.yml",
+    "account_id_variable": "CLOUDFLARE_ACCOUNT_ID",
+    "api_token_secret": "CLOUDFLARE_API_TOKEN",
+    "environment": "claimsnative-production"
+  },
   "legacy_redirects": [
     {
       "zone_id": "af05e25ce3f69fa37ec9cca2f386000a",

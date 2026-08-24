@@ -1,0 +1,67 @@
+name: Deploy Claims Native to Cloudflare
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "claimsnative/**"
+      - "scripts/build-claimsnative-pages.sh"
+      - "scripts/test-claimsnative-pages.sh"
+      - ".github/workflows/claimsnative-cloudflare.yml"
+  pull_request:
+    paths:
+      - "claimsnative/**"
+      - "scripts/build-claimsnative-pages.sh"
+      - "scripts/test-claimsnative-pages.sh"
+      - ".github/workflows/claimsnative-cloudflare.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: claimsnative-cloudflare-production
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Test the Pages build and redirect
+        run: bash scripts/test-claimsnative-pages.sh
+
+  deploy:
+    needs: test
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: claimsnative-production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the Pages artifact
+        run: bash scripts/build-claimsnative-pages.sh .claimsnative-dist
+      - name: Deploy the Pages site
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.125.0"
+          command: pages deploy .claimsnative-dist --project-name=claimsnative --branch=main
+      - name: Deploy the www redirect
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.125.0"
+          command: deploy --config claimsnative/cloudflare-www-redirect/wrangler.jsonc
+      - name: Report a missing deploy token
+        if: ${{ env.CLOUDFLARE_API_TOKEN == '' }}
+        run: |
+          echo "Cloudflare deploy skipped: add CLOUDFLARE_API_TOKEN to the claimsnative-production environment." >> "$GITHUB_STEP_SUMMARY"
