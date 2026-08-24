@@ -19,6 +19,7 @@ fi
 mkdir -p "$output_dir"
 cp -R "$source_dir"/. "$output_dir"/
 rm -rf "$output_dir/cloudflare-pages"
+rm -rf "$output_dir/cloudflare-www-redirect"
 
 while IFS= read -r -d '' file; do
   perl -0pi -e 's#https://atomandbits\.com/claimsnative/#https://claimsnative.com/#g' "$file"

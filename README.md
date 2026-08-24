@@ -43,6 +43,12 @@ Open `index.html` in any browser, edit, and refresh to see changes. No build ste
 ### Deployment
 The site auto-deploys to [atomandbits.com](https://atomandbits.com) when changes are pushed to the main branch.
 
+Claims Native builds from `claimsnative/` and deploys to
+[claimsnative.com](https://claimsnative.com) through the separate Cloudflare
+workflow. Run `bash scripts/test-claimsnative-pages.sh` before release. The
+workflow requires the `CLOUDFLARE_ACCOUNT_ID` repository variable and a narrow
+`CLOUDFLARE_API_TOKEN` secret in the `claimsnative-production` environment.
+
 ### Technical Notes
 - Responsive design using CSS Grid and Flexbox
 - Smooth scroll navigation with JavaScript
