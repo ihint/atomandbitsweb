@@ -1,17 +1,18 @@
 * { box-sizing: border-box; }
 
 :root {
-  --ink: #111827;
-  --navy: #1f4e79;
-  --navy-dark: #173a5c;
-  --copper: #ad5735;
-  --copper-soft: #f1ddd3;
-  --paper: #fbfaf6;
-  --paper-deep: #f2f5f9;
+  /* Aligned with the product's app.css tokens (claims_native web) */
+  --ink: #080808;
+  --navy: #080808;
+  --navy-dark: #000000;
+  --copper: #9a5b2c;
+  --copper-soft: #f5e8dc;
+  --paper: #fafaf7;
+  --paper-deep: #f1f1ec;
   --card: #ffffff;
-  --blue-soft: #e7eef7;
-  --muted: #586069;
-  --line: #d7dee8;
+  --blue-soft: #f1f1ec;
+  --muted: #686862;
+  --line: #deded8;
   --white: #ffffff;
   --max: 1180px;
 }
@@ -45,7 +46,7 @@ button, input, select, textarea { font: inherit; }
 .skip-link:focus { top: 12px; }
 
 :focus-visible {
-  outline: 3px solid var(--copper);
+  outline: 3px solid #1d5f67;
   outline-offset: 3px;
 }
 
@@ -59,8 +60,8 @@ button, input, select, textarea { font: inherit; }
   position: sticky;
   top: 0;
   z-index: 20;
-  border-bottom: 1px solid rgba(215, 222, 232, 0.9);
-  background: rgba(251, 250, 246, 0.94);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
 }
 
@@ -115,12 +116,13 @@ button, input, select, textarea { font: inherit; }
   align-items: center;
   justify-content: center;
   gap: 9px;
-  padding: 0 20px;
-  border: 1px solid var(--navy);
-  border-radius: 5px;
-  background: var(--navy);
+  padding: 0 22px;
+  border: 1px solid var(--ink);
+  border-radius: 99px;
+  background: var(--ink);
   color: var(--white);
   font-weight: 700;
+  letter-spacing: -0.01em;
   line-height: 1.2;
   text-align: center;
   text-decoration: none;
@@ -144,8 +146,8 @@ button, input, select, textarea { font: inherit; }
 footer {
   padding: 28px 0;
   border-top: 1px solid rgba(255,255,255,0.18);
-  background: var(--navy);
-  color: #cbd8e6;
+  background: var(--ink);
+  color: #b8b8b0;
   font-size: 0.86rem;
 }
 
