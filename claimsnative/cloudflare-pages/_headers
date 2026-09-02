@@ -8,6 +8,9 @@
 /site.css
   Cache-Control: public, max-age=3600
 
+/home.css
+  Cache-Control: public, max-age=3600
+
 /calculator.js
   Cache-Control: public, max-age=3600
 
