@@ -112,7 +112,7 @@
 
   function buildEmail() {
     var result = estimate();
-    var subject = 'Insurance Opportunity Review — ' + fieldValue('practice-name');
+    var subject = 'Claims Native 90-day pilot — ' + fieldValue('practice-name');
     var bodyLines = [
       'I would like to review the insurance opportunity for my practice.',
       '',
