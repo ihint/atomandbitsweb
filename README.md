@@ -2,22 +2,25 @@
 
 **Live Site:** [atomandbits.com](https://atomandbits.com)
 
-This is the official website for Atom & Bits, positioning Ian Harman as a founder-grade CTO and product operator for healthcare infrastructure, provider networks, AI-enabled operations, and revenue-ready product systems.
+Atom & Bits is Ian Harman's product and technology practice. The site begins with the work of growing a business while helping its people deliver the service customers value. The One to One Health story leads into his founder experience, commercial work, and offers.
 
 ## Quick Start for Editing
 
-This website is built as a single HTML file with embedded CSS and JavaScript - perfect for easy editing and customization.
+The site uses static HTML, CSS, and JavaScript. No build step is required.
 
 ### Main File
 - `index.html` - The live static website
 - `atom-bits-website.html` - Historical mirror of the live page; keep it synced with `index.html`
+- `service-pages.css` - Base styles for the main site and specialist pages
+- `site.css` - Shared navigation and the personal website styles
+- `site.js` - Mobile navigation and the illustrative agent walkthrough
 
 ### Making Changes
 
 1. **Text Content**: Edit directly in `index.html`
-2. **Colors**: Modify the CSS custom properties in the `:root` section
-3. **Styling**: Update the embedded `<style>` section
-4. **Functionality**: Modify the embedded `<script>` section
+2. **Colors**: Modify the CSS custom properties in `service-pages.css`
+3. **Styling**: Update `site.css` for shared navigation and personal pages
+4. **Functionality**: Update `site.js`; keep content and navigation usable without JavaScript
 5. **Mirror file**: Copy `index.html` to `atom-bits-website.html` after content or style changes
 
 ### Color Scheme
@@ -31,14 +34,27 @@ The website uses a restrained executive palette aligned to Ian's CTO/founder pos
 - `--line`: #d7dee8
 
 ### Sections to Customize
-1. **Hero Section**: Positioning and four linked proof points
-2. **Advisory Section**: Fractional CTO/CPO, healthcare infrastructure, AI operations, and product-to-market work
-3. **Selected Work Section**: TheraMatch/TPN.health, One to One Health, BCBST, PerfectServe, Paragon, and CraftingCopy
-4. **Approach Section**: Core operating philosophy
-5. **Contact Section**: Email, phone, LinkedIn, and company details
+1. **Opening and story**: The accepted One to One Health narrative, with the operating plan and charting result kept distinct
+2. **Selected work**: TheraMatch, Paragon, BCBST, and PerfectServe; TPN as a further operating case
+3. **Work with me**: Assessment, agent workflow pilot, and product/technology leadership
+4. **Building now**: Claims Native and internal agent work, with evidence limits
+5. **How I work**: Questions, joy, curiosity, and shared understanding
+6. **Contact**: Email, phone, LinkedIn, and company details
+
+The main offer routes are `/ai-fit-review/`, `/agent-workflows/`, and
+`/product-technology-leadership/`. `/how-i-work/` explains Ian's approach.
+Keep the existing healthcare routes available for visitors and search links.
+The agent walkthrough is an illustration using sample content; it does not
+connect to a live agent or perform an external action.
+
+Write in connected paragraphs that explain the reader's problem, the decision,
+and what changed. Keep the accepted passage intact in the One to One Health
+case. Describe what the product plan proposed separately from delivered results.
+Do not invent client conversations, clinical outcomes, or savings for a story.
 
 ### Local Development
-Open `index.html` in any browser, edit, and refresh to see changes. No build step is required.
+Run `python3 -m http.server 4173 --bind 127.0.0.1` in the project folder,
+then open `http://127.0.0.1:4173/`. A server is needed for root-relative links.
 
 ### Deployment
 The site auto-deploys to [atomandbits.com](https://atomandbits.com) when changes are pushed to the main branch.
@@ -51,8 +67,8 @@ workflow requires the `CLOUDFLARE_ACCOUNT_ID` repository variable and a narrow
 
 ### Technical Notes
 - Responsive design using CSS Grid and Flexbox
-- Smooth scroll navigation with JavaScript
-- Intersection Observer API for scroll animations
+- Native disclosure menus with keyboard support
+- Sample walkthrough with a readable fallback when JavaScript is disabled
 - No build process or dependencies required
 - Optimized for performance and SEO
 
