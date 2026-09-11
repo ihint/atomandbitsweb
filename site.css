@@ -83,6 +83,28 @@ h2, h3 { text-wrap: balance; }
 .story-prose blockquote { margin: 32px 0; padding: 5px 0 5px 26px; border-left: 2px solid var(--copper); font: 2rem/1.35 Georgia, serif; color: var(--navy); }
 .story-prose .evidence-details { margin-top: 32px; }
 .story-links { display: flex; flex-wrap: wrap; gap: 12px 28px; }
+
+/* The accepted narrative needs room for a full thought before the next section. */
+.narrative-page .essay-heading { max-width: 1000px; }
+.narrative-page .essay-hero h1 { max-width: 1000px; font-family: Georgia, serif; font-weight: 400; letter-spacing: -.035em; line-height: 1.13; }
+.narrative-page .essay-intro { max-width: 760px; margin-top: 26px; }
+.narrative-page .essay-intro > p { color: var(--text); font-size: 1.12rem; line-height: 1.8; margin: 0 0 18px; }
+.narrative-page .essay-intro > p:last-child { margin-bottom: 0; }
+.narrative-page .section-inner > p:not(.section-label) { max-width: 760px; color: var(--text); font-size: 1.08rem; line-height: 1.8; margin-bottom: 32px; }
+.narrative-page .narrative-home-hero { padding: 70px 0 64px; border-bottom: 1px solid var(--line); }
+.narrative-opening { max-width: 1060px; }
+.narrative-page .narrative-home-hero h1 { max-width: 1060px; font-family: Georgia, serif; font-weight: 400; font-size: clamp(2.2rem, 4.4vw, 4rem); line-height: 1.16; letter-spacing: -.035em; text-wrap: balance; }
+.narrative-page .narrative-home-hero .hero-copy { max-width: 780px; font-size: 1.22rem; line-height: 1.7; }
+.narrative-page .narrative-home-hero .hero-personal { max-width: 720px; font-size: 1rem; line-height: 1.8; }
+.narrative-page .role-line { max-width: 820px; }
+
+@media (max-width: 620px) {
+    .narrative-page .narrative-home-hero { padding: 44px 0 42px; }
+    .narrative-page .narrative-home-hero h1 { font-size: clamp(2.2rem, 8.8vw, 3rem); }
+    .narrative-page .narrative-home-hero .hero-copy { font-size: 1.08rem; }
+    .narrative-page .narrative-home-hero .hero-personal { font-size: .94rem; }
+    .narrative-page .essay-intro > p { font-size: 1.04rem; }
+}
 .experience-line { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 34px; margin-top: 64px; border-top: 1px solid var(--line); padding: 26px 0; }
 .experience-line span { max-width: 260px; font-size: .8rem; color: var(--muted); line-height: 1.55; }
 .case-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; row-gap: 44px; }

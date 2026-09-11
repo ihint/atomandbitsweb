@@ -2,7 +2,7 @@
 
 **Live Site:** [atomandbits.com](https://atomandbits.com)
 
-Atom & Bits is Ian Harman's product and technology practice. The site connects his founder and operating results, applied AI work, and approach to working with people.
+Atom & Bits is Ian Harman's product and technology practice. The site begins with the work of growing a business while helping its people deliver the service customers value. The One to One Health story leads into his founder experience, commercial work, and offers.
 
 ## Quick Start for Editing
 
@@ -34,10 +34,10 @@ The website uses a restrained executive palette aligned to Ian's CTO/founder pos
 - `--line`: #d7dee8
 
 ### Sections to Customize
-1. **Opening**: Ian's position and shared approach to the deliverable
-2. **Selected work**: Founder, clinical AI, enterprise, and commercial cases
-3. **Building now**: Claims Native and internal agent work, with evidence limits
-4. **Work with me**: Assessment, agent workflow pilot, and product/technology leadership
+1. **Opening and story**: The accepted One to One Health narrative, with the operating plan and charting result kept distinct
+2. **Selected work**: TheraMatch, Paragon, BCBST, and PerfectServe; TPN as a further operating case
+3. **Work with me**: Assessment, agent workflow pilot, and product/technology leadership
+4. **Building now**: Claims Native and internal agent work, with evidence limits
 5. **How I work**: Questions, joy, curiosity, and shared understanding
 6. **Contact**: Email, phone, LinkedIn, and company details
 
@@ -46,6 +46,11 @@ The main offer routes are `/ai-fit-review/`, `/agent-workflows/`, and
 Keep the existing healthcare routes available for visitors and search links.
 The agent walkthrough is an illustration using sample content; it does not
 connect to a live agent or perform an external action.
+
+Write in connected paragraphs that explain the reader's problem, the decision,
+and what changed. Keep the accepted passage intact in the One to One Health
+case. Describe what the product plan proposed separately from delivered results.
+Do not invent client conversations, clinical outcomes, or savings for a story.
 
 ### Local Development
 Run `python3 -m http.server 4173 --bind 127.0.0.1` in the project folder,

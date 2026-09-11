@@ -36,10 +36,10 @@ This is Ian Harman's Atom & Bits website. It presents his work, approach, and of
 
 ## Content Sections
 
-1. **Opening**: Ian brings business, strategy, product, and technology together
-2. **Selected Work**: Sourced career results with each role and metric scoped
-3. **Current Work**: Claims Native and agent workspaces, with their development stage stated
-4. **Offers**: Assessment, agent workflow pilot, and product/technology leadership
+1. **Opening and Story**: Ian's accepted One to One Health narrative about growth, people, and the work required to deliver care
+2. **Selected Work**: TheraMatch founder experience, Paragon commercial work, and earlier enterprise results
+3. **Offers**: Assessment, agent workflow pilot, and product/technology leadership
+4. **Current Work**: Claims Native and agent workspaces, with their development stage stated
 5. **Approach**: Joy, curiosity, questions, and shared understanding of the deliverable
 6. **Contact**: Email, phone, and LinkedIn
 
@@ -49,6 +49,8 @@ This is Ian Harman's Atom & Bits website. It presents his work, approach, and of
 - The design follows Ian's CTO/founder aesthetic: clear, evidence-led, editorial, and less rounded than a generic SaaS landing page
 - Use the Atom & Bits navy, paper, and copper palette in Claims Native. Keep the serif product wordmark to distinguish the product.
 - Selected work should stay evidence-led and avoid unsupported metrics or hype
+- Preserve the accepted One to One Health passage in its case page. Keep the operating plan separate from the measured charting improvement.
+- Use connected prose with reader stakes and specific operating detail. Avoid replacing the story with lists of capabilities or short process slogans.
 - No external dependencies or build process required
 
 ## Deployment
