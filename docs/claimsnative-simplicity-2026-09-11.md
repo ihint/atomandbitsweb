@@ -33,3 +33,13 @@ Local verification passed on September 11:
 - `git diff --check` passed. The source checkout and unrelated Atom & Bits work remain separate.
 
 These are local software and agent visual checks, not independent usability or purchase-intent results. The GitHub release run and direct public checks must establish publication. The new account app remains a local fictional-data preview. This website change does not deploy that app, enable real clinical data, set a new price, promise payer enrollment timing, or authorize sending prospect messages. User adoption remains unmeasured.
+
+## Patient-first headline follow-up
+
+Ian approved this replacement after reviewing the public site: “You focus on your patients. We’ll focus on the rest.” Supporting text: “Claims, payments, and insurance follow-up. Handled for your practice, with every dollar explained.”
+
+Expected behavior: display the exact approved copy, keep the current practice paths and scope, and fit desktop and phone layouts. Update home-page metadata to match. Run the existing Pages checks and verify the public deployment before claiming it is live. No new test suite is needed for this copy change.
+
+Prose review: no stale phrases, long-word replacements or passive constructions were found in the two original lines. The edit replaces their focus on the billing workspace with the patient-first language Ian approved. Original lines remain in Git history.
+
+Local result: the Pages build and two redirect tests pass. Browser review confirmed the approved text at desktop and phone sizes; 390px and 320px layouts had no horizontal overflow. Public verification follows deployment.
