@@ -36,7 +36,7 @@ This is Ian Harman's Atom & Bits website. It presents his work, approach, and of
 
 ## Content Sections
 
-1. **Opening and Story**: Ian's accepted One to One Health narrative about growth, people, and the work required to deliver care
+1. **Opening and Story**: Ian's accepted One to One Health narrative about growth, people, and the opportunity to bring care to more people
 2. **Selected Work**: TheraMatch founder experience, Paragon commercial work, and earlier enterprise results
 3. **Offers**: Assessment, agent workflow pilot, and product/technology leadership
 4. **Current Work**: Claims Native and agent workspaces, with their development stage stated
@@ -48,8 +48,8 @@ This is Ian Harman's Atom & Bits website. It presents his work, approach, and of
 - The website uses a color theme defined in CSS custom properties (`--ink`, `--navy`, `--blue-soft`, `--blue-wash`, `--line`, etc.)
 - The design follows Ian's CTO/founder aesthetic: clear, evidence-led, editorial, and less rounded than a generic SaaS landing page
 - Use the Atom & Bits navy, paper, and copper palette in Claims Native. Keep the serif product wordmark to distinguish the product.
-- Selected work should stay evidence-led and avoid unsupported metrics or hype
-- Preserve the accepted One to One Health passage in its case page. Keep the operating plan separate from the measured charting improvement.
+- Case studies should explain the business opportunity and founder judgment, with accurate historical roles, results, and qualifiers
+- Keep the homepage and One to One Health story consistent with Ian’s latest corrections. Explain why clinical notes came early: staff needed value while the broader product suite was being built. Keep the operating plan separate from the measured charting improvement.
 - Use connected prose with reader stakes and specific operating detail. Avoid replacing the story with lists of capabilities or short process slogans.
 - No external dependencies or build process required
 
