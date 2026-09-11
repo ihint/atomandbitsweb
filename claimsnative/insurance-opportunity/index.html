@@ -1,50 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Insurance Opportunity Calculator | Claims Native</title>
-  <meta name="description" content="Estimate what insured patients you turn away are worth each year, then start the 90-day pilot conversation.">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <link rel="canonical" href="https://atomandbits.com/claimsnative/insurance-opportunity/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Claims Native">
-  <meta property="og:title" content="What insurance is worth to your practice.">
-  <meta property="og:description" content="Estimate what insured patients you turn away are worth each year, then start the 90-day pilot conversation.">
-  <meta property="og:url" content="https://atomandbits.com/claimsnative/insurance-opportunity/">
-  <meta property="og:image" content="https://atomandbits.com/claimsnative/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Claims Native by Atom &amp; Bits, the agentic billing department for independent practices.">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="What insurance is worth to your practice.">
-  <meta name="twitter:description" content="Estimate what insured patients you turn away are worth each year, then start the 90-day pilot conversation.">
-  <meta name="twitter:image" content="https://atomandbits.com/claimsnative/og.png">
-  <link href="/claimsnative/home.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/claimsnative/mark.svg" type="image/svg+xml">
+<title>Insurance opportunity calculator | Claims Native</title>
+<meta name="description" content="Explore a gross insurance revenue estimate using your own inputs, before care costs, billing fees and payer limits.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://atomandbits.com/claimsnative/insurance-opportunity/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Claims Native">
+<meta property="og:title" content="Insurance opportunity calculator">
+<meta property="og:description" content="Explore a gross insurance revenue estimate using your own inputs, before care costs, billing fees and payer limits.">
+<meta property="og:url" content="https://atomandbits.com/claimsnative/insurance-opportunity/">
+<meta property="og:image" content="https://atomandbits.com/claimsnative/og-simple-20260911.png">
+<meta property="og:image:width" content="1730">
+<meta property="og:image:height" content="909">
+<meta property="og:image:alt" content="Claims Native. More room for care.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Insurance opportunity calculator">
+<meta name="twitter:description" content="Explore a gross insurance revenue estimate using your own inputs, before care costs, billing fees and payer limits.">
+<meta name="twitter:image" content="https://atomandbits.com/claimsnative/og-simple-20260911.png">
+<link href="/claimsnative/home.css" rel="stylesheet">
+<link href="/claimsnative/simple.css?v=20260911" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Claims Native", "url": "https://atomandbits.com/claimsnative/", "parentOrganization": {"@type": "Organization", "name": "Atom & Bits", "url": "https://atomandbits.com/"}}]}</script>
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="/claimsnative/" aria-label="Claims Native home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Claims Native<small>by Atom &amp; Bits</small></span></a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="/claimsnative/#worth">What it is worth</a>
-        <a href="/claimsnative/#lanes">The lanes</a>
-        <a href="/claimsnative/90-day-pilot/">90-day pilot</a>
-      </nav>
-      <div class="identity">
-        <a class="role-switch" href="https://login.claimsnative.com/" rel="nofollow">Demo login</a>
-        <a class="button" href="/claimsnative/#demo">See the department run</a>
-      </div>
-    </div>
-  </header>
-
-  <main id="main">
+<body class="simple-site">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/claimsnative/" aria-label="Claims Native home">
+<span class="brand-mark" aria-hidden="true">
+<i>
+</i>
+<i>
+</i>
+<i>
+</i>
+<i>
+</i>
+</span>
+<span>Claims Native<small>More room for care</small>
+</span>
+</a>
+<nav class="nav" aria-label="Primary navigation">
+<a href="/claimsnative/#workspace">The workspace</a>
+<a href="/claimsnative/#your-practice">For your practice</a>
+</nav>
+<a class="button header-cta" href="/claimsnative/90-day-pilot/">Let’s talk <span aria-hidden="true">↗</span>
+</a>
+</div>
+</header>
+<main id="main">
     <header class="page-head">
       <div>
         <p class="eyebrow">Calculator</p>
-        <h1>What insurance is worth to your practice.</h1>
+        <h1>Could insurance fit your practice?</h1>
         <p class="lede">Count the insured patients you turn away and what a full course of care is worth. The number is gross potential, not a promise.</p>
       </div>
     </header>
@@ -53,20 +64,34 @@
       <div class="worth-grid">
         <div class="card worth-fields">
           <h2 id="calculator-heading" style="font-size:1.3rem">Enter your practice estimate</h2>
-          <label for="turned-away">Insured patients turned away<input id="turned-away" name="turned-away" type="number" inputmode="decimal" min="0" step="0.5" value="2" aria-describedby="turned-away-help"><small id="turned-away-help">Your best estimate for the frequency below.</small></label>
-          <label for="frequency">Frequency<select id="frequency" name="frequency"><option value="workday">Each workday</option><option value="week" selected>Each week</option><option value="month">Each month</option></select></label>
-          <label for="course-revenue">Full-course revenue per patient (USD)<input id="course-revenue" name="course-revenue" type="number" inputmode="decimal" min="0" step="1" value="750" aria-describedby="course-revenue-help"><small id="course-revenue-help">Expected gross revenue across that patient's full course of care.</small></label>
+          <label for="turned-away">Insured patients turned away<input id="turned-away" name="turned-away" type="number" inputmode="decimal" min="0" step="0.5" value="2" aria-describedby="turned-away-help">
+<small id="turned-away-help">Your best estimate for the frequency below.</small>
+</label>
+          <label for="frequency">Frequency<select id="frequency" name="frequency">
+<option value="workday">Each workday</option>
+<option value="week" selected>Each week</option>
+<option value="month">Each month</option>
+</select>
+</label>
+          <label for="course-revenue">Full-course revenue per patient (USD)<input id="course-revenue" name="course-revenue" type="number" inputmode="decimal" min="0" step="1" value="750" aria-describedby="course-revenue-help">
+<small id="course-revenue-help">Expected gross revenue across that patient's full course of care.</small>
+</label>
         </div>
         <div class="worth-result" aria-live="polite" aria-atomic="true">
           <p class="eyebrow" id="result-heading">Monthly gross potential</p>
-          <strong><output id="monthly-potential" for="turned-away frequency course-revenue">$6,500</output></strong>
-          <span class="monthly">Annual gross potential: <output id="annual-potential" for="turned-away frequency course-revenue">$78,000</output></span>
-          <span class="monthly">Annual patient count: <output id="annual-patients" for="turned-away frequency">104</output></span>
+          <strong>
+<output id="monthly-potential" for="turned-away frequency course-revenue">$6,500</output>
+</strong>
+          <span class="monthly">Annual gross potential: <output id="annual-potential" for="turned-away frequency course-revenue">$78,000</output>
+</span>
+          <span class="monthly">Annual patient count: <output id="annual-patients" for="turned-away frequency">104</output>
+</span>
           <span class="formula" id="exact-formula">2 patients × 52 weeks × $750 = $78,000 per year; $78,000 ÷ 12 = $6,500 per month.</span>
           <span class="formula">Annual factors: 260 workdays, 52 weeks, or 12 months.</span>
           <div class="page-actions">
-            <a class="button" id="use-estimate" href="#review">Use this estimate <span aria-hidden="true">↓</span></a>
-            <a class="button secondary" href="/claimsnative/#demo">See the department run</a>
+            <a class="button" id="use-estimate" href="#review">Use this estimate <span aria-hidden="true">↓</span>
+</a>
+            <a class="button secondary" href="/claimsnative/#workspace">See the workspace</a>
           </div>
         </div>
       </div>
@@ -91,36 +116,79 @@
       <h2 id="review-heading">Send the number with your practice details.</h2>
       <p class="lede">This page builds an email to Ian@atomandbits.com so you can read it before you send it. Nothing is sent or stored here.</p>
       <p class="review-note" id="phi-warning">Do not include patient information: no names, dates of birth, diagnoses, insurance IDs, or other health information.</p>
-      <noscript><p class="review-note">JavaScript is needed to build the email draft. You can email Ian@atomandbits.com directly. Do not include patient information.</p></noscript>
+      <noscript>
+<p class="review-note">JavaScript is needed to build the email draft. You can email Ian@atomandbits.com directly. Do not include patient information.</p>
+</noscript>
 
       <form class="review-form" id="review-form">
         <p class="review-note">All fields are required. No request is sent when you fill out this form or review the draft.</p>
         <fieldset aria-describedby="phi-warning">
           <legend>Practice and contact details</legend>
           <div class="two-up">
-            <div class="field"><label for="practice-name">Practice name</label><input id="practice-name" name="practice-name" type="text" autocomplete="organization" maxlength="120" required></div>
-            <div class="field"><label for="specialty">Specialty</label><input id="specialty" name="specialty" type="text" autocomplete="off" maxlength="100" required></div>
-            <div class="field"><label for="location">City and state</label><input id="location" name="location" type="text" autocomplete="address-level2" maxlength="100" required></div>
-            <div class="field"><label for="visits-week">Visits per week</label><input id="visits-week" name="visits-week" type="number" inputmode="numeric" min="0" step="1" max="10000" required></div>
-            <div class="field"><label for="practice-system">Practice system</label><input id="practice-system" name="practice-system" type="text" maxlength="100" aria-describedby="practice-system-help" required><small id="practice-system-help">For example: Jane, ChiroTouch, or none.</small></div>
-            <div class="field"><label for="insurance-status">Insurance status</label><select id="insurance-status" name="insurance-status" required><option value="">Select one</option><option>Cash-pay only</option><option>Cash-pay with superbills</option><option>Out of network</option><option>In network</option><option>Mixed</option><option>Planning or unsure</option></select></div>
+            <div class="field">
+<label for="practice-name">Practice name</label>
+<input id="practice-name" name="practice-name" type="text" autocomplete="organization" maxlength="120" required>
+</div>
+            <div class="field">
+<label for="specialty">Specialty</label>
+<input id="specialty" name="specialty" type="text" autocomplete="off" maxlength="100" required>
+</div>
+            <div class="field">
+<label for="location">City and state</label>
+<input id="location" name="location" type="text" autocomplete="address-level2" maxlength="100" required>
+</div>
+            <div class="field">
+<label for="visits-week">Visits per week</label>
+<input id="visits-week" name="visits-week" type="number" inputmode="numeric" min="0" step="1" max="10000" required>
+</div>
+            <div class="field">
+<label for="practice-system">Practice system</label>
+<input id="practice-system" name="practice-system" type="text" maxlength="100" aria-describedby="practice-system-help" required>
+<small id="practice-system-help">For example: Jane, ChiroTouch, or none.</small>
+</div>
+            <div class="field">
+<label for="insurance-status">Insurance status</label>
+<select id="insurance-status" name="insurance-status" required>
+<option value="">Select one</option>
+<option>Cash-pay only</option>
+<option>Cash-pay with superbills</option>
+<option>Out of network</option>
+<option>In network</option>
+<option>Mixed</option>
+<option>Planning or unsure</option>
+</select>
+</div>
           </div>
-          <div class="field"><label for="biggest-concern">Biggest concern about accepting insurance</label><textarea id="biggest-concern" name="biggest-concern" maxlength="500" aria-describedby="concern-help" required></textarea><small id="concern-help">Keep this about your practice. Do not include patient information.</small></div>
+          <div class="field">
+<label for="biggest-concern">Biggest concern about accepting insurance</label>
+<textarea id="biggest-concern" name="biggest-concern" maxlength="500" aria-describedby="concern-help" required>
+</textarea>
+<small id="concern-help">Keep this about your practice. Do not include patient information.</small>
+</div>
           <div class="two-up">
-            <div class="field"><label for="contact-name">Your name</label><input id="contact-name" name="contact-name" type="text" autocomplete="name" maxlength="100" required></div>
-            <div class="field"><label for="contact-email">Email</label><input id="contact-email" name="contact-email" type="email" autocomplete="email" maxlength="254" required></div>
+            <div class="field">
+<label for="contact-name">Your name</label>
+<input id="contact-name" name="contact-name" type="text" autocomplete="name" maxlength="100" required>
+</div>
+            <div class="field">
+<label for="contact-email">Email</label>
+<input id="contact-email" name="contact-email" type="email" autocomplete="email" maxlength="254" required>
+</div>
           </div>
         </fieldset>
-        <button class="button" type="submit">Review email draft <span aria-hidden="true">→</span></button>
+        <button class="button" type="submit">Review email draft <span aria-hidden="true">→</span>
+</button>
         <p class="review-note">This creates a draft on this page. It does not send data to Claims Native or Atom &amp; Bits.</p>
       </form>
 
       <section class="draft-review" id="draft-review" aria-labelledby="draft-heading" aria-live="polite" hidden>
         <h3 id="draft-heading">Review your email</h3>
         <p class="review-note">Your draft is ready. Nothing has been sent.</p>
-        <pre id="draft-preview"></pre>
+        <pre id="draft-preview">
+</pre>
         <div class="page-actions">
-          <a class="button" id="open-email" href="mailto:Ian@atomandbits.com">Open email draft <span aria-hidden="true">→</span></a>
+          <a class="button" id="open-email" href="mailto:Ian@atomandbits.com">Open email draft <span aria-hidden="true">→</span>
+</a>
         </div>
         <p class="review-note">Your email app will open next. No request is sent until you review and send the email there.</p>
       </section>
@@ -128,20 +196,30 @@
 
     <section class="autopilot-hero centered final-cta" aria-labelledby="cta-title">
       <div class="autopilot-copy">
-        <h2 id="cta-title">Want to see it run first?</h2>
-        <p class="lede">Sixty seconds on synthetic data, then the number on your own visits.</p>
+        <h2 id="cta-title">Want to take a look first?</h2>
+        <p class="lede">Explore the fictional workspace, then discuss what would make insurance worthwhile for your practice.</p>
         <div class="page-actions">
-          <a class="button" href="/claimsnative/#demo">See the department run <span aria-hidden="true">→</span></a>
-          <a class="button secondary" href="/claimsnative/90-day-pilot/">Start the 90-day pilot</a>
+          <a class="button" href="/claimsnative/#workspace">See the workspace <span aria-hidden="true">→</span>
+</a>
+          <a class="button secondary" href="/claimsnative/90-day-pilot/">Talk about your practice</a>
         </div>
       </div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <strong>Claims Native is an Atom &amp; Bits product · Chattanooga, Tennessee</strong>
-    <span><a href="https://login.claimsnative.com/" rel="nofollow">Demo login</a> · <a href="/claimsnative/insurance-opportunity/">Calculator</a> · <a href="/claimsnative/90-day-pilot/">90-day pilot</a> · <a href="mailto:Ian@atomandbits.com">Ian@atomandbits.com</a> · <a href="/privacy-policy.html">Privacy</a></span>
-  </footer>
-  <script src="/claimsnative/calculator.js" defer></script>
+<footer class="site-footer">
+<div>
+<a class="brand" href="/claimsnative/">Claims Native</a>
+<p>More room for care.</p>
+<p class="footer-place">An Atom &amp; Bits product · Chattanooga, Tennessee</p>
+</div>
+<nav aria-label="Footer navigation">
+<a href="/claimsnative/chiropractors/">For chiropractors</a>
+<a href="/claimsnative/insurance-opportunity/">Insurance calculator</a>
+<a href="mailto:Ian@atomandbits.com">Contact Ian</a>
+<a href="/privacy-policy.html">Privacy</a>
+</nav>
+</footer>
+<script src="/claimsnative/calculator.js" defer>
+</script>
 </body>
 </html>
