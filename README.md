@@ -2,7 +2,7 @@
 
 **Live Site:** [atomandbits.com](https://atomandbits.com)
 
-Atom & Bits is Ian Harman's product and technology practice. The site begins with the work of growing a business while helping its people deliver the service customers value. The One to One Health story leads into his founder experience, commercial work, and offers.
+Atom & Bits is Ian Harman's product and technology practice. The site begins with the opportunity to grow a business while helping its people deliver the service customers value. The One to One Health story leads into his founder experience, commercial work, and offers.
 
 ## Quick Start for Editing
 
@@ -48,9 +48,14 @@ The agent walkthrough is an illustration using sample content; it does not
 connect to a live agent or perform an external action.
 
 Write in connected paragraphs that explain the reader's problem, the decision,
-and what changed. Keep the accepted passage intact in the One to One Health
+and what changed. Carry Ian’s latest story corrections into the homepage and One to One Health
 case. Describe what the product plan proposed separately from delivered results.
-Do not invent client conversations, clinical outcomes, or savings for a story.
+Frame each story around an opportunity, a decision, and its consequences. Ian’s founder perspective does not make him a founder of every company shown. Anchor past observations to his tenure. Explain that the clinical-note effort gave staff value sooner while the wider product suite was being built. Do not invent client conversations, clinical outcomes, or savings for a story.
+
+Avoid generic “the business” and “the work” phrasing and repeated “The…” openings.
+Name the company, person, task, or decision, or address the reader directly.
+Rewrite the sentence; do not just delete its article. Keep needed articles and
+proper names such as “The Mission Chattanooga.”
 
 ### Local Development
 Run `python3 -m http.server 4173 --bind 127.0.0.1` in the project folder,
