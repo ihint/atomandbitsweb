@@ -51,3 +51,13 @@ Ian requested removal of the “Fictional example” badge and references to “
 Prose review: remove the repeated “fictional” labels and the old product credit; no stale metaphor or passive construction needs repair. Use “TN” as requested. The updated HTML holds the exact replacement copy.
 
 Local result: all five built pages pass the requested-copy and JSON-LD checks. The Pages build and two redirect tests pass. Browser review at 845px and 390px confirms the removed badge, shorter caption and both footer changes, with no horizontal overflow. Public verification follows deployment.
+
+## Browser feedback: account spacing and practice labels
+
+Ian requested six changes: more space between Sign in and Get started; remove the hero's Chattanooga limit; use “A look at the app”; label the practice paths “Already accepting insurance” and “Want to accept insurance”; and shorten the second path to “Start with one payer.” Geographic launch wording on the homepage and chiropractor page should agree. Keep the Chattanooga footer as the company's home base.
+
+Expected behavior: all six edits appear in the built and public site; account links retain their destinations; the header has a clear gap at 1068px, 390px and 320px with no horizontal overflow. Refresh the shared stylesheet URL on all five pages so existing visitors receive its account styles. Run the existing Pages checks and verify the actual deployment. Do not change account access, billing readiness or service terms.
+
+Prose review: no stale metaphor, long-word replacement or passive construction needs repair. Cut “new,” the service-location restriction and “and a clear scope” from the selected introduction. Use Ian's exact practice labels. Existing scope and price approval remain on the starting page.
+
+Local result: Pages build, copy guards and both redirect tests passed. Browser checks at 1068px, 390px and 320px showed 32px desktop and 16px phone account gaps, visible account links and no horizontal overflow. The current public browser had a 4px gap and lacked the account flex styles; the new stylesheet URL addresses that stale asset. Public verification follows deployment.
