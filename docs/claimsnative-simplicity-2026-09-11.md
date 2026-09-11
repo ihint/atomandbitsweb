@@ -43,3 +43,11 @@ Expected behavior: display the exact approved copy, keep the current practice pa
 Prose review: no stale phrases, long-word replacements or passive constructions were found in the two original lines. The edit replaces their focus on the billing workspace with the patient-first language Ian approved. Original lines remain in Git history.
 
 Local result: the Pages build and two redirect tests pass. Browser review confirmed the approved text at desktop and phone sizes; 390px and 320px layouts had no horizontal overflow. Public verification follows deployment.
+
+## Browser feedback: labels and footer
+
+Ian requested removal of the “Fictional example” badge and references to “fictional,” the contact label “Connect with us,” and “Made with ❤️ in Chattanooga, TN.” Apply the shared footer to all five pages. Keep the contact destination and preview scope. Expected checks: requested text absent/present in the built pages, responsive preview and footer, existing Pages checks, and the public release.
+
+Prose review: remove the repeated “fictional” labels and the old product credit; no stale metaphor or passive construction needs repair. Use “TN” as requested. The updated HTML holds the exact replacement copy.
+
+Local result: all five built pages pass the requested-copy and JSON-LD checks. The Pages build and two redirect tests pass. Browser review at 845px and 390px confirms the removed badge, shorter caption and both footer changes, with no horizontal overflow. Public verification follows deployment.
