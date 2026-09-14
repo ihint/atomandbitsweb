@@ -57,3 +57,15 @@ The line-by-line specificity review keeps the approved headline and concrete wor
 Local setup failures: global Wrangler 4.45.0 could not write its log/registry under the filesystem restrictions. The release-pinned Wrangler 4.125.0 could not run a September 11 compatibility date because its runtime supports August 27. The passing redirect checks used the pinned CLI, temporary log/registry directories and compatibility date 2026-08-27. This is local static-route proof, not a new production deployment.
 
 Current result: implementation ready for review. Customer acceptance, live service readiness and production publication remain separate. The website's current app-preview and practice-specific service agreement still apply.
+
+## September 14 browser feedback
+
+Ian supplied seven homepage comments after the first preview: shorten the sample note; use built rather than building; make the EHR question and answer vendor-neutral; offer a direct start and move setup agreement into onboarding; remove the tentative routine-billing sentence; and replace the open-ended final invitation with Get started today.
+
+Expected: apply those seven website edits, route direct-start links to signup, keep FAQ text and structured data equal, retain sample amounts and clinical decisions, and check the rendered page at the supplied 910px width plus phone widths. Direct start means account creation. The hosted signup and current main onboarding source show a sample-work setup and confirmation; real service-price acceptance is not implemented there. Ian then explicitly approved building live service acceptance. The app change adds practice-specific offers and receipts. Deploy the app change before publishing the website statement about service acceptance.
+
+All seven comments are applied. The hero note reads “Explore the app with sample visits.” Service copy uses “We’ve built.” The EHR FAQ names no vendor. The routine-claim FAQ loses its tentative opening. The homepage and practice-page invitation say “Get started today,” and direct-start links open signup. The getting-started FAQ now names scope, price and terms acceptance during onboarding.
+
+After this pass, build/copy checks and both redirect tests passed. Six source pages passed 74 local references; six built pages passed 70 references. Both versions passed four FAQ/schema pairs, metadata, sample amounts, clinical boundaries and unchanged calculator source. Browser checks at 910/390/320px found no horizontal overflow and 49px hero buttons. The three edited FAQs expanded with the expected copy; four homepage signup links point to the hosted signup page. The earlier preview/scope FAQ and walkthrough-CTA observations above describe the initial version and are superseded by these checks.
+
+Rewrite audit: cut “current,” “We agree your service scope before real billing,” “The aim is to let,” and “could handle.” Replace “We’re building” with “We’ve built.” Remove the named EHR example. “Service scope,” “price” and “terms” stay because they name what the practice accepts. No passive construction remains in the edited invitation. No new price or claim of universal EHR integration was added.
