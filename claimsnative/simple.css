@@ -138,3 +138,12 @@ body.simple-site { color:var(--ink); background:var(--paper); -webkit-font-smoot
   .simple-site .brand { width:100%; justify-content:center; }
   .simple-site .brand small { display:none; }
 }
+
+/* Keep the longer service invitation readable on narrow phones. */
+@media(max-width:450px) {
+  .hero-copy .page-actions { flex-direction:column; align-items:stretch; gap:.5rem; }
+  .hero-copy .soft-link { justify-content:center; }
+}
+@media(max-width:375px) {
+  .hero-copy h1 { font-size:2.25rem; }
+}

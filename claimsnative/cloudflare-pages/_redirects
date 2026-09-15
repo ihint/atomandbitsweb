@@ -1,2 +1,5 @@
+/chiropractors /independent-practices/ 301
+/chiropractors/ /independent-practices/ 301
+/chiropractors/index.html /independent-practices/ 301
 /claimsnative / 301
 /claimsnative/* /:splat 301
