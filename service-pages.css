@@ -800,3 +800,22 @@ footer {
         scroll-behavior: auto;
     }
 }
+
+/* Offer summaries, case-study offer links, and related reading. */
+.at-a-glance { max-width: 880px; margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--line-strong); }
+.at-a-glance h2.section-label { margin: 0 0 4px; font-family: inherit; line-height: 1.4; }
+.at-a-glance dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin: 0; }
+.at-a-glance dl > div { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.at-a-glance dt { margin-bottom: 6px; color: var(--navy); font-size: .78rem; font-weight: 800; }
+.at-a-glance dd { margin: 0; color: var(--text); font-size: .95rem; line-height: 1.6; }
+.glance-actions, .cta-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; }
+.glance-actions { margin-top: 26px; }
+.cta-actions { flex-direction: column; align-items: flex-start; }
+.related-writing { margin-top: 36px; }
+.related-writing .related-link { min-height: 0; }
+.related-writing .related-link h3 { margin-top: 14px; }
+@media (max-width: 620px) {
+    .at-a-glance dl { grid-template-columns: 1fr; }
+    .glance-actions .button, .cta-actions .button { width: 100%; }
+    .cta-actions { align-items: stretch; }
+}
