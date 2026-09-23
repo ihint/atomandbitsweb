@@ -10,11 +10,17 @@ This is Ian Harman's Atom & Bits website. It presents his work, approach, and of
 
 - `index.html` - Static homepage
 - `atom-bits-website.html` - Historical mirror; keep synced with `index.html`
-- `site.css`, `site.js` - Shared styles, mobile navigation, and sample workflow controls
+- `site.css`, `site.js` - Shared styles, mobile navigation, sample workflow controls, contact form, and click tracking
+- `site.js` config at the top: `ANALYTICS` (PostHog loads only when provider and key are set) and `BOOKING_URL` (reveals `[data-booking-link]` when set); both are empty by default
 - `service-pages.css` - Base styles shared with the healthcare pages
 - `how-i-work/`, `ian-harman/` - Ian's approach and background
 - `ai-fit-review/`, `agent-workflows/`, `product-technology-leadership/` - Three offers
+- `healthcare-*/`, `method/` - Healthcare service pages and the operating-systems method
 - `work/` - Career case studies
+- `guides/`, `insights/` - Practice guides and essays; the two practice guides keep their own inline styles under the shared header
+- `writing/` - Index of guides and insights
+- `contact/` - Start-a-conversation page; the form composes a mailto (no backend) and reads `?topic=`
+- Every page shares one nav and footer; update them on all pages together
 - No build system or package.json - pure HTML/CSS/JS
 
 ## Technology Stack

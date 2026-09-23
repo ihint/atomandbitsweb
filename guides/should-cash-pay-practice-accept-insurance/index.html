@@ -24,7 +24,9 @@
   <meta name="twitter:image" content="https://atomandbits.com/og-2026-v3.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/service-pages.css"><link rel="stylesheet" href="/site.css">
+  <script src="/site.js" defer></script>
   <style>
     /* Base styles for Claims Native field guides (formerly /claimsnative/site.css). */
     * { box-sizing: border-box; }
@@ -79,66 +81,6 @@
       outline-offset: 3px;
     }
 
-    .container,
-    .nav-inner {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(16px);
-    }
-
-    .nav-inner {
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      color: var(--navy);
-      text-decoration: none;
-    }
-
-    .brand strong {
-      font-family: Fraunces, Georgia, serif;
-      font-size: 1.25rem;
-      font-weight: 650;
-    }
-
-    .brand span {
-      color: var(--muted);
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .nav-links > a:not(.button) {
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .nav-links > a:not(.button):hover { color: var(--navy); }
-
     .button {
       min-height: 46px;
       display: inline-flex;
@@ -172,36 +114,21 @@
 
     .button.secondary:hover { background: var(--blue-soft); }
 
-    footer {
-      padding: 28px 0;
-      border-top: 1px solid rgba(255,255,255,0.18);
-      background: var(--ink);
-      color: #c9d3df;
-      font-size: 0.86rem;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    footer a { color: var(--white); }
-
     @media (max-width: 680px) {
       body { font-size: 16px; }
-      .nav-inner, .container { width: min(100% - 28px, var(--max)); }
-      .nav-links > a:not(.button) { display: none; }
-      .nav-links .button { min-height: 40px; padding: 0 12px; font-size: 0.78rem; }
-      .brand span { display: none; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition: none !important; }
     }
+
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    /* Shared header and footer keep the Atom & Bits type; paragraphs keep the guide spacing. */
+    .site-nav, footer { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    :where(main p) { margin: 0 0 1em; }
+    :where(main ul, main ol) { margin: 1em 0; padding-left: 40px; }
+    @media (max-width: 680px) { .container { width: min(100% - 28px, var(--max)); } }
   </style>
   <style>
     :root { --max: 1120px; }
@@ -555,9 +482,6 @@
 
     @media (max-width: 680px) {
       body { font-size: 16px; }
-      .container, .nav-inner { width: min(100% - 28px, var(--max)); }
-      .nav-links a:nth-child(-n+2) { display: none; }
-      .brand span { display: none; }
       .hero { padding: 34px 0 54px; }
       h1 { font-size: clamp(2.75rem, 14vw, 4rem); }
       .gates,
@@ -567,9 +491,7 @@
       .gate, .check-panel, .proof-panel, .answer-card { padding: 25px; }
       .gate { min-height: 0; }
       .gate-number { margin-bottom: 26px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
     }
-
 
     /* Dark proof panels sit on white cards. */
     .section.dark .proof-panel h3 { color: var(--ink); }
@@ -591,6 +513,22 @@
       .cta-actions { align-items: flex-start; }
       .cta-actions .text-link { text-align: left; }
     }
+    /* Shared Atom & Bits styles load first; keep this guide's own type and cards where they overlap. */
+    .breadcrumbs { font-weight: 400; letter-spacing: normal; }
+    h3 { letter-spacing: normal; }
+    .hero-copy { line-height: inherit; }
+    .answer-card { margin-top: 0; border-radius: 0; }
+    .answer-card h2 { margin: 0 0 15px; }
+    .answer-card p, .answer-card li { font-size: 1em; }
+    .answer-card .section-label { font-size: 0.78rem; }
+    .answer-card li { position: static; color: var(--ink); }
+    .answer-card li::before { position: static; width: auto; height: auto; background: none; }
+    .button { font-size: inherit; }
+    .button span[aria-hidden] { margin-left: 0; }
+    .cta-actions .text-link { display: block; min-height: 0; }
+    .cta-inner > * { min-width: 0; }
+    @media (max-width: 680px) { .cta-actions { align-self: stretch; } .cta-actions .button { width: 100%; white-space: normal; } }
+    .section.dark .proof-panel li { color: var(--muted); }
   </style>
   <script type="application/ld+json">
   {
@@ -658,19 +596,12 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <nav class="nav" aria-label="Primary navigation">
-    <div class="nav-inner">
-      <a class="brand" href="/claimsnative/" aria-label="Claims Native home">
-        <strong>Claims Native</strong>
-        <span>Field guide</span>
-      </a>
-      <div class="nav-links">
-        <a href="#gates">Four gates</a>
-        <a href="#checks">Practical checks</a>
-        <a href="#pilot-proof">Pilot proof</a>
-      </div>
-    </div>
-  </nav>
+  <nav class="site-nav" aria-label="Primary navigation"><div class="nav-inner">
+<a class="brand" href="/" aria-label="Atom and Bits home"><span class="brand-mark">A&amp;B</span><span>Atom &amp; Bits</span></a>
+<ul class="nav-links"><li><a href="/#work">Work</a></li><li><a href="/how-i-work/">How I work</a></li><li><a href="/#services">Work with me</a></li><li><a href="/writing/">Writing</a></li><li><a href="/ian-harman/">About Ian</a></li><li><a href="https://claimsnative.com" data-event="nav_claims_native">Claims Native <span aria-hidden="true">↗</span></a></li></ul>
+<a class="nav-cta" href="/contact/" data-event="cta_nav_contact">Let’s talk</a>
+<details class="mobile-nav"><summary>Menu</summary><div class="mobile-links"><a href="/#work">Work</a><a href="/how-i-work/">How I work</a><a href="/#services">Work with me</a><a href="/writing/">Writing</a><a href="/ian-harman/">About Ian</a><a href="https://claimsnative.com" data-event="nav_claims_native">Claims Native <span aria-hidden="true">↗</span></a><a href="/contact/" data-event="cta_nav_contact">Let’s talk</a></div></details>
+</div></nav>
 
   <main id="main">
     <section class="hero">
@@ -896,11 +827,6 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <span>&copy; 2026 Atom &amp; Bits, LLC.</span>
-      <span><a href="/ian-harman/">Ian Harman</a> · <a href="/claimsnative/">Claims Native</a> · <a href="/privacy-policy.html">Privacy</a></span>
-    </div>
-  </footer>
+  <footer><div class="footer-inner"><div><a class="brand footer-brand" href="/">Atom &amp; Bits</a><p>Ian Harman · Chattanooga, Tennessee</p><p>© 2026 Atom &amp; Bits, LLC.</p></div><div class="footer-links"><a href="/ai-fit-review/">Assessment</a><a href="/agent-workflows/">Agent workflows</a><a href="/product-technology-leadership/">Leadership</a><a href="/method/healthcare-operating-systems/">Healthcare method</a><a href="/writing/">Writing</a><a href="/contact/">Contact</a><a href="https://claimsnative.com">Claims Native</a><a href="/privacy-policy.html">Privacy</a><a href="/support.html">Support</a></div></div></footer>
 </body>
 </html>
