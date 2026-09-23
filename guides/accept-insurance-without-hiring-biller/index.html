@@ -16,7 +16,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Atom &amp; Bits — healthcare product leadership from payer rules to payment.">
   <meta property="article:published_time" content="2026-08-19">
-  <meta property="article:modified_time" content="2026-08-19">
+  <meta property="article:modified_time" content="2026-09-23">
   <meta property="article:author" content="Ian Harman">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Accept insurance without hiring a biller">
@@ -24,8 +24,112 @@
   <meta name="twitter:image" content="https://atomandbits.com/og-2026-v3.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link href="/claimsnative/site.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Fraunces:opsz,wght@9..144,500;9..144,650&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/service-pages.css"><link rel="stylesheet" href="/site.css">
+  <script src="/site.js" defer></script>
+  <style>
+    /* Base styles for Claims Native field guides (formerly /claimsnative/site.css). */
+    * { box-sizing: border-box; }
+
+    :root {
+      /* Atom & Bits navy, paper, and copper palette; the serif wordmark stays with Claims Native. */
+      --ink: #111827;
+      --navy: #1f4e79;
+      --navy-dark: #173a5c;
+      --copper: #ad5735;
+      --copper-soft: #f1ddd3;
+      --paper: #fbfaf6;
+      --paper-deep: #f2f5f9;
+      --card: #ffffff;
+      --blue-soft: #f2f5f9;
+      --muted: #586069;
+      --line: #d7dee8;
+      --white: #ffffff;
+      --max: 1180px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 12px;
+      z-index: 100;
+      padding: 10px 14px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    :focus-visible {
+      outline: 3px solid var(--copper);
+      outline-offset: 3px;
+    }
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 22px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      background: var(--ink);
+      color: var(--white);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: var(--navy-dark);
+      background: var(--navy-dark);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--navy);
+    }
+
+    .button.secondary:hover { background: var(--blue-soft); }
+
+    @media (max-width: 680px) {
+      body { font-size: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    /* Shared header and footer keep the Atom & Bits type; paragraphs keep the guide spacing. */
+    .site-nav, footer { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    :where(main p) { margin: 0 0 1em; }
+    :where(main ul, main ol) { margin: 1em 0; padding-left: 40px; }
+    @media (max-width: 680px) { .container { width: min(100% - 28px, var(--max)); } }
+  </style>
   <style>
     :root { --max: 1120px; }
     body { line-height: 1.62; }
@@ -431,9 +535,6 @@
 
     @media (max-width: 680px) {
       body { font-size: 16px; }
-      .container, .nav-inner { width: min(100% - 28px, var(--max)); }
-      .nav-links a:nth-child(-n+2) { display: none; }
-      .brand span { display: none; }
       .hero { padding: 34px 0 54px; }
       h1 { font-size: clamp(2.75rem, 14vw, 4rem); }
       .framework,
@@ -445,9 +546,44 @@
       .framework-step span { margin-bottom: 24px; }
       .section { padding: 64px 0; }
       .decision-card, .readiness-card, .proof-card, .ownership-card-head { padding: 25px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
     }
 
+    /* Dark proof panels sit on white cards. */
+    .section.dark .proof-panel h3 { color: var(--ink); }
+    .section.dark .proof-panel p { color: var(--muted); }
+
+    /* Next step and related reading. */
+    .cta-actions { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+    .cta-actions .button.secondary { border-color: var(--line); background: var(--white); }
+    .cta-actions .text-link { color: var(--navy); font-size: 0.92rem; font-weight: 700; text-align: center; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .related-card { display: block; padding: 26px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); text-decoration: none; }
+    .related-card h3 { margin: 4px 0 10px; font-size: 1.3rem; }
+    .related-card p:last-child { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .related-card:hover h3 { color: var(--copper); }
+    .related-more { margin: 26px 0 0; }
+    .related-more a { color: var(--navy); font-weight: 700; }
+    @media (max-width: 900px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .cta-actions { align-items: flex-start; }
+      .cta-actions .text-link { text-align: left; }
+    }
+    /* Shared Atom & Bits styles load first; keep this guide's own type and cards where they overlap. */
+    .breadcrumbs { font-weight: 400; letter-spacing: normal; }
+    h3 { letter-spacing: normal; }
+    .hero-copy { line-height: inherit; }
+    .answer-card { margin-top: 0; border-radius: 0; }
+    .answer-card h2 { margin: 0 0 15px; }
+    .answer-card p, .answer-card li { font-size: 1em; }
+    .answer-card .section-label { font-size: 0.78rem; }
+    .answer-card li { position: static; color: var(--ink); }
+    .answer-card li::before { position: static; width: auto; height: auto; background: none; }
+    .button { font-size: inherit; }
+    .button span[aria-hidden] { margin-left: 0; }
+    .cta-actions .text-link { display: block; min-height: 0; }
+    .cta-inner > * { min-width: 0; }
+    @media (max-width: 680px) { .cta-actions { align-self: stretch; } .cta-actions .button { width: 100%; white-space: normal; } }
+    .section.dark .proof-card li { color: #d9e4f1; }
   </style>
   <script type="application/ld+json">
   {
@@ -459,7 +595,7 @@
         "headline": "Can You Accept Insurance Without Hiring a Biller?",
         "description": "A queue-by-queue ownership test for practices that want to accept insurance without hiring a biller.",
         "datePublished": "2026-08-19",
-        "dateModified": "2026-08-19",
+        "dateModified": "2026-09-23",
         "mainEntityOfPage": "https://atomandbits.com/guides/accept-insurance-without-hiring-biller/",
         "author": {"@id": "https://atomandbits.com/#ian-harman"},
         "publisher": {"@id": "https://atomandbits.com/#organization"},
@@ -515,19 +651,12 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <nav class="nav" aria-label="Primary navigation">
-    <div class="nav-inner">
-      <a class="brand" href="/claimsnative/" aria-label="Claims Native home">
-        <strong>Claims Native</strong>
-        <span>Field guide</span>
-      </a>
-      <div class="nav-links">
-        <a href="#framework">Ownership test</a>
-        <a href="#queues">Work queues</a>
-        <a href="#pilot-proof">Pilot proof</a>
-      </div>
-    </div>
-  </nav>
+  <nav class="site-nav" aria-label="Primary navigation"><div class="nav-inner">
+<a class="brand" href="/" aria-label="Atom and Bits home"><span class="brand-mark">A&amp;B</span><span>Atom &amp; Bits</span></a>
+<ul class="nav-links"><li><a href="/#work">Work</a></li><li><a href="/how-i-work/">How I work</a></li><li><a href="/#services">Work with me</a></li><li><a href="/writing/">Writing</a></li><li><a href="/ian-harman/">About Ian</a></li><li><a href="https://claimsnative.com" data-event="nav_claims_native">Claims Native <span aria-hidden="true">↗</span></a></li></ul>
+<a class="nav-cta" href="/contact/" data-event="cta_nav_contact">Let’s talk</a>
+<details class="mobile-nav"><summary>Menu</summary><div class="mobile-links"><a href="/#work">Work</a><a href="/how-i-work/">How I work</a><a href="/#services">Work with me</a><a href="/writing/">Writing</a><a href="/ian-harman/">About Ian</a><a href="https://claimsnative.com" data-event="nav_claims_native">Claims Native <span aria-hidden="true">↗</span></a><a href="/contact/" data-event="cta_nav_contact">Let’s talk</a></div></details>
+</div></nav>
 
   <main id="main">
     <section class="hero">
@@ -720,24 +849,37 @@
       </div>
     </section>
 
-    <section class="cta">
+    <section class="cta" id="next-step">
       <div class="container cta-inner">
         <div>
-          <p class="eyebrow">Size the first lane</p>
-          <h2>See whether the opportunity justifies the operating test.</h2>
-          <p>Start with practice-level counts and planning ranges. Then compare the likely queue with the team you already have.</p>
+          <p class="eyebrow">Map the queues with me</p>
+          <h2>Want me to check these queues against the team you have?</h2>
+          <p>Tell me your expected insured visits per week, who handles intake and scheduling today, and which payers patients ask about. I’ll map each queue to a named owner, flag any without backup, and tell you whether Claims Native, an outside biller, or a new hire fits your volume. If hiring is the honest answer, you’ll hear it from me.</p>
         </div>
-        <a class="button" href="/claimsnative/insurance-opportunity/">See what insurance may be worth <span aria-hidden="true">→</span></a>
-        <p class="cta-note">Planning estimate only. No payer, revenue, reimbursement, payment, or staffing guarantee. Do not enter or send names, dates of birth, member IDs, charts, or other PHI.</p>
+        <div class="cta-actions">
+          <a class="button" href="/contact/?topic=no-biller" data-event="cta_contact_guide_no_biller">Ask me to map your queues <span aria-hidden="true">→</span></a>
+          <a class="button secondary" href="https://claimsnative.com" data-event="cta_offer_claims_native_guide_no_biller">See Claims Native</a>
+          <a class="text-link" href="/claimsnative/insurance-opportunity/" data-event="cta_calculator_guide_no_biller">Or estimate it yourself first</a>
+        </div>
+        <p class="cta-note">Counts and roles only. Do not send names, dates of birth, member IDs, charts, or other PHI. No payer, revenue, reimbursement, payment, or staffing guarantee.</p>
+      </div>
+    </section>
+    <section class="section related" aria-labelledby="related-reading-title">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Related reading</p><h2 id="related-reading-title">More for practices weighing insurance.</h2></div>
+          <p class="section-intro">Each piece takes one part of the path from a patient asking about coverage to a practice getting paid.</p>
+        </div>
+        <div class="related-grid">
+          <a class="related-card" href="/guides/should-cash-pay-practice-accept-insurance/"><p class="section-label">Guide</p><h3>Should your cash-pay practice accept insurance?</h3><p>Test measured demand, conservative economics, operating fit, and a safe way back out before you change how your practice gets paid.</p></a>
+          <a class="related-card" href="/insights/why-automated-claims-need-control-states/"><p class="section-label">Insight</p><h3>Why automated claims need explicit control states</h3><p>Prepared, submitted, accepted, and paid are different facts. Keep state, authority, approvals, retries, and evidence explicit before you automate.</p></a>
+          <a class="related-card" href="/healthcare-ai-workflow-assessment/"><p class="section-label">Service</p><h3>Healthcare AI workflow assessment</h3><p>Two weeks on one costly clinical, claims, or administrative workflow, ending in a build, buy, change, or stop decision.</p></a>
+        </div>
+        <p class="related-more"><a href="/writing/">See all guides and writing <span aria-hidden="true">→</span></a></p>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-inner">
-      <span>&copy; 2026 Atom &amp; Bits, LLC.</span>
-      <span><a href="/ian-harman/">Ian Harman</a> · <a href="/claimsnative/">Claims Native</a> · <a href="/privacy-policy.html">Privacy</a></span>
-    </div>
-  </footer>
+  <footer><div class="footer-inner"><div><a class="brand footer-brand" href="/">Atom &amp; Bits</a><p>Ian Harman · Chattanooga, Tennessee</p><p>© 2026 Atom &amp; Bits, LLC.</p></div><div class="footer-links"><a href="/ai-fit-review/">Assessment</a><a href="/agent-workflows/">Agent workflows</a><a href="/product-technology-leadership/">Leadership</a><a href="/method/healthcare-operating-systems/">Healthcare method</a><a href="/writing/">Writing</a><a href="/contact/">Contact</a><a href="https://claimsnative.com">Claims Native</a><a href="/privacy-policy.html">Privacy</a><a href="/support.html">Support</a></div></div></footer>
 </body>
 </html>
