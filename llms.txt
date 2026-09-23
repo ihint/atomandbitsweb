@@ -33,7 +33,7 @@ Inquiries sent through the contact form or by email get a reply within minutes. 
 - [Start a conversation](https://atomandbits.com/contact/): A short form for the decision in front of you and what is in the way. Replies arrive within minutes.
 - Email: Ian@atomandbits.com
 - Phone: +1-865-803-5050
-- Booking: a link to book 30 minutes directly appears on the contact page once scheduling is live.
+- Book 30 minutes: https://cal.com/atomandbits/introduction
 - [LinkedIn](https://www.linkedin.com/in/ianjharman)
 
 ## About Ian

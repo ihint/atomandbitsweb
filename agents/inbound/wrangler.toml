@@ -22,7 +22,7 @@ AUTO_SEND = "false"                                   # "true" sends replies to 
 FROM_EMAIL = "Ian Harman <ian@atomandbits.com>"
 REPLY_TO = "Ian@atomandbits.com"
 IAN_EMAIL = "Ian@atomandbits.com"
-BOOKING_URL = ""                                      # e.g. https://cal.com/ianharman/30min
+BOOKING_URL = "https://cal.com/atomandbits/introduction?overlayCalendar=true"                                      # e.g. https://cal.com/ianharman/30min
 ALLOWED_ORIGINS = "https://atomandbits.com,https://www.atomandbits.com,http://127.0.0.1:*,http://localhost:*"
 CLAUDE_MODEL = "claude-sonnet-5"
 CLAUDE_EFFORT = "medium"

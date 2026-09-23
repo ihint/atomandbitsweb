@@ -17,7 +17,7 @@
 // ---------------------------------------------------------------------------
 const ANALYTICS = { provider: '', key: '' };
 const ANALYTICS_HOST = 'https://us.i.posthog.com';
-const BOOKING_URL = '';
+const BOOKING_URL = 'https://cal.com/atomandbits/introduction?overlayCalendar=true';
 const INBOUND_ENDPOINT = '';
 
 // Load PostHog only when it has been configured.
