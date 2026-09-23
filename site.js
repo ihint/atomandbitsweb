@@ -6,12 +6,19 @@
 // persistence, no cookies, and autocapture off. If Plausible is added to a
 // page by its own script tag instead, track() sends events there.
 //
-// BOOKING_URL: a scheduling link (for example a Calendly or Cal.com page).
-// When set, every [data-booking-link] element is pointed at it and shown.
+// BOOKING_URL: a scheduling link (for example a Cal.com page). When set,
+// every [data-booking-link] "Book 30 minutes" button is pointed at it, shown,
+// and made the primary action; the "Start a conversation" button beside it
+// becomes secondary. Empty keeps "Start a conversation" primary.
+//
+// INBOUND_ENDPOINT: the URL of Ian's inbound agent. When set, the /contact/
+// form POSTs its fields as JSON there and shows a confirmation on {ok:true}.
+// Empty, or any error, falls back to composing an email in the visitor's app.
 // ---------------------------------------------------------------------------
 const ANALYTICS = { provider: '', key: '' };
 const ANALYTICS_HOST = 'https://us.i.posthog.com';
 const BOOKING_URL = '';
+const INBOUND_ENDPOINT = '';
 
 // Load PostHog only when it has been configured.
 if (ANALYTICS.provider === 'posthog' && ANALYTICS.key) {
@@ -52,11 +59,19 @@ document.addEventListener('click', (event) => {
     });
 });
 
-// Show booking links only once a scheduling URL exists.
+// Show booking links only once a scheduling URL exists, and make them primary.
 if (BOOKING_URL) {
     document.querySelectorAll('[data-booking-link]').forEach((link) => {
         link.setAttribute('href', BOOKING_URL);
         link.hidden = false;
+        const wrap = link.closest('[data-booking-wrap]');
+        if (wrap) wrap.hidden = false;
+        if (!link.parentElement) return;
+        [...link.parentElement.children].forEach((sibling) => {
+            if (sibling !== link && sibling.classList.contains('button') && !sibling.hasAttribute('data-booking-link')) {
+                sibling.classList.add('secondary');
+            }
+        });
     });
 }
 
@@ -98,7 +113,8 @@ document.querySelectorAll('[data-walkthrough]').forEach((demo) => {
     demo.classList.add('enhanced');
 });
 
-// Contact form: there is no backend, so compose an email in the visitor's own app.
+// Contact form: send to Ian's inbound agent when configured; otherwise, or if
+// sending fails, compose an email in the visitor's own app.
 const contactForm = document.querySelector('[data-contact-form]');
 if (contactForm) {
     const CONTACT_EMAIL = 'Ian@atomandbits.com';
@@ -110,7 +126,20 @@ if (contactForm) {
     const mailtoLink = document.querySelector('[data-mailto-link]');
     const topicNote = document.querySelector('[data-topic-note]');
     const topicLabelOut = document.querySelector('[data-topic-label]');
+    const sentNotice = document.querySelector('[data-form-sent]');
+    const submitButton = contactForm.querySelector('[type="submit"]');
     let lastMessage = '';
+    let sending = false;
+
+    // With an endpoint configured, describe the direct path instead of the email app.
+    if (INBOUND_ENDPOINT) {
+        document.querySelectorAll('[data-form-mode]').forEach((note) => {
+            note.hidden = note.dataset.formMode !== 'direct';
+        });
+        if (submitButton && submitButton.dataset.directLabel) {
+            submitButton.innerHTML = submitButton.dataset.directLabel;
+        }
+    }
 
     const labelFor = (value) => {
         const option = topicSelect ? [...topicSelect.options].find((item) => item.value === value && value) : null;
@@ -133,10 +162,69 @@ if (contactForm) {
         return input ? input.value.trim() : '';
     };
 
-    contactForm.addEventListener('submit', (event) => {
+    const reveal = (panel) => {
+        if (!panel) return;
+        panel.hidden = false;
+        panel.focus({ preventScroll: true });
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    };
+
+    const sendToAgent = async () => {
+        const topic = field('topic');
+        const payload = {
+            name: field('name'),
+            email: field('email'),
+            organization: field('organization'),
+            topic: topic ? labelFor(topic) : '',
+            timeline: field('timeline'),
+            goal: field('goal'),
+            obstacle: field('obstacle'),
+            page: window.location.pathname + window.location.search,
+            website: field('website'),
+        };
+        const controller = typeof AbortController === 'function' ? new AbortController() : null;
+        const timer = controller ? window.setTimeout(() => controller.abort(), 15000) : null;
+        try {
+            const response = await fetch(INBOUND_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+                signal: controller ? controller.signal : undefined,
+            });
+            const data = await response.json().catch(() => null);
+            return Boolean(response.ok && data && data.ok === true);
+        } catch (error) {
+            return false;
+        } finally {
+            if (timer) window.clearTimeout(timer);
+        }
+    };
+
+    contactForm.addEventListener('submit', async (event) => {
         event.preventDefault();
+        if (sending) return;
         if (typeof contactForm.reportValidity === 'function' && !contactForm.reportValidity()) return;
 
+        if (INBOUND_ENDPOINT) {
+            sending = true;
+            const originalLabel = submitButton ? submitButton.innerHTML : '';
+            if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Sending…'; }
+            const sent = await sendToAgent();
+            sending = false;
+            if (submitButton) { submitButton.disabled = false; submitButton.innerHTML = originalLabel; }
+            if (sent) {
+                track('contact_form_sent', { topic: field('topic') || 'none', path: window.location.pathname });
+                if (confirmation) confirmation.hidden = true;
+                contactForm.reset();
+                reveal(sentNotice);
+                return;
+            }
+            track('contact_form_fallback', { path: window.location.pathname });
+        }
+        composeEmail();
+    });
+
+    function composeEmail() {
         const topic = field('topic');
         const topicLabel = labelFor(topic);
         const organization = field('organization');
@@ -160,13 +248,10 @@ if (contactForm) {
 
         if (mailtoLink) mailtoLink.setAttribute('href', mailto);
         if (messageCopy) messageCopy.value = `To: ${CONTACT_EMAIL}\nSubject: ${subject}\n\n${lastMessage}`;
-        if (confirmation) {
-            confirmation.hidden = false;
-            confirmation.focus({ preventScroll: true });
-            confirmation.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+        if (sentNotice) sentNotice.hidden = true;
+        reveal(confirmation);
         window.location.href = mailto;
-    });
+    }
 
     if (copyButton && messageCopy) {
         copyButton.addEventListener('click', async () => {

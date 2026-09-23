@@ -1,0 +1,61 @@
+# Atom & Bits: Ian Harman
+
+> Ian Harman is a founder-operator and advisor in Chattanooga, Tennessee. He gives leaders facing a hard growth decision the strategic insight and question depth to see what they are missing and where they need to go, usually in a 30-minute conversation or less. His deepest experience is in behavioral health and healthcare; his advisory work also spans manufacturing and health tech. Atom & Bits, LLC is his company.
+
+Ian comes to each conversation curious and prepared: he researches the company first, then asks questions until the assumption, constraint, or person a plan has not accounted for is on the table. A first conversation leaves a leader with three things, whether or not they work together: what they are missing, the question worth answering first, and where to go next.
+
+Inquiries sent through the contact form or by email get a reply within minutes. Ian's own agent drafts that first reply in his voice, and Ian reads every thread. Please do not send patient health information.
+
+## Who it is for
+
+- Founders, executives, and operating teams facing a hard growth decision: entering a market, deciding what to build, buy, change, or stop, or growing faster than the team that delivers the work.
+- Behavioral health and healthcare companies, where Ian's experience runs deepest.
+- Portfolio companies and investors who need product and technology judgment close to the business.
+
+## Offers
+
+- [30-minute strategic conversation](https://atomandbits.com/contact/): The starting point. Bring one decision; leave with what you are missing, the question worth answering first, and where to go next.
+- [Product & AI assessment](https://atomandbits.com/ai-fit-review/): Two weeks on one product or workflow decision, ending in a recommendation with reasons and a 90-day plan someone can own. Fixed fee agreed before kickoff.
+- [Agent workflow pilot](https://atomandbits.com/agent-workflows/): Test an AI agent on one repeated task with human review built in, and measure useful output, time saved, and the effort of using it.
+- [Product & technology leadership](https://atomandbits.com/product-technology-leadership/): Lead product, technology, hiring, and delivery decisions with a team, with clear agreement on what Ian owns.
+
+## Proof points
+
+- [TheraMatch / TPN Match](https://atomandbits.com/work/theramatch/): Ian co-founded TheraMatch and led its sale to TPN.health. TheraMatch / TPN Match reached $1M ARR and 1M+ lives under care in less than 12 months.
+- [One to One Health](https://atomandbits.com/work/one-to-one-health/): Ian designed and developed the initial AI infrastructure for clinical notes. Charting time fell from 22 to 17.5 minutes across all encounters, an average of 4.5 minutes saved per encounter.
+- [Paragon Truss](https://atomandbits.com/work/paragon-truss/): Ian led the company's first enterprise deal, worth $500,000 in annual contract value.
+- [BlueCross BlueShield of Tennessee](https://atomandbits.com/work/bcbst/): Ian led digital products serving about 3.5 million members; digital adoption more than doubled and administrative costs fell by $500K+.
+- [PerfectServe](https://atomandbits.com/work/perfectserve/): Ian built a new-market sales approach that brought in $3M+ in revenue.
+- [TPN.health](https://atomandbits.com/work/tpn-match/): As VP, Provider Networks & Technology, Ian asked what invoicing payers directly was meant to achieve, which led to an internal claims filing and revenue capture platform.
+
+## How to engage
+
+- [Start a conversation](https://atomandbits.com/contact/): A short form for the decision in front of you and what is in the way. Replies arrive within minutes.
+- Email: Ian@atomandbits.com
+- Phone: +1-865-803-5050
+- Booking: a link to book 30 minutes directly appears on the contact page once scheduling is live.
+- [LinkedIn](https://www.linkedin.com/in/ianjharman)
+
+## About Ian
+
+- [About Ian Harman](https://atomandbits.com/ian-harman/): Background, experience, education, and life in Chattanooga.
+- [How I work](https://atomandbits.com/how-i-work/): Joy, curiosity, questions, and a shared understanding of the deliverable.
+
+## Writing
+
+- [All writing](https://atomandbits.com/writing/)
+- [What healthtech founders underestimate about payers](https://atomandbits.com/insights/what-healthtech-founders-underestimate-about-payers/)
+- [How to choose a healthcare CTO and product partner](https://atomandbits.com/guides/how-to-choose-a-healthcare-cto/)
+- [From clinical matching to a behavioral health operating system](https://atomandbits.com/insights/from-clinical-matching-to-operating-system/)
+- [Why automated claims need explicit control states](https://atomandbits.com/insights/why-automated-claims-need-control-states/)
+- [Healthcare operating systems: from payer to payment](https://atomandbits.com/method/healthcare-operating-systems/)
+
+## What Ian is building
+
+- [Claims Native](https://claimsnative.com): Early access. Helps independent behavioral health practices accept insurance without hiring a billing team; providers keep every clinical decision.
+
+## Optional
+
+- [Should your cash-pay practice accept insurance?](https://atomandbits.com/guides/should-cash-pay-practice-accept-insurance/)
+- [Can you accept insurance without hiring a biller?](https://atomandbits.com/guides/accept-insurance-without-hiring-biller/)
+- [Privacy policy](https://atomandbits.com/privacy-policy.html)
