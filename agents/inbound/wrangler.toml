@@ -1,0 +1,36 @@
+# Atom & Bits inbound-inquiry agent (Cloudflare Worker). See README.md.
+name = "atomandbits-inbound"
+main = "src/index.mjs"
+compatibility_date = "2026-08-24"
+workers_dev = true          # https://atomandbits-inbound.<account-subdomain>.workers.dev
+
+# Custom domain (needs the atomandbits.com zone on Cloudflare). Uncomment to use:
+# routes = [{ pattern = "inbound.atomandbits.com", custom_domain = true }]
+
+# Bundle voice.md as a string module.
+[[rules]]
+type = "Text"
+globs = ["**/*.md"]
+fallthrough = true
+
+[observability]
+enabled = true
+
+# Non-secret settings. Secrets are set with `wrangler secret put` (see README).
+[vars]
+AUTO_SEND = "false"                                   # "true" sends replies to leads; "false" emails drafts to Ian
+FROM_EMAIL = "Ian Harman <ian@atomandbits.com>"
+REPLY_TO = "Ian@atomandbits.com"
+IAN_EMAIL = "Ian@atomandbits.com"
+BOOKING_URL = ""                                      # e.g. https://cal.com/ianharman/30min
+ALLOWED_ORIGINS = "https://atomandbits.com,https://www.atomandbits.com,http://127.0.0.1:*,http://localhost:*"
+CLAUDE_MODEL = "claude-sonnet-5"
+CLAUDE_EFFORT = "medium"
+CLAUDE_TIMEOUT_MS = "22000"
+RATE_LIMIT_PER_HOUR = "5"
+
+# Optional: shared rate limiting across Cloudflare locations.
+# Create with `npx wrangler kv namespace create RATE_LIMIT`, then uncomment:
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT"
+# id = "<namespace id>"
