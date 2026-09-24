@@ -147,3 +147,72 @@ body.simple-site { color:var(--ink); background:var(--paper); -webkit-font-smoot
 @media(max-width:375px) {
   .hero-copy h1 { font-size:2.25rem; }
 }
+
+/* Service site (September 2026): one column of plain sections, the fee block and the limits block.
+   Colors come from the existing tokens: --ink, --muted, --paper, --line, --soft and --copper. */
+.service-hero { padding:4rem 0 4.5rem; }
+.service-hero .hero-copy { max-width:880px; }
+.service-hero h1 { margin-top:1.5rem; }
+.service-hero .hero-copy h1 span { font-size:.56em; font-weight:500; letter-spacing:-.03em; line-height:1.2; margin-top:.75rem; max-width:22ch; }
+.service-hero .hero-copy .lede { max-width:620px; }
+.service-section { display:grid; grid-template-columns:.8fr 1.6fr; gap:3rem; padding:3.6rem 0; border-top:1px solid var(--line); scroll-margin-top:1rem; }
+.service-section .section-intro h2 { font-size:clamp(1.7rem,2.6vw,2.3rem); letter-spacing:-.04em; }
+.service-section .section-intro p:not(.eyebrow) { max-width:260px; }
+.service-section .prose p { font-size:1.02rem; line-height:1.7; margin:0; max-width:640px; }
+.service-section .prose p+p { margin-top:1rem; }
+.work-list { list-style:none; margin:0; padding:0; counter-reset:work; }
+.work-list li { counter-increment:work; position:relative; padding:.9rem 0 .9rem 2.6rem; border-bottom:1px solid var(--line); font-size:1rem; line-height:1.6; }
+.work-list li::before { content:counter(work,decimal-leading-zero); position:absolute; left:0; top:1.1rem; font-size:.78rem; color:#6d825d; }
+.work-list strong { font-weight:600; }
+.work-return { margin-top:1.4rem; font-size:1.08rem; line-height:1.6; }
+.work-return strong { font-weight:600; }
+.fact-list { list-style:none; margin:0; padding:0; }
+.fact-list li { padding:.85rem 0; border-bottom:1px solid var(--line); font-size:1rem; line-height:1.6; }
+.fact-list li strong { display:block; font-weight:600; }
+.fact-list li span { color:var(--muted); }
+.section-note { color:var(--muted); margin-top:1.3rem; font-size:.95rem; line-height:1.7; max-width:640px; }
+.section-note a { color:var(--ink); }
+.fee-block { max-width:680px; }
+.fee-figure { margin:0; font-size:clamp(2.6rem,5vw,4rem); line-height:1; letter-spacing:-.05em; font-weight:500; }
+.fee-figure span { font-size:.42em; letter-spacing:-.02em; color:var(--muted); font-weight:400; }
+.fee-lead { margin-top:1rem; font-size:1.05rem; line-height:1.6; }
+.fee-launch { margin-top:.8rem; font-size:1rem; line-height:1.65; color:var(--muted); }
+.fee-columns { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1.6rem; padding-top:1.4rem; border-top:1px solid var(--line); }
+.fee-columns h3 { margin:0; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.fee-columns ul { margin:.6rem 0 0; padding-left:1.1rem; font-size:.95rem; line-height:1.75; }
+.step-list { list-style:none; margin:0; padding:0; counter-reset:step; }
+.step-list li { counter-increment:step; display:grid; grid-template-columns:2.4rem minmax(0,1fr); gap:.6rem; padding:1.1rem 0; border-bottom:1px solid var(--line); }
+.step-list li::before { content:counter(step); font-size:.85rem; color:#6d825d; padding-top:.2rem; }
+.step-list h3 { margin:0; font-size:1.15rem; }
+.step-list p { grid-column:2; margin-top:.4rem; color:var(--muted); font-size:.95rem; line-height:1.7; max-width:600px; }
+.simple-site .limits-block { margin:0 0 3rem; padding:1.5rem 1.6rem; background:#fff; border-top:2px solid var(--copper); border-bottom:1px solid var(--line); }
+.simple-site .limits-block strong { display:block; font-size:.78rem; color:var(--muted); }
+.simple-site .limits-block ul { columns:1; margin:.7rem 0 0; padding-left:1.1rem; color:var(--ink); font-size:.95rem; line-height:1.65; }
+.simple-site .limits-block li { padding-bottom:.45rem; }
+.simple-site .service-nav a[aria-current="page"] { color:var(--ink); }
+.simple-site .header-cta { white-space:nowrap; }
+@media(max-width:1100px) { .service-section { grid-template-columns:.7fr 1.5fr; gap:2rem; } }
+@media(max-width:1050px) {
+  .simple-site .topbar-inner { flex-wrap:wrap; }
+  .simple-site .nav.service-nav { display:flex; order:3; width:100%; flex-wrap:wrap; gap:0 .2rem; margin:0; padding:.2rem 0 .1rem; border-top:1px solid var(--line); }
+  .simple-site .nav.service-nav a { padding:.6rem .7rem .6rem 0; font-size:.85rem; }
+}
+@media(max-width:900px) { .service-section { grid-template-columns:1fr; gap:1.4rem; padding:2.8rem 0; } .service-section .section-intro p:not(.eyebrow) { max-width:none; } }
+@media(max-width:700px) {
+  .service-hero { padding:2rem 0 3rem; }
+  .service-hero .hero-copy h1 span { font-size:.6em; }
+  .service-section { padding:2.3rem 0; }
+  .fee-columns { grid-template-columns:1fr; gap:1.2rem; }
+  .work-list li, .fact-list li { font-size:1rem; }
+  .simple-site .eyebrow, .hero-copy .eyebrow, .simple-site .limits-block strong, .fee-columns h3 { font-size:.78rem; }
+  .simple-site .brand small { font-size:.75rem; }
+  .hero-note, .simple-site .site-footer, .site-footer .footer-place, .simple-site .site-footer nav, .work-list li::before, .step-list li::before { font-size:.8rem; }
+  .simple-site .limits-block { padding:1.2rem 1.1rem; margin-bottom:2.2rem; }
+  .simple-site .review-form legend { font-size:.78rem; }
+  .invitation h2 br { display:none; }
+}
+@media(max-width:450px) {
+  .simple-site .nav.service-nav a { font-size:.82rem; }
+  .simple-site .account-actions .header-cta { padding:.55rem .85rem; }
+  .sign-in-link { font-size:.82rem; }
+}
