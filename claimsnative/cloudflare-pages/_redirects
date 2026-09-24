@@ -1,5 +1,8 @@
-/chiropractors /independent-practices/ 301
-/chiropractors/ /independent-practices/ 301
-/chiropractors/index.html /independent-practices/ 301
+/independent-practices / 301
+/independent-practices/ / 301
+/independent-practices/index.html / 301
+/90-day-pilot /how-we-start/ 301
+/90-day-pilot/ /how-we-start/ 301
+/90-day-pilot/index.html /how-we-start/ 301
 /claimsnative / 301
 /claimsnative/* /:splat 301
