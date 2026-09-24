@@ -17,22 +17,23 @@ grep -Fq "CLOUDFLARE_API_TOKEN" "$repo_dir/.github/workflows/claimsnative-cloudf
 grep -Fq "CLOUDFLARE_ACCOUNT_ID" "$repo_dir/.github/workflows/claimsnative-cloudflare.yml"
 
 # Copy guard: the site never claims a payer paid, never promises, and never
-# leaks a demo access code. The walkthrough page requires an agreed scope
-# and price; earlier pilot prices are no longer the public offer.
+# leaks a demo access code. The how-it-starts page requires an agreed scope
+# and price; earlier pilot prices are no longer the public offer. It may not
+# call the app a preview or a walkthrough: this is the live service.
 for page in $(find "$output_dir" -name '*.html'); do
-  for banned in "payer paid" "paid by the payer" "guaranteed" "office-demo" "provider-demo"; do
+  for banned in "payer paid" "paid by the payer" "guaranteed" "guarantee" "100%" "office-demo" "provider-demo" "the app is a preview" "walkthrough"; do
     if grep -Fqi -- "$banned" "$page"; then
       echo "Copy guard: '$banned' found in $page" >&2
       exit 1
     fi
   done
 done
-for fact in 'Available now: a product walkthrough.' 'Name the supported payer, services, work and price.' 'You approve the work and price first.'; do
-  grep -Fq -- "$fact" "$output_dir/90-day-pilot/index.html" || { echo "Walkthrough page lacks $fact" >&2; exit 1; }
+for fact in 'Live billing starts after we agree.' 'Name the supported payer, services, work and price.' 'You approve the work and price first.'; do
+  grep -Fq -- "$fact" "$output_dir/90-day-pilot/index.html" || { echo "How-it-starts page lacks $fact" >&2; exit 1; }
 done
 for obsolete in '$500' '$249' '200 visits' '$1.25'; do
   if grep -Fq -- "$obsolete" "$output_dir/90-day-pilot/index.html"; then
-    echo "Walkthrough page still advertises the earlier price: $obsolete" >&2
+    echo "How-it-starts page still advertises the earlier price: $obsolete" >&2
     exit 1
   fi
 done
