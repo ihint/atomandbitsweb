@@ -52,7 +52,7 @@ Inquiries sent through the contact form or by email get a reply within minutes. 
 
 ## What Ian is building
 
-- [Claims Native](https://claimsnative.com): Early access. Helps independent behavioral health practices accept insurance without hiring a billing team; providers keep every clinical decision.
+- [Claims Native](https://claimsnative.com): A billing service for independent practices. We do the insurance billing, from the signed visit in the EHR to the payment posted back into it; providers keep every clinical decision.
 
 ## Optional
 
