@@ -1,15 +1,18 @@
-Built Claims Native Pages site at /var/folders/8f/m0gs2km97zbf5fj7n169ycxc0000gn/T/tmp.aEpOSyDveB/site
+Tested runtime/build source: 3e59bae0019ced63e8036bf8bffe30c0e546fffd
+Full marketing gate: 31 tests, eight pages, 147 local references, seven sitemap entries, production/preview and build-manifest checks.
+
+Built Claims Native Pages site at /var/folders/8f/m0gs2km97zbf5fj7n169ycxc0000gn/T/tmp.htBhgrgJLO/site
 TAP version 13
 # Subtest: redirects www paths and queries to the canonical host
 ok 1 - redirects www paths and queries to the canonical host
   ---
-  duration_ms: 9.866792
+  duration_ms: 11.481167
   type: 'test'
   ...
 # Subtest: fails closed for a host outside the configured route
 ok 2 - fails closed for a host outside the configured route
   ---
-  duration_ms: 0.882167
+  duration_ms: 1.155208
   type: 'test'
   ...
 1..2
@@ -20,117 +23,130 @@ ok 2 - fails closed for a host outside the configured route
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 49.365917
+# duration_ms 54.225625
 TAP version 13
 # Subtest: only public normalized paths; unknown and healthcare routes fail closed
 ok 1 - only public normalized paths; unknown and healthcare routes fail closed
   ---
-  duration_ms: 0.592667
+  duration_ms: 0.583166
   type: 'test'
   ...
 # Subtest: registry rejects arbitrary values, PII, duplicate parameters, and unapproved campaign keys
 ok 2 - registry rejects arbitrary values, PII, duplicate parameters, and unapproved campaign keys
   ---
-  duration_ms: 0.498375
+  duration_ms: 0.471791
   type: 'test'
   ...
 # Subtest: referral normalization rejects lookalike hosts and strips paths/query
 ok 3 - referral normalization rejects lookalike hosts and strips paths/query
   ---
-  duration_ms: 0.530333
+  duration_ms: 0.242542
   type: 'test'
   ...
 # Subtest: internal navigation retains the eligible source; a direct entry stays direct
 ok 4 - internal navigation retains the eligible source; a direct entry stays direct
   ---
-  duration_ms: 0.098292
+  duration_ms: 0.1005
   type: 'test'
   ...
 # Subtest: payload property allowlist drops fields, URL, query and caller category
 ok 5 - payload property allowlist drops fields, URL, query and caller category
   ---
-  duration_ms: 0.170667
+  duration_ms: 0.174875
   type: 'test'
   ...
 # Subtest: no network or source storage before opt-in; decline and revocation stop collection
 ok 6 - no network or source storage before opt-in; decline and revocation stop collection
   ---
-  duration_ms: 1.358333
+  duration_ms: 1.381083
   type: 'test'
   ...
 # Subtest: replays of form start and draft are deduplicated; no personal fields in serialized payload
 ok 7 - replays of form start and draft are deduplicated; no personal fields in serialized payload
   ---
-  duration_ms: 0.31775
+  duration_ms: 0.324375
   type: 'test'
   ...
 # Subtest: rapid click retries count once; locations remain separate
 ok 8 - rapid click retries count once; locations remain separate
   ---
-  duration_ms: 0.234584
+  duration_ms: 0.240208
   type: 'test'
   ...
 # Subtest: DNT, GPC, webdriver, app hosts, previews, unknown paths and missing provider fail closed
 ok 9 - DNT, GPC, webdriver, app hosts, previews, unknown paths and missing provider fail closed
   ---
-  duration_ms: 0.65
+  duration_ms: 0.672583
   type: 'test'
   ...
 # Subtest: first touch persists; conversion touch updates; stored fields are revalidated
 ok 10 - first touch persists; conversion touch updates; stored fields are revalidated
   ---
-  duration_ms: 0.773208
+  duration_ms: 0.878958
   type: 'test'
   ...
 # Subtest: expired, malformed and future state cannot override first touch
 ok 11 - expired, malformed and future state cannot override first touch
   ---
-  duration_ms: 0.15575
+  duration_ms: 0.200041
   type: 'test'
   ...
 # Subtest: storage failure preserves form use and in-memory opt-in
 ok 12 - storage failure preserves form use and in-memory opt-in
   ---
-  duration_ms: 0.096333
+  duration_ms: 0.118541
   type: 'test'
   ...
 # Subtest: loading script twice adds one listener set
 ok 13 - loading script twice adds one listener set
   ---
-  duration_ms: 0.736791
+  duration_ms: 0.812625
   type: 'test'
   ...
 # Subtest: network failure is not retried and never creates an acceptance event
 ok 14 - network failure is not retried and never creates an acceptance event
   ---
-  duration_ms: 0.072375
+  duration_ms: 0.086875
   type: 'test'
   ...
 # Subtest: missing secure random UUID fails closed without breaking email attribution
 ok 15 - missing secure random UUID fails closed without breaking email attribution
   ---
-  duration_ms: 0.052208
+  duration_ms: 0.052958
   type: 'test'
   ...
 # Subtest: delegated footer email click preserves safe source labels without analytics consent
 ok 16 - delegated footer email click preserves safe source labels without analytics consent
   ---
-  duration_ms: 0.140792
+  duration_ms: 0.169
   type: 'test'
   ...
-1..16
-# tests 16
+# Subtest: consent toggles do not reset form and draft retry protection
+ok 17 - consent toggles do not reset form and draft retry protection
+  ---
+  duration_ms: 0.138833
+  type: 'test'
+  ...
+# Subtest: internal partial campaign labels retain the known conversion source
+ok 18 - internal partial campaign labels retain the known conversion source
+  ---
+  duration_ms: 0.140542
+  type: 'test'
+  ...
+1..18
+# tests 18
 # suites 0
-# pass 16
+# pass 18
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 46.40875
+# duration_ms 52.06025
 8 HTML pages: canonical, heading, description, schema and script checks pass; 147 local links/assets/anchors pass; 7 sitemap URLs pass.
-Built Claims Native Pages site at /var/folders/8f/m0gs2km97zbf5fj7n169ycxc0000gn/T/tmp.aEpOSyDveB/preview
-.....
+Build manifest asset hashes and source identity pass.
+Built Claims Native Pages site at /var/folders/8f/m0gs2km97zbf5fj7n169ycxc0000gn/T/tmp.htBhgrgJLO/preview
+...........
 ----------------------------------------------------------------------
-Ran 5 tests in 0.000s
+Ran 11 tests in 0.354s
 
 OK

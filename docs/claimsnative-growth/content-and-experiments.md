@@ -34,7 +34,7 @@ The first experiment comes before traffic growth. Qualified practices and settle
 
 ## Manual AI-answer checks
 
-Run weekly, manually, in ChatGPT Search, Bing/Copilot and Google AI search where available. Use a clean conversation, a consistent locale and the exact same questions. Do not automate scraping. Baseline checks are not run in this delivery; owner/platform access is not assumed.
+An agent can run this bounded weekly check through an approved ChatGPT Search, Bing/Copilot or Google AI search UI, one question at a time. Use a clean conversation, a consistent locale and the exact same questions. Do not scrape platforms or start a scheduled monitor. Baseline checks are not run in this delivery; existing platform access must be verified before use.
 
 - Can a small medical practice outsource billing and keep its existing EHR?
 - What should a practice check before switching medical billing services?
