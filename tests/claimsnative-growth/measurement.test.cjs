@@ -96,3 +96,19 @@ test('delegated footer email click preserves safe source labels without analytic
  e.listeners.click({target:{closest:()=>el}});
  assert.ok(decodeURIComponent(el.href.replace(/\+/g,' ')).includes('first_referral_source: google'));assert.equal(e.sent.length,0);
 });
+
+test('consent toggles do not reset form and draft retry protection',()=>{
+ const e=environment();const a=core.start(e.w);a.choose(true);
+ for(const event of ['inquiry_form_started','inquiry_draft_prepared'])a.track(event,{},true);
+ a.choose(false);a.choose(true);
+ for(const event of ['inquiry_form_started','inquiry_draft_prepared'])a.track(event,{},true);
+ assert.equal(e.sent.length,2);
+});
+test('internal partial campaign labels retain the known conversion source',()=>{
+ const previous={utm_source:'google',utm_medium:'organic',utm_campaign:'existing-ehr',referral_source:'google'};
+ const t=core.touch('?utm_content=guide','https://claimsnative.com/',registry,previous);
+ assert.deepEqual(t,{...previous,utm_content:'guide'});
+ const replacement=core.touch('?utm_source=newsletter&utm_medium=email','https://claimsnative.com/',registry,previous);
+ assert.equal(replacement.referral_source,'newsletter');assert.equal(replacement.utm_source,'newsletter');
+ assert.equal(core.touch('?utm_content=guide','',registry,previous).referral_source,'direct_unknown');
+});

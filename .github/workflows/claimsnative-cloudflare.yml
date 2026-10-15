@@ -9,6 +9,7 @@ on:
       - "scripts/test-claimsnative-pages.sh"
       - "scripts/check-claimsnative-growth.py"
       - "scripts/claimsnative-scorecard.py"
+      - "scripts/claimsnative-build-manifest.py"
       - "tests/claimsnative-growth/**"
       - ".github/workflows/claimsnative-cloudflare.yml"
   pull_request:
@@ -18,6 +19,7 @@ on:
       - "scripts/test-claimsnative-pages.sh"
       - "scripts/check-claimsnative-growth.py"
       - "scripts/claimsnative-scorecard.py"
+      - "scripts/claimsnative-build-manifest.py"
       - "tests/claimsnative-growth/**"
       - ".github/workflows/claimsnative-cloudflare.yml"
   workflow_dispatch:

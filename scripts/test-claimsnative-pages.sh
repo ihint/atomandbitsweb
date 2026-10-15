@@ -142,3 +142,10 @@ test ! -e "$test_dir/preview/sitemap.xml"
 if grep -R -F 'content="index,follow' "$test_dir/preview" --include='*.html'; then exit 1; fi
 
 python3 -m unittest discover -s "$repo_dir/tests/claimsnative-growth" -p 'test_*.py'
+
+# A source mention must not imply a proved live EHR workflow.
+for page in "$output_dir/index.html" "$output_dir/how-we-start/index.html" "$output_dir/chiropractors/index.html"; do
+  grep -Fq 'Eligibility checks, claim filing and payment posting need validation for your practice.' "$page"
+  if grep -Fq 'We post each payment into your EHR' "$page"; then exit 1; fi
+  if grep -Fq 'We read signed visits and post payments through that login' "$page"; then exit 1; fi
+done

@@ -53,4 +53,6 @@ if [[ "$build_environment" == "preview" ]]; then
   rm -f "$output_dir/sitemap.xml"
 fi
 
+python3 "$repo_dir/scripts/claimsnative-build-manifest.py" "$output_dir" "$build_environment"
+
 echo "Built Claims Native Pages site at $output_dir"

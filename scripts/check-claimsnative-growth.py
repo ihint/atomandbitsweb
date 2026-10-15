@@ -2,7 +2,7 @@
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
-import json, sys, xml.etree.ElementTree as ET
+import hashlib, json, sys, xml.etree.ElementTree as ET
 root = Path(sys.argv[1]); pages = list(root.rglob('*.html')); docs = {}; checks = 0
 class Page(HTMLParser):
     def __init__(self, text):
@@ -51,3 +51,10 @@ for p in pages:
     if p.name!='404.html': assert next(a['href'] for t,a in docs[p].tags if t=='link' and a.get('rel')=='canonical') in urls
 assert not any(root.rglob('.claude'))
 print(f'{len(pages)} HTML pages: canonical, heading, description, schema and script checks pass; {checks} local links/assets/anchors pass; {len(urls)} sitemap URLs pass.')
+
+manifest=json.loads((root/'build-manifest.json').read_text())
+actual={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(root.rglob('*')) if p.is_file() and p.name!='build-manifest.json'}
+assert manifest['artifact_sha256']==actual, 'Built assets do not match their manifest'
+assert manifest['artifact_id']==hashlib.sha256(json.dumps(actual,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+assert len(manifest['source_revision'])==40 and manifest['source_sha256']
+print('Build manifest asset hashes and source identity pass.')

@@ -1,10 +1,10 @@
-# Owner setup and decisions
+# Agent setup checks and remaining decisions
 
 Prepared October 15, 2026. These steps are not executed. No account creation, access change, spend, publication or production action is part of this delivery.
 
 ## Inquiry to customer first
 
-1. Choose the existing inbox/CRM as the private source of truth and name its weekly operator. Create the ledger from `lead-ledger-template.csv` in approved private storage, never in this public repository. Use one internal opportunity key per practice buying decision; merge duplicate email threads there. Capture source labels from received email and the optional reported source, without overwriting one with the other.
+1. Have an agent identify the existing approved inbox/CRM as the private source of truth and prepare the weekly reconciliation. Ask Ian only if the records or required authority cannot be established. Create the ledger from `lead-ledger-template.csv` in approved private storage, never in this public repository. Use one internal opportunity key per practice buying decision; merge duplicate email threads there. Capture source labels from received email and the optional reported source, without overwriting one with the other.
 2. Count an inquiry only when received, then record qualification evidence, confirmed booking evidence, an agreed pilot start and settled service-payment receipts. Use `payments-template.csv` for distinct receipts/refunds. Keep all identifiers and evidence pointers in private records. The scorecard exports only source-group aggregates. Unknown app-signup source remains unknown.
 3. No scheduler is required to start. If one already exists, approve its public booking URL and record confirmation from its actual system/calendar. A future webhook must verify signatures and persist booking IDs idempotently. It is not implemented here.
 4. A future server inquiry form needs a durable lead store, validation, spam handling, an idempotency key, acceptance response and consent/retention review. Emit accepted only after commit. Do not add a fake success event to the current mailto form.
@@ -36,12 +36,18 @@ Prepared October 15, 2026. These steps are not executed. No account creation, ac
 
 “On our public marketing pages, you can choose whether we send website event counts to PostHog. These counts include the public page category, the button used and approved campaign or referral labels. We do not send your form answers to that analytics service. We do not use session replay or identify you in these events. With your choice, source labels remain in this browser tab for up to 30 minutes between page loads; you can withdraw the choice through Analytics choices in the footer. Our hosting and analytics providers receive technical connection information. Emailing us sends your draft and any source labels you keep in it to our inbox, where we use the inquiry to respond and manage the practice relationship.”
 
-Add the actual retention periods, provider roles, processing regions, rights/contact route and any separate Cloudflare traffic/performance collection after the owner checks the deployed services. This draft is not a compliance conclusion and is not published by this change.
+Add the actual retention periods, provider roles, processing regions, rights/contact route and any separate Cloudflare traffic/performance collection after an agent checks the deployed services through approved read access. This draft is not a compliance conclusion and is not published by this change.
 
 ## Remaining decisions
 
-Choose the private lead record/operator; confirm the existing PostHog project and acceptable retention; approve notice/consent before activation; adopt/reconcile the positioning commit and separately open offer/price PRs; decide whether booking integration or a server form is needed after the manual loop has run. Search/platform access and actual Cloudflare bot settings remain owner-access checks. No further product-price claim was added by this work.
+Agents prepare the private lead-record mapping, reconciliation, existing PostHog checks and retention options; approve notice/consent before activation; adopt/reconcile the positioning commit and separately open offer/price PRs; decide whether booking integration or a server form is needed after the manual loop has run. Search/platform access and actual Cloudflare bot settings remain owner-access checks. No further product-price claim was added by this work.
 
 ## Inherited positioning review still open
 
 The October 15 positioning handoff explicitly flags carried-over claims about live EHR posting, eligibility and ChiroHD as unproved/disabled in the application. Its visit import accepts Claims Native's prescribed layout; an arbitrary EHR export is not established as supported. The nationwide legal review and primary hero CTA choice also remain open. Those are pre-existing positioning questions, not validated service capabilities in this growth work. Keep new pages qualified and resolve those inherited claims before publication. The app's “Another EHR” name and specialty intake need separate app work if desired.
+
+## Agent-first default
+
+Agents own routine source checks, synthetic tests, reconciliation, qualification against agreed criteria, report drafts and cross-review. Use another available agent for a second opinion before asking a person. Human involvement is limited to a decision requiring authority, an unavailable access grant, a required practice signature, or unresolved professional judgment. This grants no permission to contact anyone, publish, enable collection, change production settings or access unapproved records. The website stays unpublished under Ian's current instruction.
+
+The growth review now qualifies the inherited EHR/eligibility/filing claims on the home, setup and chiropractic pages. Their earlier unconditional wording is no longer the proposed growth copy. Price, legal and actual live-service readiness still require evidence or an authorized decision before a later release; agent preparation comes first.

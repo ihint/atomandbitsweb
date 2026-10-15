@@ -1,4 +1,6 @@
-# Check results and limits
+# Original check results and limits
+
+Historical author snapshot for growth 1da3f64. The independent review found that its browser evidence lacked source hashes; it does not prove exact-source browser acceptance. Current source-bound results and agent follow-up are recorded in [the independent review and repair](review/README.md).
 
 Date: October 15, 2026. Agent: Codex (GPT-6 family; runtime does not expose a more precise model/settings identity). Review type: author software checks, synthetic browser execution and agent source/prose review. No independent reviewer or qualified domain acceptance is claimed. Model/tool cost was not exposed.
 

@@ -2,7 +2,9 @@
 
 Prepared October 15, 2026 for review. No account, credential, DNS, security setting, production configuration, content publication, deployment or outside message changed.
 
-Start with [the stack and audit](stack-and-audit.md), then [events and attribution](events-and-attribution.md). Owner actions are in [setup](owner-setup.md). [The 30-day plan](content-and-experiments.md) ranks pages and experiments; [the scorecard](weekly-scorecard.md) connects source to received inquiries, qualified practices and cash. [Proof](proof.md) records checks and gaps. The [eval contract](eval-contract.md) states the acceptance rules.
+The [independent agent review and repair](review/README.md) records findings, fixes and source-bound evidence.
+
+Start with [the stack and audit](stack-and-audit.md), then [events and attribution](events-and-attribution.md). Agent setup checks and remaining decisions are in [setup](owner-setup.md). [The 30-day plan](content-and-experiments.md) ranks pages and experiments; [the scorecard](weekly-scorecard.md) connects source to received inquiries, qualified practices and cash. [Proof](proof.md) records checks and gaps. The [eval contract](eval-contract.md) states the acceptance rules.
 
 The local branch is `codex/claimsnative-growth-foundation`, based on the separate positioning commit `52fd2c1`. Production main was `a8a0c6a` when checked. Merge or adopt the positioning change before this dependent work; do not apply both as competing rewrites. Other open offers and price changes in website PRs 51–53 remain separate owner decisions. No messages were sent to the other work chats.
 

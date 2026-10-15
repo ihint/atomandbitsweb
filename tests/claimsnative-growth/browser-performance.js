@@ -1,4 +1,16 @@
 async (page) => {
+ const manifestResponse=await page.request.get('http://127.0.0.1:4187/build-manifest.json');
+ if(!manifestResponse.ok())throw Error('Build identity missing');
+ const build=await manifestResponse.json();
+ if(!build.source_inputs_clean)throw Error('Browser proof requires committed build inputs');
+ if(build.build_environment!=='production')throw Error('Wrong browser artifact environment');
+ for(const [asset,expected]of Object.entries(build.artifact_sha256)){
+  const response=await page.request.get('http://127.0.0.1:4187/'+asset);
+  const bytes=await response.body();
+  const actual=await page.evaluate(async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new Uint8Array(bytes)))).map(b=>b.toString(16).padStart(2,'0')).join(''),Array.from(bytes));
+  if(!response.ok()||actual!==expected)throw Error('Built asset mismatch: '+asset);
+ }
+
  await page.unrouteAll({behavior:'wait'});
  await page.addInitScript(()=>{
   if(window.lab)return;window.lab={lcp:0,cls:0};
@@ -16,5 +28,5 @@ async (page) => {
   }
  }
  await cdp.send('Emulation.setCPUThrottlingRate',{rate:1});await cdp.send('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});
- return {results,note:'One local cold-cache run per page/viewport; no field INP or production CWV claim.'};
+ return {build,results,note:'One local cold-cache run per page/viewport; no field INP or production CWV claim.'};
 }

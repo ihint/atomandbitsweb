@@ -1,4 +1,16 @@
 async (page) => {
+ const manifestResponse=await page.request.get('http://127.0.0.1:4187/build-manifest.json');
+ if(!manifestResponse.ok())throw Error('Build identity missing');
+ const build=await manifestResponse.json();
+ if(!build.source_inputs_clean)throw Error('Browser proof requires committed build inputs');
+ if(build.build_environment!=='production')throw Error('Wrong browser artifact environment');
+ for(const [asset,expected]of Object.entries(build.artifact_sha256)){
+  const response=await page.request.get('http://127.0.0.1:4187/'+asset);
+  const bytes=await response.body();
+  const actual=await page.evaluate(async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new Uint8Array(bytes)))).map(b=>b.toString(16).padStart(2,'0')).join(''),Array.from(bytes));
+  if(!response.ok()||actual!==expected)throw Error('Built asset mismatch: '+asset);
+ }
+
  const captures=[],unexpected=[],errors=[];
  const response=await page.request.get('http://127.0.0.1:4187/growth-config.js');
  const fixtureConfig=(await response.text()).replace("posthogKey: ''", "posthogKey: 'synthetic-no-service-key'");
@@ -52,6 +64,13 @@ async (page) => {
  await page.locator('#specialty').fill('Another synthetic specialty');await page.getByRole('button',{name:'Review email draft'}).click();
  if(captures.length!==before)throw Error('Capture after revocation');
  if(await page.evaluate(()=>sessionStorage.getItem('claims-growth-v1'))!==null)throw Error('Source state survived revocation');
+ await page.getByRole('button',{name:'Analytics choices'}).click();
+ await page.getByRole('button',{name:'Allow event counts'}).click();
+ await page.locator('#specialty').fill('Re-consent retry');await page.getByRole('button',{name:'Review email draft'}).click();
+ if(captures.length!==before)throw Error('Re-consent reset page retry protection');
+ await page.goto('https://claimsnative.com/billing-setup/?utm_content=guide',{referer:'https://claimsnative.com/insurance-opportunity/'});
+ const internalLabels=await page.evaluate(()=>window.ClaimsGrowth.leadLines());
+ if(!internalLabels.includes('conversion_referral_source: google')||!internalLabels.includes('conversion_utm_content: guide'))throw Error('Partial internal tags erased conversion source');
  if(unexpected.length||errors.length)throw Error(JSON.stringify({unexpected,errors}));
- return {events:captures.map(e=>({event:e.event,properties:e.properties})),draftAttribution:true,receivedEvents:0,posthogRequestsForwarded:0,externalActions:0,unexpected,errors};
+ return {build,reconsentRetriesSuppressed:true,internalPartialAttributionVerified:true,fixture:{posthogKey:'synthetic-no-service-key',webdriver:false,allExternalRequestsIntercepted:true},events:captures.map(e=>({event:e.event,properties:e.properties})),draftAttribution:true,receivedEvents:0,posthogRequestsForwarded:0,externalActions:0,unexpected,errors};
 }

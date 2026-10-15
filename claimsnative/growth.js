@@ -51,7 +51,7 @@
     campaignKeys.forEach(function (k) { if (params.getAll(k).length === 1) raw[k] = params.get(k); });
     var out = campaign(raw, registry), referral = source(referrer);
     if (out.utm_source && sources.includes(out.utm_source)) referral = out.utm_source;
-    if (!Object.keys(out).length && referral === 'internal' && previous) return cleanTouch(previous, registry);
+    if (!out.utm_source && referral === 'internal' && previous) return Object.assign(cleanTouch(previous, registry), out);
     out.referral_source = referral === 'internal' ? 'direct_unknown' : referral;
     return out;
   }
@@ -116,7 +116,7 @@
     function choose(yes) {
       optIn = yes && configured && enabledHost && !blocked;
       save(consentKey, optIn ? 'yes' : 'no');
-      if (optIn) persist(); else { remove(key); seen.clear(); }
+      if (optIn) persist(); else remove(key); // Consent does not reset page-level retry protection.
       var panel = d.getElementById('growth-choice');
       if (panel) panel.hidden = true;
     }

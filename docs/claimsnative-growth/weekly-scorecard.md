@@ -1,6 +1,6 @@
 # Weekly scorecard
 
-Proposed owner cadence: Monday, previous Monday–Sunday in America/New_York. Store exports in approved private records. The baseline is **not collected**, not zero. No dashboard or account was created.
+Proposed agent reporting cadence: Monday, previous Monday–Sunday in America/New_York. Store exports in approved private records. The baseline is **not collected**, not zero. No dashboard or account was created.
 
 | Metric | Count and rate | Source and interpretation |
 | --- | --- | --- |
@@ -37,4 +37,4 @@ Run the count tool over privately stored CSVs (it prints source aggregates only)
 python3 scripts/claimsnative-scorecard.py --leads /private/path/leads.csv --payments /private/path/payments.csv --week-start 2026-10-12 --as-of 2026-10-18 --source-model conversion
 ```
 
-Repeat with `--source-model first`. Use timezone-aware ISO dates and explicit `true`/`false` test/spam flags. Identical duplicate keys collapse; conflicting duplicates, missing joins and booking/qualification without evidence stop the report. Cash-week totals and inquiry-cohort counts stay separate. A paid pilot here means a started pilot with positive net settled service receipts as of the cutoff. Reconcile partial refunds and the actual commercial status in the private finance records. This CLI is not an analytics dashboard.
+Repeat with `--source-model first`. Use timezone-aware ISO dates and explicit `true`/`false` test/spam flags. Identical duplicate keys collapse; conflicting duplicates, missing joins, missing explicit exclusion flags and booking/qualification/payment without evidence stop the report. All included opportunities are validated before cohort selection. Payments cannot predate their inquiry. Refunds must link an included positive receipt for the same opportunity, follow that receipt, and stay within its remaining balance. Cash-week totals and inquiry-cohort counts stay separate. A paid pilot here means a started pilot with positive net settled service receipts as of the cutoff. Reconcile partial refunds and the actual commercial status in the private finance records. This CLI is not an analytics dashboard.
