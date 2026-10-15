@@ -8,7 +8,6 @@
   var annualOutput = document.getElementById('annual-potential');
   var annualPatientsOutput = document.getElementById('annual-patients');
   var formulaOutput = document.getElementById('exact-formula');
-  var useEstimate = document.getElementById('use-estimate');
   var reviewForm = document.getElementById('review-form');
   var draftReview = document.getElementById('draft-review');
   var draftPreview = document.getElementById('draft-preview');
@@ -23,17 +22,6 @@
     maximumFractionDigits: 2
   });
   var count = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 });
-  var hasStarted = false;
-  var hasCompleted = false;
-  var hasShownIntent = false;
-
-  function track(eventName) {
-    if (window.dataLayer && typeof window.dataLayer.push === 'function') {
-      window.dataLayer.push({ event: eventName });
-    }
-    window.dispatchEvent(new CustomEvent(eventName));
-  }
-
   function nonNegativeNumber(input) {
     var value = Number(input.value);
     return Number.isFinite(value) && value >= 0 ? value : 0;
@@ -78,33 +66,7 @@
     clearDraft();
   }
 
-  function noteCalculatorUse() {
-    if (!hasStarted) {
-      hasStarted = true;
-      track('calculator_started');
-    }
-    renderEstimate();
-  }
-
-  function completeCalculator() {
-    if (!hasStarted) {
-      hasStarted = true;
-      track('calculator_started');
-    }
-    if (!hasCompleted) {
-      hasCompleted = true;
-      track('calculator_completed');
-    }
-  }
-
-  function utmLines() {
-    var params = new URLSearchParams(window.location.search);
-    return ['utm_source', 'utm_medium', 'utm_campaign'].reduce(function (lines, key) {
-      var value = params.get(key);
-      if (value) lines.push(key + ': ' + value);
-      return lines;
-    }, []);
-  }
+  function noteCalculatorUse() { renderEstimate(); }
 
   function fieldValue(id) {
     return document.getElementById(id).value.trim();
@@ -136,7 +98,8 @@
       'Name: ' + fieldValue('contact-name'),
       'Email: ' + fieldValue('contact-email')
     ];
-    var attribution = utmLines();
+    bodyLines.push('How did you hear about us: ' + (fieldValue('heard-about') || 'Not supplied'));
+    var attribution = window.ClaimsGrowth ? window.ClaimsGrowth.leadLines() : ['Source: direct_unknown'];
 
     if (attribution.length) {
       bodyLines.push('', 'ATTRIBUTION');
@@ -154,34 +117,20 @@
     input.addEventListener('change', noteCalculatorUse);
   });
 
-  useEstimate.addEventListener('click', function () {
-    completeCalculator();
-  });
-
   reviewForm.addEventListener('input', clearDraft);
   reviewForm.addEventListener('change', clearDraft);
 
   reviewForm.addEventListener('submit', function (event) {
     event.preventDefault();
-    completeCalculator();
 
     var email = buildEmail();
     draftPreview.textContent = 'To: Ian@atomandbits.com\nSubject: ' + email.subject + '\n\n' + email.body;
     openEmail.href = 'mailto:Ian@atomandbits.com?subject=' + encodeURIComponent(email.subject) + '&body=' + encodeURIComponent(email.body);
     draftReview.hidden = false;
 
-    if (!hasShownIntent) {
-      hasShownIntent = true;
-      track('review_intent');
-    }
+    if (window.ClaimsGrowth) window.ClaimsGrowth.track('inquiry_draft_prepared', {cta_id:'review-draft', cta_location:'form'}, true);
 
     draftReview.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  document.querySelectorAll('[data-pilot-cta]').forEach(function (link) {
-    link.addEventListener('click', function () {
-      track('pilot_cta_clicked');
-    });
   });
 
   renderEstimate();

@@ -1,0 +1,96 @@
+{
+  "events": [
+    {
+      "event": "inquiry_form_started",
+      "properties": {
+        "$process_person_profile": false,
+        "$geoip_disable": true,
+        "$ip": "0.0.0.0",
+        "page_path": "/insurance-opportunity/",
+        "page_category": "calculator",
+        "first_utm_source": "google",
+        "first_utm_medium": "organic",
+        "first_utm_campaign": "existing-ehr",
+        "first_utm_content": "guide",
+        "first_referral_source": "google",
+        "conversion_utm_source": "google",
+        "conversion_utm_medium": "organic",
+        "conversion_utm_campaign": "existing-ehr",
+        "conversion_utm_content": "guide",
+        "conversion_referral_source": "google"
+      }
+    },
+    {
+      "event": "inquiry_draft_prepared",
+      "properties": {
+        "$process_person_profile": false,
+        "$geoip_disable": true,
+        "$ip": "0.0.0.0",
+        "page_path": "/insurance-opportunity/",
+        "page_category": "calculator",
+        "cta_id": "review-draft",
+        "cta_location": "form",
+        "first_utm_source": "google",
+        "first_utm_medium": "organic",
+        "first_utm_campaign": "existing-ehr",
+        "first_utm_content": "guide",
+        "first_referral_source": "google",
+        "conversion_utm_source": "google",
+        "conversion_utm_medium": "organic",
+        "conversion_utm_campaign": "existing-ehr",
+        "conversion_utm_content": "guide",
+        "conversion_referral_source": "google"
+      }
+    },
+    {
+      "event": "primary_cta_clicked",
+      "properties": {
+        "$process_person_profile": false,
+        "$geoip_disable": true,
+        "$ip": "0.0.0.0",
+        "page_path": "/insurance-opportunity/",
+        "page_category": "calculator",
+        "cta_id": "get-started",
+        "cta_location": "header",
+        "first_utm_source": "google",
+        "first_utm_medium": "organic",
+        "first_utm_campaign": "existing-ehr",
+        "first_utm_content": "guide",
+        "first_referral_source": "google",
+        "conversion_utm_source": "google",
+        "conversion_utm_medium": "organic",
+        "conversion_utm_campaign": "existing-ehr",
+        "conversion_utm_content": "guide",
+        "conversion_referral_source": "google"
+      }
+    },
+    {
+      "event": "inquiry_email_opened",
+      "properties": {
+        "$process_person_profile": false,
+        "$geoip_disable": true,
+        "$ip": "0.0.0.0",
+        "page_path": "/insurance-opportunity/",
+        "page_category": "calculator",
+        "cta_id": "talk-to-us",
+        "cta_location": "footer",
+        "first_utm_source": "google",
+        "first_utm_medium": "organic",
+        "first_utm_campaign": "existing-ehr",
+        "first_utm_content": "guide",
+        "first_referral_source": "google",
+        "conversion_utm_source": "google",
+        "conversion_utm_medium": "organic",
+        "conversion_utm_campaign": "existing-ehr",
+        "conversion_utm_content": "guide",
+        "conversion_referral_source": "google"
+      }
+    }
+  ],
+  "draftAttribution": true,
+  "receivedEvents": 0,
+  "posthogRequestsForwarded": 0,
+  "externalActions": 0,
+  "unexpected": [],
+  "errors": []
+}

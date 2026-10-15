@@ -5,9 +5,15 @@ repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 source_dir="$repo_dir/claimsnative"
 config_dir="$source_dir/cloudflare-pages"
 output_dir="${1:-}"
+# Review builds are non-indexable unless production is explicit.
+build_environment="${2:-preview}"
+if [[ "$build_environment" != "production" && "$build_environment" != "preview" ]]; then
+  echo "Environment must be production or preview" >&2
+  exit 1
+fi
 
 if [[ -z "$output_dir" ]]; then
-  echo "Usage: $0 OUTPUT_DIR" >&2
+  echo "Usage: $0 OUTPUT_DIR [preview|production]" >&2
   exit 1
 fi
 
@@ -20,6 +26,8 @@ mkdir -p "$output_dir"
 cp -R "$source_dir"/. "$output_dir"/
 rm -rf "$output_dir/cloudflare-pages"
 rm -rf "$output_dir/cloudflare-www-redirect"
+# Never copy local tooling or Git state to public assets.
+find "$output_dir" -type d \( -name '.claude' -o -name '.git' -o -name 'node_modules' \) -prune -exec rm -rf {} +
 
 while IFS= read -r -d '' file; do
   perl -0pi -e 's#https://atomandbits\.com/claimsnative/#https://claimsnative.com/#g' "$file"
@@ -35,5 +43,14 @@ cp "$config_dir/_headers" "$output_dir/_headers"
 cp "$config_dir/_redirects" "$output_dir/_redirects"
 cp "$config_dir/robots.txt" "$output_dir/robots.txt"
 cp "$config_dir/sitemap.xml" "$output_dir/sitemap.xml"
+
+if [[ "$build_environment" == "preview" ]]; then
+  while IFS= read -r -d '' file; do
+    perl -0pi -e 's#<meta name="robots" content="[^"]*">#<meta name="robots" content="noindex,nofollow">#g' "$file"
+  done < <(find "$output_dir" -name '*.html' -print0)
+  printf '\n/*\n  X-Robots-Tag: noindex, nofollow\n' >> "$output_dir/_headers"
+  printf 'User-agent: *\nDisallow: /\n' > "$output_dir/robots.txt"
+  rm -f "$output_dir/sitemap.xml"
+fi
 
 echo "Built Claims Native Pages site at $output_dir"

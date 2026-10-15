@@ -1,0 +1,293 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "route": "/",
+      "overflow": false,
+      "lab": {
+        "lcp": 20,
+        "cls": 0
+      },
+      "dom": 9.700000017881393,
+      "bytes": 600,
+      "h1": "Your specialty. Your\u00a0EHR. Less billing work."
+    },
+    {
+      "width": 1440,
+      "route": "/how-we-start/",
+      "overflow": false,
+      "lab": {
+        "lcp": 24,
+        "cls": 0
+      },
+      "dom": 5.5999999940395355,
+      "bytes": 0,
+      "h1": "From signing up to live filing.\nIn the order it happens. Your current biller keeps working until the comparison says we are ready."
+    },
+    {
+      "width": 1440,
+      "route": "/chiropractors/",
+      "overflow": false,
+      "lab": {
+        "lcp": 24,
+        "cls": 0
+      },
+      "dom": 9.5,
+      "bytes": 0,
+      "h1": "Insurance billing for chiropractic practices.\nFrom the signed visit in your EHR to the payment posted back into it."
+    },
+    {
+      "width": 1440,
+      "route": "/insurance-opportunity/",
+      "overflow": false,
+      "lab": {
+        "lcp": 32,
+        "cls": 0
+      },
+      "dom": 18.80000001192093,
+      "bytes": 6162,
+      "h1": "Could insurance fit your practice?"
+    },
+    {
+      "width": 1440,
+      "route": "/keep-your-ehr/",
+      "overflow": false,
+      "lab": {
+        "lcp": 16,
+        "cls": 0
+      },
+      "dom": 8,
+      "bytes": 0,
+      "h1": "Can you use a billing service and keep your EHR?"
+    },
+    {
+      "width": 1440,
+      "route": "/billing-setup/",
+      "overflow": false,
+      "lab": {
+        "lcp": 16,
+        "cls": 0
+      },
+      "dom": 5.199999988079071,
+      "bytes": 0,
+      "h1": "What needs to be ready before a billing service starts?"
+    },
+    {
+      "width": 1440,
+      "route": "/remittance-and-deposits/",
+      "overflow": false,
+      "lab": {
+        "lcp": 16,
+        "cls": 0
+      },
+      "dom": 5.5999999940395355,
+      "bytes": 0,
+      "h1": "Does a remittance mean the money reached your bank?"
+    },
+    {
+      "width": 1440,
+      "route": "/404.html",
+      "overflow": false,
+      "lab": {
+        "lcp": 16,
+        "cls": 0
+      },
+      "dom": 5.800000011920929,
+      "bytes": 0,
+      "h1": "This page is not here."
+    },
+    {
+      "width": 390,
+      "route": "/",
+      "overflow": false,
+      "lab": {
+        "lcp": 56,
+        "cls": 0
+      },
+      "dom": 23.099999994039536,
+      "bytes": 0,
+      "h1": "Your specialty. Your\u00a0EHR. Less billing work."
+    },
+    {
+      "width": 390,
+      "route": "/how-we-start/",
+      "overflow": false,
+      "lab": {
+        "lcp": 40,
+        "cls": 0
+      },
+      "dom": 19.600000023841858,
+      "bytes": 0,
+      "h1": "From signing up to live filing.\nIn the order it happens. Your current biller keeps working until the comparison says we are ready."
+    },
+    {
+      "width": 390,
+      "route": "/chiropractors/",
+      "overflow": false,
+      "lab": {
+        "lcp": 40,
+        "cls": 0
+      },
+      "dom": 180.30000001192093,
+      "bytes": 600,
+      "h1": "Insurance billing for chiropractic practices.\nFrom the signed visit in your EHR to the payment posted back into it."
+    },
+    {
+      "width": 390,
+      "route": "/insurance-opportunity/",
+      "overflow": false,
+      "lab": {
+        "lcp": 40,
+        "cls": 0
+      },
+      "dom": 35.599999994039536,
+      "bytes": 0,
+      "h1": "Could insurance fit your practice?"
+    },
+    {
+      "width": 390,
+      "route": "/keep-your-ehr/",
+      "overflow": false,
+      "lab": {
+        "lcp": 32,
+        "cls": 0
+      },
+      "dom": 24.600000023841858,
+      "bytes": 0,
+      "h1": "Can you use a billing service and keep your EHR?"
+    },
+    {
+      "width": 390,
+      "route": "/billing-setup/",
+      "overflow": false,
+      "lab": {
+        "lcp": 36,
+        "cls": 0
+      },
+      "dom": 18.400000005960464,
+      "bytes": 0,
+      "h1": "What needs to be ready before a billing service starts?"
+    },
+    {
+      "width": 390,
+      "route": "/remittance-and-deposits/",
+      "overflow": false,
+      "lab": {
+        "lcp": 32,
+        "cls": 0
+      },
+      "dom": 17.400000005960464,
+      "bytes": 0,
+      "h1": "Does a remittance mean the money reached your bank?"
+    },
+    {
+      "width": 390,
+      "route": "/404.html",
+      "overflow": false,
+      "lab": {
+        "lcp": 36,
+        "cls": 0
+      },
+      "dom": 18,
+      "bytes": 0,
+      "h1": "This page is not here."
+    },
+    {
+      "width": 320,
+      "route": "/",
+      "overflow": false,
+      "lab": {
+        "lcp": 36,
+        "cls": 0
+      },
+      "dom": 18.69999998807907,
+      "bytes": 0,
+      "h1": "Your specialty. Your\u00a0EHR. Less billing work."
+    },
+    {
+      "width": 320,
+      "route": "/how-we-start/",
+      "overflow": false,
+      "lab": {
+        "lcp": 40,
+        "cls": 0
+      },
+      "dom": 27.80000001192093,
+      "bytes": 0,
+      "h1": "From signing up to live filing.\nIn the order it happens. Your current biller keeps working until the comparison says we are ready."
+    },
+    {
+      "width": 320,
+      "route": "/chiropractors/",
+      "overflow": false,
+      "lab": {
+        "lcp": 40,
+        "cls": 0
+      },
+      "dom": 26.69999998807907,
+      "bytes": 0,
+      "h1": "Insurance billing for chiropractic practices.\nFrom the signed visit in your EHR to the payment posted back into it."
+    },
+    {
+      "width": 320,
+      "route": "/insurance-opportunity/",
+      "overflow": false,
+      "lab": {
+        "lcp": 40,
+        "cls": 0
+      },
+      "dom": 31.80000001192093,
+      "bytes": 0,
+      "h1": "Could insurance fit your practice?"
+    },
+    {
+      "width": 320,
+      "route": "/keep-your-ehr/",
+      "overflow": false,
+      "lab": {
+        "lcp": 32,
+        "cls": 0
+      },
+      "dom": 23.599999994039536,
+      "bytes": 0,
+      "h1": "Can you use a billing service and keep your EHR?"
+    },
+    {
+      "width": 320,
+      "route": "/billing-setup/",
+      "overflow": false,
+      "lab": {
+        "lcp": 32,
+        "cls": 0
+      },
+      "dom": 181,
+      "bytes": 600,
+      "h1": "What needs to be ready before a billing service starts?"
+    },
+    {
+      "width": 320,
+      "route": "/remittance-and-deposits/",
+      "overflow": false,
+      "lab": {
+        "lcp": 28,
+        "cls": 0
+      },
+      "dom": 24.599999994039536,
+      "bytes": 0,
+      "h1": "Does a remittance mean the money reached your bank?"
+    },
+    {
+      "width": 320,
+      "route": "/404.html",
+      "overflow": false,
+      "lab": {
+        "lcp": 28,
+        "cls": 0
+      },
+      "dom": 21.599999994039536,
+      "bytes": 0,
+      "h1": "This page is not here."
+    }
+  ],
+  "errors": []
+}

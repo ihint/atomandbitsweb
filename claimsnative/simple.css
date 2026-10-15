@@ -216,3 +216,16 @@ body.simple-site { color:var(--ink); background:var(--paper); -webkit-font-smoot
   .simple-site .account-actions .header-cta { padding:.55rem .85rem; }
   .sign-in-link { font-size:.82rem; }
 }
+
+/* Billing guides and optional event choice. */
+.growth-guide { max-width:760px; margin:0 auto; padding:3rem 0 5rem; overflow-wrap:anywhere; }
+.simple-site .growth-guide h1 { font-size:clamp(2.2rem,4vw,3.5rem); }
+.simple-site .growth-guide h2 { font-size:1.7rem; margin:2.2rem 0 1rem; }
+.growth-guide p, .growth-guide li { line-height:1.75; margin:1rem 0; }
+.growth-guide ul { padding-left:1.4rem; }
+.growth-choice { position:fixed; bottom:1rem; right:1rem; left:1rem; max-width:640px; margin-left:auto; padding:1.25rem; background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 4px 24px #19372b22; z-index:20; max-height:85vh; overflow:auto; }
+.simple-site .growth-choice h2 { font-size:1.3rem; }
+.growth-choice p { font-size:.85rem; line-height:1.6; margin:1rem 0; }
+.growth-choice .button { margin:.3rem .4rem .3rem 0; }
+.growth-settings { background:none; border:0; color:var(--muted); font:inherit; text-decoration:underline; cursor:pointer; padding:0; min-height:44px; }
+[hidden] { display:none !important; }

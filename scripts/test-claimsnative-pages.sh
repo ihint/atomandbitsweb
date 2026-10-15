@@ -6,7 +6,7 @@ test_dir="$(mktemp -d)"
 trap 'rm -rf "$test_dir"' EXIT
 
 output_dir="$test_dir/site"
-"$repo_dir/scripts/build-claimsnative-pages.sh" "$output_dir"
+"$repo_dir/scripts/build-claimsnative-pages.sh" "$output_dir" production
 
 test -f "$output_dir/404.html"
 test ! -e "$output_dir/cloudflare-www-redirect"
@@ -132,3 +132,13 @@ if grep -Fq -- "/chiropractors" "$output_dir/_redirects"; then
 fi
 
 node --test "$repo_dir/claimsnative/cloudflare-www-redirect/test/redirect.test.mjs"
+
+# Growth payload, source, consent, deduplication, links and structured-data checks.
+node --test "$repo_dir/tests/claimsnative-growth/measurement.test.cjs"
+python3 "$repo_dir/scripts/check-claimsnative-growth.py" "$output_dir"
+"$repo_dir/scripts/build-claimsnative-pages.sh" "$test_dir/preview" preview
+grep -Fq 'X-Robots-Tag: noindex, nofollow' "$test_dir/preview/_headers"
+test ! -e "$test_dir/preview/sitemap.xml"
+if grep -R -F 'content="index,follow' "$test_dir/preview" --include='*.html'; then exit 1; fi
+
+python3 -m unittest discover -s "$repo_dir/tests/claimsnative-growth" -p 'test_*.py'

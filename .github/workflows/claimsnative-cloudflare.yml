@@ -7,12 +7,18 @@ on:
       - "claimsnative/**"
       - "scripts/build-claimsnative-pages.sh"
       - "scripts/test-claimsnative-pages.sh"
+      - "scripts/check-claimsnative-growth.py"
+      - "scripts/claimsnative-scorecard.py"
+      - "tests/claimsnative-growth/**"
       - ".github/workflows/claimsnative-cloudflare.yml"
   pull_request:
     paths:
       - "claimsnative/**"
       - "scripts/build-claimsnative-pages.sh"
       - "scripts/test-claimsnative-pages.sh"
+      - "scripts/check-claimsnative-growth.py"
+      - "scripts/claimsnative-scorecard.py"
+      - "tests/claimsnative-growth/**"
       - ".github/workflows/claimsnative-cloudflare.yml"
   workflow_dispatch:
 
@@ -44,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build the Pages artifact
-        run: bash scripts/build-claimsnative-pages.sh .claimsnative-dist
+        run: bash scripts/build-claimsnative-pages.sh .claimsnative-dist production
       - name: Deploy the Pages site
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
         uses: cloudflare/wrangler-action@v3

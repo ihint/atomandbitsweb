@@ -1,0 +1,4 @@
+# Local review evidence and browser state; summaries live in docs.
+.playwright-cli/
+output/
+__pycache__/
