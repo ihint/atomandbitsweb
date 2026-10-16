@@ -1,5 +1,7 @@
 # Independent agent review and repair
 
+This is the historical repair snapshot before Ian authorized source publication as a draft PR. The [later positioning comparison](positioning-comparison.md) supersedes its local-only status and records the fresh combined-source check. Neither review authorizes a website release.
+
 Date: October 15, 2026. Original growth head: 1da3f64 against positioning base 52fd2c1. Website changes stay local and unpublished. The author coordinates fixes; two separate Codex CLI agents review read-only. No human reviewer is required for this repair.
 
 ## Standards

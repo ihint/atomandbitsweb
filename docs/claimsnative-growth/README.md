@@ -1,12 +1,14 @@
 # Claims Native growth foundation
 
-Prepared October 15, 2026 for review. No account, credential, DNS, security setting, production configuration, content publication, deployment or outside message changed.
+Prepared October 15, 2026 for a draft PR. Ian authorized branch publication and the draft; merge, website deployment and collector activation remain on hold. No account, credential, DNS, security setting or production configuration changed.
 
 The [independent agent review and repair](review/README.md) records findings, fixes and source-bound evidence.
 
+The [current positioning comparison](review/positioning-comparison.md) records the combined source, signup fix, fresh browser proof and independent agent review.
+
 Start with [the stack and audit](stack-and-audit.md), then [events and attribution](events-and-attribution.md). Agent setup checks and remaining decisions are in [setup](owner-setup.md). [The 30-day plan](content-and-experiments.md) ranks pages and experiments; [the scorecard](weekly-scorecard.md) connects source to received inquiries, qualified practices and cash. [Proof](proof.md) records checks and gaps. The [eval contract](eval-contract.md) states the acceptance rules.
 
-The local branch is `codex/claimsnative-growth-foundation`, based on the separate positioning commit `52fd2c1`. Production main was `a8a0c6a` when checked. Merge or adopt the positioning change before this dependent work; do not apply both as competing rewrites. Other open offers and price changes in website PRs 51–53 remain separate owner decisions. No messages were sent to the other work chats.
+The branch is `codex/claimsnative-growth-foundation`. Its draft targets the positioning branch `claude/claimsnative-website-positioning-91bf6b` at `e94a888`, PR #54. Combined source `1cf8ebf` includes that head. Production main remained `a8a0c6a` when rechecked. The dependency must be resolved before a later release; do not apply both as competing rewrites. Website PRs #51–53 propose separate copy and offer changes and are not included. No messages were sent to the other work chats.
 
 Review the production-format artifact locally:
 

@@ -1,0 +1,35 @@
+{
+  "tool": "Codex CLI 0.156.1",
+  "thread_id": "01a14230-3020-7482-a4fd-9f75b9a2deae",
+  "reviewed_revision": "1cf8ebf3142c21a4aeab66be363eec7352fbd706",
+  "positioning_revision": "e94a8884b22e4bfe68857221b46e810979806dde",
+  "sandbox": "read-only",
+  "config": "CLI default via --ignore-user-config for this invocation only",
+  "resolved_model": "not emitted",
+  "completed": true,
+  "usage": {
+    "input_tokens": 432636,
+    "cached_input_tokens": 380160,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2584,
+    "reasoning_output_tokens": 72
+  },
+  "independent_execution": {
+    "node_tests": 20,
+    "scorecard_tests": 10,
+    "shell_syntax": true,
+    "diff_whitespace": true,
+    "prices_and_links_and_event_attributes": true
+  },
+  "author_execution": {
+    "full_gate_tests": 31,
+    "layouts": 24,
+    "intercepted_event_fixture": true
+  },
+  "limits": [
+    "Full builds and browsers remain author execution.",
+    "A nested review helper was unavailable; this independent context completed both axes.",
+    "A read-only heredoc check failed on temporary-file access and passed when rerun in memory.",
+    "No production settings, live ingestion or customer outcomes were verified."
+  ]
+}
