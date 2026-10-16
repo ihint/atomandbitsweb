@@ -33,7 +33,8 @@ for page in $(find "$output_dir" -name '*.html'); do
     "AI-verified" "office-demo" "provider-demo" "demo.claimsnative.com" \
     "integrates with" "integrates directly" "every EHR" "all EHRs" \
     "EHRs we take visits from" "every specialty" "all specialties" \
-    "all payers" "ChatGPT" "name your EHR"; do
+    "all payers" "ChatGPT" "name your EHR" "Ian Harman" \
+    "founder-led" "the founder" "You talk to the person"; do
     if grep -Fqi -- "$banned" "$page"; then
       echo "Copy guard: '$banned' found in $page" >&2
       exit 1

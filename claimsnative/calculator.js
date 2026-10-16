@@ -127,7 +127,7 @@
     event.preventDefault();
 
     var email = buildEmail();
-    draftPreview.textContent = 'To: Ian@atomandbits.com\nSubject: ' + email.subject + '\n\n' + email.body;
+    draftPreview.textContent = 'To: Claims Native <Ian@atomandbits.com>\nSubject: ' + email.subject + '\n\n' + email.body;
     openEmail.href = 'mailto:Ian@atomandbits.com?subject=' + encodeURIComponent(email.subject) + '&body=' + encodeURIComponent(email.body);
     draftReview.hidden = false;
 
