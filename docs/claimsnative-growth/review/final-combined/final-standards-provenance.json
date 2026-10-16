@@ -1,0 +1,19 @@
+{
+  "agent": "separate read-only Codex CLI context",
+  "axis": "final-standards",
+  "reviewed_revision": "3fa91f6cfcf2a9207e79362d94bddf68cc28a910",
+  "fixed_point": "a8a0c6a2a82c23b2e99bb3c0828a795a0fd7b35d",
+  "positioning_revision": "e94a8884b22e4bfe68857221b46e810979806dde",
+  "thread_id": "01a14660-5b46-7fd1-8634-13af2d493770",
+  "usage": {
+    "input_tokens": 501804,
+    "cached_input_tokens": 427264,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1789,
+    "reasoning_output_tokens": 60
+  },
+  "resolved_model": "not emitted",
+  "cash_cost": "not emitted",
+  "actionable_findings": 0,
+  "checks": "Full gate blocked by read-only sandbox temp-file writes; 30 Node and 10 scorecard cases passed."
+}

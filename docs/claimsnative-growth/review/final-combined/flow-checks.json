@@ -1,0 +1,65 @@
+{
+  "sourceRevision": "3fa91f6cfcf2a9207e79362d94bddf68cc28a910",
+  "cases": [
+    {
+      "active": "contact-name",
+      "case": "missing required fields",
+      "draftHidden": true,
+      "invalid": [
+        "contact-name",
+        "contact-email",
+        "biggest-concern"
+      ]
+    },
+    {
+      "active": "contact-email",
+      "case": "invalid email",
+      "draftHidden": true,
+      "emailTypeMismatch": true
+    },
+    {
+      "body": "I have a question about billing for my practice.\n\nQUESTION\nCan we keep our EHR while you review missing payment follow-up?\n\nCONTACT\nName: Demo Contact\nEmail: demo@example.test\nHow did you hear about us: Not supplied\n\nATTRIBUTION\nSource labels (not proof of a sent request):\nfirst_referral_source: other_referral\nconversion_referral_source: other_referral",
+      "case": "three-field question without estimate",
+      "draft": "To: Claims Native <daniel@claimsnative.com>\nSubject: Claims Native billing question\n\nI have a question about billing for my practice.\n\nQUESTION\nCan we keep our EHR while you review missing payment follow-up?\n\nCONTACT\nName: Demo Contact\nEmail: demo@example.test\nHow did you hear about us: Not supplied\n\nATTRIBUTION\nSource labels (not proof of a sent request):\nfirst_referral_source: other_referral\nconversion_referral_source: other_referral",
+      "draftVisible": true,
+      "estimateIncluded": false,
+      "fallbackText": "Review your email\n\nYour draft is ready. Nothing has been sent.\n\nTo: Claims Native <daniel@claimsnative.com>\nSubject: Claims Native billing question\n\nI have a question about billing for my practice.\n\nQUESTION\nCan we keep our EHR while you review missing payment follow-up?\n\nCONTACT\nName: Demo Contact\nEmail: demo@example.test\nHow did you hear about us: Not supplied\n\nATTRIBUTION\nSource labels (not proof of a sent request):\nfirst_referral_source: other_referral\nconversion_referral_source: other_referral\nOpen email draft\n→\n\n“Open email draft” asks your device to open an email app. If nothing opens, copy the recipient, subject and message above into your usual email or webmail. Review it there, then send it. No request has been sent from this page.",
+      "focus": "draft-heading",
+      "recipient": "daniel@claimsnative.com",
+      "subject": "Claims Native billing question"
+    },
+    {
+      "case": "question edit clears draft",
+      "hidden": true,
+      "mailto": "mailto:daniel@claimsnative.com"
+    },
+    {
+      "case": "calculator edit clears draft",
+      "hidden": true,
+      "mailto": "mailto:daniel@claimsnative.com"
+    },
+    {
+      "body": "I have a question about billing for my practice.\n\nQUESTION\nCan we review missing payment follow-up while keeping our EHR?\n\nESTIMATE\nMonthly gross potential: $300\nAnnual gross potential: $3,600\nAnnual patient count: 36\nFormula: 3 patients × 12 months × $100 = $3,600 per year; $3,600 ÷ 12 = $300 per month.\nEstimate note: Planning estimate, not a revenue promise. Gross potential revenue, not net income or expected collections.\n\nCONTACT\nName: Demo Contact\nEmail: demo@example.test\nHow did you hear about us: Not supplied\n\nATTRIBUTION\nSource labels (not proof of a sent request):\nfirst_referral_source: other_referral\nconversion_referral_source: other_referral",
+      "case": "explicit estimate",
+      "recipient": "daniel@claimsnative.com"
+    },
+    {
+      "case": "estimate deselection clears draft",
+      "hidden": true,
+      "mailto": "mailto:daniel@claimsnative.com"
+    },
+    {
+      "case": "final unsent draft",
+      "draft": "To: Claims Native <daniel@claimsnative.com>\nSubject: Claims Native billing question\n\nI have a question about billing for my practice.\n\nQUESTION\nCan we review missing payment follow-up while keeping our EHR?\n\nCONTACT\nName: Demo Contact\nEmail: demo@example.test\nHow did you hear about us: Not supplied\n\nATTRIBUTION\nSource labels (not proof of a sent request):\nfirst_referral_source: other_referral\nconversion_referral_source: other_referral",
+      "estimateIncluded": false,
+      "focus": "draft-heading",
+      "recipient": "daniel@claimsnative.com",
+      "unsentText": true
+    }
+  ],
+  "toolLimitations": [
+    "Exact text label Frequency included select options; first locator failed without changing the frequency. Fresh DOM inspection confirmed the accessible combobox name; selecting by role passed."
+  ],
+  "emailAppOpened": false,
+  "emailSent": false
+}

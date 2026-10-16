@@ -2,9 +2,11 @@
 
 Prepared October 15, 2026 for a draft PR. Ian authorized branch publication and the draft; merge, website deployment and collector activation remain on hold. No account, credential, DNS, security setting or production configuration changed.
 
+The [final combined review](review/final-combined/README.md) checks the full positioning and growth change, including the selected `daniel@claimsnative.com` contact. Two fresh agents found no actionable issues; the full local gate and fresh browser checks passed. The email and both PRs stay on hold.
+
 The [independent agent review and repair](review/README.md) records findings, fixes and source-bound evidence.
 
-The [current positioning comparison](review/positioning-comparison.md) records the combined source, signup fix, fresh browser proof and independent agent review.
+The [earlier positioning comparison](review/positioning-comparison.md) records the combined source, signup fix, fresh browser proof and independent agent review.
 
 The [October 16 clarity and conversion review](review/conversion/README.md) supersedes the earlier inquiry-flow snapshot. Independent agents found five distinct issues and verified the repairs. Guide readers can prepare a question on the site; only name, email and question are required. An estimate is optional. The HTML form stays disabled until its local draft handler is ready. The draft PR and local preview are updated; both PRs remain unmerged and undeployed.
 

@@ -1,0 +1,19 @@
+{
+  "agent": "separate read-only Codex CLI context",
+  "axis": "final-spec",
+  "reviewed_revision": "3fa91f6cfcf2a9207e79362d94bddf68cc28a910",
+  "fixed_point": "a8a0c6a2a82c23b2e99bb3c0828a795a0fd7b35d",
+  "positioning_revision": "e94a8884b22e4bfe68857221b46e810979806dde",
+  "thread_id": "01a14660-5bb8-7af2-90d6-75b2b1b4245a",
+  "usage": {
+    "input_tokens": 785648,
+    "cached_input_tokens": 702464,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2912,
+    "reasoning_output_tokens": 201
+  },
+  "resolved_model": "not emitted",
+  "cash_cost": "not emitted",
+  "actionable_findings": 0,
+  "checks": "Nine inquiry cases, 20 mailtos/four schema contacts, offer and 27 source-hash checks passed; no broad gate/build/browser rerun."
+}
