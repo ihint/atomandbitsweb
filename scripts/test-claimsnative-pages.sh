@@ -25,13 +25,15 @@ grep -Fq "CLOUDFLARE_ACCOUNT_ID" "$repo_dir/.github/workflows/claimsnative-cloud
 # links the demo workspace. Behavioral health appears only as one example
 # specialty. No direct EHR integration is built, so the site never claims one
 # for every EHR, all specialties or all payers, and never offers a ChatGPT app.
+# Setup offers Jane, ChiroHD or "Another EHR" with no field for the name, so
+# the site never asks a practice to name its EHR at signup.
 for page in $(find "$output_dir" -name '*.html'); do
   for banned in "payer paid" "paid by the payer" "guaranteed" "guarantee" \
     "replace your biller" "replace your billing" "submits claims today" \
     "AI-verified" "office-demo" "provider-demo" "demo.claimsnative.com" \
     "integrates with" "integrates directly" "every EHR" "all EHRs" \
     "EHRs we take visits from" "every specialty" "all specialties" \
-    "all payers" "ChatGPT"; do
+    "all payers" "ChatGPT" "name your EHR"; do
     if grep -Fqi -- "$banned" "$page"; then
       echo "Copy guard: '$banned' found in $page" >&2
       exit 1
