@@ -1,0 +1,17 @@
+{
+  "reviewed_revision": "1f64c297d21dab645b2cb709636dc28420f0aa6b",
+  "base_revision": "eb795564942414ba5def21841bebad6f2e462f38",
+  "agent": "separate read-only Codex CLI context",
+  "thread_id": "01a1464a-01ca-76d0-aa8c-f4354d414ca7",
+  "usage": {
+    "input_tokens": 284378,
+    "cached_input_tokens": 249728,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2092,
+    "reasoning_output_tokens": 46
+  },
+  "resolved_model": "not emitted",
+  "cost": "not emitted",
+  "scope": "Recipient routing, diff equivalence and retained local inquiry behavior; no browser or broad test rerun",
+  "findings": 0
+}

@@ -1,0 +1,27 @@
+{
+  "runtime_revision": "1f64c297d21dab645b2cb709636dc28420f0aa6b",
+  "base_revision": "eb795564942414ba5def21841bebad6f2e462f38",
+  "recipient": "daniel@claimsnative.com",
+  "authority": "User selected this address for the Claims Native inquiry flow",
+  "shared_inbox_status": "not asserted",
+  "artifact_id": "8df14a3b387b361169c35a4f870faedab61e4c0766adedbe230af55a46c97f98",
+  "source_hashes_verified": 27,
+  "served_asset_hashes_verified": 20,
+  "required_fields": [
+    "contact-name",
+    "contact-email",
+    "biggest-concern"
+  ],
+  "estimate_default": false,
+  "draft_focused": true,
+  "recipient_replacements": 28,
+  "other_runtime_change": "calculator.js cache version 20261016-3",
+  "email_app_opened": false,
+  "email_sent": false,
+  "merge_or_deploy_performed": false,
+  "screenshot_sha256": "9f090e6869918e6c5f39735f15dc13893163cb0febb733bef2dc5a38ec72d027",
+  "limits": [
+    "Local draft only; no delivery or recipient acceptance check",
+    "No new full browser privacy or accessibility audit"
+  ]
+}

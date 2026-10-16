@@ -1,0 +1,18 @@
+{
+  "activeElement": "draft-heading",
+  "draft": "To: Claims Native <daniel@claimsnative.com>\nSubject: Claims Native billing question\n\nI have a question about billing for my practice.\n\nQUESTION\nCan we keep our EHR while you review missing payment follow-up?\n\nCONTACT\nName: Demo Contact\nEmail: demo@example.test\nHow did you hear about us: Not supplied\n\nATTRIBUTION\nSource labels (not proof of a sent request):\nfirst_referral_source: other_referral\nconversion_referral_source: other_referral",
+  "draftVisible": true,
+  "estimateIncluded": false,
+  "mailtos": [
+    "mailto:daniel@claimsnative.com?subject=Claims%20Native%20billing%20question&body=I%20have%20a%20question%20about%20billing%20for%20my%20practice.%0A%0AQUESTION%0ACan%20we%20keep%20our%20EHR%20while%20you%20review%20missing%20payment%20follow-up%3F%0A%0ACONTACT%0AName%3A%20Demo%20Contact%0AEmail%3A%20demo%40example.test%0AHow%20did%20you%20hear%20about%20us%3A%20Not%20supplied%0A%0AATTRIBUTION%0ASource%20labels%20(not%20proof%20of%20a%20sent%20request)%3A%0Afirst_referral_source%3A%20other_referral%0Aconversion_referral_source%3A%20other_referral",
+    "mailto:daniel@claimsnative.com?subject=Claims%20Native%20for%20my%20practice",
+    "mailto:daniel@claimsnative.com"
+  ],
+  "personalNamePresent": false,
+  "required": [
+    "contact-name",
+    "contact-email",
+    "biggest-concern"
+  ],
+  "url": "http://127.0.0.1:4187/insurance-opportunity/#review"
+}
