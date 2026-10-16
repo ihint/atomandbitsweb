@@ -1,0 +1,17 @@
+{
+  "reviewed_revision": "0e2affce8e8620d9431f30f875538b35a0166fac",
+  "base_revision": "40e60110e35dbcf641d4ccaec311cd09d89932ab",
+  "agent": "separate read-only Codex CLI context",
+  "thread_id": "01a14613-cce3-7112-8ad7-82e828ad82fb",
+  "usage": {
+    "input_tokens": 82383,
+    "cached_input_tokens": 59904,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 606,
+    "reasoning_output_tokens": 0
+  },
+  "resolved_model": "not emitted",
+  "cost": "not emitted",
+  "scope": "Company voice and preserved guide-to-inquiry-to-local-draft path; no browser or independent test rerun by reviewer",
+  "findings": 0
+}
