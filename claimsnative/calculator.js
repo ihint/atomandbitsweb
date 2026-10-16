@@ -52,7 +52,7 @@
     if (draftReview.hidden) return;
     draftReview.hidden = true;
     draftPreview.textContent = '';
-    openEmail.href = 'mailto:Ian@atomandbits.com';
+    openEmail.href = 'mailto:daniel@claimsnative.com';
   }
 
   function renderEstimate() {
@@ -127,8 +127,8 @@
     event.preventDefault();
 
     var email = buildEmail();
-    draftPreview.textContent = 'To: Claims Native <Ian@atomandbits.com>\nSubject: ' + email.subject + '\n\n' + email.body;
-    openEmail.href = 'mailto:Ian@atomandbits.com?subject=' + encodeURIComponent(email.subject) + '&body=' + encodeURIComponent(email.body);
+    draftPreview.textContent = 'To: Claims Native <daniel@claimsnative.com>\nSubject: ' + email.subject + '\n\n' + email.body;
+    openEmail.href = 'mailto:daniel@claimsnative.com?subject=' + encodeURIComponent(email.subject) + '&body=' + encodeURIComponent(email.body);
     draftReview.hidden = false;
 
     if (window.ClaimsGrowth) window.ClaimsGrowth.track('inquiry_draft_prepared', {cta_id:'review-draft', cta_location:'form'}, true);

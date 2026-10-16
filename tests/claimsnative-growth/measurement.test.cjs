@@ -92,7 +92,7 @@ test('missing secure random UUID fails closed without breaking email attribution
 
 test('delegated footer email click preserves safe source labels without analytics consent',()=>{
  const e=environment();core.start(e.w);
- const el={dataset:{growthEvent:'inquiry_email_opened',growthCta:'talk-to-us',growthLocation:'footer'},href:'mailto:Ian@atomandbits.com'};
+ const el={dataset:{growthEvent:'inquiry_email_opened',growthCta:'talk-to-us',growthLocation:'footer'},href:'mailto:daniel@claimsnative.com'};
  e.listeners.click({target:{closest:()=>el}});
  assert.ok(decodeURIComponent(el.href.replace(/\+/g,' ')).includes('first_referral_source: google'));assert.equal(e.sent.length,0);
 });
