@@ -4,7 +4,7 @@ All event collection is off in this branch's default config. Marketing events ar
 
 | Event/state | Exact trigger and deduplication | Implemented scope |
 | --- | --- | --- |
-| `primary_cta_clicked` | Explicit tagged primary link; fixed `cta_id` and `cta_location`. Same page/event/CTA/location within one second counts once. | Header/signup, hero/how-it-works, body and closing signup links. Secondary email links use their own event. |
+| `primary_cta_clicked` | Explicit tagged primary link; fixed `cta_id` and `cta_location`. Same page/event/CTA/location within one second counts once. | Header/signup, hero/how-it-works, body and closing signup links, and guide `start-inquiry` links to the local form. Secondary email links use their own event. |
 | `inquiry_form_started` | First input edit in the calculator inquiry form, once per page load. Merely viewing/focusing is not counted. | Browser event only. |
 | `inquiry_draft_prepared` | Valid form creates the visible email draft, once per page load. | Diagnostic; never a lead. |
 | `inquiry_email_opened` | Click on a fixed founder email link or the draft's Open email link. | The mail client might fail to open; no send or receipt inferred. |
@@ -14,6 +14,8 @@ All event collection is off in this branch's default config. Marketing events ar
 | `lead_qualified` | An agent verifies independent-practice fit, billing need, contact authority and a plausible EHR/payer scope from approved private records, recording the date and evidence. Escalate only missing authority or unresolved judgment. | Private lead ledger, once per practice opportunity. Not a public event. |
 | `pilot_started` | Agreed scope/price plus recorded start of the pilot, not an account or unsigned proposal. | Private ledger. |
 | `payment_received` | Settled receipt for Claims Native's service matched to that opportunity; exclude test mode; subtract refunds in the revenue record. | Private ledger. An invoice sent or insurer payment to a practice is not Claims Native revenue. |
+
+The first inquiry requires a name, email and billing question. Practice details are optional. An estimate enters the draft only when the visitor selects it, either with the checkbox or “Use this estimate.” Preparing a question remains a local draft action. It does not mean the visitor sent an email or the practice qualifies as a lead. The HTML fields and submit button stay disabled until the local draft handler is ready, so a missing script cannot fall back to a GET request containing answers.
 
 ## Payload contract
 

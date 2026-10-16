@@ -34,7 +34,8 @@ async (page) => {
  await page.evaluate(()=>sessionStorage.clear()); await page.reload();
  if(captures.length)throw Error('Event before consent');
  await page.getByRole('button',{name:'Allow event counts'}).click();
- const fields={'Practice name':'Synthetic Practice','Specialty':'Synthetic specialty','City and state':'Test City, TN','Visits per week':'100','EHR or practice system':'Synthetic EHR','Biggest concern about accepting insurance':'Synthetic private concern','Your name':'Synthetic Person','Email':'synthetic@example.test'};
+ await page.getByText('Add practice details (optional)',{exact:true}).click();
+ const fields={'Practice name':'Synthetic Practice','Specialty':'Synthetic specialty','City and state':'Test City, TN','Visits per week':'100','EHR or practice system':'Synthetic EHR','What would you like help with?':'Synthetic private concern','Your name':'Synthetic Person','Email':'synthetic@example.test'};
  for(const [label,value]of Object.entries(fields))await page.getByLabel(label,{exact:true}).fill(value);
  await page.getByLabel('Insurance status',{exact:true}).selectOption({label:'In network'});
  await page.getByLabel('How did you hear about us? (optional)',{exact:true}).selectOption({label:'AI assistant'});

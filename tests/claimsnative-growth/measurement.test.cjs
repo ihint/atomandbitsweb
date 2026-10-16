@@ -112,3 +112,12 @@ test('internal partial campaign labels retain the known conversion source',()=>{
  assert.equal(replacement.referral_source,'newsletter');assert.equal(replacement.utm_source,'newsletter');
  assert.equal(core.touch('?utm_content=guide','',registry,previous).referral_source,'direct_unknown');
 });
+
+test('guide inquiry navigation keeps its local destination and fixed event label',()=>{
+ const e=environment();const a=core.start(e.w);a.choose(true);
+ const el={dataset:{growthEvent:'primary_cta_clicked',growthCta:'start-inquiry',growthLocation:'body'},href:'https://claimsnative.com/insurance-opportunity/#review'};
+ e.listeners.click({target:{closest:()=>el}});
+ assert.equal(el.href,'https://claimsnative.com/insurance-opportunity/#review');
+ assert.equal(e.sent.length,1);assert.equal(e.sent[0].payload.properties.cta_id,'start-inquiry');
+ assert.equal(new URL(el.href).searchParams.has('body'),false);
+});

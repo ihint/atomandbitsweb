@@ -22,10 +22,10 @@
 <meta name="twitter:description" content="Explore a gross insurance revenue estimate using your own inputs, before care costs, billing fees and payer limits.">
 <meta name="twitter:image" content="https://atomandbits.com/claimsnative/og-simple-20260911.png">
 <link href="/claimsnative/home.css" rel="stylesheet">
-<link href="/claimsnative/simple.css?v=20261015-1" rel="stylesheet">
+<link href="/claimsnative/simple.css?v=20261016-1" rel="stylesheet">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Claims Native", "url": "https://atomandbits.com/claimsnative/", "parentOrganization": {"@type": "Organization", "name": "Atom & Bits, LLC", "url": "https://atomandbits.com/"}}, {"@type": "Service", "name": "Claims Native", "serviceType": "Medical billing service", "url": "https://atomandbits.com/claimsnative/", "description": "Insurance billing for medical practices across the U.S. and across specialties, working from the EHR the practice already uses.", "areaServed": "US", "provider": {"@type": "Organization", "name": "Atom & Bits, LLC", "url": "https://atomandbits.com/", "email": "Ian@atomandbits.com", "address": {"@type": "PostalAddress", "addressLocality": "Chattanooga", "addressRegion": "TN", "addressCountry": "US"}}}]}</script>
 <script src="/claimsnative/growth-config.js" defer></script>
-<script src="/claimsnative/growth.js" defer></script>
+<script src="/claimsnative/growth.js?v=20261016-1" defer></script>
 </head>
 <body class="simple-site">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -63,6 +63,7 @@
         <p class="eyebrow">Calculator</p>
         <h1>Could insurance fit your practice?</h1>
         <p class="lede">Count the insured patients you turn away and what a full course of care is worth. The number is gross potential, not a promise.</p>
+        <p>Already bill insurance? <a href="#review">Ask a billing question without an estimate</a>.</p>
       </div>
     </header>
 
@@ -119,58 +120,17 @@
 
     <section class="section" id="review" aria-labelledby="review-heading">
       <p class="eyebrow">Start the conversation</p>
-      <h2 id="review-heading">Send the number with your practice details.</h2>
-      <p class="lede">This page builds an email to Ian@atomandbits.com so you can read it before you send it. Nothing is sent or stored here.</p>
+      <h2 id="review-heading">Ask about billing for your practice.</h2>
+      <p class="lede">Tell Ian Harman which billing step you need help with. Review the email here, then send it from your own email account. This page does not send or save your answers.</p>
       <p class="review-note" id="phi-warning">Do not include patient information: no names, dates of birth, diagnoses, insurance IDs, or other health information.</p>
       <noscript>
-<p class="review-note">JavaScript is needed to build the email draft. You can email Ian@atomandbits.com directly. Do not include patient information.</p>
+<p class="review-note">JavaScript is needed to use this form. Email <a href="mailto:Ian@atomandbits.com?subject=Claims%20Native%20for%20my%20practice">Ian@atomandbits.com</a> directly instead. Do not include patient information.</p>
 </noscript>
 
       <form class="review-form" id="review-form">
-        <p class="review-note">All fields except “How did you hear about us?” are required. No request is sent when you fill out this form or review the draft.</p>
-        <fieldset aria-describedby="phi-warning">
-          <legend>Practice and contact details</legend>
-          <div class="two-up">
-            <div class="field">
-<label for="practice-name">Practice name</label>
-<input id="practice-name" name="practice-name" type="text" autocomplete="organization" maxlength="120" required>
-</div>
-            <div class="field">
-<label for="specialty">Specialty</label>
-<input id="specialty" name="specialty" type="text" autocomplete="off" maxlength="100" required>
-</div>
-            <div class="field">
-<label for="location">City and state</label>
-<input id="location" name="location" type="text" autocomplete="address-level2" maxlength="100" required>
-</div>
-            <div class="field">
-<label for="visits-week">Visits per week</label>
-<input id="visits-week" name="visits-week" type="number" inputmode="numeric" min="0" step="1" max="10000" required>
-</div>
-            <div class="field">
-<label for="practice-system">EHR or practice system</label>
-<input id="practice-system" name="practice-system" type="text" maxlength="100" aria-describedby="practice-system-help" required>
-<small id="practice-system-help">Name the EHR or other system you use for visits and care records, or enter “none”.</small>
-</div>
-            <div class="field">
-<label for="insurance-status">Insurance status</label>
-<select id="insurance-status" name="insurance-status" required>
-<option value="">Select one</option>
-<option>Cash-pay only</option>
-<option>Cash-pay with superbills</option>
-<option>Out of network</option>
-<option>In network</option>
-<option>Mixed</option>
-<option>Planning or unsure</option>
-</select>
-</div>
-          </div>
-          <div class="field">
-<label for="biggest-concern">Biggest concern about accepting insurance</label>
-<textarea id="biggest-concern" name="biggest-concern" maxlength="500" aria-describedby="concern-help" required>
-</textarea>
-<small id="concern-help">Keep this about your practice. Do not include patient information.</small>
-</div>
+        <p class="review-note">Your name, email and question are required. Practice details and the estimate are optional.</p>
+        <fieldset id="inquiry-fields" aria-describedby="phi-warning" disabled>
+          <legend>Your question</legend>
           <div class="two-up">
             <div class="field">
 <label for="contact-name">Your name</label>
@@ -181,20 +141,65 @@
 <input id="contact-email" name="contact-email" type="email" autocomplete="email" maxlength="254" required>
 </div>
           </div>
-        </fieldset>
+          <div class="field">
+<label for="biggest-concern">What would you like help with?</label>
+<textarea id="biggest-concern" name="biggest-concern" maxlength="500" aria-describedby="concern-help" required></textarea>
+<small id="concern-help">For example: EHR setup, payer enrollment or a missing payment. Leave out patient and bank details.</small>
+</div>
+          <details class="optional-practice">
+            <summary>Add practice details (optional)</summary>
+          <div class="two-up">
+            <div class="field">
+<label for="practice-name">Practice name</label>
+<input id="practice-name" name="practice-name" type="text" autocomplete="organization" maxlength="120">
+</div>
+            <div class="field">
+<label for="specialty">Specialty</label>
+<input id="specialty" name="specialty" type="text" autocomplete="off" maxlength="100">
+</div>
+            <div class="field">
+<label for="location">City and state</label>
+<input id="location" name="location" type="text" autocomplete="address-level2" maxlength="100">
+</div>
+            <div class="field">
+<label for="visits-week">Visits per week</label>
+<input id="visits-week" name="visits-week" type="number" inputmode="numeric" min="0" step="1" max="10000">
+</div>
+            <div class="field">
+<label for="practice-system">EHR or practice system</label>
+<input id="practice-system" name="practice-system" type="text" maxlength="100" aria-describedby="practice-system-help">
+<small id="practice-system-help">Name the EHR or other system you use for visits and care records, or enter “none”.</small>
+</div>
+            <div class="field">
+<label for="insurance-status">Insurance status</label>
+<select id="insurance-status" name="insurance-status">
+<option value="">Select one</option>
+<option>Cash-pay only</option>
+<option>Cash-pay with superbills</option>
+<option>Out of network</option>
+<option>In network</option>
+<option>Mixed</option>
+<option>Planning or unsure</option>
+</select>
+</div>
+          </div>
+          </details>
+          <label class="estimate-choice" for="include-estimate"><input type="checkbox" id="include-estimate" aria-describedby="estimate-help"> Include the calculator estimate (optional)</label>
+          <small id="estimate-help">For questions about starting insurance billing. Uses the numbers above; leave this off for an existing billing question.</small>
         <div class="field">
 <label for="heard-about">How did you hear about us? (optional)</label>
 <select id="heard-about" name="heard-about">
 <option value="">Choose one</option><option>Search engine</option><option>AI assistant</option><option>Another practice</option><option>Colleague or partner</option><option>Other</option>
 </select>
 </div>
-        <button class="button" type="submit">Review email draft <span aria-hidden="true">→</span>
+        </fieldset>
+        <button class="button" id="review-draft-button" type="submit" disabled>Review email draft <span aria-hidden="true">→</span>
 </button>
         <p class="review-note">This creates a draft on this page. It does not send data to Claims Native or Atom &amp; Bits.</p>
       </form>
 
       <section class="draft-review" id="draft-review" aria-labelledby="draft-heading" aria-live="polite" hidden>
-        <h3 id="draft-heading">Review your email</h3>
+        <h3 id="draft-heading" tabindex="-1">Review your email</h3>
         <p class="review-note">Your draft is ready. Nothing has been sent.</p>
         <pre id="draft-preview">
 </pre>
@@ -202,7 +207,7 @@
           <a class="button" id="open-email" href="mailto:Ian@atomandbits.com" data-growth-event="inquiry_email_opened" data-growth-cta="open-email" data-growth-location="form">Open email draft <span aria-hidden="true">→</span>
 </a>
         </div>
-        <p class="review-note">Your email app will open next. No request is sent until you review and send the email there.</p>
+        <p class="review-note">“Open email draft” asks your device to open an email app. If nothing opens, copy the recipient, subject and message above into your usual email or webmail. Review it there, then send it. No request has been sent from this page.</p>
       </section>
     </section>
 
@@ -237,7 +242,7 @@
 <a href="https://app.claimsnative.com/terms">Terms</a>
 </nav>
 </footer>
-<script src="/claimsnative/calculator.js" defer>
+<script src="/claimsnative/calculator.js?v=20261016-1" defer>
 </script>
 <aside id="growth-choice" class="growth-choice" aria-labelledby="growth-choice-title" hidden>
 <h2 id="growth-choice-title">Allow website event counts?</h2>

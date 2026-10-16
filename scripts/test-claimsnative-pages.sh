@@ -136,7 +136,7 @@ fi
 node --test "$repo_dir/claimsnative/cloudflare-www-redirect/test/redirect.test.mjs"
 
 # Growth payload, source, consent, deduplication, links and structured-data checks.
-node --test "$repo_dir/tests/claimsnative-growth/measurement.test.cjs"
+node --test "$repo_dir/tests/claimsnative-growth/measurement.test.cjs" "$repo_dir/tests/claimsnative-growth/inquiry.test.cjs"
 python3 "$repo_dir/scripts/check-claimsnative-growth.py" "$output_dir"
 "$repo_dir/scripts/build-claimsnative-pages.sh" "$test_dir/preview" preview
 grep -Fq 'X-Robots-Tag: noindex, nofollow' "$test_dir/preview/_headers"

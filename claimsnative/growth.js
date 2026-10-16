@@ -12,7 +12,7 @@
     '/billing-setup/': 'guide', '/remittance-and-deposits/': 'guide'
   };
   var events = ['primary_cta_clicked', 'inquiry_form_started', 'inquiry_draft_prepared', 'inquiry_email_opened', 'scheduling_link_clicked'];
-  var ctas = ['get-started', 'how-it-works', 'talk-to-us', 'review-draft', 'open-email', 'schedule'];
+  var ctas = ['get-started', 'how-it-works', 'talk-to-us', 'start-inquiry', 'review-draft', 'open-email', 'schedule'];
   var locations = ['header', 'hero', 'body', 'invitation', 'footer', 'form'];
   var sources = ['direct_unknown', 'google', 'bing', 'chatgpt', 'perplexity', 'claude', 'copilot', 'duckduckgo', 'newsletter', 'partner', 'other_referral'];
   var campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];

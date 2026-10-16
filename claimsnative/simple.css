@@ -229,3 +229,10 @@ body.simple-site { color:var(--ink); background:var(--paper); -webkit-font-smoot
 .growth-choice .button { margin:.3rem .4rem .3rem 0; }
 .growth-settings { background:none; border:0; color:var(--muted); font:inherit; text-decoration:underline; cursor:pointer; padding:0; min-height:44px; }
 [hidden] { display:none !important; }
+
+/* The first billing question needs only contact details and the question. */
+.optional-practice summary { cursor:pointer; min-height:44px; padding:.65rem 0; font-weight:600; }
+.optional-practice[open] summary { margin-bottom:.7rem; }
+.simple-site .review-form .estimate-choice { display:flex; align-items:center; gap:.7rem; }
+.simple-site .review-form input[type="checkbox"] { width:1.1rem; min-height:1.1rem; height:1.1rem; flex-shrink:0; }
+.draft-review h3:focus { outline:2px solid var(--focus); outline-offset:4px; }

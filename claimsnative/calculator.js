@@ -12,6 +12,8 @@
   var draftReview = document.getElementById('draft-review');
   var draftPreview = document.getElementById('draft-preview');
   var openEmail = document.getElementById('open-email');
+  var includeEstimate = document.getElementById('include-estimate');
+  var draftHeading = document.getElementById('draft-heading');
 
   var annualFactors = { workday: 260, week: 52, month: 12 };
   var periodLabels = { workday: 'workdays', week: 'weeks', month: 'months' };
@@ -74,30 +76,27 @@
 
   function buildEmail() {
     var result = estimate();
-    var subject = 'Claims Native practice walkthrough — ' + fieldValue('practice-name');
+    var practiceName = fieldValue('practice-name');
+    var subject = 'Claims Native billing question' + (practiceName ? ' — ' + practiceName : '');
     var bodyLines = [
-      'I would like to review the insurance opportunity for my practice.',
-      '',
-      'ESTIMATE',
+      'I have a question about billing for my practice.', '',
+      'QUESTION', fieldValue('biggest-concern')
+    ];
+    if (includeEstimate.checked) bodyLines.push(
+      '', 'ESTIMATE',
       'Monthly gross potential: ' + money.format(result.monthlyGross),
       'Annual gross potential: ' + money.format(result.annualGross),
       'Annual patient count: ' + count.format(result.annualPatients),
       'Formula: ' + count.format(result.patients) + ' patients × ' + result.factor + ' ' + periodLabels[result.period] + ' × ' + money.format(result.courseRevenue) + ' = ' + money.format(result.annualGross) + ' per year; ' + money.format(result.annualGross) + ' ÷ 12 = ' + money.format(result.monthlyGross) + ' per month.',
-      'Estimate note: Planning estimate, not a revenue promise. Gross potential revenue, not net income or expected collections.',
-      '',
-      'PRACTICE',
-      'Practice name: ' + fieldValue('practice-name'),
-      'Specialty: ' + fieldValue('specialty'),
-      'City/state: ' + fieldValue('location'),
-      'Visits per week: ' + fieldValue('visits-week'),
-      'Practice system: ' + fieldValue('practice-system'),
-      'Insurance status: ' + fieldValue('insurance-status'),
-      'Biggest concern: ' + fieldValue('biggest-concern'),
-      '',
-      'CONTACT',
-      'Name: ' + fieldValue('contact-name'),
-      'Email: ' + fieldValue('contact-email')
-    ];
+      'Estimate note: Planning estimate, not a revenue promise. Gross potential revenue, not net income or expected collections.'
+    );
+    var practiceLines = [];
+    [['Practice name','practice-name'], ['Specialty','specialty'], ['City/state','location'], ['Visits per week','visits-week'], ['Practice system','practice-system'], ['Insurance status','insurance-status']].forEach(function (field) {
+      var value = fieldValue(field[1]);
+      if (value) practiceLines.push(field[0] + ': ' + value);
+    });
+    if (practiceLines.length) bodyLines.push('', 'PRACTICE', practiceLines.join('\n'));
+    bodyLines.push('', 'CONTACT', 'Name: ' + fieldValue('contact-name'), 'Email: ' + fieldValue('contact-email'));
     bodyLines.push('How did you hear about us: ' + (fieldValue('heard-about') || 'Not supplied'));
     var attribution = window.ClaimsGrowth ? window.ClaimsGrowth.leadLines() : ['Source: direct_unknown'];
 
@@ -119,6 +118,10 @@
 
   reviewForm.addEventListener('input', clearDraft);
   reviewForm.addEventListener('change', clearDraft);
+  document.getElementById('use-estimate').addEventListener('click', function () {
+    includeEstimate.checked = true;
+    clearDraft();
+  });
 
   reviewForm.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -130,8 +133,13 @@
 
     if (window.ClaimsGrowth) window.ClaimsGrowth.track('inquiry_draft_prepared', {cta_id:'review-draft', cta_location:'form'}, true);
 
-    draftReview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    draftHeading.focus({preventScroll:true});
+    var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    draftReview.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
   });
 
   renderEstimate();
+  // The HTML stays inert if this script fails before the local-only handler is ready.
+  document.getElementById('inquiry-fields').disabled = false;
+  document.getElementById('review-draft-button').disabled = false;
 }());

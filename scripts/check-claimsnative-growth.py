@@ -23,7 +23,9 @@ for p,d in docs.items():
     assert sum(t=='h1' for t,a in d.tags)==1,p
     assert len([a for t,a in d.tags if t=='title'])==1
     assert len([a for t,a in d.tags if t=='meta' and a.get('name')=='description' and a.get('content')])==1
-    scripts=[a.get('src') for t,a in d.tags if t=='script' and a.get('src')]; assert scripts.count('/growth.js')==1 and scripts.count('/growth-config.js')==1
+    scripts=[a.get('src') for t,a in d.tags if t=='script' and a.get('src')]
+    script_paths=[urlsplit(s).path for s in scripts]
+    assert script_paths.count('/growth.js')==1 and script_paths.count('/growth-config.js')==1
     assert all('gtag' not in s and 'posthog' not in s for s in scripts)
     assert d.json, p
     for graph in d.json:
@@ -33,7 +35,7 @@ for p,d in docs.items():
     for tag,a in d.tags:
         if 'data-growth-event' in a:
             assert a['data-growth-event'] in ['primary_cta_clicked','inquiry_email_opened','scheduling_link_clicked']
-            assert a['data-growth-cta'] in ['get-started','how-it-works','talk-to-us','open-email','schedule']
+            assert a['data-growth-cta'] in ['get-started','how-it-works','talk-to-us','start-inquiry','open-email','schedule']
             assert a['data-growth-location'] in ['header','hero','body','invitation','footer','form']
         if tag=='img':assert a.get('alt') is not None and a.get('width') and a.get('height'),(p,a)
         target=a.get('href') if tag in ('a','link') else a.get('src') if tag in ('img','script') else None
