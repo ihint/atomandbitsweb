@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-16",
+  "source_revision": "c1558100a6562b8702ba81f271fde26a689166eb",
+  "artifact_id": "b21d9ec4dc9314df9475cbbcc207a86041055d96997ef73f0bd21c4e11647d1b",
+  "served_assets_verified": 20,
+  "required_fields": 9,
+  "focus_after_draft": "Review email draft button",
+  "synthetic_draft_visible": true,
+  "sent": false,
+  "collector_configured": false,
+  "screenshots": [
+    "01-keep-your-ehr.jpg",
+    "02-billing-setup.jpg",
+    "03-remittance-and-deposits.jpg",
+    "04-inquiry-start.jpg",
+    "05-draft.jpg"
+  ],
+  "capture_limit": "Desktop screenshots; no claim of full accessibility compliance."
+}

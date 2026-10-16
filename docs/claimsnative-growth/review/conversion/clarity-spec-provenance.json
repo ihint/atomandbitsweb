@@ -1,0 +1,19 @@
+{
+  "tool": "Codex CLI 0.156.1",
+  "axis": "clarity-spec",
+  "reviewed_revision": "c1558100a6562b8702ba81f271fde26a689166eb",
+  "thread_id": "01a14603-1b7e-7ae0-a71a-50ec460b6149",
+  "sandbox": "read-only",
+  "resolved_model": "not emitted",
+  "config": "CLI default via --ignore-user-config for this invocation only",
+  "completed": true,
+  "usage": {
+    "input_tokens": 289962,
+    "cached_input_tokens": 244352,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1899,
+    "reasoning_output_tokens": 62
+  },
+  "capture_execution": "author; independent agent inspected all five images",
+  "browser_execution": "not run independently"
+}

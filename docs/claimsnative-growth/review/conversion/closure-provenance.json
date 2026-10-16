@@ -1,0 +1,24 @@
+{
+  "tool": "Codex CLI 0.156.1",
+  "reviewed_revision": "488da0d79e7e09dc578658ea5183f8acc3912108",
+  "thread_id": "01a14608-552b-79f0-9765-0a60f3033b24",
+  "sandbox": "read-only",
+  "resolved_model": "not emitted",
+  "completed": true,
+  "usage": {
+    "input_tokens": 254321,
+    "cached_input_tokens": 203648,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1525,
+    "reasoning_output_tokens": 26
+  },
+  "independent_execution": {
+    "node_tests": 30,
+    "scorecard_tests": 10
+  },
+  "limits": [
+    "No independent browser, image, build or served-asset execution.",
+    "JavaScript-off protection is source/unit evidence.",
+    "No measured conversion lift, WCAG compliance, live ingestion or customer outcome."
+  ]
+}
