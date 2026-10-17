@@ -2,6 +2,8 @@
 
 Prepared October 15, 2026 for a draft PR. Ian authorized branch publication and the draft; merge, website deployment and collector activation remain on hold. No account, credential, DNS, security setting or production configuration changed.
 
+The [October 17 mobile review](review/mobile/README.md) records fresh agent findings, fixes, current-source mobile proof and the [proposed growth program](growth-plan-20261017.md). The homepage and guide openings reach the local question flow; separate email copy controls keep the draft unsent. Four source-confirmed issues are fixed, and a fresh final correction review found no actionable finding in its bounded delta. The full local gate now passes 44 tests. Both PRs stay unmerged and undeployed.
+
 The [final combined review](review/final-combined/README.md) checks the full positioning and growth change, including the selected `daniel@claimsnative.com` contact. Two fresh agents found no actionable issues; the full local gate and fresh browser checks passed. The email and both PRs stay on hold.
 
 The [independent agent review and repair](review/README.md) records findings, fixes and source-bound evidence.

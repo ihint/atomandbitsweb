@@ -1,0 +1,13 @@
+**Two actionable UX findings; no P1 found.** Baseline confirmed: `2dd68429d753f0211e2c17f0a1a539bf9b2558dd`.
+
+1. **P2 — Homepage visitors cannot directly reach the local inquiry.** [index.html:75](/Users/ianharman/HarmanandSons/output/worktrees/claimsnative-growth/claimsnative/index.html:75) sends “Would you rather talk first?” straight to `mailto:`; the lower invitation repeats this. Visitors without a configured mail app have no visible fallback there. The question form exists, but reaching it requires discovering a guide or calculator. Against the requested “inquiry clarity/conversion” goal, this leaves the homepage’s talk-first path incomplete. **Small fix:** add “Prepare a billing question” linking to `/insurance-opportunity/#review` beside the email option. Preserve the primary CTA.
+
+2. **P3 — The email fallback requires awkward manual selection on mobile.** [insurance-opportunity/index.html:204](/Users/ianharman/HarmanandSons/output/worktrees/claimsnative-growth/claimsnative/insurance-opportunity/index.html:204) renders recipient, subject, message and attribution in one `<pre>`. Line 210 tells visitors to copy them if no email app opens, but provides no copy controls. `draft.jpg` shows the selection burden across a long, wrapped block. Against “mobile touch” and “email handoff,” this adds avoidable work after completing the form. **Small fix:** separate recipient, subject and body; add explicit copy buttons with selectable-text fallback and truthful copy status.
+
+Source and **28 passing Node tests** support question-only defaults, optional practice fields, estimate opt-in, input/change draft invalidation, Daniel’s address, focus handling, JS-disabled guards and no accepted-event fabrication. Company voice and readiness limits remain. Tests use mocked DOM; native validation and reset behavior were not independently browser-verified.
+
+Inspected with `view_image`: **home.jpg, ehr.jpg, setup.jpg, remittance.jpg, inquiry.jpg, draft.jpg**. The viewer heavily reduced the 390×7671 homepage; small-text conclusions rely on source. No fresh 320px, actual-phone or interactive browser check. Full build gate was not run: it requires prohibited temporary writes; Git also reported denied cache writes.
+
+**Growth proposals:** Link the remittance guide directly from “When a payment is short,” and the setup guide from the setup FAQ. Test an inquiry link immediately after each guide’s direct answer. Judge any later launch by received qualified inquiries and settled revenue, not clicks.
+
+No edits, PR updates, sends, merges or deployments; no private memory or earlier review reports read.

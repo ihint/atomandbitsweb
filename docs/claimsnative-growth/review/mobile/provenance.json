@@ -1,0 +1,121 @@
+{
+  "run_date": "2026-10-17",
+  "agents": [
+    {
+      "axis": "mobile-standards",
+      "thread_id": "01a14bf4-d0ce-7733-aff6-e0aec15474cc",
+      "sandbox": "read-only",
+      "resolved_model": "not emitted",
+      "cash_cost": "not emitted",
+      "usage": {
+        "input_tokens": 71069,
+        "cached_input_tokens": 57472,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 813,
+        "reasoning_output_tokens": 102
+      },
+      "report_sha256": "237e4d6292fca775811da62728f08a8e724ab576fe0bc903b3681edbcf328196",
+      "shell_snapshot": true
+    },
+    {
+      "axis": "mobile-spec",
+      "thread_id": "01a14bf4-cce2-73c3-a2b3-6ea4a5483b48",
+      "sandbox": "read-only",
+      "resolved_model": "not emitted",
+      "cash_cost": "not emitted",
+      "usage": {
+        "input_tokens": 132647,
+        "cached_input_tokens": 111872,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 981,
+        "reasoning_output_tokens": 37
+      },
+      "report_sha256": "5a02584d33ab0974fde0a7578f5d9da769115a4f4a7fed40f0df4dd38845e655",
+      "shell_snapshot": true
+    },
+    {
+      "axis": "mobile-standards-source",
+      "thread_id": "01a14bf5-b97b-7ad2-aba1-60cfaef9215a",
+      "sandbox": "read-only",
+      "resolved_model": "not emitted",
+      "cash_cost": "not emitted",
+      "usage": {
+        "input_tokens": 335447,
+        "cached_input_tokens": 278528,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2535,
+        "reasoning_output_tokens": 610
+      },
+      "report_sha256": "0475b1ce44ef66a77c39a762e8ef5776e252545c4fd4abc4219c6cdea75acb9e",
+      "shell_snapshot": false
+    },
+    {
+      "axis": "mobile-spec-source",
+      "thread_id": "01a14bf5-c385-7782-8947-25058f83b45e",
+      "sandbox": "read-only",
+      "resolved_model": "not emitted",
+      "cash_cost": "not emitted",
+      "usage": {
+        "input_tokens": 350737,
+        "cached_input_tokens": 287872,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1908,
+        "reasoning_output_tokens": 403
+      },
+      "report_sha256": "2602fceac5073ff0cf48b79f59749b94c95f5557fc66c74d62280924276dc1c9",
+      "shell_snapshot": false
+    },
+    {
+      "axis": "closure-standards",
+      "thread_id": "01a14bfb-7e08-7f13-bf8b-48fa8d7957aa",
+      "sandbox": "read-only",
+      "resolved_model": "not emitted",
+      "cash_cost": "not emitted",
+      "usage": {
+        "input_tokens": 281666,
+        "cached_input_tokens": 230272,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1774,
+        "reasoning_output_tokens": 141
+      },
+      "report_sha256": "4c2b8753ce7c565f672a5c89fa755ecbce3d94f435e27d94c4bd8f95456996cf",
+      "shell_snapshot": false
+    },
+    {
+      "axis": "closure-spec",
+      "thread_id": "01a14bfb-7f00-72a3-b741-48e8dbb17f65",
+      "sandbox": "read-only",
+      "resolved_model": "not emitted",
+      "cash_cost": "not emitted",
+      "usage": {
+        "input_tokens": 411183,
+        "cached_input_tokens": 349696,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2107,
+        "reasoning_output_tokens": 227
+      },
+      "report_sha256": "1cb01c4979145d707f7e8f5fd40b50cbd099efea9d1ec062a60fa312c967cb57",
+      "shell_snapshot": false
+    },
+    {
+      "axis": "final-corrections",
+      "thread_id": "01a14bfd-eb40-7361-b2db-ceb3fa96a59e",
+      "sandbox": "read-only",
+      "resolved_model": "not emitted",
+      "cash_cost": "not emitted",
+      "usage": {
+        "input_tokens": 196102,
+        "cached_input_tokens": 156800,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1280,
+        "reasoning_output_tokens": 66
+      },
+      "report_sha256": "4cd7503c72badcd1296daa7b3eb5049810844e068edc8cc56b467ab26698bdab",
+      "shell_snapshot": false
+    }
+  ],
+  "source_baseline": "2dd68429d753f0211e2c17f0a1a539bf9b2558dd",
+  "first_fixes": "97687700aea32d445f975a9214545e45b9026abd",
+  "final_runtime": "1b89643b57a1bef3371c4ac43796c2ac541d28a5",
+  "limits": "First two screenshot-only agents could not start shell due malformed PATH. Fresh read-only processes with clean child PATH and shell_snapshot disabled completed source reviews. Sandbox temp-file denial remained; parent full gate ran. No permissions weakened."
+}
