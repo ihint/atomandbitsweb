@@ -15,7 +15,7 @@ function inquiry(reducedMotion = false, clipboard) {
   Object.assign(nodes['course-revenue'], {value:'750'});
   const document = {getElementById: id => nodes[id], activeElement:null};
   const tracked = [];
-  const window = {navigator:{clipboard}, matchMedia:() => ({matches:reducedMotion}), ClaimsGrowth:{leadLines:() => ['First visit source: Google'], track:(...args) => tracked.push(args)}};
+  const window = {navigator:{clipboard}, matchMedia:() => ({matches:reducedMotion}), ClaimsGrowth:{leadLines:() => ['First observed source: Google'], track:(...args) => tracked.push(args)}};
   vm.runInNewContext(code, {document, window, Intl, Number, encodeURIComponent});
   nodes['contact-name'].value = 'Demo Contact';
   nodes['contact-email'].value = 'demo@example.test';
@@ -37,7 +37,7 @@ test('a billing question never includes untouched example revenue by default', (
   const e = inquiry(); e.submit();
   assert.match(e.body(), /existing payment follow-up/);
   assert.match(e.body(), /demo@example.test/);
-  assert.match(e.body(), /First visit source: Google/);
+  assert.match(e.body(), /First observed source: Google/);
   assert.doesNotMatch(e.body(), /ESTIMATE|6,500|78,000|undefined/);
   assert.equal(e.nodes['draft-review'].hidden, false);
   assert.equal(e.nodes['inquiry-fields'].disabled, false);

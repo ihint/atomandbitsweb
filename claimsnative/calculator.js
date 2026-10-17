@@ -124,10 +124,10 @@
     if (practiceLines.length) bodyLines.push('', 'PRACTICE', practiceLines.join('\n'));
     bodyLines.push('', 'CONTACT', 'Name: ' + fieldValue('contact-name'), 'Email: ' + fieldValue('contact-email'));
     bodyLines.push('How did you hear about us: ' + (fieldValue('heard-about') || 'Not supplied'));
-    var attribution = window.ClaimsGrowth ? window.ClaimsGrowth.leadLines() : ['First visit source: Direct or unknown'];
+    var attribution = window.ClaimsGrowth ? window.ClaimsGrowth.leadLines() : ['First observed source: Direct or unknown'];
 
     if (attribution.length) {
-      bodyLines.push('', 'WEBSITE SOURCE (optional; you can remove this)');
+      bodyLines.push('', 'WEBSITE SOURCE (optional; you can remove this)', 'From this page, or earlier pages in this tab if you allowed source history.');
       Array.prototype.push.apply(bodyLines, attribution);
     }
 
