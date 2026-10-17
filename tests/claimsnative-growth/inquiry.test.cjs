@@ -7,15 +7,15 @@ const site = path.join(__dirname, '../../claimsnative');
 const html = fs.readFileSync(path.join(site, 'insurance-opportunity/index.html'), 'utf8');
 const code = fs.readFileSync(path.join(site, 'calculator.js'), 'utf8');
 
-function inquiry(reducedMotion = false) {
-  const ids = ['turned-away', 'frequency', 'course-revenue', 'monthly-potential', 'annual-potential', 'annual-patients', 'exact-formula', 'review-form', 'draft-review', 'draft-preview', 'draft-heading', 'open-email', 'use-estimate', 'include-estimate', 'inquiry-fields', 'review-draft-button', 'practice-name', 'specialty', 'location', 'visits-week', 'practice-system', 'insurance-status', 'biggest-concern', 'contact-name', 'contact-email', 'heard-about'];
+function inquiry(reducedMotion = false, clipboard) {
+  const ids = ['turned-away', 'frequency', 'course-revenue', 'monthly-potential', 'annual-potential', 'annual-patients', 'exact-formula', 'review-form', 'draft-review', 'draft-preview', 'draft-heading', 'draft-subject', 'copy-status', 'copy-address', 'copy-subject', 'copy-body', 'open-email', 'use-estimate', 'include-estimate', 'inquiry-fields', 'review-draft-button', 'practice-name', 'specialty', 'location', 'visits-week', 'practice-system', 'insurance-status', 'biggest-concern', 'contact-name', 'contact-email', 'heard-about'];
   const nodes = Object.fromEntries(ids.map(id => [id, {value:'', checked:false, hidden:id === 'draft-review', disabled:['inquiry-fields','review-draft-button'].includes(id), listeners:{}, addEventListener(name, fn) { this.listeners[name] = fn; }, focus() { document.activeElement = this; }, scrollIntoView(options) { this.scroll = options; }}]));
   Object.assign(nodes['turned-away'], {value:'2'});
   Object.assign(nodes.frequency, {value:'week'});
   Object.assign(nodes['course-revenue'], {value:'750'});
   const document = {getElementById: id => nodes[id], activeElement:null};
   const tracked = [];
-  const window = {matchMedia:() => ({matches:reducedMotion}), ClaimsGrowth:{leadLines:() => ['first_referral_source: google'], track:(...args) => tracked.push(args)}};
+  const window = {navigator:{clipboard}, matchMedia:() => ({matches:reducedMotion}), ClaimsGrowth:{leadLines:() => ['First visit source: Google'], track:(...args) => tracked.push(args)}};
   vm.runInNewContext(code, {document, window, Intl, Number, encodeURIComponent});
   nodes['contact-name'].value = 'Demo Contact';
   nodes['contact-email'].value = 'demo@example.test';
@@ -37,7 +37,7 @@ test('a billing question never includes untouched example revenue by default', (
   const e = inquiry(); e.submit();
   assert.match(e.body(), /existing payment follow-up/);
   assert.match(e.body(), /demo@example.test/);
-  assert.match(e.body(), /first_referral_source: google/);
+  assert.match(e.body(), /First visit source: Google/);
   assert.doesNotMatch(e.body(), /ESTIMATE|6,500|78,000|undefined/);
   assert.equal(e.nodes['draft-review'].hidden, false);
   assert.equal(e.nodes['inquiry-fields'].disabled, false);
@@ -85,5 +85,42 @@ test('each guide offers an on-page inquiry before the email-app handoff', () => 
     const guide = fs.readFileSync(path.join(site, route, 'index.html'), 'utf8');
     assert.match(guide, /href="\/claimsnative\/insurance-opportunity\/#review"[^>]*data-growth-cta="start-inquiry"/);
     assert.match(guide, /email draft/);
+  }
+});
+
+test('copy controls do nothing before a draft and copy each email part exactly', async () => {
+  const copied = [];
+  const e = inquiry(false, {writeText:async value => copied.push(value)});
+  await e.nodes['copy-body'].listeners.click(); assert.equal(copied.length, 0);
+  e.submit();
+  for (const part of ['address','subject','body']) await e.nodes['copy-'+part].listeners.click();
+  assert.deepEqual(copied, ['daniel@claimsnative.com', e.nodes['draft-subject'].textContent, e.body()]);
+  assert.match(e.nodes['copy-status'].textContent, /Message copied.*Nothing has been sent/);
+  assert.equal(e.tracked.length, 1); // Copy is neither a sent request nor a new event.
+});
+
+test('denied or missing clipboard keeps manual copy and never reports success', async () => {
+  for (const clipboard of [undefined, {writeText:async () => {throw Error('denied');}}]) {
+    const e = inquiry(false, clipboard); e.submit();
+    await e.nodes['copy-body'].listeners.click();
+    assert.match(e.nodes['copy-status'].textContent, /Copy is unavailable.*Nothing has been sent/);
+    assert.equal(e.nodes['draft-review'].hidden, false);
+    assert.match(e.nodes['draft-preview'].textContent, /existing payment follow-up/);
+  }
+});
+
+test('editing, reset or a replacement draft cannot display stale copy confirmation', async () => {
+  for (const action of ['input', 'reset', 'submit']) {
+    let finish;
+    const e = inquiry(false, {writeText:() => new Promise(resolve => {finish = resolve;})}); e.submit();
+    const pending = e.nodes['copy-body'].listeners.click();
+    if (action === 'submit') e.submit(); else e.nodes['review-form'].listeners[action]();
+    finish(); await pending;
+    assert.equal(e.nodes['copy-status'].textContent, '');
+    if (action !== 'submit') {
+      assert.equal(e.nodes['draft-review'].hidden, true);
+      assert.equal(e.nodes['draft-subject'].textContent, '');
+      assert.equal(new URL(e.nodes['open-email'].href).searchParams.has('body'), false);
+    }
   }
 });

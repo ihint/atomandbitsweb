@@ -71,7 +71,7 @@ test('first touch persists; conversion touch updates; stored fields are revalida
 });
 test('expired, malformed and future state cannot override first touch',()=>{
  for(const stored of ['garbage',JSON.stringify({at:Date.now()-1800001,first:{referral_source:'partner'}}),JSON.stringify({at:Date.now()+100000,first:{referral_source:'partner'}})]){
- const e=environment({data:[['claims-growth-choice-v1','yes'],['claims-growth-v1',stored]]});const a=core.start(e.w);assert.ok(a.leadLines().includes('first_referral_source: google'));
+ const e=environment({data:[['claims-growth-choice-v1','yes'],['claims-growth-v1',stored]]});const a=core.start(e.w);assert.ok(a.leadLines().includes('First visit source: Google'));
  }
 });
 test('storage failure preserves form use and in-memory opt-in',()=>{
@@ -94,7 +94,7 @@ test('delegated footer email click preserves safe source labels without analytic
  const e=environment();core.start(e.w);
  const el={dataset:{growthEvent:'inquiry_email_opened',growthCta:'talk-to-us',growthLocation:'footer'},href:'mailto:daniel@claimsnative.com'};
  e.listeners.click({target:{closest:()=>el}});
- assert.ok(decodeURIComponent(el.href.replace(/\+/g,' ')).includes('first_referral_source: google'));assert.equal(e.sent.length,0);
+ assert.ok(decodeURIComponent(el.href.replace(/\+/g,' ')).includes('First visit source: Google'));assert.equal(e.sent.length,0);
 });
 
 test('consent toggles do not reset form and draft retry protection',()=>{

@@ -14,6 +14,11 @@
   var openEmail = document.getElementById('open-email');
   var includeEstimate = document.getElementById('include-estimate');
   var draftHeading = document.getElementById('draft-heading');
+  var draftSubject = document.getElementById('draft-subject');
+  var copyStatus = document.getElementById('copy-status');
+  var currentDraft = null;
+  var draftVersion = 0;
+  var copyAttempt = 0;
 
   var annualFactors = { workday: 260, week: 52, month: 12 };
   var periodLabels = { workday: 'workdays', week: 'weeks', month: 'months' };
@@ -50,9 +55,30 @@
 
   function clearDraft() {
     if (draftReview.hidden) return;
+    draftVersion += 1;
+    currentDraft = null;
     draftReview.hidden = true;
     draftPreview.textContent = '';
+    draftSubject.textContent = '';
+    copyStatus.textContent = '';
     openEmail.href = 'mailto:daniel@claimsnative.com';
+  }
+
+  async function copyDraftPart(part, label) {
+    if (!currentDraft || draftReview.hidden) return;
+    var version = draftVersion;
+    var attempt = ++copyAttempt;
+    var value = part === 'address' ? 'daniel@claimsnative.com' : currentDraft[part];
+    function show(message) {
+      if (version === draftVersion && attempt === copyAttempt && !draftReview.hidden) copyStatus.textContent = message;
+    }
+    try {
+      if (!window.navigator.clipboard || typeof window.navigator.clipboard.writeText !== 'function') throw new Error('Copy unavailable');
+      await window.navigator.clipboard.writeText(value);
+      show(label + ' copied. Paste it into your email. Nothing has been sent.');
+    } catch (_) {
+      show('Copy is unavailable. Select the ' + label.toLowerCase() + ' above and copy it into your email. Nothing has been sent.');
+    }
   }
 
   function renderEstimate() {
@@ -98,10 +124,10 @@
     if (practiceLines.length) bodyLines.push('', 'PRACTICE', practiceLines.join('\n'));
     bodyLines.push('', 'CONTACT', 'Name: ' + fieldValue('contact-name'), 'Email: ' + fieldValue('contact-email'));
     bodyLines.push('How did you hear about us: ' + (fieldValue('heard-about') || 'Not supplied'));
-    var attribution = window.ClaimsGrowth ? window.ClaimsGrowth.leadLines() : ['Source: direct_unknown'];
+    var attribution = window.ClaimsGrowth ? window.ClaimsGrowth.leadLines() : ['First visit source: Direct or unknown'];
 
     if (attribution.length) {
-      bodyLines.push('', 'ATTRIBUTION');
+      bodyLines.push('', 'WEBSITE SOURCE (optional; you can remove this)');
       Array.prototype.push.apply(bodyLines, attribution);
     }
 
@@ -118,6 +144,10 @@
 
   reviewForm.addEventListener('input', clearDraft);
   reviewForm.addEventListener('change', clearDraft);
+  reviewForm.addEventListener('reset', clearDraft);
+  [['address', 'Email address'], ['subject', 'Subject'], ['body', 'Message']].forEach(function (part) {
+    document.getElementById('copy-' + part[0]).addEventListener('click', function () { return copyDraftPart(part[0], part[1]); });
+  });
   document.getElementById('use-estimate').addEventListener('click', function () {
     includeEstimate.checked = true;
     clearDraft();
@@ -127,7 +157,11 @@
     event.preventDefault();
 
     var email = buildEmail();
-    draftPreview.textContent = 'To: Claims Native <daniel@claimsnative.com>\nSubject: ' + email.subject + '\n\n' + email.body;
+    draftVersion += 1;
+    currentDraft = email;
+    draftSubject.textContent = email.subject;
+    draftPreview.textContent = email.body;
+    copyStatus.textContent = '';
     openEmail.href = 'mailto:daniel@claimsnative.com?subject=' + encodeURIComponent(email.subject) + '&body=' + encodeURIComponent(email.body);
     draftReview.hidden = false;
 

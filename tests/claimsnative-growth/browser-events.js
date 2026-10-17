@@ -42,7 +42,7 @@ async (page) => {
  await page.getByRole('button',{name:'Review email draft'}).click();
  await page.getByRole('button',{name:'Review email draft'}).click();
  const draft=await page.locator('#draft-preview').innerText();
- if(!draft.includes('first_utm_campaign: existing-ehr')||!draft.includes('How did you hear about us: AI assistant')||draft.includes('private-health'))throw Error('Draft source mismatch');
+ if(!draft.includes('First visit campaign: Keep your EHR')||!draft.includes('How did you hear about us: AI assistant')||draft.includes('private-health'))throw Error('Draft source mismatch');
  if(!await page.getByText('Your draft is ready. Nothing has been sent.',{exact:true}).isVisible())throw Error('Missing draft truth');
  if(captures.filter(e=>e.event==='inquiry_form_started').length!==1||captures.filter(e=>e.event==='inquiry_draft_prepared').length!==1)throw Error('Duplicate events '+JSON.stringify(captures));
  const raw=JSON.stringify(captures);

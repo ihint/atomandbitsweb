@@ -106,10 +106,12 @@
       return true;
     }
     function leadLines() {
-      var lines = ['Source labels (not proof of a sent request):'];
+      var lines = [];
+      var labels = {referral_source:'source', utm_source:'campaign source', utm_medium:'channel', utm_campaign:'campaign', utm_content:'link'};
+      var values = {direct_unknown:'Direct or unknown', other_referral:'Other website', google:'Google', bing:'Bing', chatgpt:'ChatGPT', perplexity:'Perplexity', claude:'Claude', copilot:'Copilot', duckduckgo:'DuckDuckGo', newsletter:'Newsletter', partner:'Partner', organic:'Organic search', referral:'Referral', email:'Email', cpc:'Paid search', 'existing-ehr':'Keep your EHR', 'billing-setup':'Billing setup', 'payment-reconciliation':'Payment reconciliation', guide:'Guide', footer:'Footer', profile:'Profile'};
       ['first', 'conversion'].forEach(function (prefix) {
         var t = prefix === 'first' ? first : current;
-        Object.keys(t).forEach(function (k) { lines.push(prefix + '_' + k + ': ' + t[k]); });
+        Object.keys(t).forEach(function (k) { lines.push((prefix === 'first' ? 'First visit ' : 'This visit ') + labels[k] + ': ' + (values[t[k]] || t[k])); });
       });
       return lines;
     }
