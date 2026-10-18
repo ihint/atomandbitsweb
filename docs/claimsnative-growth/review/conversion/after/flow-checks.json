@@ -1,0 +1,120 @@
+{
+  "source_revision": "488da0d79e7e09dc578658ea5183f8acc3912108",
+  "build_environment": "preview",
+  "checks": [
+    {
+      "case": "missing-required",
+      "draftHidden": true,
+      "focus": "contact-name"
+    },
+    {
+      "case": "invalid-email",
+      "draftHidden": true,
+      "emailValid": false,
+      "focus": "contact-email"
+    },
+    {
+      "case": "minimal-question-keyboard-draft",
+      "draftVisible": true,
+      "estimateSelected": false,
+      "fallbackVisible": true,
+      "focus": "draft-heading",
+      "requiredFields": 3,
+      "urlHasAnswers": false
+    },
+    {
+      "case": "keyboard-next-action",
+      "focus": "open-email"
+    },
+    {
+      "case": "edit-invalidates-draft",
+      "passed": true
+    },
+    {
+      "case": "optional-details-only-when-supplied",
+      "passed": true
+    },
+    {
+      "case": "explicit-current-estimate",
+      "passed": true
+    },
+    {
+      "case": "phone-minimal-question",
+      "estimate": false,
+      "focus": "draft-heading",
+      "overflow": false,
+      "required": 3,
+      "width": 390
+    }
+  ],
+  "externalActions": 0,
+  "emailAppOpened": false,
+  "collectorConfigured": false,
+  "limits": [
+    "Browser JavaScript-disabled mode was not executed; HTML disabled controls and initialization order are source/unit checked.",
+    "No full assistive-technology audit or measured conversion lift.",
+    "Native email-app fallback instructions were inspected without launching another app."
+  ],
+  "captureRepairs": [
+    "Local preview server restarted before captures.",
+    "Cached pre-change HTML was rejected; reload confirmed new controls before accepted captures.",
+    "Frequency label locator missed; the observed combobox role passed."
+  ],
+  "build": {
+    "artifact_id": "5276a0e44b42012bed6a72b5226b6fa96dd257abe107cb3f0ebe26e726af5c1c",
+    "artifact_sha256": {
+      "404.html": "cef407bd5d5f1b9b76676e2f4fcc31335c59c1e37c18f01ab85dac50117e46a5",
+      "_headers": "71faf968fbcdec08b4fd2b535afa73e91648122a3f096018105ae0364b133f2a",
+      "_redirects": "db531ddb8b33b2fab9622189d07085e6286fbbb836326dbb2a6ca8378b9ef7dc",
+      "billing-setup/index.html": "657f6f383b341ca398bcd671217775e312b80c5a7095ec5876f1812a01e3a199",
+      "calculator.js": "7f63ce6b43c5a2acb38e548f5d20b5b629e55b40b3d1c7518e18e334b6a74df9",
+      "chiropractors/index.html": "bae655b8cdde8d2d3e640aaa9285830d964eb635aef077b53466ac0fed5cca13",
+      "growth-config.js": "f77ca390c603884fc9ec14454a617937d950dadd0ac9c6630281890be359991a",
+      "growth.js": "88f820e944d0954bbc856722c48ed1ac20b000ec3a168a70a6e847b063846ddf",
+      "home.css": "db3be09d1bee275a63173707e8b37e9bd718b9c379532676607d9f29ba8c9af4",
+      "how-we-start/index.html": "082feab59dce6a928550074c134063ba535361d8605e5c55ea8c6f23e587088a",
+      "index.html": "887db10dbb6079bb69e6bfa62f871b5f10b1e46cbb5bdb82b3858cecc47238d7",
+      "insurance-opportunity/index.html": "10286f4c3b6f8a390f7ed04da09ee886985d5842fa1aa662ec103bae6a03c335",
+      "keep-your-ehr/index.html": "9854c2d52671ae30cfcf75d479613f8412984eece04cd6106d609218407fe2c5",
+      "mark.svg": "07d4ec8ccd518a22477aa593af34480c0f751da4599a135d7d07c9de1419b56a",
+      "og-simple-20260911.png": "5a7a6ebdbc916e4a374431325f81d2e4cd46fd11b005c54e46bddb33fbe1bf8c",
+      "og.png": "03fcf46b892011bf886b8e18b53336c883d81ab9dae4743992fc8b8a1d0ff002",
+      "remittance-and-deposits/index.html": "ded3a1f5d4a0f631b89b2dd33827648dc638c2b01bd32e9b112e66d232652c23",
+      "robots.txt": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1",
+      "simple.css": "293f1263c9fca48f5599a1fa24f911043c4cff1a3b0eceecc026da57a445484a",
+      "worth.js": "44fe59fe8850043cec8c4f85154be7fa4931a09591996618304aa31ce9e5dcd4"
+    },
+    "build_environment": "preview",
+    "source_inputs_clean": true,
+    "source_revision": "488da0d79e7e09dc578658ea5183f8acc3912108",
+    "source_sha256": {
+      "claimsnative/404.html": "7200d8885f61f7ed3719a88ee1a09b01f20723f8db059cec7208e4588acc66df",
+      "claimsnative/billing-setup/index.html": "4d94582095f00837674496af40ee4431e8e74a78ae0941c1d9ddddc4826e039d",
+      "claimsnative/calculator.js": "7f63ce6b43c5a2acb38e548f5d20b5b629e55b40b3d1c7518e18e334b6a74df9",
+      "claimsnative/chiropractors/index.html": "d9ff0305c37095b42d077c2c0a3caf837a99782b86fe83311f8f7598ff839d9e",
+      "claimsnative/cloudflare-pages/_headers": "cf830279b7d53ba6c1a672d40decd2bb797c4fcbc196c3eaf1a5f2cfe48a3ae3",
+      "claimsnative/cloudflare-pages/_redirects": "db531ddb8b33b2fab9622189d07085e6286fbbb836326dbb2a6ca8378b9ef7dc",
+      "claimsnative/cloudflare-pages/infrastructure.json": "45a64f6b20695086e13de3237f8c596126f9ff24796a3b1a81df26664739e89a",
+      "claimsnative/cloudflare-pages/robots.txt": "f29c704fa208bfd1f20780ff164a94f620baf8a3c5a1fbaf86e48bbde7ba7194",
+      "claimsnative/cloudflare-pages/sitemap.xml": "5e78b5ce413acdad8957bd1c9688d67791c86bdf82070b652c9f32856e3c7707",
+      "claimsnative/cloudflare-www-redirect/src/index.mjs": "faff0a26b99b0bb4a434a22ab834cc0c903bcfbc6974e3dff04bf892171d8cc2",
+      "claimsnative/cloudflare-www-redirect/test/redirect.test.mjs": "b223aaa1d90f1601e0562b9491d0b4acff410971ce8b16e63c05c0a4c3303218",
+      "claimsnative/cloudflare-www-redirect/wrangler.jsonc": "74835fe7937f06526a88b40b73a0a183c18139afee9ce19c6373deca8f2f647e",
+      "claimsnative/growth-config.js": "f77ca390c603884fc9ec14454a617937d950dadd0ac9c6630281890be359991a",
+      "claimsnative/growth.js": "88f820e944d0954bbc856722c48ed1ac20b000ec3a168a70a6e847b063846ddf",
+      "claimsnative/home.css": "db3be09d1bee275a63173707e8b37e9bd718b9c379532676607d9f29ba8c9af4",
+      "claimsnative/how-we-start/index.html": "f2273b7e45f4b9dacc5397b80cf7fc102bc7c4f64030b0333d51ab337513ecd4",
+      "claimsnative/index.html": "5aed097bf1972f631f8fc5b696290e91961fec9800af7f661e48989ac59ab1f8",
+      "claimsnative/insurance-opportunity/index.html": "e57534257f461e15ffcdf1fb8e12b7a661fae79f6ac748ed0cd37573325b15db",
+      "claimsnative/keep-your-ehr/index.html": "ce8188107ca12140ae49c8c355b88a0050a7afbfd6b402057cf7a9d2a078c242",
+      "claimsnative/mark.svg": "07d4ec8ccd518a22477aa593af34480c0f751da4599a135d7d07c9de1419b56a",
+      "claimsnative/og-simple-20260911.png": "5a7a6ebdbc916e4a374431325f81d2e4cd46fd11b005c54e46bddb33fbe1bf8c",
+      "claimsnative/og.png": "03fcf46b892011bf886b8e18b53336c883d81ab9dae4743992fc8b8a1d0ff002",
+      "claimsnative/remittance-and-deposits/index.html": "3b260884c545e7cd5e76d7858799fc56553a74a8be8e345fd8f48c9005acb777",
+      "claimsnative/simple.css": "293f1263c9fca48f5599a1fa24f911043c4cff1a3b0eceecc026da57a445484a",
+      "claimsnative/worth.js": "44fe59fe8850043cec8c4f85154be7fa4931a09591996618304aa31ce9e5dcd4",
+      "scripts/build-claimsnative-pages.sh": "4f8d26119eaf4dde1b482ae67d82b3d326dfaa4fd76e95c514f02628e70b5b77",
+      "scripts/claimsnative-build-manifest.py": "a3521a517e7551562e8b9123d5f50c29a8af6e859cfebee199bd33e72b30e4df"
+    }
+  }
+}

@@ -1,0 +1,227 @@
+Built Claims Native Pages site at /var/folders/8f/m0gs2km97zbf5fj7n169ycxc0000gn/T/tmp.xrcMilA7ng/site
+TAP version 13
+# Subtest: redirects www paths and queries to the canonical host
+ok 1 - redirects www paths and queries to the canonical host
+  ---
+  duration_ms: 11.944042
+  type: 'test'
+  ...
+# Subtest: fails closed for a host outside the configured route
+ok 2 - fails closed for a host outside the configured route
+  ---
+  duration_ms: 1.005041
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 57.014209
+TAP version 13
+# Subtest: failed JavaScript leaves inquiry fields and submit disabled in the HTML
+ok 1 - failed JavaScript leaves inquiry fields and submit disabled in the HTML
+  ---
+  duration_ms: 0.562417
+  type: 'test'
+  ...
+# Subtest: only name, email and question are required for a first inquiry
+ok 2 - only name, email and question are required for a first inquiry
+  ---
+  duration_ms: 0.445708
+  type: 'test'
+  ...
+# Subtest: a billing question never includes untouched example revenue by default
+ok 3 - a billing question never includes untouched example revenue by default
+  ---
+  duration_ms: 12.413916
+  type: 'test'
+  ...
+# Subtest: an explicitly included estimate uses the current calculator values
+ok 4 - an explicitly included estimate uses the current calculator values
+  ---
+  duration_ms: 0.671375
+  type: 'test'
+  ...
+# Subtest: optional practice details are included only when supplied
+ok 5 - optional practice details are included only when supplied
+  ---
+  duration_ms: 0.655958
+  type: 'test'
+  ...
+# Subtest: Use this estimate opts in and clears an earlier draft
+ok 6 - Use this estimate opts in and clears an earlier draft
+  ---
+  duration_ms: 0.523042
+  type: 'test'
+  ...
+# Subtest: editing either the inquiry or calculator clears the stale draft and mailto body
+ok 7 - editing either the inquiry or calculator clears the stale draft and mailto body
+  ---
+  duration_ms: 0.435833
+  type: 'test'
+  ...
+# Subtest: draft review moves keyboard focus and respects reduced motion
+ok 8 - draft review moves keyboard focus and respects reduced motion
+  ---
+  duration_ms: 0.435917
+  type: 'test'
+  ...
+# Subtest: each guide offers an on-page inquiry before the email-app handoff
+ok 9 - each guide offers an on-page inquiry before the email-app handoff
+  ---
+  duration_ms: 1.095209
+  type: 'test'
+  ...
+# Subtest: copy controls do nothing before a draft and copy each email part exactly
+ok 10 - copy controls do nothing before a draft and copy each email part exactly
+  ---
+  duration_ms: 1.092375
+  type: 'test'
+  ...
+# Subtest: denied or missing clipboard keeps manual copy and never reports success
+ok 11 - denied or missing clipboard keeps manual copy and never reports success
+  ---
+  duration_ms: 1.089125
+  type: 'test'
+  ...
+# Subtest: editing, reset or a replacement draft cannot display stale copy confirmation
+ok 12 - editing, reset or a replacement draft cannot display stale copy confirmation
+  ---
+  duration_ms: 1.109458
+  type: 'test'
+  ...
+# Subtest: only public normalized paths; unknown and healthcare routes fail closed
+ok 13 - only public normalized paths; unknown and healthcare routes fail closed
+  ---
+  duration_ms: 0.5455
+  type: 'test'
+  ...
+# Subtest: registry rejects arbitrary values, PII, duplicate parameters, and unapproved campaign keys
+ok 14 - registry rejects arbitrary values, PII, duplicate parameters, and unapproved campaign keys
+  ---
+  duration_ms: 0.85725
+  type: 'test'
+  ...
+# Subtest: referral normalization rejects lookalike hosts and strips paths/query
+ok 15 - referral normalization rejects lookalike hosts and strips paths/query
+  ---
+  duration_ms: 0.23225
+  type: 'test'
+  ...
+# Subtest: internal navigation retains the eligible source; a direct entry stays direct
+ok 16 - internal navigation retains the eligible source; a direct entry stays direct
+  ---
+  duration_ms: 0.1035
+  type: 'test'
+  ...
+# Subtest: payload property allowlist drops fields, URL, query and caller category
+ok 17 - payload property allowlist drops fields, URL, query and caller category
+  ---
+  duration_ms: 0.212333
+  type: 'test'
+  ...
+# Subtest: no network or source storage before opt-in; decline and revocation stop collection
+ok 18 - no network or source storage before opt-in; decline and revocation stop collection
+  ---
+  duration_ms: 1.632791
+  type: 'test'
+  ...
+# Subtest: replays of form start and draft are deduplicated; no personal fields in serialized payload
+ok 19 - replays of form start and draft are deduplicated; no personal fields in serialized payload
+  ---
+  duration_ms: 0.401458
+  type: 'test'
+  ...
+# Subtest: rapid click retries count once; locations remain separate
+ok 20 - rapid click retries count once; locations remain separate
+  ---
+  duration_ms: 0.277667
+  type: 'test'
+  ...
+# Subtest: DNT, GPC, webdriver, app hosts, previews, unknown paths and missing provider fail closed
+ok 21 - DNT, GPC, webdriver, app hosts, previews, unknown paths and missing provider fail closed
+  ---
+  duration_ms: 1.227583
+  type: 'test'
+  ...
+# Subtest: first touch persists; conversion touch updates; stored fields are revalidated
+ok 22 - first touch persists; conversion touch updates; stored fields are revalidated
+  ---
+  duration_ms: 0.582125
+  type: 'test'
+  ...
+# Subtest: expired, malformed and future state cannot override first touch
+ok 23 - expired, malformed and future state cannot override first touch
+  ---
+  duration_ms: 0.222542
+  type: 'test'
+  ...
+# Subtest: storage failure preserves form use and in-memory opt-in
+ok 24 - storage failure preserves form use and in-memory opt-in
+  ---
+  duration_ms: 0.121792
+  type: 'test'
+  ...
+# Subtest: loading script twice adds one listener set
+ok 25 - loading script twice adds one listener set
+  ---
+  duration_ms: 0.858917
+  type: 'test'
+  ...
+# Subtest: network failure is not retried and never creates an acceptance event
+ok 26 - network failure is not retried and never creates an acceptance event
+  ---
+  duration_ms: 0.083375
+  type: 'test'
+  ...
+# Subtest: missing secure random UUID fails closed without breaking email attribution
+ok 27 - missing secure random UUID fails closed without breaking email attribution
+  ---
+  duration_ms: 0.054125
+  type: 'test'
+  ...
+# Subtest: delegated footer email click preserves safe source labels without analytics consent
+ok 28 - delegated footer email click preserves safe source labels without analytics consent
+  ---
+  duration_ms: 0.177875
+  type: 'test'
+  ...
+# Subtest: consent toggles do not reset form and draft retry protection
+ok 29 - consent toggles do not reset form and draft retry protection
+  ---
+  duration_ms: 0.091959
+  type: 'test'
+  ...
+# Subtest: internal partial campaign labels retain the known conversion source
+ok 30 - internal partial campaign labels retain the known conversion source
+  ---
+  duration_ms: 0.113209
+  type: 'test'
+  ...
+# Subtest: guide inquiry navigation keeps its local destination and fixed event label
+ok 31 - guide inquiry navigation keeps its local destination and fixed event label
+  ---
+  duration_ms: 0.072208
+  type: 'test'
+  ...
+1..31
+# tests 31
+# suites 0
+# pass 31
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 64.120584
+8 HTML pages: canonical, heading, description, schema and script checks pass; 161 local links/assets/anchors pass; 7 sitemap URLs pass.
+Build manifest asset hashes and source identity pass.
+Built Claims Native Pages site at /var/folders/8f/m0gs2km97zbf5fj7n169ycxc0000gn/T/tmp.xrcMilA7ng/preview
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.493s
+
+OK

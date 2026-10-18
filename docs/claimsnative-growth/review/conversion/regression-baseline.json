@@ -1,0 +1,18 @@
+{
+  "source_revision": "c1558100a6562b8702ba81f271fde26a689166eb",
+  "test_file": "tests/claimsnative-growth/inquiry.test.cjs",
+  "tests": 9,
+  "passed": 2,
+  "failed": 7,
+  "failed_cases": [
+    "failed JavaScript leaves inquiry fields and submit disabled in the HTML",
+    "only name, email and question are required for a first inquiry",
+    "a billing question never includes untouched example revenue by default",
+    "optional practice details are included only when supplied",
+    "Use this estimate opts in and clears an earlier draft",
+    "draft review moves keyboard focus and respects reduced motion",
+    "each guide offers an on-page inquiry before the email-app handoff"
+  ],
+  "repaired_source": "488da0d",
+  "repaired_passed": 9
+}

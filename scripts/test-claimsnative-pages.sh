@@ -6,7 +6,7 @@ test_dir="$(mktemp -d)"
 trap 'rm -rf "$test_dir"' EXIT
 
 output_dir="$test_dir/site"
-"$repo_dir/scripts/build-claimsnative-pages.sh" "$output_dir"
+"$repo_dir/scripts/build-claimsnative-pages.sh" "$output_dir" production
 
 test -f "$output_dir/404.html"
 test ! -e "$output_dir/cloudflare-www-redirect"
@@ -33,7 +33,8 @@ for page in $(find "$output_dir" -name '*.html'); do
     "AI-verified" "office-demo" "provider-demo" "demo.claimsnative.com" \
     "integrates with" "integrates directly" "every EHR" "all EHRs" \
     "EHRs we take visits from" "every specialty" "all specialties" \
-    "all payers" "ChatGPT" "name your EHR"; do
+    "all payers" "ChatGPT" "name your EHR" "Ian Harman" \
+    "founder-led" "the founder" "You talk to the person"; do
     if grep -Fqi -- "$banned" "$page"; then
       echo "Copy guard: '$banned' found in $page" >&2
       exit 1
@@ -134,3 +135,20 @@ if grep -Fq -- "/chiropractors" "$output_dir/_redirects"; then
 fi
 
 node --test "$repo_dir/claimsnative/cloudflare-www-redirect/test/redirect.test.mjs"
+
+# Growth payload, source, consent, deduplication, links and structured-data checks.
+node --test "$repo_dir/tests/claimsnative-growth/measurement.test.cjs" "$repo_dir/tests/claimsnative-growth/inquiry.test.cjs"
+python3 "$repo_dir/scripts/check-claimsnative-growth.py" "$output_dir"
+"$repo_dir/scripts/build-claimsnative-pages.sh" "$test_dir/preview" preview
+grep -Fq 'X-Robots-Tag: noindex, nofollow' "$test_dir/preview/_headers"
+test ! -e "$test_dir/preview/sitemap.xml"
+if grep -R -F 'content="index,follow' "$test_dir/preview" --include='*.html'; then exit 1; fi
+
+python3 -m unittest discover -s "$repo_dir/tests/claimsnative-growth" -p 'test_*.py'
+
+# A source mention must not imply a proved live EHR workflow.
+for page in "$output_dir/index.html" "$output_dir/how-we-start/index.html" "$output_dir/chiropractors/index.html"; do
+  grep -Fq 'Eligibility checks, claim filing and payment posting need validation for your practice.' "$page"
+  if grep -Fq 'We post each payment into your EHR' "$page"; then exit 1; fi
+  if grep -Fq 'We read signed visits and post payments through that login' "$page"; then exit 1; fi
+done

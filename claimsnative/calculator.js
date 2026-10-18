@@ -8,11 +8,17 @@
   var annualOutput = document.getElementById('annual-potential');
   var annualPatientsOutput = document.getElementById('annual-patients');
   var formulaOutput = document.getElementById('exact-formula');
-  var useEstimate = document.getElementById('use-estimate');
   var reviewForm = document.getElementById('review-form');
   var draftReview = document.getElementById('draft-review');
   var draftPreview = document.getElementById('draft-preview');
   var openEmail = document.getElementById('open-email');
+  var includeEstimate = document.getElementById('include-estimate');
+  var draftHeading = document.getElementById('draft-heading');
+  var draftSubject = document.getElementById('draft-subject');
+  var copyStatus = document.getElementById('copy-status');
+  var currentDraft = null;
+  var draftVersion = 0;
+  var copyAttempt = 0;
 
   var annualFactors = { workday: 260, week: 52, month: 12 };
   var periodLabels = { workday: 'workdays', week: 'weeks', month: 'months' };
@@ -23,17 +29,6 @@
     maximumFractionDigits: 2
   });
   var count = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 });
-  var hasStarted = false;
-  var hasCompleted = false;
-  var hasShownIntent = false;
-
-  function track(eventName) {
-    if (window.dataLayer && typeof window.dataLayer.push === 'function') {
-      window.dataLayer.push({ event: eventName });
-    }
-    window.dispatchEvent(new CustomEvent(eventName));
-  }
-
   function nonNegativeNumber(input) {
     var value = Number(input.value);
     return Number.isFinite(value) && value >= 0 ? value : 0;
@@ -60,9 +55,30 @@
 
   function clearDraft() {
     if (draftReview.hidden) return;
+    draftVersion += 1;
+    currentDraft = null;
     draftReview.hidden = true;
     draftPreview.textContent = '';
-    openEmail.href = 'mailto:Ian@atomandbits.com';
+    draftSubject.textContent = '';
+    copyStatus.textContent = '';
+    openEmail.href = 'mailto:daniel@claimsnative.com';
+  }
+
+  async function copyDraftPart(part, label) {
+    if (!currentDraft || draftReview.hidden) return;
+    var version = draftVersion;
+    var attempt = ++copyAttempt;
+    var value = part === 'address' ? 'daniel@claimsnative.com' : currentDraft[part];
+    function show(message) {
+      if (version === draftVersion && attempt === copyAttempt && !draftReview.hidden) copyStatus.textContent = message;
+    }
+    try {
+      if (!window.navigator.clipboard || typeof window.navigator.clipboard.writeText !== 'function') throw new Error('Copy unavailable');
+      await window.navigator.clipboard.writeText(value);
+      show(label + ' copied. Paste it into your email. Nothing has been sent.');
+    } catch (_) {
+      show('Copy is unavailable. Select the ' + label.toLowerCase() + ' above and copy it into your email. Nothing has been sent.');
+    }
   }
 
   function renderEstimate() {
@@ -78,33 +94,7 @@
     clearDraft();
   }
 
-  function noteCalculatorUse() {
-    if (!hasStarted) {
-      hasStarted = true;
-      track('calculator_started');
-    }
-    renderEstimate();
-  }
-
-  function completeCalculator() {
-    if (!hasStarted) {
-      hasStarted = true;
-      track('calculator_started');
-    }
-    if (!hasCompleted) {
-      hasCompleted = true;
-      track('calculator_completed');
-    }
-  }
-
-  function utmLines() {
-    var params = new URLSearchParams(window.location.search);
-    return ['utm_source', 'utm_medium', 'utm_campaign'].reduce(function (lines, key) {
-      var value = params.get(key);
-      if (value) lines.push(key + ': ' + value);
-      return lines;
-    }, []);
-  }
+  function noteCalculatorUse() { renderEstimate(); }
 
   function fieldValue(id) {
     return document.getElementById(id).value.trim();
@@ -112,34 +102,32 @@
 
   function buildEmail() {
     var result = estimate();
-    var subject = 'Claims Native practice walkthrough — ' + fieldValue('practice-name');
+    var practiceName = fieldValue('practice-name');
+    var subject = 'Claims Native billing question' + (practiceName ? ' — ' + practiceName : '');
     var bodyLines = [
-      'I would like to review the insurance opportunity for my practice.',
-      '',
-      'ESTIMATE',
+      'I have a question about billing for my practice.', '',
+      'QUESTION', fieldValue('biggest-concern')
+    ];
+    if (includeEstimate.checked) bodyLines.push(
+      '', 'ESTIMATE',
       'Monthly gross potential: ' + money.format(result.monthlyGross),
       'Annual gross potential: ' + money.format(result.annualGross),
       'Annual patient count: ' + count.format(result.annualPatients),
       'Formula: ' + count.format(result.patients) + ' patients × ' + result.factor + ' ' + periodLabels[result.period] + ' × ' + money.format(result.courseRevenue) + ' = ' + money.format(result.annualGross) + ' per year; ' + money.format(result.annualGross) + ' ÷ 12 = ' + money.format(result.monthlyGross) + ' per month.',
-      'Estimate note: Planning estimate, not a revenue promise. Gross potential revenue, not net income or expected collections.',
-      '',
-      'PRACTICE',
-      'Practice name: ' + fieldValue('practice-name'),
-      'Specialty: ' + fieldValue('specialty'),
-      'City/state: ' + fieldValue('location'),
-      'Visits per week: ' + fieldValue('visits-week'),
-      'Practice system: ' + fieldValue('practice-system'),
-      'Insurance status: ' + fieldValue('insurance-status'),
-      'Biggest concern: ' + fieldValue('biggest-concern'),
-      '',
-      'CONTACT',
-      'Name: ' + fieldValue('contact-name'),
-      'Email: ' + fieldValue('contact-email')
-    ];
-    var attribution = utmLines();
+      'Estimate note: Planning estimate, not a revenue promise. Gross potential revenue, not net income or expected collections.'
+    );
+    var practiceLines = [];
+    [['Practice name','practice-name'], ['Specialty','specialty'], ['City/state','location'], ['Visits per week','visits-week'], ['Practice system','practice-system'], ['Insurance status','insurance-status']].forEach(function (field) {
+      var value = fieldValue(field[1]);
+      if (value) practiceLines.push(field[0] + ': ' + value);
+    });
+    if (practiceLines.length) bodyLines.push('', 'PRACTICE', practiceLines.join('\n'));
+    bodyLines.push('', 'CONTACT', 'Name: ' + fieldValue('contact-name'), 'Email: ' + fieldValue('contact-email'));
+    bodyLines.push('How did you hear about us: ' + (fieldValue('heard-about') || 'Not supplied'));
+    var attribution = window.ClaimsGrowth ? window.ClaimsGrowth.leadLines() : ['First observed source: Direct or unknown'];
 
     if (attribution.length) {
-      bodyLines.push('', 'ATTRIBUTION');
+      bodyLines.push('', 'WEBSITE SOURCE (optional; you can remove this)', 'From this page, or earlier pages in this tab if you allowed source history.');
       Array.prototype.push.apply(bodyLines, attribution);
     }
 
@@ -154,35 +142,38 @@
     input.addEventListener('change', noteCalculatorUse);
   });
 
-  useEstimate.addEventListener('click', function () {
-    completeCalculator();
-  });
-
   reviewForm.addEventListener('input', clearDraft);
   reviewForm.addEventListener('change', clearDraft);
+  reviewForm.addEventListener('reset', clearDraft);
+  [['address', 'Email address'], ['subject', 'Subject'], ['body', 'Message']].forEach(function (part) {
+    document.getElementById('copy-' + part[0]).addEventListener('click', function () { return copyDraftPart(part[0], part[1]); });
+  });
+  document.getElementById('use-estimate').addEventListener('click', function () {
+    includeEstimate.checked = true;
+    clearDraft();
+  });
 
   reviewForm.addEventListener('submit', function (event) {
     event.preventDefault();
-    completeCalculator();
 
     var email = buildEmail();
-    draftPreview.textContent = 'To: Ian@atomandbits.com\nSubject: ' + email.subject + '\n\n' + email.body;
-    openEmail.href = 'mailto:Ian@atomandbits.com?subject=' + encodeURIComponent(email.subject) + '&body=' + encodeURIComponent(email.body);
+    draftVersion += 1;
+    currentDraft = email;
+    draftSubject.textContent = email.subject;
+    draftPreview.textContent = email.body;
+    copyStatus.textContent = '';
+    openEmail.href = 'mailto:daniel@claimsnative.com?subject=' + encodeURIComponent(email.subject) + '&body=' + encodeURIComponent(email.body);
     draftReview.hidden = false;
 
-    if (!hasShownIntent) {
-      hasShownIntent = true;
-      track('review_intent');
-    }
+    if (window.ClaimsGrowth) window.ClaimsGrowth.track('inquiry_draft_prepared', {cta_id:'review-draft', cta_location:'form'}, true);
 
-    draftReview.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  document.querySelectorAll('[data-pilot-cta]').forEach(function (link) {
-    link.addEventListener('click', function () {
-      track('pilot_cta_clicked');
-    });
+    draftHeading.focus({preventScroll:true});
+    var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    draftReview.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
   });
 
   renderEstimate();
+  // The HTML stays inert if this script fails before the local-only handler is ready.
+  document.getElementById('inquiry-fields').disabled = false;
+  document.getElementById('review-draft-button').disabled = false;
 }());

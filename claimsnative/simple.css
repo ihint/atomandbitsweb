@@ -216,3 +216,36 @@ body.simple-site { color:var(--ink); background:var(--paper); -webkit-font-smoot
   .simple-site .account-actions .header-cta { padding:.55rem .85rem; }
   .sign-in-link { font-size:.82rem; }
 }
+
+/* Billing guides and optional event choice. */
+.growth-guide { max-width:760px; margin:0 auto; padding:3rem 0 5rem; overflow-wrap:anywhere; }
+.simple-site .growth-guide h1 { font-size:clamp(2.2rem,4vw,3.5rem); }
+.simple-site .growth-guide h2 { font-size:1.7rem; margin:2.2rem 0 1rem; }
+.growth-guide p, .growth-guide li { line-height:1.75; margin:1rem 0; }
+.growth-guide ul { padding-left:1.4rem; }
+.growth-choice { position:fixed; bottom:1rem; right:1rem; left:1rem; max-width:640px; margin-left:auto; padding:1.25rem; background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 4px 24px #19372b22; z-index:20; max-height:85vh; overflow:auto; }
+.simple-site .growth-choice h2 { font-size:1.3rem; }
+.growth-choice p { font-size:.85rem; line-height:1.6; margin:1rem 0; }
+.growth-choice .button { margin:.3rem .4rem .3rem 0; }
+.growth-settings { background:none; border:0; color:var(--muted); font:inherit; text-decoration:underline; cursor:pointer; padding:0; min-height:44px; }
+[hidden] { display:none !important; }
+
+/* The first billing question needs only contact details and the question. */
+.optional-practice summary { cursor:pointer; min-height:44px; padding:.65rem 0; font-weight:600; }
+.optional-practice[open] summary { margin-bottom:.7rem; }
+.simple-site .review-form .estimate-choice { display:flex; align-items:center; gap:.7rem; min-height:44px; }
+.simple-site .review-form input[type="checkbox"] { width:1.1rem; min-height:1.1rem; height:1.1rem; flex-shrink:0; }
+.draft-review h3:focus { outline:2px solid var(--focus); outline-offset:4px; }
+
+/* Keep guide entry and email handoff useful on a narrow screen. */
+.guide-links { list-style:none; margin:0; padding:0; }
+.guide-links li { border-bottom:1px solid var(--line); padding:0 0 1rem; margin:0 0 1rem; }
+.guide-links a { display:flex; align-items:center; min-height:44px; font-size:1.1rem; font-weight:600; }
+.guide-links p { margin:.3rem 0 0; color:var(--muted); line-height:1.6; }
+.guide-entry { margin:1.5rem 0 2rem; padding:1rem 0; border-block:1px solid var(--line); }
+.guide-entry p { margin:.5rem 0; font-size:.9rem; }
+.draft-part { padding:.9rem 0; border-bottom:1px solid var(--line); }
+.draft-part p { margin:0 0 .7rem; overflow-wrap:anywhere; }
+.simple-site .copy-button { min-height:44px; font-size:.88rem; }
+.draft-review pre:focus { outline:2px solid var(--focus); outline-offset:4px; }
+.draft-review #copy-status { min-height:1.5em; margin:.8rem 0; }

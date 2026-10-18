@@ -1,0 +1,19 @@
+{
+  "events": {
+    "baseline_revision": "1da3f64acca7123f98d4e162a62388c93b50fb54",
+    "new_tests_reject_original": true,
+    "summary": [
+      "# tests 18",
+      "# pass 16",
+      "# fail 2"
+    ]
+  },
+  "scorecard": {
+    "baseline_revision": "1da3f64acca7123f98d4e162a62388c93b50fb54",
+    "new_tests_reject_original": true,
+    "summary": [
+      "Ran 10 tests in 0.002s",
+      "FAILED (failures=10)"
+    ]
+  }
+}

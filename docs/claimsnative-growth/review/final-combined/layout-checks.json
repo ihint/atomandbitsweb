@@ -1,0 +1,294 @@
+{
+  "sourceRevision": "3fa91f6cfcf2a9207e79362d94bddf68cc28a910",
+  "layouts": [
+    {
+      "h1": "Your specialty. Your EHR. Less billing work.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "h1": "From signing up to live filing.\nIn the order it happens. Your current biller keeps working until the comparison says we are ready.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/how-we-start/",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "h1": "Insurance billing for chiropractic practices.\nFrom the signed visit in your EHR to the payment posted back into it.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/chiropractors/",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "h1": "Could insurance fit your practice?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/insurance-opportunity/",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "h1": "Can you use a billing service and keep your EHR?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/keep-your-ehr/",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "h1": "What needs to be ready before a billing service starts?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/billing-setup/",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "h1": "Does a remittance mean the money reached your bank?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/remittance-and-deposits/",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "h1": "This page is not here.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/404.html",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "guideInquiry": null,
+      "h1": "Your specialty. Your EHR. Less billing work.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "guideInquiry": null,
+      "h1": "From signing up to live filing.\nIn the order it happens. Your current biller keeps working until the comparison says we are ready.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/how-we-start/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "guideInquiry": null,
+      "h1": "Insurance billing for chiropractic practices.\nFrom the signed visit in your EHR to the payment posted back into it.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/chiropractors/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "guideInquiry": null,
+      "h1": "Could insurance fit your practice?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/insurance-opportunity/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "guideInquiry": "/insurance-opportunity/#review",
+      "h1": "Can you use a billing service and keep your EHR?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/keep-your-ehr/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "guideInquiry": "/insurance-opportunity/#review",
+      "h1": "What needs to be ready before a billing service starts?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/billing-setup/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "guideInquiry": "/insurance-opportunity/#review",
+      "h1": "Does a remittance mean the money reached your bank?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/remittance-and-deposits/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "guideInquiry": null,
+      "h1": "This page is not here.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/404.html",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "guideInquiry": null,
+      "h1": "Your specialty. Your EHR. Less billing work.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "guideInquiry": null,
+      "h1": "From signing up to live filing.\nIn the order it happens. Your current biller keeps working until the comparison says we are ready.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/how-we-start/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "guideInquiry": null,
+      "h1": "Insurance billing for chiropractic practices.\nFrom the signed visit in your EHR to the payment posted back into it.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/chiropractors/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "guideInquiry": null,
+      "h1": "Could insurance fit your practice?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/insurance-opportunity/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "guideInquiry": "/insurance-opportunity/#review",
+      "h1": "Can you use a billing service and keep your EHR?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/keep-your-ehr/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "guideInquiry": "/insurance-opportunity/#review",
+      "h1": "What needs to be ready before a billing service starts?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/billing-setup/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "guideInquiry": "/insurance-opportunity/#review",
+      "h1": "Does a remittance mean the money reached your bank?",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/remittance-and-deposits/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "guideInquiry": null,
+      "h1": "This page is not here.",
+      "mailtoRecipients": [
+        "mailto:daniel@claimsnative.com",
+        "mailto:daniel@claimsnative.com"
+      ],
+      "robots": "noindex,nofollow",
+      "route": "/404.html",
+      "scrollWidth": 320,
+      "width": 320
+    }
+  ]
+}

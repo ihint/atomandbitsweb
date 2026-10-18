@@ -1,0 +1,73 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "Claims Native home":
+    - /url: /
+    - text: Claims Native
+    - generic: More room for care
+  - navigation "Primary navigation":
+    - link "What we do":
+      - /url: /#what-we-do
+    - link "Specialties":
+      - /url: /#specialties
+    - link "Your EHR":
+      - /url: /#your-ehr
+    - link "How it works":
+      - /url: /how-we-start/
+  - link "Sign in":
+    - /url: https://app.claimsnative.com/login
+  - link "Get started":
+    - /url: https://app.claimsnative.com/signup
+- main:
+  - article:
+    - paragraph: Practice billing guide · Reviewed October 15, 2026
+    - heading "Does a remittance mean the money reached your bank?" [level=1]
+    - paragraph: No. A remittance explains a payer’s decision about claims. It does not, by itself, prove that the practice received money in its bank account. Check the remittance and the bank record together.
+    - heading "Match the explanation to the money" [level=2]
+    - paragraph:
+      - text: "The payer may send the electronic remittance advice and the funds transfer through different channels. CMS describes reassociation: matching the payment to the remittance using the matching trace information. The files can arrive at different times. See"
+      - link "CMS’s payment and remittance guide":
+        - /url: https://www.cms.gov/files/document/eft-and-era-payment-remittance-reassociation-basics.pdf
+      - text: .
+    - paragraph: For a useful comparison, keep the payer, payment amount, payment date and trace information together in your secure billing records. Check the bank’s posted record. A pending transfer, a clearinghouse acknowledgment and an explanation of benefits each prove a different thing.
+    - heading "When the amounts differ" [level=2]
+    - paragraph: First check whether the bank payment covers more than one remittance or claim. Then review the payer’s adjustments and any offsets. A difference may need an explanation before anyone can decide whether the payer owes more or a patient owes anything. Do not turn an unexplained difference into a patient balance.
+    - paragraph: Keep an unmatched payment open with a named next action. Ask your billing service to show which amounts match, which need review and who owns the follow-up. Keep patient records, bank details and payment trace numbers out of inquiry forms and email.
+    - heading "Rejection, denial and receipt are different" [level=2]
+    - paragraph:
+      - text: A claim acknowledgment can report acceptance or rejection. That is not a payment. A later remittance explains the payer’s adjudication, including adjustments or denials.
+      - link "Stedi’s workflow guide":
+        - /url: https://www.stedi.com/docs/healthcare/claims-processing-workflows-overview
+      - text: shows those stages. Follow the actual response and the payer’s rules before choosing a correction or appeal.
+    - heading "What to check with Claims Native" [level=2]
+    - paragraph: Ask us how your practice will supply remittances and bank evidence, who reviews differences and where results will appear in your EHR. We confirm the connection approach during onboarding. A working remittance import does not establish a live bank connection or verified deposits; those depend on the practice’s payment setup and available records.
+    - paragraph:
+      - text: We agree the work and price before starting. Your provider keeps clinical authority, and your office keeps control of the bank relationship. Read
+      - link "the setup checks":
+        - /url: /billing-setup/
+      - text: ", then bring one billing problem to a conversation without patient or bank details."
+    - paragraph:
+      - link "Talk through your billing setup":
+        - /url: mailto:Ian@atomandbits.com?subject=Claims%20Native%20for%20my%20practice
+- contentinfo:
+  - link "Claims Native":
+    - /url: /
+  - paragraph: More room for care.
+  - paragraph: Atom & Bits, LLC · Chattanooga, TN
+  - navigation "Footer navigation":
+    - link "Ian@atomandbits.com":
+      - /url: mailto:Ian@atomandbits.com
+    - link "Chiropractic":
+      - /url: /chiropractors/
+    - link "Sign in":
+      - /url: https://app.claimsnative.com/login
+    - link "Keep your EHR":
+      - /url: /keep-your-ehr/
+    - link "Billing setup":
+      - /url: /billing-setup/
+    - link "Remittances and deposits":
+      - /url: /remittance-and-deposits/
+    - link "Privacy":
+      - /url: https://app.claimsnative.com/privacy
+    - link "Terms":
+      - /url: https://app.claimsnative.com/terms

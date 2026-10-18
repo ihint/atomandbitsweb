@@ -1,0 +1,33 @@
+{
+  "tool": "Codex CLI 0.156.1",
+  "thread_id": "01a141d7-fbf9-7c22-8ba2-25cce61bad17",
+  "reviewed_revision": "3e59bae0019ced63e8036bf8bffe30c0e546fffd",
+  "sandbox": "read-only",
+  "config": "CLI default via --ignore-user-config for this invocation only",
+  "resolved_model": "not emitted",
+  "completed": true,
+  "usage": {
+    "input_tokens": 519760,
+    "cached_input_tokens": 461568,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3030,
+    "reasoning_output_tokens": 141
+  },
+  "independent_execution": {
+    "node_tests": 20,
+    "scorecard_tests": 10,
+    "source_hashes_verified": 27,
+    "artifact_hashes_verified": 21
+  },
+  "author_execution": {
+    "full_gate_tests": 31,
+    "layouts": 24,
+    "browser_event_fixture": true,
+    "cold_cache_performance_runs": 6
+  },
+  "limitations": [
+    "The independent reviewer did not rerun browsers, full builds or the manifest mutation test.",
+    "A nested review helper was unavailable; this independent agent completed both closure axes.",
+    "No deployment, live ingestion, search results, legal or clinical approval, customers or service revenue is established."
+  ]
+}

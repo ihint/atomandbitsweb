@@ -1,0 +1,36 @@
+{
+  "runtime_revision": "0e2affce8e8620d9431f30f875538b35a0166fac",
+  "artifact_id": "e571fbae28ba2312f98d4e5c8c51687ce4db27edb1ef85ee2f6881dceb2ad5c2",
+  "source_inputs_clean": true,
+  "source_hashes_verified": 27,
+  "served_asset_hashes_verified": 20,
+  "browser_tab": 4,
+  "guide_path": "/remittance-and-deposits/",
+  "inquiry_path": "/insurance-opportunity/#review",
+  "required_fields": [
+    "contact-name",
+    "contact-email",
+    "biggest-concern"
+  ],
+  "estimate_default": false,
+  "company_copy": [
+    "Tell us",
+    "Email us",
+    "To: Claims Native <Ian@atomandbits.com>"
+  ],
+  "test_data": "Synthetic Demo Contact and demo@example.test only",
+  "actions": "Guide CTA, fill three fields, Review email draft. Stopped before Open email draft.",
+  "email_app_opened": false,
+  "email_sent": false,
+  "merge_or_deploy_performed": false,
+  "screenshots_sha256": {
+    "01-guide.jpg": "2cff2c9dd26b8f874cd9881b9f5e7cc5548f287f63b57260db2fba2f7fc5524c",
+    "02-inquiry.jpg": "8c7fb8167d584ac892b6dc2b446f4de920ae9050218c2e1d7710f06bac8046e3",
+    "03-draft.jpg": "5a99f8c3b28a3a12ce84cf96b2edd7bb5607f6da55039ca0fcb72137394e325c"
+  },
+  "limits": [
+    "No email client opened or live inquiry sent",
+    "No customer acceptance or conversion lift claim",
+    "No new full browser privacy interception or accessibility audit"
+  ]
+}

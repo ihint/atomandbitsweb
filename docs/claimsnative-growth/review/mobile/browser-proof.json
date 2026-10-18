@@ -1,0 +1,99 @@
+{
+  "source": "97687700aea32d445f975a9214545e45b9026abd",
+  "artifact": "00ef51941abca2958fac7744e7dd278c491a2386aa07189f3e73bfb50d624bf7",
+  "cases": [
+    "Empty required fields block draft",
+    "Invalid email blocks draft",
+    "Question-only draft omits optional practice and estimate",
+    "Three copy controls show truthful browser feedback",
+    "Copied message matches reviewed body",
+    "Edit clears draft, subject, copy feedback and mailto body",
+    "Explicit estimate is included",
+    "Deselected estimate is removed",
+    "Only supplied optional EHR appears",
+    "320px question-only draft reflows with Daniel and 44px copy targets",
+    "Homepage guide index opens matching guide"
+  ],
+  "layouts": [
+    {
+      "route": "/insurance-opportunity/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/keep-your-ehr/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/billing-setup/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/remittance-and-deposits/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "font": "16px",
+      "route": "/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "font": "16px",
+      "route": "/keep-your-ehr/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "font": "16px",
+      "route": "/billing-setup/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "font": "16px",
+      "route": "/remittance-and-deposits/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "font": "16px",
+      "route": "/insurance-opportunity/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "route": "/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "route": "/keep-your-ehr/",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "route": "/billing-setup/",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "route": "/remittance-and-deposits/",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "route": "/insurance-opportunity/",
+      "scrollWidth": 1280,
+      "width": 1280
+    }
+  ]
+}

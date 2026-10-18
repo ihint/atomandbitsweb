@@ -1,0 +1,13 @@
+## Spec
+
+- **P2 — Consent changes defeat deduplication.** [growth.js:119](/Users/ianharman/HarmanandSons/output/worktrees/claimsnative-growth/claimsnative/growth.js:119). Request: “Deduplicate retries.” Executed counterexample: allow → form-start → decline → allow → form-start on the same page produces **two events**. Clearing `seen` also permits duplicate draft events. Keep page-level deduplication independent of consent changes.
+
+- **P2 — Partial campaign tags erase known conversion sources.** [growth.js:54](/Users/ianharman/HarmanandSons/output/worktrees/claimsnative-growth/claimsnative/growth.js:54). Request: “Preserve attribution when feasible, with explicit rules for first-touch and conversion-touch source.” Executed counterexample: a stored Google touch followed by internal navigation with only `?utm_content=guide` becomes `direct_unknown`. A content label supplies no replacement source. Preserve the eligible source when internal navigation adds only non-source tags, or document and test a deliberate alternative.
+
+- **P2 — Saved browser evidence lacks tested-source identity.** [proof.md:7](/Users/ianharman/HarmanandSons/output/worktrees/claimsnative-growth/docs/claimsnative-growth/proof.md:7). Request: “Deliver … Reviewable code changes and test evidence.” The proof identifies the base, but browser/layout/performance results contain neither the tested growth revision nor artifact hashes. Rebuilding different source at port 4187 leaves identically shaped evidence. Record the tested source and built-file hashes; current records cannot establish that browsers exercised this exact head.
+
+**Inherited publication blocker:** [index.html:121](/Users/ianharman/HarmanandSons/output/worktrees/claimsnative-growth/claimsnative/index.html:121) asserts EHR posting through Jane/ChiroHD, while owner-setup explicitly calls those capabilities unproved/disabled. Request: “Do not invent … capabilities.” Resolve or qualify these claims before publication. This is inherited positioning, not a new growth-code defect.
+
+Executed: `node --test tests/claimsnative-growth/measurement.test.cjs` **16 passed**; `python3 -B tests/claimsnative-growth/test_scorecard.py` **5 passed**; inline `node -e` reproduced both behavioral findings. An initial heredoc attempt was blocked by read-only temporary-file restrictions.
+
+Build/browser results were inspected, not rerun. HEAD remained `1da3f64acca7123f98d4e162a62388c93b50fb54`. An untracked `docs/claimsnative-growth/review/` appeared during review; I created nothing. No publication or external action occurred.

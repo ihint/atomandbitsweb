@@ -1,0 +1,136 @@
+Built Claims Native Pages site at /var/folders/8f/m0gs2km97zbf5fj7n169ycxc0000gn/T/tmp.aEpOSyDveB/site
+TAP version 13
+# Subtest: redirects www paths and queries to the canonical host
+ok 1 - redirects www paths and queries to the canonical host
+  ---
+  duration_ms: 9.866792
+  type: 'test'
+  ...
+# Subtest: fails closed for a host outside the configured route
+ok 2 - fails closed for a host outside the configured route
+  ---
+  duration_ms: 0.882167
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 49.365917
+TAP version 13
+# Subtest: only public normalized paths; unknown and healthcare routes fail closed
+ok 1 - only public normalized paths; unknown and healthcare routes fail closed
+  ---
+  duration_ms: 0.592667
+  type: 'test'
+  ...
+# Subtest: registry rejects arbitrary values, PII, duplicate parameters, and unapproved campaign keys
+ok 2 - registry rejects arbitrary values, PII, duplicate parameters, and unapproved campaign keys
+  ---
+  duration_ms: 0.498375
+  type: 'test'
+  ...
+# Subtest: referral normalization rejects lookalike hosts and strips paths/query
+ok 3 - referral normalization rejects lookalike hosts and strips paths/query
+  ---
+  duration_ms: 0.530333
+  type: 'test'
+  ...
+# Subtest: internal navigation retains the eligible source; a direct entry stays direct
+ok 4 - internal navigation retains the eligible source; a direct entry stays direct
+  ---
+  duration_ms: 0.098292
+  type: 'test'
+  ...
+# Subtest: payload property allowlist drops fields, URL, query and caller category
+ok 5 - payload property allowlist drops fields, URL, query and caller category
+  ---
+  duration_ms: 0.170667
+  type: 'test'
+  ...
+# Subtest: no network or source storage before opt-in; decline and revocation stop collection
+ok 6 - no network or source storage before opt-in; decline and revocation stop collection
+  ---
+  duration_ms: 1.358333
+  type: 'test'
+  ...
+# Subtest: replays of form start and draft are deduplicated; no personal fields in serialized payload
+ok 7 - replays of form start and draft are deduplicated; no personal fields in serialized payload
+  ---
+  duration_ms: 0.31775
+  type: 'test'
+  ...
+# Subtest: rapid click retries count once; locations remain separate
+ok 8 - rapid click retries count once; locations remain separate
+  ---
+  duration_ms: 0.234584
+  type: 'test'
+  ...
+# Subtest: DNT, GPC, webdriver, app hosts, previews, unknown paths and missing provider fail closed
+ok 9 - DNT, GPC, webdriver, app hosts, previews, unknown paths and missing provider fail closed
+  ---
+  duration_ms: 0.65
+  type: 'test'
+  ...
+# Subtest: first touch persists; conversion touch updates; stored fields are revalidated
+ok 10 - first touch persists; conversion touch updates; stored fields are revalidated
+  ---
+  duration_ms: 0.773208
+  type: 'test'
+  ...
+# Subtest: expired, malformed and future state cannot override first touch
+ok 11 - expired, malformed and future state cannot override first touch
+  ---
+  duration_ms: 0.15575
+  type: 'test'
+  ...
+# Subtest: storage failure preserves form use and in-memory opt-in
+ok 12 - storage failure preserves form use and in-memory opt-in
+  ---
+  duration_ms: 0.096333
+  type: 'test'
+  ...
+# Subtest: loading script twice adds one listener set
+ok 13 - loading script twice adds one listener set
+  ---
+  duration_ms: 0.736791
+  type: 'test'
+  ...
+# Subtest: network failure is not retried and never creates an acceptance event
+ok 14 - network failure is not retried and never creates an acceptance event
+  ---
+  duration_ms: 0.072375
+  type: 'test'
+  ...
+# Subtest: missing secure random UUID fails closed without breaking email attribution
+ok 15 - missing secure random UUID fails closed without breaking email attribution
+  ---
+  duration_ms: 0.052208
+  type: 'test'
+  ...
+# Subtest: delegated footer email click preserves safe source labels without analytics consent
+ok 16 - delegated footer email click preserves safe source labels without analytics consent
+  ---
+  duration_ms: 0.140792
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 46.40875
+8 HTML pages: canonical, heading, description, schema and script checks pass; 147 local links/assets/anchors pass; 7 sitemap URLs pass.
+Built Claims Native Pages site at /var/folders/8f/m0gs2km97zbf5fj7n169ycxc0000gn/T/tmp.aEpOSyDveB/preview
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

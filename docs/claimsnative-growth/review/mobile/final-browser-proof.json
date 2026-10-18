@@ -1,0 +1,99 @@
+{
+  "source": "1b89643b57a1bef3371c4ac43796c2ac541d28a5",
+  "artifact": "ccb45cd8b0e5f4ad61a7256057aeb75df306ad608eae8f84a344b01ef89842b6",
+  "layouts": [
+    {
+      "route": "/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/keep-your-ehr/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/billing-setup/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/remittance-and-deposits/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "route": "/keep-your-ehr/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "route": "/billing-setup/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "route": "/remittance-and-deposits/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "route": "/insurance-opportunity/",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "route": "/insurance-opportunity/",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "route": "/",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "route": "/keep-your-ehr/",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "route": "/billing-setup/",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "route": "/remittance-and-deposits/",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "route": "/insurance-opportunity/",
+      "scrollWidth": 1280,
+      "width": 1280
+    }
+  ],
+  "finalCases": [
+    "Final source guide-to-inquiry reaches Daniel unsent",
+    "First observed and Current labels explain limited page/tab scope"
+  ],
+  "earlierFlowProofSource": "97687700aea32d445f975a9214545e45b9026abd",
+  "earlierFlowCases": [
+    "Empty required fields block draft",
+    "Invalid email blocks draft",
+    "Question-only draft omits optional practice and estimate",
+    "Three copy controls show truthful browser feedback",
+    "Copied message matches reviewed body",
+    "Edit clears draft, subject, copy feedback and mailto body",
+    "Explicit estimate is included",
+    "Deselected estimate is removed",
+    "Only supplied optional EHR appears",
+    "320px question-only draft reflows with Daniel and 44px copy targets",
+    "Homepage guide index opens matching guide"
+  ]
+}

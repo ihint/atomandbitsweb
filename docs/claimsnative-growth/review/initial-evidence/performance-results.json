@@ -1,0 +1,53 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "route": "/keep-your-ehr/",
+      "lcp": 128,
+      "cls": 0,
+      "dom": 113.89999997615814,
+      "transferred": 53547
+    },
+    {
+      "width": 1440,
+      "route": "/billing-setup/",
+      "lcp": 120,
+      "cls": 0,
+      "dom": 104.2999999821186,
+      "transferred": 53547
+    },
+    {
+      "width": 1440,
+      "route": "/remittance-and-deposits/",
+      "lcp": 124,
+      "cls": 0,
+      "dom": 111.89999997615814,
+      "transferred": 53547
+    },
+    {
+      "width": 390,
+      "route": "/keep-your-ehr/",
+      "lcp": 624,
+      "cls": 0,
+      "dom": 621.5,
+      "transferred": 53547
+    },
+    {
+      "width": 390,
+      "route": "/billing-setup/",
+      "lcp": 628,
+      "cls": 0,
+      "dom": 620.2000000178814,
+      "transferred": 53547
+    },
+    {
+      "width": 390,
+      "route": "/remittance-and-deposits/",
+      "lcp": 624,
+      "cls": 0,
+      "dom": 622.2999999821186,
+      "transferred": 53547
+    }
+  ],
+  "note": "One local cold-cache run per page/viewport; no field INP or production CWV claim."
+}

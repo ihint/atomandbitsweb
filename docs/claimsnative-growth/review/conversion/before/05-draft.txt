@@ -1,0 +1,153 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "Claims Native home":
+    - /url: /
+    - text: Claims Native
+    - generic: More room for care
+  - navigation "Primary navigation":
+    - link "What we do":
+      - /url: /#what-we-do
+    - link "Specialties":
+      - /url: /#specialties
+    - link "Your EHR":
+      - /url: /#your-ehr
+    - link "How it works":
+      - /url: /how-we-start/
+  - link "Sign in":
+    - /url: https://app.claimsnative.com/login
+  - link "Get started":
+    - /url: https://app.claimsnative.com/signup
+- main:
+  - paragraph: Calculator
+  - heading "Could insurance fit your practice?" [level=1]
+  - paragraph: Count the insured patients you turn away and what a full course of care is worth. The number is gross potential, not a promise.
+  - region "Enter your practice estimate":
+    - heading "Enter your practice estimate" [level=2]
+    - text: Insured patients turned away
+    - spinbutton "Insured patients turned away Your best estimate for the frequency below.": "2"
+    - generic: Your best estimate for the frequency below.
+    - text: Frequency
+    - combobox "Frequency":
+      - option "Each workday"
+      - option "Each week" [selected]
+      - option "Each month"
+    - text: Full-course revenue per patient (USD)
+    - spinbutton "Full-course revenue per patient (USD) Expected gross revenue across that patient's full course of care.": "750"
+    - generic: Expected gross revenue across that patient's full course of care.
+    - paragraph: Monthly gross potential
+    - strong:
+      - status: $6,500
+    - text: "Annual gross potential:"
+    - status: $78,000
+    - text: "Annual patient count:"
+    - status: "104"
+    - generic: 2 patients × 52 weeks × $750 = $78,000 per year; $78,000 ÷ 12 = $6,500 per month.
+    - generic: "Annual factors: 260 workdays, 52 weeks, or 12 months."
+    - link "Use this estimate":
+      - /url: "#review"
+      - text: Use this estimate
+      - generic: ↓
+    - link "How it works":
+      - /url: /how-we-start/
+    - complementary "A planning estimate, not a revenue promise.":
+      - strong: A planning estimate, not a revenue promise.
+      - paragraph: "This is gross potential revenue, not net income or expected collections. It assumes each turned-away patient completes the full course of care at the value you entered. The estimate does not account for:"
+      - list:
+        - listitem: Payer enrollment, network status, or contract dates
+        - listitem: Coverage, eligibility, or service limits
+        - listitem: Allowed amounts and payer fee schedules
+        - listitem: Claim rejections, denials, or payer adjustments
+        - listitem: Patient cost share or uncollected balances
+        - listitem: Billing, software, setup, or staffing costs
+        - listitem: Practice capacity or clinical fit
+        - listitem: Cash-pay visits displaced by insured visits
+  - region "Send the number with your practice details.":
+    - paragraph: Start the conversation
+    - heading "Send the number with your practice details." [level=2]
+    - paragraph: This page builds an email to Ian@atomandbits.com so you can read it before you send it. Nothing is sent or stored here.
+    - paragraph: "Do not include patient information: no names, dates of birth, diagnoses, insurance IDs, or other health information."
+    - paragraph: All fields except “How did you hear about us?” are required. No request is sent when you fill out this form or review the draft.
+    - group "Practice and contact details":
+      - generic: Practice and contact details
+      - generic: Practice name
+      - textbox "Practice name": Demo Practice
+      - generic: Specialty
+      - textbox "Specialty": Primary care
+      - generic: City and state
+      - textbox "City and state": Example City, TN
+      - generic: Visits per week
+      - spinbutton "Visits per week": "100"
+      - generic: EHR or practice system
+      - textbox "EHR or practice system": Demo EHR
+      - generic: Name the EHR or other system you use for visits and care records, or enter “none”.
+      - generic: Insurance status
+      - combobox "Insurance status":
+        - option "Select one"
+        - option "Cash-pay only"
+        - option "Cash-pay with superbills"
+        - option "Out of network"
+        - option "In network"
+        - option "Mixed"
+        - option "Planning or unsure" [selected]
+      - generic: Biggest concern about accepting insurance
+      - textbox "Biggest concern about accepting insurance": "Preview only: setup and missing payments."
+      - generic: Keep this about your practice. Do not include patient information.
+      - generic: Your name
+      - textbox "Your name": Demo Contact
+      - generic: Email
+      - textbox "Email": <redacted>
+    - generic: How did you hear about us? (optional)
+    - combobox "How did you hear about us? (optional)":
+      - option "Choose one" [selected]
+      - option "Search engine"
+      - option "AI assistant"
+      - option "Another practice"
+      - option "Colleague or partner"
+      - option "Other"
+    - button "Review email draft" [active]:
+      - text: Review email draft
+      - generic: →
+    - paragraph: This creates a draft on this page. It does not send data to Claims Native or Atom & Bits.
+    - region "Review your email":
+      - heading "Review your email" [level=3]
+      - paragraph: Your draft is ready. Nothing has been sent.
+      - generic: "To: Ian@atomandbits.com Subject: Claims Native practice walkthrough — Demo Practice I would like to review the insurance opportunity for my practice. ESTIMATE Monthly gross potential: $6,500 Annual gross potential: $78,000 Annual patient count: 104 Formula: 2 patients × 52 weeks × $750 = $78,000 per year; $78,000 ÷ 12 = $6,500 per month. Estimate note: Planning estimate, not a revenue promise. Gross potential revenue, not net income or expected collections. PRACTICE Practice name: Demo Practice Specialty: Primary care City/state: Example City, TN Visits per week: 100 Practice system: Demo EHR Insurance status: Planning or unsure Biggest concern: Preview only: setup and missing payments. CONTACT Name: Demo Contact Email: demo@example.test How did you hear about us: Not supplied ATTRIBUTION Source labels (not proof of a sent request): first_referral_source: direct_unknown conversion_referral_source: direct_unknown"
+      - link "Open email draft":
+        - /url: mailto:Ian@atomandbits.com?subject=Claims%20Native%20practice%20walkthrough%20%E2%80%94%20Demo%20Practice&body=I%20would%20like%20to%20review%20the%20insurance%20opportunity%20for%20my%20practice.%0A%0AESTIMATE%0AMonthly%20gross%20potential%3A%20%246%2C500%0AAnnual%20gross%20potential%3A%20%2478%2C000%0AAnnual%20patient%20count%3A%20104%0AFormula%3A%202%20patients%20%C3%97%2052%20weeks%20%C3%97%20%24750%20%3D%20%2478%2C000%20per%20year%3B%20%2478%2C000%20%C3%B7%2012%20%3D%20%246%2C500%20per%20month.%0AEstimate%20note%3A%20Planning%20estimate%2C%20not%20a%20revenue%20promise.%20Gross%20potential%20revenue%2C%20not%20net%20income%20or%20expected%20collections.%0A%0APRACTICE%0APractice%20name%3A%20Demo%20Practice%0ASpecialty%3A%20Primary%20care%0ACity%2Fstate%3A%20Example%20City%2C%20TN%0AVisits%20per%20week%3A%20100%0APractice%20system%3A%20Demo%20EHR%0AInsurance%20status%3A%20Planning%20or%20unsure%0ABiggest%20concern%3A%20Preview%20only%3A%20setup%20and%20missing%20payments.%0A%0ACONTACT%0AName%3A%20Demo%20Contact%0AEmail%3A%20demo%40example.test%0AHow%20did%20you%20hear%20about%20us%3A%20Not%20supplied%0A%0AATTRIBUTION%0ASource%20labels%20(not%20proof%20of%20a%20sent%20request)%3A%0Afirst_referral_source%3A%20direct_unknown%0Aconversion_referral_source%3A%20direct_unknown
+        - text: Open email draft
+        - generic: →
+      - paragraph: Your email app will open next. No request is sent until you review and send the email there.
+  - region "Ready to start?":
+    - heading "Ready to start?" [level=2]
+    - paragraph: Create an account and set up your practice, or talk to us about what accepting insurance would take.
+    - link "Get started":
+      - /url: https://app.claimsnative.com/signup
+      - text: Get started
+      - generic: →
+    - link "Talk to us":
+      - /url: mailto:Ian@atomandbits.com?subject=Claims%20Native%20for%20my%20practice
+      - text: Talk to us
+      - generic: ↗
+- contentinfo:
+  - link "Claims Native":
+    - /url: /
+  - paragraph: More room for care.
+  - paragraph: Atom & Bits, LLC · Chattanooga, TN
+  - navigation "Footer navigation":
+    - link "Ian@atomandbits.com":
+      - /url: mailto:Ian@atomandbits.com
+    - link "Chiropractic":
+      - /url: /chiropractors/
+    - link "Sign in":
+      - /url: https://app.claimsnative.com/login
+    - link "Keep your EHR":
+      - /url: /keep-your-ehr/
+    - link "Billing setup":
+      - /url: /billing-setup/
+    - link "Remittances and deposits":
+      - /url: /remittance-and-deposits/
+    - link "Privacy":
+      - /url: https://app.claimsnative.com/privacy
+    - link "Terms":
+      - /url: https://app.claimsnative.com/terms

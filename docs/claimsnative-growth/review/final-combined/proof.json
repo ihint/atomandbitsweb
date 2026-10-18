@@ -1,0 +1,38 @@
+{
+  "source_revision": "3fa91f6cfcf2a9207e79362d94bddf68cc28a910",
+  "positioning_revision": "e94a8884b22e4bfe68857221b46e810979806dde",
+  "fixed_point": "a8a0c6a2a82c23b2e99bb3c0828a795a0fd7b35d",
+  "source_inputs_clean": true,
+  "build_environment": "preview",
+  "artifact_id": "8df14a3b387b361169c35a4f870faedab61e4c0766adedbe230af55a46c97f98",
+  "source_hashes_verified": 27,
+  "served_asset_hashes_verified": 20,
+  "layouts_passed": 24,
+  "flow_cases_passed": 8,
+  "recipient": "daniel@claimsnative.com",
+  "console_snapshot": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "email_app_opened": false,
+  "email_sent": false,
+  "runtime_repair_required": false,
+  "screenshots_sha256": {
+    "billing-setup-desktop.jpg": "7d7afcc26e679f7ee211f797f76c97639227a8987b45187736325ba0d9cd71c2",
+    "home-desktop.jpg": "9ebb2fc6af8ae073042370c393803e63588aa0fda14ca9271c87479e59fecf60",
+    "home-phone.jpg": "8eece83814a1cceca04731099ed9bc1bab5437ed64b220cb121dee867afecc1d",
+    "keep-your-ehr-desktop.jpg": "5c9d6d01254bdfdb02eb5e3939325b42d717c3f58c6e5f81ad041c5c8dd1c838",
+    "remittance-and-deposits-desktop.jpg": "6d75b3a9a999ba38c83d1863558635a5ca06c2bda302573c70d4577546e8a3e5",
+    "unsent-draft-desktop.jpg": "fc8beeb783b7e629a5ca679340ad53eaa9ed471d9adaa5d9df1b1bc637d5abca",
+    "unsent-draft-phone.jpg": "6726e62fb54bb0288172e7d9f3adf836ea2f34650101d6be599f940f657011f2"
+  },
+  "capture_notes": [
+    "Initial homepage desktop capture was recaptured after viewport sizing settled. A direct 1440px header-bound check placed every link within the viewport.",
+    "An exact-text Frequency label locator did not match its wrapped select. Fresh DOM inspection and the accessible combobox role resolved the test locator; no application change was needed."
+  ],
+  "limits": [
+    "Read-only agents did not execute browsers or the full build gate; Standards ran 40 separate tests and Spec ran nine overlapping inquiry cases.",
+    "Author full gate and local browser checks are distinct from independent review.",
+    "No fresh canonical-host intercepted fixture, browser JavaScript-disabled mode, full accessibility audit, performance benchmark or live delivery/ingestion/outcome claim."
+  ]
+}
