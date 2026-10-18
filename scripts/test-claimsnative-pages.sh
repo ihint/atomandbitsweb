@@ -48,6 +48,36 @@ for fact in '98941' 'AT modifier'; do
   grep -Fq -- "$fact" "$output_dir/chiropractors/index.html" || { echo "Chiropractors page lacks $fact" >&2; exit 1; }
 done
 
+# Billing guides. The hub links to every guide; every guide links back to the
+# hub and to at least two other guides, carries its own canonical and is in
+# the sitemap. Every page's footer links to the hub.
+guides="rejected-vs-denied-claims how-to-read-an-era chiropractic-denial-codes match-insurance-deposits patient-balance-after-insurance"
+grep -Fq '<link rel="canonical" href="https://claimsnative.com/learn/">' "$output_dir/learn/index.html" || { echo "Guide hub has the wrong canonical" >&2; exit 1; }
+for guide in $guides; do
+  page="$output_dir/learn/$guide/index.html"
+  test -f "$page" || { echo "Missing guide: $guide" >&2; exit 1; }
+  grep -Fq "href=\"/learn/$guide/\"" "$output_dir/learn/index.html" || { echo "Guide hub lacks a link to $guide" >&2; exit 1; }
+  grep -Fq 'href="/learn/"' "$page" || { echo "$guide lacks a link to the hub" >&2; exit 1; }
+  siblings=0
+  for other in $guides; do
+    [[ "$other" == "$guide" ]] && continue
+    grep -Fq "href=\"/learn/$other/\"" "$page" && siblings=$((siblings + 1))
+  done
+  (( siblings >= 2 )) || { echo "$guide links to $siblings other guides; it needs 2" >&2; exit 1; }
+  grep -Fq "<link rel=\"canonical\" href=\"https://claimsnative.com/learn/$guide/\">" "$page" || { echo "$guide has the wrong canonical" >&2; exit 1; }
+  grep -Fq "<loc>https://claimsnative.com/learn/$guide/</loc>" "$output_dir/sitemap.xml" || { echo "Sitemap lacks $guide" >&2; exit 1; }
+done
+for page in $(find "$output_dir" -name '*.html'); do
+  grep -Fq 'href="/learn/">Billing guides</a>' "$page" || { echo "$page lacks the Billing guides footer link" >&2; exit 1; }
+done
+
+# atomandbits.com serves the same source files under /claimsnative/. Their
+# canonical must name claimsnative.com so search engines keep one copy.
+if grep -rlF --include='*.html' '<link rel="canonical" href="https://atomandbits.com/claimsnative/' "$repo_dir/claimsnative"; then
+  echo "A Claims Native source page names atomandbits.com as canonical" >&2
+  exit 1
+fi
+
 # Every page carries the primary action (Get started, to the app signup),
 # the Talk to us mailto and the client sign-in.
 for page in $(find "$output_dir" -name '*.html'); do
