@@ -48,6 +48,8 @@ def unique(rows, key):
 
 
 def validate_lead(row):
+    for key in ('receipt_destination', 'receipt_message_key', 'receipt_evidence'):
+        require_text(row, key)
     received = timestamp(require_text(row, 'received_at'))
     stages = {
         'qualified': timestamp(row.get('qualified_at')),
@@ -120,9 +122,14 @@ def score(leads, payments, week_start, as_of, model='conversion'):
     all_leads = unique(leads, 'opportunity_key')
     # Validate all included records before selecting the inquiry cohort.
     valid = {}
+    inquiry_receipts = {}
     for key, row in all_leads.items():
         if not excluded(row, ('is_test', 'is_spam')):
             received, stages = validate_lead(row)
+            receipt = (row['receipt_destination'].strip(), row['receipt_message_key'].strip())
+            if receipt in inquiry_receipts and inquiry_receipts[receipt] != key:
+                raise ValueError('An inquiry receipt belongs to more than one opportunity')
+            inquiry_receipts[receipt] = key
             valid[key] = (row, received, stages)
     receipts = validate_receipts(payments, all_leads, valid)
     groups = {}

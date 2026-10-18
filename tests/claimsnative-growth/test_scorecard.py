@@ -4,7 +4,7 @@ from pathlib import Path
 spec=importlib.util.spec_from_file_location('scorecard',Path(__file__).resolve().parents[2]/'scripts/claimsnative-scorecard.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 class Scorecard(unittest.TestCase):
  def lead(self,key='a',source='google',**kw):
-  return dict(opportunity_key=key,received_at='2026-10-13T10:00:00-04:00',first_source=source,conversion_source=source,qualified_at='',booking_confirmed_at='',pilot_started_at='',is_test='false',is_spam='false',**kw)
+  return dict(opportunity_key=key,received_at='2026-10-13T10:00:00-04:00',receipt_destination='synthetic-inbox',receipt_message_key='synthetic-message-'+key,receipt_evidence='synthetic-private-receipt-'+key,first_source=source,conversion_source=source,qualified_at='',booking_confirmed_at='',pilot_started_at='',is_test='false',is_spam='false',**kw)
  def receipt(self,**kw):return dict(receipt_key='r',opportunity_key='a',settled_at='2026-10-14T10:00:00-04:00',amount_usd='500.00',is_test='false',evidence='synthetic-settled-receipt',**kw)
  def test_manual_loop_and_retries(self):
   a=self.lead();a.update(qualified_at='2026-10-14T10:00:00-04:00',qualification_evidence='private-record',booking_confirmed_at='2026-10-14T10:00:00-04:00',booking_evidence='private-calendar',pilot_started_at='2026-10-14T10:00:00-04:00')
@@ -48,4 +48,23 @@ class Scorecard(unittest.TestCase):
  def test_valid_partial_refunds_work_in_any_row_order(self):
   r=self.receipt();f=dict(r,receipt_key='f',amount_usd='-200',original_receipt_key='r',settled_at='2026-10-15T10:00:00-04:00')
   out=m.score([self.lead()],[f,r],'2026-10-12','2026-10-18')['groups']['google'];self.assertEqual(out['net_collected_week_usd'],'300.00')
+ def test_a_timestamp_without_destination_receipt_evidence_cannot_count_as_received(self):
+  for key in ['receipt_destination','receipt_message_key','receipt_evidence']:
+   for missing in [None,'','   ']:
+    a=self.lead()
+    if missing is None:a.pop(key)
+    else:a[key]=missing
+    with self.subTest(key=key,missing=missing),self.assertRaises(ValueError):m.score([a],[],'2026-10-12','2026-10-18')
+ def test_one_destination_receipt_cannot_create_two_opportunities(self):
+  a=self.lead();b=self.lead('b');b['receipt_message_key']=a['receipt_message_key']
+  with self.assertRaises(ValueError):m.score([a,b],[],'2026-10-12','2026-10-18')
+ def test_receipt_keys_are_destination_scoped_and_stay_private(self):
+  a=self.lead();b=self.lead('b');b.update(receipt_message_key=a['receipt_message_key'],receipt_destination='other-synthetic-inbox')
+  out=m.score([a,a,b],[],'2026-10-12','2026-10-18')
+  self.assertEqual(out['groups']['google']['received'],2)
+  self.assertNotIn('synthetic',str(out));self.assertNotIn('receipt_evidence',str(out))
+ def test_excluded_test_or_spam_without_a_real_receipt_cannot_enter_the_cohort(self):
+  a=self.lead();a.update(is_test='true',receipt_evidence='')
+  b=self.lead('b');b.update(is_spam='true',receipt_evidence='')
+  self.assertEqual(m.score([a,b],[],'2026-10-12','2026-10-18')['groups'],{})
 if __name__=='__main__':unittest.main()
