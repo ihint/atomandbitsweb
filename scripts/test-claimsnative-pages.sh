@@ -22,12 +22,12 @@ grep -Fq "CLOUDFLARE_ACCOUNT_ID" "$repo_dir/.github/workflows/claimsnative-cloud
 # The site never says a payer paid, never promises or guarantees a payment,
 # never claims to replace a biller (ADR 0009 is a draft), never claims live
 # submission or AI-verified coding, never mentions behavioral health, and
-# never links the demo workspace or a signup.
+# never links the demo workspace.
 for page in $(find "$output_dir" -name '*.html'); do
   for banned in "payer paid" "paid by the payer" "guaranteed" "guarantee" \
     "replace your biller" "replace your billing" "submits claims today" \
     "AI-verified" "behavioral health" "office-demo" "provider-demo" \
-    "demo.claimsnative.com" "signup"; do
+    "demo.claimsnative.com"; do
     if grep -Fqi -- "$banned" "$page"; then
       echo "Copy guard: '$banned' found in $page" >&2
       exit 1
@@ -48,8 +48,10 @@ for fact in '98941' 'AT modifier'; do
   grep -Fq -- "$fact" "$output_dir/chiropractors/index.html" || { echo "Chiropractors page lacks $fact" >&2; exit 1; }
 done
 
-# Every page carries the one primary action and the client sign-in.
+# Every page carries the primary action (Get started, to the app signup),
+# the Talk to us mailto and the client sign-in.
 for page in $(find "$output_dir" -name '*.html'); do
+  grep -Fq -- 'https://app.claimsnative.com/signup' "$page" || { echo "$page lacks the Get started link" >&2; exit 1; }
   grep -Fq -- 'subject=Claims%20Native%20for%20my%20practice' "$page" || { echo "$page lacks the Talk to us mailto" >&2; exit 1; }
   grep -Fq -- 'https://app.claimsnative.com/login' "$page" || { echo "$page lacks the sign-in link" >&2; exit 1; }
 done
