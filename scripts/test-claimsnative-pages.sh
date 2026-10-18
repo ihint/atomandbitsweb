@@ -48,16 +48,31 @@ for fact in '98941' 'AT modifier'; do
   grep -Fq -- "$fact" "$output_dir/chiropractors/index.html" || { echo "Chiropractors page lacks $fact" >&2; exit 1; }
 done
 
-# Billing guides. The hub links to every guide; every guide links back to the
-# hub and to at least two other guides, carries its own canonical and is in
-# the sitemap. Every page's footer links to the hub.
-guides="rejected-vs-denied-claims how-to-read-an-era chiropractic-denial-codes match-insurance-deposits patient-balance-after-insurance"
-grep -Fq '<link rel="canonical" href="https://claimsnative.com/learn/">' "$output_dir/learn/index.html" || { echo "Guide hub has the wrong canonical" >&2; exit 1; }
-for guide in $guides; do
+# Billing guides. The index links to every group and every guide. Each guide
+# links back to the index and to its group's overview, and to at least two
+# other guides; each group overview links to its guides. Every guide and
+# overview carries its own canonical and is in the sitemap.
+groups="after-the-claim-goes-out choosing-how-to-bill"
+guide_groups="rejected-vs-denied-claims:after-the-claim-goes-out how-to-read-an-era:after-the-claim-goes-out chiropractic-denial-codes:after-the-claim-goes-out match-insurance-deposits:after-the-claim-goes-out patient-balance-after-insurance:after-the-claim-goes-out chiropractic-billing-service-cost:choosing-how-to-bill billing-numbers-to-check:choosing-how-to-bill questions-to-ask-a-billing-service:choosing-how-to-bill switching-billers:choosing-how-to-bill"
+guides=""
+for pair in $guide_groups; do guides="$guides ${pair%%:*}"; done
+grep -Fq '<link rel="canonical" href="https://claimsnative.com/learn/">' "$output_dir/learn/index.html" || { echo "Guide index has the wrong canonical" >&2; exit 1; }
+for group in $groups; do
+  page="$output_dir/learn/$group/index.html"
+  test -f "$page" || { echo "Missing guide group: $group" >&2; exit 1; }
+  grep -Fq "href=\"/learn/$group/\"" "$output_dir/learn/index.html" || { echo "Guide index lacks a link to $group" >&2; exit 1; }
+  grep -Fq "<link rel=\"canonical\" href=\"https://claimsnative.com/learn/$group/\">" "$page" || { echo "$group has the wrong canonical" >&2; exit 1; }
+  grep -Fq "<loc>https://claimsnative.com/learn/$group/</loc>" "$output_dir/sitemap.xml" || { echo "Sitemap lacks $group" >&2; exit 1; }
+done
+for pair in $guide_groups; do
+  guide="${pair%%:*}"
+  group="${pair##*:}"
   page="$output_dir/learn/$guide/index.html"
   test -f "$page" || { echo "Missing guide: $guide" >&2; exit 1; }
-  grep -Fq "href=\"/learn/$guide/\"" "$output_dir/learn/index.html" || { echo "Guide hub lacks a link to $guide" >&2; exit 1; }
-  grep -Fq 'href="/learn/"' "$page" || { echo "$guide lacks a link to the hub" >&2; exit 1; }
+  grep -Fq "href=\"/learn/$guide/\"" "$output_dir/learn/index.html" || { echo "Guide index lacks a link to $guide" >&2; exit 1; }
+  grep -Fq "href=\"/learn/$guide/\"" "$output_dir/learn/$group/index.html" || { echo "$group lacks a link to $guide" >&2; exit 1; }
+  grep -Fq 'href="/learn/"' "$page" || { echo "$guide lacks a link to the guide index" >&2; exit 1; }
+  grep -Fq "href=\"/learn/$group/\"" "$page" || { echo "$guide lacks a link to $group" >&2; exit 1; }
   siblings=0
   for other in $guides; do
     [[ "$other" == "$guide" ]] && continue
