@@ -1,0 +1,21 @@
+{
+  "marketing_source": "aebecb12b04a3d2f4f08d5ba85da76a91170e06a",
+  "app_review_pr": "https://github.com/ihint/claims-native/pull/188",
+  "app_source": "c149371",
+  "website_checks": 48,
+  "node_inquiry_measurement": 31,
+  "redirect_checks": 2,
+  "scorecard_cases": 14,
+  "manifest_case": 1,
+  "html_pages": 8,
+  "references": 161,
+  "sitemap_urls": 7,
+  "app_targeted_cases": 210,
+  "independent_closure": "zero new actionable findings; execution limits in closure-agent.md",
+  "publication": "held for review by latest direct user instruction",
+  "actual_daniel_inbox_receipt": "unverified",
+  "marketing_prs": "54 and 55 open/unmerged/undeployed; 55 draft",
+  "email": "unsent",
+  "full_app_local_proof": "pending",
+  "gate_sha256": "acdc70fc2621d201e0b9e6942ed16ed4bc2dda4f96b81214baf1f03336c2ab60"
+}
