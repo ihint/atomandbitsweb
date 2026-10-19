@@ -33,7 +33,7 @@
 .guide-table th, .guide-table td { text-align:left; vertical-align:top; padding:.75rem 1rem; border-bottom:1px solid var(--line); }
 .guide-table thead th { font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600; white-space:nowrap; }
 .guide-table tbody tr:last-child td { border-bottom:0; }
-.guide-table td:first-child { white-space:nowrap; font-weight:600; }
+.guide-table td:first-child, .guide-table tbody th { white-space:nowrap; font-weight:600; }
 .guide-callout { margin:1.6rem 0 0; padding:1.1rem 1.3rem; background:#eaf1e3; border:1px solid #dce6d4; border-radius:14px; }
 .guide-callout p { margin:0; }
 .guide-callout p + p { margin-top:.6rem; }
@@ -69,12 +69,12 @@
 @media(max-width:700px) {
   .table-wrap { overflow-x:visible; }
   .guide-table thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
-  .guide-table, .guide-table tbody, .guide-table tr, .guide-table td { display:block; width:100%; }
+  .guide-table, .guide-table tbody, .guide-table tr, .guide-table td, .guide-table tbody th { display:block; width:100%; }
   .guide-table tr { padding:.85rem 1rem; border-bottom:1px solid var(--line); }
   .guide-table tbody tr:last-child { border-bottom:0; }
   .guide-table th, .guide-table td { border:0; padding:.2rem 0; }
   .guide-table td[data-label]::before { content:attr(data-label); display:block; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600; }
-  .guide-table td:first-child { font-size:1.02rem; padding-bottom:.35rem; }
+  .guide-table td:first-child, .guide-table tbody th { font-size:1.02rem; padding-bottom:.35rem; white-space:normal; }
   .guide-table td:first-child::before { display:none; }
 }
 /* Guides index: one section per group. */

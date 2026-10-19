@@ -87,13 +87,13 @@
 <p>A claim that passes both checks is accepted for processing. Days or weeks later the payer adjudicates it: pays it, reduces it or refuses it. A claim the payer refuses after adjudication is <strong>denied</strong>.</p>
 <div class="table-wrap">
 <table class="guide-table">
-<thead><tr><th></th><th>Rejected</th><th>Denied</th></tr></thead>
+<thead><tr><th>Question</th><th>Rejected</th><th>Denied</th></tr></thead>
 <tbody>
-<tr><td>Did the payer decide it?</td><td data-label="Rejected">No. It failed a check before adjudication.</td><td data-label="Denied">Yes. The payer processed it and said no, in whole or in part.</td></tr>
-<tr><td>Where you hear about it</td><td data-label="Rejected">The 999 and 277CA acknowledgments, in your clearinghouse reports</td><td data-label="Denied">The electronic remittance advice (ERA), with a reason code</td></tr>
-<tr><td>Typical cause</td><td data-label="Rejected">A wrong subscriber ID, a name or birth date that does not match, a missing or invalid field</td><td data-label="Denied">Coverage, coding, medical necessity, authorization, a benefit limit</td></tr>
-<tr><td>On the ERA?</td><td data-label="Rejected">No, with one Medicare exception covered below</td><td data-label="Denied">Yes</td></tr>
-<tr><td>The fix</td><td data-label="Rejected">Correct the claim and send it again as a new claim</td><td data-label="Denied">A corrected claim, a reconsideration or an appeal</td></tr>
+<tr><th scope="row">Did the payer decide it?</th><td data-label="Rejected">No. It failed a check before adjudication.</td><td data-label="Denied">Yes. The payer processed it and said no, in whole or in part.</td></tr>
+<tr><th scope="row">Where you hear about it</th><td data-label="Rejected">The 999 and 277CA acknowledgments, in your clearinghouse reports</td><td data-label="Denied">The electronic remittance advice (ERA), with a reason code</td></tr>
+<tr><th scope="row">Typical cause</th><td data-label="Rejected">A wrong subscriber ID, a name or birth date that does not match, a missing or invalid field</td><td data-label="Denied">Coverage, coding, medical necessity, authorization, a benefit limit</td></tr>
+<tr><th scope="row">On the ERA?</th><td data-label="Rejected">No, with one Medicare exception covered below</td><td data-label="Denied">Yes</td></tr>
+<tr><th scope="row">The fix</th><td data-label="Rejected">Correct the claim and send it again as a new claim</td><td data-label="Denied">A corrected claim, a reconsideration or an appeal</td></tr>
 </tbody>
 </table>
 </div>
@@ -130,7 +130,7 @@
 <p>Then, when the remittance does arrive, <a href="/claimsnative/learn/match-insurance-deposits/">match its deposit</a> and work its denials.</p>
 
 <h2 id="how-claims-native-handles-it">How Claims Native handles rejections</h2>
-<p>We check each claim against the payer’s rules before it goes out and fix what we can, so fewer claims come back rejected. We read every acknowledgment, track every filing deadline and every claim that goes quiet. When a rejection needs a fact only your office has, such as a new insurance card, it comes to you once, with the claim and the payer’s exact words.</p>
+<p>We check each claim against the payer’s rules before it goes out and fix what we can, so fewer claims come back rejected. We track every filing deadline and every claim that goes quiet. When a rejection needs a fact only your office has, such as a new insurance card, it comes to you once, with the claim and the payer’s exact words.</p>
 
 <aside class="limits-block" aria-labelledby="limits-title">
 <strong id="limits-title">What is real today</strong>

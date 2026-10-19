@@ -71,7 +71,7 @@ for pair in $guide_groups; do
   test -f "$page" || { echo "Missing guide: $guide" >&2; exit 1; }
   grep -Fq "href=\"/learn/$guide/\"" "$output_dir/learn/index.html" || { echo "Guide index lacks a link to $guide" >&2; exit 1; }
   grep -Fq "href=\"/learn/$guide/\"" "$output_dir/learn/$group/index.html" || { echo "$group lacks a link to $guide" >&2; exit 1; }
-  grep -Fq 'href="/learn/"' "$page" || { echo "$guide lacks a link to the guide index" >&2; exit 1; }
+  grep -Fq '<li><a href="/learn/">Billing guides</a></li>' "$page" || { echo "$guide lacks the breadcrumb to the guide index" >&2; exit 1; }
   grep -Fq "href=\"/learn/$group/\"" "$page" || { echo "$guide lacks a link to $group" >&2; exit 1; }
   siblings=0
   for other in $guides; do
@@ -85,6 +85,39 @@ done
 for page in $(find "$output_dir" -name '*.html'); do
   grep -Fq 'href="/learn/">Billing guides</a>' "$page" || { echo "$page lacks the Billing guides footer link" >&2; exit 1; }
 done
+# Every page under learn/ is listed above, so none ships untested.
+expected=$(( $(wc -w <<< "$groups") + $(wc -w <<< "$guides") ))
+actual=$(find "$output_dir/learn" -mindepth 2 -name index.html | wc -l)
+(( actual == expected )) || { echo "learn/ has $actual pages; the test lists $expected" >&2; exit 1; }
+
+# Every internal link and in-page anchor on the built site resolves.
+OUT="$output_dir" node <<'JS'
+const fs = require('fs');
+const path = require('path');
+const root = process.env.OUT;
+const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true })
+  .flatMap((e) => (e.isDirectory() ? walk(path.join(dir, e.name)) : [path.join(dir, e.name)]));
+let bad = 0;
+for (const file of walk(root).filter((f) => f.endsWith('.html'))) {
+  const html = fs.readFileSync(file, 'utf8');
+  const page = path.relative(root, file);
+  for (const [, href] of html.matchAll(/href="(\/[^"#?]*)/g)) {
+    const target = path.join(root, href);
+    const isFile = fs.existsSync(target) && fs.statSync(target).isFile();
+    if (!isFile && !fs.existsSync(path.join(target, 'index.html'))) {
+      console.error(`${page} links to missing ${href}`);
+      bad += 1;
+    }
+  }
+  for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) {
+    if (!html.includes(`id="${id}"`)) {
+      console.error(`${page} links to missing #${id}`);
+      bad += 1;
+    }
+  }
+}
+process.exit(bad ? 1 : 0);
+JS
 
 # atomandbits.com serves the same source files under /claimsnative/. Their
 # canonical must name claimsnative.com so search engines keep one copy.

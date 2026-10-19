@@ -138,7 +138,7 @@ AMT*B6*42~</code></pre>
 <table class="guide-table">
 <thead><tr><th>Group</th><th>Meaning</th><th>Who carries it</th></tr></thead>
 <tbody>
-<tr><td data-label="Group"><code>CO</code></td><td data-label="Meaning">Contractual obligation</td><td data-label="Who carries it">Your practice. It is generally not billed to the patient, and a Medicare patient may never be billed for it.</td></tr>
+<tr><td data-label="Group"><code>CO</code></td><td data-label="Meaning">Contractual obligation</td><td data-label="Who carries it">Your practice. It is generally not billed to the patient, and a Medicare patient must never be billed for it.</td></tr>
 <tr><td data-label="Group"><code>PR</code></td><td data-label="Meaning">Patient responsibility</td><td data-label="Who carries it">The patient, or a second payer if one covers it.</td></tr>
 <tr><td data-label="Group"><code>OA</code></td><td data-label="Meaning">Other adjustment</td><td data-label="Who carries it">Neither group fits. Read the reason code.</td></tr>
 <tr><td data-label="Group"><code>PI</code></td><td data-label="Meaning">Payer-initiated reduction</td><td data-label="Who carries it">Your practice, unless you dispute it. The payer says it is not contractual and not the patient’s.</td></tr>
@@ -173,7 +173,7 @@ AMT*B6*42~</code></pre>
 <p>Anything left over after step six is a question for the payer, and it stays open until you have an answer.</p>
 
 <h2 id="how-claims-native-reads-it">How Claims Native reads each ERA</h2>
-<p>We post each payment into your EHR and keep every adjustment with it. We check each payment against the payer’s explanation and your contract. When a payment is short and your contract supports more, the difference stays open, and we go back to the payer with a corrected claim, a reconsideration or an appeal. A person reviews each of those before it goes out. A short payment does not become a patient bill by default.</p>
+<p>We post each payment into your EHR and keep every adjustment with it. We check each payment against the payer’s explanation and your contract. When a payment is short and your contract supports more, the difference stays open, and we go back to the payer with a corrected claim, a reconsideration or an appeal. A person reviews every reconsideration, appeal and payer dispute before it goes out. A short payment does not become a patient bill by default.</p>
 
 <aside class="limits-block" aria-labelledby="limits-title">
 <strong id="limits-title">What is real today</strong>
