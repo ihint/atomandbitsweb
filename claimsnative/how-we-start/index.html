@@ -25,7 +25,7 @@
 <link href="/claimsnative/home.css" rel="stylesheet">
 <link href="/claimsnative/simple.css?v=20260924-1" rel="stylesheet">
 <script src="/claimsnative/signup-source.js?v=20261019-1" defer></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Claims Native", "url": "https://claimsnative.com/", "sameAs": ["https://x.com/claimsnative"], "parentOrganization": {"@type": "Organization", "name": "Atom & Bits, LLC", "url": "https://atomandbits.com/"}}, {"@type": "Service", "name": "Claims Native", "serviceType": "Medical billing service", "url": "https://claimsnative.com/", "description": "We do your insurance billing, from the signed visit in your EHR to the payment posted back into it.", "areaServed": "US", "provider": {"@type": "Organization", "name": "Atom & Bits, LLC", "url": "https://atomandbits.com/", "email": "Ian@atomandbits.com", "address": {"@type": "PostalAddress", "addressLocality": "Chattanooga", "addressRegion": "TN", "addressCountry": "US"}}}, {"@type": "HowTo", "name": "How Claims Native starts with a practice", "step": [{"@type": "HowToStep", "name": "You create an account, or talk to us first"}, {"@type": "HowToStep", "name": "One export of a recent week, with patient details removed"}, {"@type": "HowToStep", "name": "The agreement and the business associate agreement"}, {"@type": "HowToStep", "name": "We connect your EHR export and capture your contract rates"}, {"@type": "HowToStep", "name": "Enrollment with the clearinghouse and your payers"}, {"@type": "HowToStep", "name": "A shadow period beside your current biller"}, {"@type": "HowToStep", "name": "Live filing, approved by your office and your provider"}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Claims Native", "url": "https://claimsnative.com/", "sameAs": ["https://x.com/claimsnative"], "parentOrganization": {"@type": "Organization", "name": "Atom & Bits, LLC", "url": "https://atomandbits.com/"}}, {"@type": "Service", "name": "Claims Native", "serviceType": "Medical billing service", "url": "https://claimsnative.com/", "description": "An insurance billing service for independent practices, run on our own software. Not yet live with a practice as of October 19, 2026.", "areaServed": "US", "provider": {"@type": "Organization", "name": "Atom & Bits, LLC", "url": "https://atomandbits.com/", "email": "Ian@atomandbits.com", "address": {"@type": "PostalAddress", "addressLocality": "Chattanooga", "addressRegion": "TN", "addressCountry": "US"}}}, {"@type": "HowTo", "name": "How Claims Native starts with a practice", "step": [{"@type": "HowToStep", "name": "You create an account, or talk to us first"}, {"@type": "HowToStep", "name": "One export of a recent week, with patient details removed"}, {"@type": "HowToStep", "name": "The agreement and the business associate agreement"}, {"@type": "HowToStep", "name": "We connect your EHR export and capture your contract rates"}, {"@type": "HowToStep", "name": "Enrollment with the clearinghouse and your payers"}, {"@type": "HowToStep", "name": "A shadow period beside your current biller"}, {"@type": "HowToStep", "name": "Live filing, approved by your office and your provider"}]}]}</script>
 </head>
 <body class="simple-site">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -119,7 +119,7 @@
 <li><strong>One named office contact.</strong> <span>The person we ask when a claim needs a fact only your office has.</span></li>
 <li><strong>One provider.</strong> <span>The person who answers a question about a signed note and approves the switch to live filing.</span></li>
 <li><strong>An EHR billing user.</strong> <span>A login in your EHR for Claims Native, so payments post back into your records.</span></li>
-<li><strong>Your payer contracts.</strong> <span>The contracts and fee schedules we check each payment against.</span></li>
+<li><strong>Your payer contracts.</strong> <span>The contracts and fee schedules we record during setup. Checking each payment against them is not built yet.</span></li>
 </ul>
 </div>
 </section>
@@ -140,7 +140,8 @@
 <strong id="limits-title">What is real today</strong>
 <ul>
 <li>The shadow period runs on your own visits while enrollment completes. Nothing goes to a payer until your office and your provider approve live filing.</li>
-<li>ChiroHD and Jane are the EHRs we take visits from today. Other systems wait on a sample export from a practice.</li>
+<li>As of October 19, 2026, no practice is live yet, and our clearinghouse connection runs in test mode.</li>
+<li>Visits come in as a file exported from your EHR. The ChiroHD and Jane connections aren’t live, and posting into an EHR has been proven on a synthetic test ledger, not in a practice’s EHR.</li>
 <li>Nothing on this page promises a payer’s timing or a payer’s payment.</li>
 <li>Clinical, coding, financial and release authority stay with the practice.</li>
 </ul>
@@ -149,7 +150,7 @@
 <div>
 <p class="eyebrow">Step one</p>
 <h2 id="invite-title">Set up your practice.</h2>
-<p>Create an account, find your practice by its NPI and tell us which EHR you use.<br> Would you rather talk first? <a href="mailto:Ian@atomandbits.com?subject=Claims%20Native%20for%20my%20practice">Email Ian Harman</a>. Do not include patient information.</p>
+<p>Create an account, find your practice by its NPI and tell us which EHR you use.<br> Would you rather talk first? <a href="mailto:Ian@atomandbits.com?subject=Claims%20Native%20for%20my%20practice">Write to us</a>. Do not include patient information.</p>
 </div>
 <a class="button" href="https://app.claimsnative.com/signup">Get started <span aria-hidden="true">→</span>
 </a>
