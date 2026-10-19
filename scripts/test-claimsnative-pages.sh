@@ -152,6 +152,8 @@ for pair in $guide_groups; do
 done
 for page in $(find "$output_dir" -name '*.html'); do
   grep -Fq 'href="/learn/">Billing guides</a>' "$page" || { echo "$page lacks the Billing guides footer link" >&2; exit 1; }
+  grep -Fq 'href="https://x.com/claimsnative"' "$page" || { echo "$page lacks the X footer link" >&2; exit 1; }
+  grep -Fq '<meta name="twitter:site" content="@claimsnative">' "$page" || { echo "$page lacks twitter:site" >&2; exit 1; }
 done
 # Every page under learn/ is listed above, so none ships untested.
 expected=$(( $(wc -w <<< "$groups") + $(wc -w <<< "$guides") ))

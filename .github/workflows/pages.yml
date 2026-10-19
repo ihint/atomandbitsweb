@@ -3,6 +3,7 @@ name: Deploy static site to Pages
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -10,12 +11,25 @@ permissions:
   pages: write
   id-token: write
 
+# One deploy group for main, taken when a run starts, so a newer push always
+# replaces an older one and an older run can never deploy after a newer one.
+# Pull request runs only test, in a group of their own.
 concurrency:
-  group: pages
+  group: ${{ github.event_name == 'pull_request' && format('pages-pr-{0}', github.ref) || 'pages' }}
   cancel-in-progress: true
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Test the Pages build and Claims Native redirects
+        run: bash scripts/test-atomandbits-pages.sh
+
   deploy:
+    needs: test
+    if: ${{ github.event_name != 'pull_request' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -23,12 +37,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Build the site
+        run: bash scripts/build-atomandbits-pages.sh "${{ runner.temp }}/site"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: ${{ runner.temp }}/site
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
