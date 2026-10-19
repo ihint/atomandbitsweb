@@ -86,7 +86,9 @@ for page in $(find "$output_dir" -name '*.html'); do
   grep -Fq 'href="/learn/">Billing guides</a>' "$page" || { echo "$page lacks the Billing guides footer link" >&2; exit 1; }
   grep -Fq 'href="https://x.com/claimsnative"' "$page" || { echo "$page lacks the X footer link" >&2; exit 1; }
   grep -Fq '<meta name="twitter:site" content="@claimsnative">' "$page" || { echo "$page lacks twitter:site" >&2; exit 1; }
+  grep -Eq '<script src="/signup-source\.js(\?v=[0-9-]+)?" defer></script>' "$page" || { echo "$page lacks the signup source script" >&2; exit 1; }
 done
+test -f "$output_dir/signup-source.js"
 # Every page under learn/ is listed above, so none ships untested.
 expected=$(( $(wc -w <<< "$groups") + $(wc -w <<< "$guides") ))
 actual=$(find "$output_dir/learn" -mindepth 2 -name index.html | wc -l)
@@ -146,3 +148,4 @@ if grep -Fq -- "/chiropractors" "$output_dir/_redirects"; then
 fi
 
 node --test "$repo_dir/claimsnative/cloudflare-www-redirect/test/redirect.test.mjs"
+node --test "$repo_dir/scripts/signup-source.test.mjs"
