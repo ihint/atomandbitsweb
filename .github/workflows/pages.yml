@@ -11,6 +11,13 @@ permissions:
   pages: write
   id-token: write
 
+# One deploy group for main, taken when a run starts, so a newer push always
+# replaces an older one and an older run can never deploy after a newer one.
+# Pull request runs only test, in a group of their own.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('pages-pr-{0}', github.ref) || 'pages' }}
+  cancel-in-progress: true
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -23,9 +30,6 @@ jobs:
   deploy:
     needs: test
     if: ${{ github.event_name != 'pull_request' }}
-    concurrency:
-      group: pages
-      cancel-in-progress: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
