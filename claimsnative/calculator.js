@@ -62,7 +62,7 @@
     if (draftReview.hidden) return;
     draftReview.hidden = true;
     draftPreview.textContent = '';
-    openEmail.href = 'mailto:Ian@atomandbits.com';
+    openEmail.href = 'mailto:Ian@claimsnative.com';
   }
 
   function renderEstimate() {
@@ -166,8 +166,8 @@
     completeCalculator();
 
     var email = buildEmail();
-    draftPreview.textContent = 'To: Ian@atomandbits.com\nSubject: ' + email.subject + '\n\n' + email.body;
-    openEmail.href = 'mailto:Ian@atomandbits.com?subject=' + encodeURIComponent(email.subject) + '&body=' + encodeURIComponent(email.body);
+    draftPreview.textContent = 'To: Ian@claimsnative.com\nSubject: ' + email.subject + '\n\n' + email.body;
+    openEmail.href = 'mailto:Ian@claimsnative.com?subject=' + encodeURIComponent(email.subject) + '&body=' + encodeURIComponent(email.body);
     draftReview.hidden = false;
 
     if (!hasShownIntent) {
