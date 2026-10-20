@@ -10,6 +10,9 @@ export const TOPICS = {
 };
 
 const MAX_LENGTH = { name: 200, email: 254, company: 200, message: 5000 };
+// The longest valid form is about 23 KB even with four-byte characters;
+// anything bigger is refused before it is parsed.
+const MAX_BODY_BYTES = 64 * 1024;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FALLBACK = 'Your message did not go through. Please email Ian@atomandbits.com instead.';
 
@@ -29,9 +32,13 @@ export async function handleContact(request, env) {
         return respond(request, 403, 'This form only accepts messages sent from atomandbits.com.');
     }
 
+    const body = await readLimited(request);
+    if (!body) {
+        return respond(request, 413, 'Your message is too long. Please shorten it or email Ian@atomandbits.com.');
+    }
     let form;
     try {
-        form = await request.formData();
+        form = await new Response(body, { headers: { 'Content-Type': request.headers.get('Content-Type') || '' } }).formData();
     } catch (error) {
         return respond(request, 400, 'The form could not be read. Please try again.');
     }
@@ -65,6 +72,26 @@ export async function handleContact(request, env) {
         return respond(request, 502, FALLBACK);
     }
     return respond(request, 200);
+}
+
+// Reads the body up to MAX_BODY_BYTES, trusting neither a missing nor a
+// false Content-Length. Returns null when the body is too large.
+async function readLimited(request) {
+    if (Number(request.headers.get('Content-Length')) > MAX_BODY_BYTES) return null;
+    if (!request.body) return new Blob([]);
+    const reader = request.body.getReader();
+    const chunks = [];
+    let size = 0;
+    for (;;) {
+        const { done, value } = await reader.read();
+        if (done) return new Blob(chunks);
+        size += value.byteLength;
+        if (size > MAX_BODY_BYTES) {
+            await reader.cancel();
+            return null;
+        }
+        chunks.push(value);
+    }
 }
 
 function sameOrigin(request) {

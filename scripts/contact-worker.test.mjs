@@ -106,6 +106,47 @@ test("an unknown topic is left blank rather than echoed", async () => {
   assert.match(sent[0].text, /Working on: —/);
 });
 
+test("an oversized body is refused before it is parsed", async () => {
+  const { env, sent } = environment();
+  const response = await worker.fetch(post({ ...VALID, message: "x".repeat(70_000) }), env);
+  assert.equal(response.status, 413);
+  assert.match((await response.json()).error, /too long/);
+  assert.equal(sent.length, 0);
+});
+
+test("a body streamed without Content-Length is still capped", async () => {
+  const { env, sent } = environment();
+  let pulls = 0;
+  const endless = new ReadableStream({
+    pull(controller) {
+      pulls += 1;
+      controller.enqueue(new Uint8Array(16 * 1024));
+    },
+  });
+  const request = new Request(`${ORIGIN}/api/contact`, {
+    method: "POST",
+    body: endless,
+    duplex: "half",
+    headers: { Accept: "application/json", Origin: ORIGIN, "Content-Type": "multipart/form-data; boundary=x" },
+  });
+  const response = await worker.fetch(request, env);
+  assert.equal(response.status, 413);
+  assert.ok(pulls < 10, `read ${pulls} chunks before stopping`);
+  assert.equal(sent.length, 0);
+});
+
+test("a declared Content-Length over the cap is refused without reading", async () => {
+  const { env, sent } = environment();
+  const request = new Request(`${ORIGIN}/api/contact`, {
+    method: "POST",
+    body: "name=x",
+    headers: { Accept: "application/json", Origin: ORIGIN, "Content-Type": "application/x-www-form-urlencoded", "Content-Length": "1000000" },
+  });
+  const response = await worker.fetch(request, env);
+  assert.equal(response.status, 413);
+  assert.equal(sent.length, 0);
+});
+
 test("posts from another site are refused", async () => {
   const { env, sent } = environment();
   const response = await worker.fetch(post(VALID, { origin: "https://evil.example" }), env);
