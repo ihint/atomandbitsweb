@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/claimsnative/mark.svg" type="image/svg+xml">
+<title>How to Read an ERA (835): A Line-by-Line Guide for Chiropractic Offices | Claims Native</title>
+<meta name="description" content="How to read an electronic remittance advice (835 ERA) for a chiropractic practice: the payment header, claim and service lines, adjustment group and reason codes, remark codes and provider-level adjustments.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://claimsnative.com/learn/how-to-read-an-era/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Claims Native">
+<meta property="og:title" content="How to Read an ERA (835): A Line-by-Line Guide for Chiropractic Offices">
+<meta property="og:description" content="How to read an electronic remittance advice (835 ERA) for a chiropractic practice: the payment header, claim and service lines, adjustment group and reason codes, remark codes and provider-level adjustments.">
+<meta property="og:url" content="https://claimsnative.com/learn/how-to-read-an-era/">
+<meta property="og:image" content="https://claimsnative.com/og-simple-20260911.png">
+<meta property="og:image:width" content="1730">
+<meta property="og:image:height" content="909">
+<meta property="og:image:alt" content="Claims Native. More room for care.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@claimsnative">
+<meta name="twitter:title" content="How to Read an ERA (835): A Line-by-Line Guide for Chiropractic Offices">
+<meta name="twitter:description" content="How to read an electronic remittance advice (835 ERA) for a chiropractic practice: the payment header, claim and service lines, adjustment group and reason codes, remark codes and provider-level adjustments.">
+<meta name="twitter:image" content="https://claimsnative.com/og-simple-20260911.png">
+<link href="/claimsnative/home.css" rel="stylesheet">
+<link href="/claimsnative/simple.css?v=20260924-1" rel="stylesheet">
+<link href="/claimsnative/learn.css?v=20261018-2" rel="stylesheet">
+<script src="/claimsnative/signup-source.js?v=20261019-1" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "How to Read an ERA (835): A Line-by-Line Guide for Chiropractic Offices", "description": "How to read an electronic remittance advice (835 ERA) for a chiropractic practice: the payment header, claim and service lines, adjustment group and reason codes, remark codes and provider-level adjustments.", "url": "https://claimsnative.com/learn/how-to-read-an-era/", "mainEntityOfPage": "https://claimsnative.com/learn/how-to-read-an-era/", "image": "https://claimsnative.com/og-simple-20260911.png", "datePublished": "2026-10-18", "dateModified": "2026-10-18", "inLanguage": "en-US", "author": {"@type": "Organization", "name": "Claims Native", "url": "https://claimsnative.com/", "sameAs": ["https://x.com/claimsnative"]}, "publisher": {"@type": "Organization", "name": "Claims Native", "url": "https://claimsnative.com/"}, "isPartOf": {"@type": "CollectionPage", "name": "After the claim goes out", "url": "https://claimsnative.com/learn/after-the-claim-goes-out/"}, "audience": {"@type": "Audience", "audienceType": "Chiropractic practices"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Claims Native", "item": "https://claimsnative.com/"}, {"@type": "ListItem", "position": 2, "name": "Billing guides", "item": "https://claimsnative.com/learn/"}, {"@type": "ListItem", "position": 3, "name": "After the claim goes out", "item": "https://claimsnative.com/learn/after-the-claim-goes-out/"}, {"@type": "ListItem", "position": 4, "name": "Reading an ERA", "item": "https://claimsnative.com/learn/how-to-read-an-era/"}]}]}</script>
+</head>
+<body class="simple-site">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/claimsnative/" aria-label="Claims Native home">
+<span class="brand-mark" aria-hidden="true">
+<i>
+</i>
+<i>
+</i>
+<i>
+</i>
+<i>
+</i>
+</span>
+<span>Claims Native<small>More room for care</small>
+</span>
+</a>
+<nav class="nav service-nav" aria-label="Primary navigation">
+<a href="/claimsnative/#what-we-do">What we do</a>
+<a href="/claimsnative/#starter">Starter</a>
+<a href="/claimsnative/how-we-start/">How we start</a>
+</nav>
+<div class="account-actions">
+<a class="sign-in-link" href="https://app.claimsnative.com/login">Sign in</a>
+<a class="button header-cta" href="https://app.claimsnative.com/signup">Get started</a>
+</div>
+</div>
+</header>
+<main id="main">
+<article>
+<header class="guide-head">
+<ol class="breadcrumb">
+<li><a href="/claimsnative/">Claims Native</a></li>
+<li><a href="/claimsnative/learn/">Billing guides</a></li>
+<li><a href="/claimsnative/learn/after-the-claim-goes-out/">After the claim goes out</a></li>
+<li aria-current="page">Reading an ERA</li>
+</ol>
+<p class="eyebrow">Billing guide · Stop 02 of 05</p>
+<h1>How to read an ERA, line by line.</h1>
+<p class="lede">The electronic remittance advice is the payer&#x27;s full answer on every claim it paid, cut or denied. Read one CMT line the way the payer wrote it and the rest of the file stops being a wall of codes.</p>
+<p class="guide-meta">Updated October 18, 2026 · 7 minute read · Part of <a href="/claimsnative/learn/after-the-claim-goes-out/">After the claim goes out</a></p>
+</header>
+<div class="guide-layout">
+<nav class="guide-toc" aria-label="On this page">
+<strong>On this page</strong>
+<ol>
+<li><a href="#what-an-era-is">What an ERA is</a></li>
+<li><a href="#the-payment">Start at the top: the payment</a></li>
+<li><a href="#each-claim">Then each claim</a></li>
+<li><a href="#each-line">Then each service line</a></li>
+<li><a href="#adjustments">Adjustments: a group code plus a reason code</a></li>
+<li><a href="#remark-codes">Remark codes</a></li>
+<li><a href="#provider-level-adjustments">Provider-level adjustments</a></li>
+<li><a href="#reading-routine">A ten-minute reading routine</a></li>
+<li><a href="#how-claims-native-reads-it">How Claims Native reads each ERA</a></li>
+</ol>
+</nav>
+<div class="guide-body">
+<h2 id="what-an-era-is">What an ERA is</h2>
+<p>An electronic remittance advice is the payer’s explanation of a payment, sent as a standard X12 835 file. One ERA usually covers every claim the payer finished for your practice in that payment cycle: several patients, several dates of service, payments, reductions and denials together. Your practice management system or clearinghouse turns the file into a readable report, but the fields underneath are the same for every payer.</p>
+<p>You enroll for ERAs with each payer, usually through your clearinghouse, and separately from enrolling for electronic payments. Until both are in place you get a paper remittance in the mail and a check, or a deposit with nothing to explain it.</p>
+<p>An ERA has three layers. Read them from the top down.</p>
+
+<h2 id="the-payment">Start at the top: the payment</h2>
+<p>The first segments describe the money, not the claims.</p>
+<ul>
+<li><strong>Total payment</strong> (<code>BPR02</code>): the amount of this payment, across every claim in the file.</li>
+<li><strong>Payment method</strong> (<code>BPR04</code>): <code>ACH</code> for an electronic deposit, <code>CHK</code> for a paper check, <code>NON</code> when no money moves, for instance when every claim in the file was denied or the payment was fully offset.</li>
+<li><strong>Trace number</strong> (<code>TRN02</code>): the check number or the electronic payment’s trace number. It is the key that ties this ERA to a deposit in your bank account.</li>
+<li><strong>Payer and payee</strong>: who paid, and which provider or group the payment is for. Check that the payee NPI and tax ID are yours before you post anything.</li>
+</ul>
+<p>Write the total and the trace number down first. You need both when you <a href="/claimsnative/learn/match-insurance-deposits/">match the deposit to the ERA</a>.</p>
+
+<h2 id="each-claim">Then each claim</h2>
+<p>Each claim in the file opens with a <code>CLP</code> segment. Five of its fields do most of the work:</p>
+<div class="table-wrap">
+<table class="guide-table">
+<thead><tr><th>Field</th><th>What it holds</th><th>Why you care</th></tr></thead>
+<tbody>
+<tr><td data-label="Field"><code>CLP01</code></td><td data-label="What it holds">Your patient control number: the claim ID you sent</td><td data-label="Why you care">It is how you find the claim in your own system.</td></tr>
+<tr><td data-label="Field"><code>CLP02</code></td><td data-label="What it holds">Claim status: <code>1</code> processed as primary, <code>2</code> as secondary, <code>3</code> as tertiary, <code>4</code> denied, <code>22</code> reversal of a previous payment</td><td data-label="Why you care">A <code>4</code> needs attention. A <code>22</code> takes money back from an earlier payment, and usually comes with a new entry for the same claim.</td></tr>
+<tr><td data-label="Field"><code>CLP03</code> / <code>CLP04</code></td><td data-label="What it holds">Total charge, and the amount paid on this claim</td><td data-label="Why you care">The gap between them is explained, line by line, in the adjustments.</td></tr>
+<tr><td data-label="Field"><code>CLP05</code></td><td data-label="What it holds">Patient responsibility</td><td data-label="Why you care">What the payer says the patient owes on this claim.</td></tr>
+<tr><td data-label="Field"><code>CLP07</code></td><td data-label="What it holds">The payer’s claim control number</td><td data-label="Why you care">You need it for a corrected claim, a reconsideration or an appeal.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="each-line">Then each service line</h2>
+<p>Under each claim, an <code>SVC</code> segment reports one billed line: the procedure code and modifiers, your charge, the payment on that line and the units. Around it sit the date of service, the allowed amount and the adjustments that explain the difference. Here is one CMT line, in the raw file and in plain words. The amounts are an example.</p>
+<pre><code>SVC*HC:98941*65*33.6**1~
+DTM*472*20260914~
+CAS*CO*45*23~
+CAS*PR*2*8.4~
+AMT*B6*42~</code></pre>
+<ul>
+<li><code>SVC</code>: CMT, three to four regions (98941), charged $65.00, paid $33.60, one unit.</li>
+<li><code>DTM*472</code>: date of service, September 14, 2026.</li>
+<li><code>CAS*CO*45</code>: $23.00 contractual adjustment. Your charge exceeds the payer’s fee schedule for your contract, so you write the $23.00 off.</li>
+<li><code>CAS*PR*2</code>: $8.40 coinsurance. The patient owes it.</li>
+<li><code>AMT*B6</code>: the allowed amount, $42.00.</li>
+</ul>
+<p>Every line balances the same way: <strong>charge minus every adjustment equals the amount paid</strong>. Here, $65.00 − $23.00 − $8.40 = $33.60. The allowed amount is what the payer pays and the patient owes together: $33.60 + $8.40 = $42.00. When a line does not balance in your report, a field was dropped on the way in, and the posting cannot be trusted until you find it.</p>
+<p>Compare the allowed amount to the rate in your contract for that code. A <code>CO-45</code> adjustment is only correct if the allowed amount matches what you agreed to. If it comes in lower, the payer underpaid, and you have a question for the payer, not a write-off.</p>
+
+<h2 id="adjustments">Adjustments: a group code plus a reason code</h2>
+<p>Every <code>CAS</code> segment pairs a group code with a reason code and an amount. Read them together. The group code tells you who carries the amount:</p>
+<div class="table-wrap">
+<table class="guide-table">
+<thead><tr><th>Group</th><th>Meaning</th><th>Who carries it</th></tr></thead>
+<tbody>
+<tr><td data-label="Group"><code>CO</code></td><td data-label="Meaning">Contractual obligation</td><td data-label="Who carries it">Your practice. It is generally not billed to the patient, and a Medicare patient must never be billed for it.</td></tr>
+<tr><td data-label="Group"><code>PR</code></td><td data-label="Meaning">Patient responsibility</td><td data-label="Who carries it">The patient, or a second payer if one covers it.</td></tr>
+<tr><td data-label="Group"><code>OA</code></td><td data-label="Meaning">Other adjustment</td><td data-label="Who carries it">Neither group fits. Read the reason code.</td></tr>
+<tr><td data-label="Group"><code>PI</code></td><td data-label="Meaning">Payer-initiated reduction</td><td data-label="Who carries it">Your practice, unless you dispute it. The payer says it is not contractual and not the patient’s.</td></tr>
+</tbody>
+</table>
+</div>
+<p>The reason code, a claim adjustment reason code or CARC, says why. The same reason code can sit under different groups. A non-covered charge (<code>96</code>) reported as <code>CO-96</code> is yours to absorb; reported as <code>PR-96</code>, the patient owes it. The group changes who pays, so never read the number alone.</p>
+<p>The guide to <a href="/claimsnative/learn/chiropractic-denial-codes/">chiropractic denial codes</a> covers the reason codes you will see most, and the guide to <a href="/claimsnative/learn/patient-balance-after-insurance/">what the patient owes</a> covers the <code>PR</code> amounts.</p>
+
+<h2 id="remark-codes">Remark codes</h2>
+<p>Some lines carry a remittance advice remark code, or RARC, in an <code>LQ*HE</code> segment. Remark codes start with <code>N</code>, <code>M</code> or <code>MA</code>. A reason code says what happened to the money; a remark code adds the detail you need to act. <code>CO-16</code> says the claim lacks information or has a billing error, and payers must send at least one remark code with it to say which. <code>N290</code>, for instance, points to a missing or invalid rendering provider identifier. Read the remark before you work the denial.</p>
+
+<h2 id="provider-level-adjustments">Provider-level adjustments</h2>
+<p>At the bottom of the file, a <code>PLB</code> segment can adjust the payment for reasons that belong to no claim in this ERA. The common ones:</p>
+<ul>
+<li><strong>Overpayment recovery</strong> (<code>WO</code>): the payer takes back money it paid on an earlier claim, often months later.</li>
+<li><strong>Interest</strong> (<code>L6</code>): the payer adds interest it owes on a claim it paid late.</li>
+<li><strong>Forward balance</strong> (<code>FB</code>): an amount carried from or to another payment.</li>
+</ul>
+<p>The whole file balances too. The total payment equals the sum of the claim payments minus the provider-level adjustments, where an amount that reduces the payment is positive and an amount that adds to it, such as interest, is negative. When your deposit is smaller than the claims you posted, look here first. Each recovery should name the claim it came from; find that claim and post the recovery against it, or the original visit stays overstated as paid.</p>
+
+<h2 id="reading-routine">A ten-minute reading routine</h2>
+<p>For each ERA, in this order:</p>
+<ol>
+<li>Match the total payment and trace number to a deposit or a check.</li>
+<li>Open every claim with status <code>4</code> (denied) or <code>22</code> (reversed).</li>
+<li>Open every adjustment that is not <code>CO-45</code> or a <code>PR</code> amount, and read its remark code.</li>
+<li>Check each allowed amount against your contract rate for that code.</li>
+<li>Move each <code>PR</code> amount to the patient’s ledger, or to the second payer’s claim.</li>
+<li>Trace each provider-level adjustment back to the claim it belongs to.</li>
+</ol>
+<p>Anything left over after step six is a question for the payer, and it stays open until you have an answer.</p>
+
+<h2 id="how-claims-native-reads-it">How Claims Native reads each ERA</h2>
+<p>We post each payment into your EHR and keep every adjustment with it. We check each payment against the payer’s explanation and your contract. When a payment is short and your contract supports more, the difference stays open, and we go back to the payer with a corrected claim, a reconsideration or an appeal. A person reviews every reconsideration, appeal and payer dispute before it goes out. A short payment does not become a patient bill by default.</p>
+
+<aside class="limits-block" aria-labelledby="limits-title">
+<strong id="limits-title">What is real today</strong>
+<ul>
+<li>This guide explains the X12 835 in general. Each payer’s companion guide and your contract decide the specifics.</li>
+<li>Claims Native bills BCBS commercial plans first, from visits in ChiroHD and Jane. Medicare, delegated networks and secondary claims come later, payer by payer.</li>
+</ul>
+</aside>
+
+<section class="guide-sources" aria-labelledby="sources-title">
+<h2 id="sources-title" class="sources-heading">Sources</h2>
+<ul>
+<li><a href="https://x12.org/codes/claim-adjustment-reason-codes">X12, Claim Adjustment Reason Codes</a>. X12 maintains the code list and updates it three times a year; check the current wording there.</li>
+<li><a href="https://x12.org/codes/claim-adjustment-group-codes">X12, Claim Adjustment Group Codes</a>.</li>
+<li><a href="https://x12.org/codes/remittance-advice-remark-codes">X12, Remittance Advice Remark Codes</a>.</li>
+<li><a href="https://x12.org/resources/requests-for-interpretation/rfi-2661-trn02-receiver-clarification-835">X12, request for interpretation 2661: TRN02 in the 835</a>.</li>
+<li><a href="https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c22.pdf">CMS, Medicare Claims Processing Manual, Chapter 22: Remittance Advice</a>.</li>
+<li><a href="https://www.cgsmedicare.com/pdf/edi/835_compguide.pdf">CGS, Medicare 835 companion guide</a>.</li>
+</ul>
+</section>
+</div>
+</div>
+</article>
+<section class="related-guides" aria-labelledby="related-title">
+<p class="eyebrow">Keep reading</p>
+<h2 id="related-title">More from <a href="/claimsnative/learn/after-the-claim-goes-out/">After the claim goes out</a></h2>
+<div class="path-grid">
+<a class="path-card" href="/claimsnative/learn/chiropractic-denial-codes/">
+<span class="guide-step">Stop 03</span>
+<h3>Chiropractic denial codes, and what to do with each one.</h3>
+<p>The reason codes chiropractic offices see most, what each means, and who on your team owns the fix.</p>
+<span class="path-link">Read the guide <span aria-hidden="true">→</span></span>
+</a>
+<a class="path-card" href="/claimsnative/learn/match-insurance-deposits/">
+<span class="guide-step">Stop 04</span>
+<h3>Match each insurance deposit to the payment behind it.</h3>
+<p>The trace number that ties a deposit to its ERA, and why a deposit comes in short.</p>
+<span class="path-link">Read the guide <span aria-hidden="true">→</span></span>
+</a>
+<a class="path-card" href="/claimsnative/learn/patient-balance-after-insurance/">
+<span class="guide-step">Stop 05</span>
+<h3>What the patient owes after insurance pays.</h3>
+<p>Deductible, coinsurance and copay from the ERA, what you write off, and when a second payer comes next.</p>
+<span class="path-link">Read the guide <span aria-hidden="true">→</span></span>
+</a>
+</div>
+</section>
+<section class="invitation" aria-labelledby="invite-title">
+<div>
+<p class="eyebrow">Get started</p>
+<h2 id="invite-title">Rather hand this work to someone?</h2>
+<p>Claims Native is a billing service for chiropractic practices. We file, follow up, post each payment with its adjustments, match deposits and tell you what each patient owes.<br> Would you rather talk first? <a href="mailto:Ian@claimsnative.com?subject=Claims%20Native%20for%20my%20practice">Email Ian Harman</a>.</p>
+</div>
+<a class="button" href="https://app.claimsnative.com/signup">Get started <span aria-hidden="true">→</span>
+</a>
+</section>
+</main>
+<footer class="site-footer">
+<div>
+<a class="brand" href="/claimsnative/">Claims Native</a>
+<p>More room for care.</p>
+<p class="footer-place">Chattanooga, TN</p>
+</div>
+<nav aria-label="Footer navigation">
+<a href="/claimsnative/learn/">Billing guides</a>
+<a href="/claimsnative/insurance-opportunity/">Insurance calculator</a>
+<a href="mailto:Ian@claimsnative.com">Ian@claimsnative.com</a>
+<a href="https://x.com/claimsnative" aria-label="Claims Native on X">X</a>
+<a href="https://app.claimsnative.com/login">Sign in</a>
+<a href="https://app.claimsnative.com/privacy">Privacy</a>
+<a href="https://app.claimsnative.com/terms">Terms</a>
+</nav>
+</footer>
+</body>
+</html>

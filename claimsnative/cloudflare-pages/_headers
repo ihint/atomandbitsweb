@@ -14,5 +14,8 @@
 /calculator.js
   Cache-Control: public, max-age=3600
 
+/signup-source.js
+  Cache-Control: public, max-age=3600
+
 /og.png
   Cache-Control: public, max-age=86400

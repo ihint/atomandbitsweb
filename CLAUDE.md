@@ -64,4 +64,4 @@ This is Ian Harman's Atom & Bits website. It presents his work, approach, and of
 
 ## Deployment
 
-Serve the repository root with `python3 -m http.server 4173 --bind 127.0.0.1` for local review. GitHub Pages deploys the repository on pushes to `main`; use a review branch for unpublished changes. Keep the separate Claims Native deployment workflow intact.
+Serve the repository root with `python3 -m http.server 4173 --bind 127.0.0.1` for local review. GitHub Pages deploys the output of `scripts/build-atomandbits-pages.sh` on pushes to `main`: the repository, with every `claimsnative/` page replaced by a redirect to the same path on claimsnative.com (atomandbits.com points straight at GitHub Pages, so Cloudflare redirect rules on that zone never run). `scripts/test-atomandbits-pages.sh` checks the build on every pull request. Use a review branch for unpublished changes. Keep the separate Claims Native deployment workflow intact.

@@ -48,13 +48,107 @@ for fact in '98941' 'AT modifier'; do
   grep -Fq -- "$fact" "$output_dir/chiropractors/index.html" || { echo "Chiropractors page lacks $fact" >&2; exit 1; }
 done
 
+# Billing guides. The index links to every group and every guide. Each guide
+# links back to the index and to its group's overview, and to at least two
+# other guides; each group overview links to its guides. Every guide and
+# overview carries its own canonical and is in the sitemap.
+groups="starting-with-insurance after-the-claim-goes-out choosing-how-to-bill"
+guide_groups="payer-enrollment-for-chiropractors:starting-with-insurance chiropractic-fee-schedule:starting-with-insurance chiropractic-insurance-verification:starting-with-insurance clean-chiropractic-claim:starting-with-insurance rejected-vs-denied-claims:after-the-claim-goes-out how-to-read-an-era:after-the-claim-goes-out chiropractic-denial-codes:after-the-claim-goes-out match-insurance-deposits:after-the-claim-goes-out patient-balance-after-insurance:after-the-claim-goes-out chiropractic-billing-service-cost:choosing-how-to-bill billing-numbers-to-check:choosing-how-to-bill questions-to-ask-a-billing-service:choosing-how-to-bill switching-billers:choosing-how-to-bill"
+guides=""
+for pair in $guide_groups; do guides="$guides ${pair%%:*}"; done
+grep -Fq '<link rel="canonical" href="https://claimsnative.com/learn/">' "$output_dir/learn/index.html" || { echo "Guide index has the wrong canonical" >&2; exit 1; }
+for group in $groups; do
+  page="$output_dir/learn/$group/index.html"
+  test -f "$page" || { echo "Missing guide group: $group" >&2; exit 1; }
+  grep -Fq "href=\"/learn/$group/\"" "$output_dir/learn/index.html" || { echo "Guide index lacks a link to $group" >&2; exit 1; }
+  grep -Fq "<link rel=\"canonical\" href=\"https://claimsnative.com/learn/$group/\">" "$page" || { echo "$group has the wrong canonical" >&2; exit 1; }
+  grep -Fq "<loc>https://claimsnative.com/learn/$group/</loc>" "$output_dir/sitemap.xml" || { echo "Sitemap lacks $group" >&2; exit 1; }
+done
+for pair in $guide_groups; do
+  guide="${pair%%:*}"
+  group="${pair##*:}"
+  page="$output_dir/learn/$guide/index.html"
+  test -f "$page" || { echo "Missing guide: $guide" >&2; exit 1; }
+  grep -Fq "href=\"/learn/$guide/\"" "$output_dir/learn/index.html" || { echo "Guide index lacks a link to $guide" >&2; exit 1; }
+  grep -Fq "href=\"/learn/$guide/\"" "$output_dir/learn/$group/index.html" || { echo "$group lacks a link to $guide" >&2; exit 1; }
+  grep -Fq '<li><a href="/learn/">Billing guides</a></li>' "$page" || { echo "$guide lacks the breadcrumb to the guide index" >&2; exit 1; }
+  grep -Fq "href=\"/learn/$group/\"" "$page" || { echo "$guide lacks a link to $group" >&2; exit 1; }
+  siblings=0
+  for other in $guides; do
+    [[ "$other" == "$guide" ]] && continue
+    grep -Fq "href=\"/learn/$other/\"" "$page" && siblings=$((siblings + 1))
+  done
+  (( siblings >= 2 )) || { echo "$guide links to $siblings other guides; it needs 2" >&2; exit 1; }
+  grep -Fq "<link rel=\"canonical\" href=\"https://claimsnative.com/learn/$guide/\">" "$page" || { echo "$guide has the wrong canonical" >&2; exit 1; }
+  grep -Fq "<loc>https://claimsnative.com/learn/$guide/</loc>" "$output_dir/sitemap.xml" || { echo "Sitemap lacks $guide" >&2; exit 1; }
+done
+for page in $(find "$output_dir" -name '*.html'); do
+  grep -Fq 'href="/learn/">Billing guides</a>' "$page" || { echo "$page lacks the Billing guides footer link" >&2; exit 1; }
+  grep -Fq 'href="https://x.com/claimsnative"' "$page" || { echo "$page lacks the X footer link" >&2; exit 1; }
+  grep -Fq '<meta name="twitter:site" content="@claimsnative">' "$page" || { echo "$page lacks twitter:site" >&2; exit 1; }
+  grep -Eq '<script src="/signup-source\.js(\?v=[0-9-]+)?" defer></script>' "$page" || { echo "$page lacks the signup source script" >&2; exit 1; }
+done
+test -f "$output_dir/signup-source.js"
+# Every page under learn/ is listed above, so none ships untested.
+expected=$(( $(wc -w <<< "$groups") + $(wc -w <<< "$guides") ))
+actual=$(find "$output_dir/learn" -mindepth 2 -name index.html | wc -l)
+(( actual == expected )) || { echo "learn/ has $actual pages; the test lists $expected" >&2; exit 1; }
+
+# Every internal link and in-page anchor on the built site resolves.
+OUT="$output_dir" node <<'JS'
+const fs = require('fs');
+const path = require('path');
+const root = process.env.OUT;
+const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true })
+  .flatMap((e) => (e.isDirectory() ? walk(path.join(dir, e.name)) : [path.join(dir, e.name)]));
+let bad = 0;
+for (const file of walk(root).filter((f) => f.endsWith('.html'))) {
+  const html = fs.readFileSync(file, 'utf8');
+  const page = path.relative(root, file);
+  for (const [, href] of html.matchAll(/href="(\/[^"#?]*)/g)) {
+    const target = path.join(root, href);
+    const isFile = fs.existsSync(target) && fs.statSync(target).isFile();
+    if (!isFile && !fs.existsSync(path.join(target, 'index.html'))) {
+      console.error(`${page} links to missing ${href}`);
+      bad += 1;
+    }
+  }
+  for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) {
+    if (!html.includes(`id="${id}"`)) {
+      console.error(`${page} links to missing #${id}`);
+      bad += 1;
+    }
+  }
+}
+process.exit(bad ? 1 : 0);
+JS
+
+# atomandbits.com serves the same source files under /claimsnative/. Their
+# canonical must name claimsnative.com so search engines keep one copy.
+if grep -rlF --include='*.html' '<link rel="canonical" href="https://atomandbits.com/claimsnative/' "$repo_dir/claimsnative"; then
+  echo "A Claims Native source page names atomandbits.com as canonical" >&2
+  exit 1
+fi
+
 # Every page carries the primary action (Get started, to the app signup),
-# the Talk to us mailto and the client sign-in.
+# the Talk to us mailto, the client sign-in and the calculator footer link.
 for page in $(find "$output_dir" -name '*.html'); do
   grep -Fq -- 'https://app.claimsnative.com/signup' "$page" || { echo "$page lacks the Get started link" >&2; exit 1; }
   grep -Fq -- 'subject=Claims%20Native%20for%20my%20practice' "$page" || { echo "$page lacks the Talk to us mailto" >&2; exit 1; }
   grep -Fq -- 'https://app.claimsnative.com/login' "$page" || { echo "$page lacks the sign-in link" >&2; exit 1; }
+  grep -Fq -- 'href="/insurance-opportunity/"' "$page" || { echo "$page lacks the calculator link" >&2; exit 1; }
 done
+
+# The home page and the chiropractic page link the calculator in the body
+# as well as the footer.
+for page in "$output_dir/index.html" "$output_dir/chiropractors/index.html"; do
+  links=$(grep -o 'href="/insurance-opportunity/"' "$page" | wc -l | tr -d ' ')
+  [ "$links" -ge 2 ] || { echo "$page links the calculator $links time(s); want body and footer" >&2; exit 1; }
+done
+
+# The home page title and headline say "medical billing" and "small practices".
+grep -Fq '<title>Medical Billing for Small Practices · Claims Native</title>' "$output_dir/index.html" || { echo "Home page title changed" >&2; exit 1; }
+grep -Fq '<h1 id="hero-title">We do the medical billing for small practices.' "$output_dir/index.html" || { echo "Home page headline changed" >&2; exit 1; }
 
 # Redirects: the retired pages send readers to the pages that replaced them.
 for rule in '/90-day-pilot/ /how-we-start/ 301' '/90-day-pilot/index.html /how-we-start/ 301' '/independent-practices/ / 301'; do
@@ -66,3 +160,4 @@ if grep -Fq -- "/chiropractors" "$output_dir/_redirects"; then
 fi
 
 node --test "$repo_dir/claimsnative/cloudflare-www-redirect/test/redirect.test.mjs"
+node --test "$repo_dir/scripts/signup-source.test.mjs"
