@@ -5,13 +5,9 @@
 // project API key. PostHog loads only when both are set, with in-memory
 // persistence, no cookies, and autocapture off. If Plausible is added to a
 // page by its own script tag instead, track() sends events there.
-//
-// BOOKING_URL: a scheduling link (for example a Calendly or Cal.com page).
-// When set, every [data-booking-link] element is pointed at it and shown.
 // ---------------------------------------------------------------------------
 const ANALYTICS = { provider: '', key: '' };
 const ANALYTICS_HOST = 'https://us.i.posthog.com';
-const BOOKING_URL = '';
 
 // Load PostHog only when it has been configured.
 if (ANALYTICS.provider === 'posthog' && ANALYTICS.key) {
@@ -52,14 +48,6 @@ document.addEventListener('click', (event) => {
     });
 });
 
-// Show booking links only once a scheduling URL exists.
-if (BOOKING_URL) {
-    document.querySelectorAll('[data-booking-link]').forEach((link) => {
-        link.setAttribute('href', BOOKING_URL);
-        link.hidden = false;
-    });
-}
-
 // Native menu disclosure stays usable without JavaScript.
 const mobileMenu = document.querySelector('.mobile-nav');
 if (mobileMenu) {
@@ -98,89 +86,48 @@ document.querySelectorAll('[data-walkthrough]').forEach((demo) => {
     demo.classList.add('enhanced');
 });
 
-// Contact form: there is no backend, so compose an email in the visitor's own app.
+// Contact form: post to /api/contact, where the Worker emails Ian. Without
+// JavaScript the form posts directly and the Worker returns a page instead.
 const contactForm = document.querySelector('[data-contact-form]');
 if (contactForm) {
-    const CONTACT_EMAIL = 'Ian@atomandbits.com';
+    const FALLBACK = 'Your message did not go through. Please email Ian@atomandbits.com instead.';
     const topicSelect = contactForm.querySelector('[name="topic"]');
+    const submitButton = contactForm.querySelector('[type="submit"]');
+    const status = contactForm.querySelector('[data-form-status]');
     const confirmation = document.querySelector('[data-form-confirmation]');
-    const copyButton = document.querySelector('[data-copy-message]');
-    const copyStatus = document.querySelector('[data-copy-status]');
-    const messageCopy = document.querySelector('[data-message-copy]');
-    const mailtoLink = document.querySelector('[data-mailto-link]');
-    const topicNote = document.querySelector('[data-topic-note]');
-    const topicLabelOut = document.querySelector('[data-topic-label]');
-    let lastMessage = '';
 
-    const labelFor = (value) => {
-        const option = topicSelect ? [...topicSelect.options].find((item) => item.value === value && value) : null;
-        return option ? option.textContent.trim() : 'Something else';
-    };
-
-    // Preselect a topic passed from another page, e.g. /contact/?topic=pilot.
+    // Preselect a topic passed from another page, e.g. /contact/?topic=company.
     const requested = new URLSearchParams(window.location.search).get('topic');
-    if (requested && topicSelect) {
-        const known = [...topicSelect.options].some((item) => item.value === requested);
-        topicSelect.value = known ? requested : 'other';
-        if (topicNote && topicLabelOut) {
-            topicLabelOut.textContent = labelFor(topicSelect.value);
-            topicNote.hidden = false;
-        }
+    if (requested && topicSelect && [...topicSelect.options].some((option) => option.value === requested)) {
+        topicSelect.value = requested;
     }
 
-    const field = (name) => {
-        const input = contactForm.querySelector(`[name="${name}"]`);
-        return input ? input.value.trim() : '';
-    };
-
-    contactForm.addEventListener('submit', (event) => {
+    contactForm.addEventListener('submit', async (event) => {
         event.preventDefault();
-        if (typeof contactForm.reportValidity === 'function' && !contactForm.reportValidity()) return;
+        if (!contactForm.reportValidity()) return;
+        submitButton.disabled = true;
+        status.textContent = 'Sending…';
 
-        const topic = field('topic');
-        const topicLabel = labelFor(topic);
-        const organization = field('organization');
-        const subject = `${topicLabel} — ${organization || field('name') || 'New conversation'}`;
-        lastMessage = [
-            `Name: ${field('name')}`,
-            `Email: ${field('email')}`,
-            `Organization: ${organization || '—'}`,
-            `Topic: ${topicLabel}`,
-            `Timeline: ${field('timeline') || '—'}`,
-            '',
-            'What are you trying to make possible?',
-            field('goal') || '—',
-            '',
-            'What’s in the way?',
-            field('obstacle') || '—',
-        ].join('\n');
-        const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lastMessage)}`;
-
-        track('contact_form_submit', { topic: topic || 'none', path: window.location.pathname });
-
-        if (mailtoLink) mailtoLink.setAttribute('href', mailto);
-        if (messageCopy) messageCopy.value = `To: ${CONTACT_EMAIL}\nSubject: ${subject}\n\n${lastMessage}`;
-        if (confirmation) {
-            confirmation.hidden = false;
-            confirmation.focus({ preventScroll: true });
-            confirmation.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        let result = { ok: false, error: FALLBACK };
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { Accept: 'application/json' },
+            });
+            result = await response.json();
+        } catch (error) {
+            // A network failure or a host without the Worker keeps the fallback message.
         }
-        window.location.href = mailto;
-    });
 
-    if (copyButton && messageCopy) {
-        copyButton.addEventListener('click', async () => {
-            const text = messageCopy.value;
-            try {
-                await navigator.clipboard.writeText(text);
-                if (copyStatus) copyStatus.textContent = `Copied. Paste it into a new email to ${CONTACT_EMAIL}.`;
-            } catch (error) {
-                // Clipboard access can be blocked; show the text so it can be copied by hand.
-                messageCopy.hidden = false;
-                messageCopy.focus();
-                messageCopy.select();
-                if (copyStatus) copyStatus.textContent = 'Your message is selected below. Copy it and paste it into a new email.';
-            }
-        });
-    }
+        if (result.ok) {
+            track('contact_form_submit', { topic: (topicSelect && topicSelect.value) || 'none', path: window.location.pathname });
+            contactForm.hidden = true;
+            confirmation.hidden = false;
+            confirmation.focus();
+            return;
+        }
+        status.textContent = result.error || FALLBACK;
+        submitButton.disabled = false;
+    });
 }
