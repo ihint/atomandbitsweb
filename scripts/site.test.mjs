@@ -93,6 +93,11 @@ test("retired URLs are gone and redirect to a page that exists", () => {
     }
     assert.ok(fileFor(to), `${to} does not exist`);
   }
+  // No page may still point at a retired URL, in a link or in structured data.
+  const mentions = pages.flatMap((page) => Object.keys(retired)
+    .filter((from) => read(page).includes(from))
+    .map((from) => `${page}: ${from}`));
+  assert.deepEqual(mentions, []);
   const claims = redirectFor("/claimsnative/learn/");
   assert.equal(claims.to, "https://claimsnative.com/:splat");
   assert.equal(claims.status, "301");
