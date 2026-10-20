@@ -35,10 +35,24 @@ for page in $(find "$output_dir" -name '*.html'); do
   done
 done
 
+# Published monthly price is Starter at $990 per location. The old $500
+# full-billing price is gone, and ChiroHD is not described as an EHR we
+# take visits from today.
+for page in $(find "$output_dir" -name '*.html'); do
+  if grep -Fq '$500' "$page"; then
+    echo "Copy guard: '\$500' found in $page" >&2
+    exit 1
+  fi
+  if grep -Eq 'ChiroHD.{0,160}today|from visits in ChiroHD|EHRs we take visits from today|systems we take visits from today|whether you use ChiroHD or Jane|Jane and ChiroHD|post payments back into ChiroHD|posting back into ChiroHD|signed visit in ChiroHD' "$page"; then
+    echo "Copy guard: ChiroHD-today claim in $page" >&2
+    exit 1
+  fi
+done
+
 # The home page and the how-we-start page carry the fee, the business
 # associate agreement and the client app address.
 for page in "$output_dir/index.html" "$output_dir/how-we-start/index.html"; do
-  for fact in '$500' 'business associate agreement' 'app.claimsnative.com'; do
+  for fact in '$990' 'Starter' 'per location' 'business associate agreement' 'app.claimsnative.com'; do
     grep -Fq -- "$fact" "$page" || { echo "$page lacks $fact" >&2; exit 1; }
   done
 done
