@@ -117,6 +117,13 @@ main.wide > section, main.wide > article, main.wide > div { margin-bottom: 0; }
 .work-item h3 a:hover { color: var(--accent); }
 .result { font-style: italic; }
 
+/* Sample workflow on the pilot page */
+.demo-controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 1rem 0 1.5rem; }
+.demo-controls button { padding: 6px 12px; border: 1px solid #8a8a8a; border-radius: 6px; background: var(--white); color: var(--text); font-size: .95rem; cursor: pointer; }
+.demo-controls button[aria-pressed="true"] { border-color: var(--text); background: var(--text); color: var(--white); }
+.workflow-demo:not(.enhanced) .demo-controls { display: none; }
+.workflow-demo:not(.enhanced) .demo-panel + .demo-panel { margin-top: 2rem; }
+
 /* Photos and placeholders */
 .photo { margin: 0 0 2rem; }
 .photo-placeholder {
