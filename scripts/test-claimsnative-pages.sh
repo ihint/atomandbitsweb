@@ -199,12 +199,26 @@ if grep -rlF --include='*.html' '<link rel="canonical" href="https://atomandbits
 fi
 
 # Every page carries the primary action (Get started, to the app signup),
-# the Talk to us mailto and the client sign-in.
+# the Talk to us mailto, the client sign-in and the calculator footer link.
 for page in $(find "$output_dir" -name '*.html'); do
   grep -Fq -- 'https://app.claimsnative.com/signup' "$page" || { echo "$page lacks the Get started link" >&2; exit 1; }
   grep -Fq -- 'subject=Claims%20Native%20for%20my%20practice' "$page" || { echo "$page lacks the Talk to us mailto" >&2; exit 1; }
   grep -Fq -- 'https://app.claimsnative.com/login' "$page" || { echo "$page lacks the sign-in link" >&2; exit 1; }
+  grep -Fq -- 'href="/insurance-opportunity/"' "$page" || { echo "$page lacks the calculator link" >&2; exit 1; }
 done
+
+# The home page and the chiropractic page link the calculator in the body
+# as well as the footer.
+for page in "$output_dir/index.html" "$output_dir/chiropractors/index.html"; do
+  links=$(grep -o 'href="/insurance-opportunity/"' "$page" | wc -l | tr -d ' ')
+  [ "$links" -ge 2 ] || { echo "$page links the calculator $links time(s); want body and footer" >&2; exit 1; }
+done
+
+# The home page title and the hero eyebrow above the headline say "medical
+# billing" and "small practices". The headline itself is checked with the
+# other home page facts above.
+grep -Fq '<title>Medical Billing for Small Practices · Claims Native</title>' "$output_dir/index.html" || { echo "Home page title changed" >&2; exit 1; }
+grep -Fq '</span> Medical billing for small practices nationwide</p>' "$output_dir/index.html" || { echo "Home page eyebrow changed" >&2; exit 1; }
 
 # Redirects: the retired pages send readers to the pages that replaced them.
 for rule in '/90-day-pilot/ /how-we-start/ 301' '/90-day-pilot/index.html /how-we-start/ 301' '/independent-practices/ / 301'; do
