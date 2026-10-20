@@ -4,3 +4,16 @@
 # Claims Native lives on its own domain.
 /claimsnative https://claimsnative.com/ 301
 /claimsnative/* https://claimsnative.com/:splat 301
+
+# Retired October 2026 with the move away from behavioral health positioning.
+/practice-margin-review / 301
+/practice-margin-review/* / 301
+/method/* /how-i-work/ 301
+/healthcare-ai-workflow-assessment /ai-fit-review/ 301
+/healthcare-ai-workflow-assessment/* /ai-fit-review/ 301
+/healthcare-product-strategy /ai-fit-review/ 301
+/healthcare-product-strategy/* /ai-fit-review/ 301
+/healthcare-fractional-cto /product-technology-leadership/ 301
+/healthcare-fractional-cto/* /product-technology-leadership/ 301
+/healthcare-ai-operations /agent-workflows/ 301
+/healthcare-ai-operations/* /agent-workflows/ 301
