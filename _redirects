@@ -1,0 +1,6 @@
+# Cloudflare applies these before serving a page. Each moved URL keeps
+# working with a permanent redirect.
+
+# Claims Native lives on its own domain.
+/claimsnative https://claimsnative.com/ 301
+/claimsnative/* https://claimsnative.com/:splat 301
