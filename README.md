@@ -1,82 +1,54 @@
 # Atom & Bits Website
 
-**Live Site:** [atomandbits.com](https://atomandbits.com)
+**Live site:** [atomandbits.com](https://atomandbits.com)
 
-Atom & Bits is Ian Harman's product and technology practice. The site begins with the opportunity to grow a business while helping its people deliver the service customers value. The One to One Health story leads into his founder experience, commercial work, and offers.
+Ian Harman's personal site: hard systems in healthcare and finance, built so people use them. It offers founders and operators a Product & AI assessment, an Agent workflow pilot, and Fractional leadership, and introduces Corridor Robotics.
 
-## Quick Start for Editing
+## Edit
 
-The site uses static HTML, CSS, and JavaScript. No build step is required.
+The pages are static HTML. There is no build step.
 
-### Main File
-- `index.html` - The live static website
-- `atom-bits-website.html` - Historical mirror of the live page; keep it synced with `index.html`
-- `service-pages.css` - Base styles for the main site and specialist pages
-- `site.css` - Shared navigation and the personal website styles
-- `site.js` - Mobile navigation and the illustrative agent walkthrough
+- `index.html` - homepage; copy it to `atom-bits-website.html` after every change
+- `site.css` - the one stylesheet; colors are custom properties at the top
+- `site.js` - mobile menu, sample workflow, contact form, click tracking
+- `worker/index.js` - the Cloudflare Worker behind the contact form
+- `_redirects` - 301s for moved or retired URLs
+- `.assetsignore` - repository files Cloudflare must not serve; add anything new at the root that is not part of the site
+- `images/` - photos; see `images/README.md` for the expected files
 
-### Making Changes
+Keep the nav and footer the same on every page.
 
-1. **Text Content**: Edit directly in `index.html`
-2. **Colors**: Modify the CSS custom properties in `service-pages.css`
-3. **Styling**: Update `site.css` for shared navigation and personal pages
-4. **Functionality**: Update `site.js`; keep content and navigation usable without JavaScript
-5. **Mirror file**: Copy `index.html` to `atom-bits-website.html` after content or style changes
+## Run locally
 
-### Color Scheme
-The website uses a restrained executive palette aligned to Ian's CTO/founder positioning:
-- `--ink`: #111827
-- `--navy`: #1f4e79
-- `--accent`: #ad5735
-- `--blue-soft`: #e7eef7
-- `--blue-wash`: #f2f5f9
-- `--paper`: #fbfaf6
-- `--line`: #d7dee8
+```bash
+npx wrangler@4.151.3 dev
+```
 
-### Sections to Customize
-1. **Opening and story**: The accepted One to One Health narrative, with the operating plan and charting result kept distinct
-2. **Selected work**: TheraMatch, Paragon, BCBST, and PerfectServe; TPN as a further operating case
-3. **Work with me**: Assessment, agent workflow pilot, and product/technology leadership
-4. **Building now**: Claims Native and internal agent work, with evidence limits
-5. **How I work**: Questions, joy, curiosity, and shared understanding
-6. **Contact**: Email, phone, LinkedIn, and company details
+Open http://127.0.0.1:8787. The contact form works locally; instead of sending, the dev server writes each email under `.wrangler/tmp/email/`.
 
-The main offer routes are `/ai-fit-review/`, `/agent-workflows/`, and
-`/product-technology-leadership/`. `/how-i-work/` explains Ian's approach.
-Keep the existing healthcare routes available for visitors and search links.
-The agent walkthrough is an illustration using sample content; it does not
-connect to a live agent or perform an external action.
+## Test
 
-Write in connected paragraphs that explain the reader's problem, the decision,
-and what changed. Carry Ian’s latest story corrections into the homepage and One to One Health
-case. Describe what the product plan proposed separately from delivered results.
-Frame each story around an opportunity, a decision, and its consequences. Ian’s founder perspective does not make him a founder of every company shown. Anchor past observations to his tenure. Explain that the clinical-note effort gave staff value sooner while the wider product suite was being built. Do not invent client conversations, clinical outcomes, or savings for a story.
+```bash
+node --test scripts/site.test.mjs scripts/contact-worker.test.mjs
+```
 
-Avoid generic “the business” and “the work” phrasing and repeated “The…” openings.
-Name the company, person, task, or decision, or address the reader directly.
-Rewrite the sentence; do not just delete its article. Keep needed articles and
-proper names such as “The Mission Chattanooga.”
+The site checks cover internal links and anchors, redirects, files kept off the web, cut phrases, the homepage mirror, page basics, and the facts table. The Worker tests cover the form's validation, spam trap, origin check, and email.
 
-### Local Development
-Run `python3 -m http.server 4173 --bind 127.0.0.1` in the project folder,
-then open `http://127.0.0.1:4173/`. A server is needed for root-relative links.
+## Deploy
 
-### Deployment
-The site auto-deploys to [atomandbits.com](https://atomandbits.com) when changes are pushed to the main branch.
+GitHub Actions runs the tests on every pull request and deploys `main` to the Cloudflare Worker `atomandbits-site`.
 
-Claims Native builds from `claimsnative/` and deploys to
-[claimsnative.com](https://claimsnative.com) through the separate Cloudflare
-workflow. Run `bash scripts/test-claimsnative-pages.sh` before release. The
-workflow requires the `CLOUDFLARE_ACCOUNT_ID` repository variable and a narrow
-`CLOUDFLARE_API_TOKEN` secret in the `claimsnative-production` environment.
+One-time move from GitHub Pages to Cloudflare:
 
-### Technical Notes
-- Responsive design using CSS Grid and Flexbox
-- Native disclosure menus with keyboard support
-- Sample walkthrough with a readable fallback when JavaScript is disabled
-- No build process or dependencies required
-- Optimized for performance and SEO
+1. In Cloudflare Email Service, onboard atomandbits.com for sending so `website@atomandbits.com` can send, and verify `Ian@atomandbits.com` as a destination. Keep the iCloud MX records for the domain as they are.
+2. Create a Cloudflare API token that can edit Workers, and add it as `CLOUDFLARE_API_TOKEN` in a GitHub environment named `atomandbits-production`. The repository variable `CLOUDFLARE_ACCOUNT_ID` already exists for Claims Native.
+3. Merge to `main` or run `npx wrangler@4.151.3 deploy`. Check the site on its workers.dev address and send one test message.
+4. In the Worker's Domains & Routes settings, add atomandbits.com and www.atomandbits.com as custom domains. Cloudflare replaces the GitHub Pages DNS records.
+5. Add a redirect rule that sends www.atomandbits.com to atomandbits.com.
+6. Turn off GitHub Pages for this repository.
+
+Claims Native builds from `claimsnative/` and deploys to [claimsnative.com](https://claimsnative.com) through its own workflow. Run `bash scripts/test-claimsnative-pages.sh` before a Claims Native release. That workflow uses the `claimsnative-production` environment.
 
 ---
 
-*Questions? Contact Ian at Ian@atomandbits.com*
+*Questions? Email Ian@atomandbits.com.*

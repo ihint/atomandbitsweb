@@ -1,0 +1,19 @@
+# Files in the repository that are not part of atomandbits.com.
+.git
+.github
+.claude
+.wrangler
+.dev.vars*
+node_modules
+.assetsignore
+wrangler.jsonc
+worker/
+scripts/
+docs/
+claimsnative/
+images/README.md
+CLAUDE.md
+README.md
+CNAME
+.nojekyll
+.gitignore

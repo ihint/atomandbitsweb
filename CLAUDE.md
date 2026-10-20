@@ -4,64 +4,51 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is Ian Harman's Atom & Bits website. It presents his work, approach, and offers in product, technology, and applied AI.
+This is Ian Harman's Atom & Bits website. It presents his work in healthcare and finance systems, his approach, his offers for founders and operators, and Corridor Robotics.
 
 ## Project Structure
 
 - `index.html` - Static homepage
 - `atom-bits-website.html` - Historical mirror; keep synced with `index.html`
-- `site.css`, `site.js` - Shared styles, mobile navigation, sample workflow controls, contact form, and click tracking
-- `site.js` config at the top: `ANALYTICS` (PostHog loads only when provider and key are set) and `BOOKING_URL` (reveals `[data-booking-link]` when set); both are empty by default
-- `service-pages.css` - Base styles shared with the healthcare pages
+- `site.css` - The one stylesheet: a 650px column, system sans font, black on white, one accent color
+- `site.js` - Mobile navigation, sample workflow controls, contact form submission, and click tracking; `ANALYTICS` at the top is empty by default (PostHog loads only when provider and key are set)
+- `worker/index.js` - Cloudflare Worker; runs only for `/api/contact` and emails each message to Ian
+- `wrangler.jsonc`, `.assetsignore`, `_redirects`, `404.html` - Cloudflare config, files kept off the web, 301s for moved URLs, not-found page
 - `how-i-work/`, `ian-harman/` - Ian's approach and background
-- `practice-margin-review/` - Lead offer for independent practices that bill insurers: two weeks, $15,000 fixed, with a guarantee on the second half
-- `ai-fit-review/`, `agent-workflows/`, `product-technology-leadership/` - Offers for founders and operators
-- `healthcare-*/`, `method/` - Healthcare service pages and the operating-systems method
+- `ai-fit-review/`, `agent-workflows/`, `product-technology-leadership/` - Product & AI assessment, Agent workflow pilot, Fractional leadership
+- `corridor/` - Corridor Robotics, the team that puts AI to work in Chattanooga businesses
 - `work/` - Career case studies
-- `guides/`, `insights/` - Practice guides and essays; the two practice guides keep their own inline styles under the shared header
+- `guides/`, `insights/` - Practice guides and essays; the two practice guides keep their own inline styles under the shared header (`<main class="wide">`)
 - `writing/` - Index of guides and insights
-- `contact/` - Start-a-conversation page; the form composes a mailto (no backend) and reads `?topic=`
+- `contact/` - Form posts to `/api/contact`; reads `?topic=` (billing, company, regulated-ai, other); `contact/thanks/` is the no-JavaScript confirmation
+- `images/` - Ian's own photos; pages show marked placeholders until they arrive
+- `scripts/site.test.mjs`, `scripts/contact-worker.test.mjs` - Site checks and Worker tests (`node --test`)
 - Every page shares one nav and footer; update them on all pages together
-- No build system or package.json - pure HTML/CSS/JS
+- No package.json or build step
 
-## Technology Stack
+## Design
 
-- **Frontend**: Pure HTML5, CSS3, JavaScript (ES6+)
-- **Styling**: CSS custom properties, CSS Grid, Flexbox
-- **Motion**: CSS scrolling with reduced-motion support
-- **Icons**: Inline SVG icons
-- **Responsive**: Mobile-first responsive design
+- One column about 650px wide, lots of white space, no cards, borders or shadows
+- One plain system sans font for headings and body text
+- Mostly black and white; the muted Tennessee orange `--accent` (#b85600) is only for links and the main button
+- At most one button per section; everything else is a plain text link; no arrows after links
+- Photos are Ian's own, never stock: one hero photo, a row of three or four on About, one per page elsewhere or none
 
-## Key Features
+## Content
 
-- **Static Pages**: Each route has its own HTML file
-- **Navigation**: Anchor links and a native mobile menu work without JavaScript
-- **Sample Workflow**: JavaScript switches steps; all steps remain readable without it
-- **Responsive Grid Layouts**: CSS Grid for case studies and services
-- **CSS Custom Properties**: Color theming system using CSS variables
-- **Executive Visual System**: Ink, navy, paper, copper accents, crisp rules, restrained 8px radii
+1. **Homepage**: the reader's problem, four proof lines, two doors (founders and operators; Corridor Robotics), selected work, the How I work teaser, life in Chattanooga, and contact. Claims Native is one quiet line under the doors, not a card
+2. Claims Native is a billing service; keep its price on claimsnative.com only
+3. Keep facts the same everywhere: 150,000+ verified clinicians at TPN; VP, Provider Networks & Technology, Feb 2025 to Aug 2026; TPN raised $12M after acquiring TheraMatch; $1M+ ARR and 1M members in under 12 months; first product manager at PerfectServe as it grew from $2M to $40M ARR; about 3.5M members, NPS 60+ and digital adoption more than doubled at BCBST; $500K a year at Paragon Truss, the largest contract in company history
+4. Do not mention a job search, list Corridor partners (there are none yet), or put prices on atomandbits.com
 
-## Content Sections
+## Writing Notes
 
-1. **Opening**: Independent practices lose money between the visit and the deposit; Ian finds it and helps get it back. Medical and specialty groups come first; behavioral health is welcome but not the headline
-2. **Doors**: Practice Margin Review for practices (Claims Native linked for small practices that want billing handled), and the founder and operator offers
-3. **Story**: Ian's accepted One to One Health narrative about growth, people, and the opportunity to bring care to more people
-4. **Selected Work**: TheraMatch founder experience, Paragon commercial work, and earlier enterprise results
-5. **Current Work**: Claims Native and agent workspaces, with their development stage stated
-6. **Approach**: Joy, curiosity, questions, and shared understanding of the deliverable
-7. **Contact**: Email, phone, and LinkedIn
-
-## Development Notes
-
-- The website uses a color theme defined in CSS custom properties (`--ink`, `--navy`, `--blue-soft`, `--blue-wash`, `--line`, etc.)
-- The design follows Ian's CTO/founder aesthetic: clear, evidence-led, editorial, and less rounded than a generic SaaS landing page
-- Use the Atom & Bits navy, paper, and copper palette in Claims Native. Keep the serif product wordmark to distinguish the product.
 - Case studies should explain an opportunity and founder judgment, with accurate historical roles, results, and qualifiers
-- Keep the homepage and One to One Health story consistent with Ian’s latest corrections. Explain why clinical notes came early: staff needed value while the broader product suite was being built. Keep the operating plan separate from the measured charting improvement.
+- The full One to One Health and TPN invoicing stories live on How I work. Explain why clinical notes came early: staff needed value while the broader product suite was being built. Keep the operating plan separate from the measured charting improvement.
 - Use connected prose with reader stakes and specific operating detail. Avoid replacing the story with lists of capabilities or short process slogans.
 - Avoid generic “the business” and “the work” phrasing and repeated “The…” openings. Name the company, person, task, or decision, or address the reader directly. Rewrite whole sentences when needed; preserve grammatical articles and proper names such as “The Mission Chattanooga.”
-- No external dependencies or build process required
+- Use the Atom & Bits navy, paper, and copper palette in Claims Native. Keep the serif product wordmark to distinguish the product.
 
 ## Deployment
 
-Serve the repository root with `python3 -m http.server 4173 --bind 127.0.0.1` for local review. GitHub Pages deploys the output of `scripts/build-atomandbits-pages.sh` on pushes to `main`: the repository, with every `claimsnative/` page replaced by a redirect to the same path on claimsnative.com (atomandbits.com points straight at GitHub Pages, so Cloudflare redirect rules on that zone never run). `scripts/test-atomandbits-pages.sh` checks the build on every pull request. Use a review branch for unpublished changes. Keep the separate Claims Native deployment workflow intact.
+Run `npx wrangler@4.151.3 dev` for local review at http://127.0.0.1:8787; it serves the pages, applies `_redirects`, and runs the contact form, writing each simulated email under `.wrangler/tmp/email/`. `node --test scripts/site.test.mjs scripts/contact-worker.test.mjs` runs the checks; `.github/workflows/atomandbits-cloudflare.yml` runs them on every pull request and deploys `main` to the `atomandbits-site` Worker when the `atomandbits-production` environment has `CLOUDFLARE_API_TOKEN`. Anything new at the repository root is public unless `.assetsignore` lists it. Retired URLs get a 301 in `_redirects`. Use a review branch for unpublished changes. Keep the separate Claims Native deployment workflow intact.
