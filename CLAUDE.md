@@ -11,7 +11,9 @@ This is Ian Harman's Atom & Bits website. It presents his work, approach, and of
 - `index.html` - Static homepage
 - `atom-bits-website.html` - Historical mirror; keep synced with `index.html`
 - `site.css`, `site.js` - Shared styles, mobile navigation, sample workflow controls, contact form, and click tracking
-- `site.js` config at the top: `ANALYTICS` (PostHog loads only when provider and key are set) and `BOOKING_URL` (reveals `[data-booking-link]` when set); both are empty by default
+- `site.js` config at the top: `ANALYTICS` (PostHog loads only when provider and key are set), `BOOKING_URL` (reveals the hidden `[data-booking-link]` "Book 30 minutes" buttons and makes them primary, turning the neighboring "Start a conversation" button secondary), and `INBOUND_ENDPOINT` (the /contact/ form POSTs JSON `{name,email,organization,topic,timeline,goal,obstacle,page,website}` there, shows a sent notice on `{ok:true}`, and falls back to mailto on error); all are empty by default
+- `llms.txt` - Plain-text summary for AI agents (llmstxt.org format): who Ian is, offers, proof points, how to engage; keep facts in sync with the pages
+- `assets/ian-harman.{jpg,webp}` (460x553) and `assets/ian-harman-400.{jpg,webp}` - Headshot, used with `<picture>` on the homepage hero, /ian-harman/, and the /contact/ sidebar
 - `service-pages.css` - Base styles shared with the healthcare pages
 - `how-i-work/`, `ian-harman/` - Ian's approach and background
 - `ai-fit-review/`, `agent-workflows/`, `product-technology-leadership/` - Three offers
@@ -19,7 +21,7 @@ This is Ian Harman's Atom & Bits website. It presents his work, approach, and of
 - `work/` - Career case studies
 - `guides/`, `insights/` - Practice guides and essays; the two practice guides keep their own inline styles under the shared header
 - `writing/` - Index of guides and insights
-- `contact/` - Start-a-conversation page; the form composes a mailto (no backend) and reads `?topic=`
+- `contact/` - Start-a-conversation page; the form sends to `INBOUND_ENDPOINT` when set (hidden `website` honeypot field), otherwise composes a mailto, and reads `?topic=`
 - Every page shares one nav and footer; update them on all pages together
 - No build system or package.json - pure HTML/CSS/JS
 
@@ -44,7 +46,7 @@ This is Ian Harman's Atom & Bits website. It presents his work, approach, and of
 
 1. **Opening and Story**: Ian's accepted One to One Health narrative about growth, people, and the opportunity to bring care to more people
 2. **Selected Work**: TheraMatch founder experience, Paragon commercial work, and earlier enterprise results
-3. **Offers**: Assessment, agent workflow pilot, and product/technology leadership
+3. **Offers**: The 30-minute strategic conversation first (what you’re missing, the question worth answering first, where to go next); then assessment, agent workflow pilot, and product/technology leadership as ways to go deeper
 4. **Current Work**: Claims Native and agent workspaces, with their development stage stated
 5. **Approach**: Joy, curiosity, questions, and shared understanding of the deliverable
 6. **Contact**: Email, phone, and LinkedIn

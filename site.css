@@ -351,3 +351,45 @@ h2, h3 { text-wrap: balance; }
     .contact-form .button, .confirmation-actions .button { width: 100%; justify-self: stretch; }
     .form-confirmation { padding: 22px 18px; }
 }
+
+/* Portraits: the homepage opening, the About page, and the contact sidebar. */
+.home-opening-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 64px; align-items: start; }
+.home-opening-grid > *, .profile-hero-grid > * { min-width: 0; }
+.hero-portrait, .profile-portrait, .contact-portrait { margin: 0; }
+.hero-portrait { margin-top: 10px; }
+.hero-portrait img, .profile-portrait img, .contact-portrait img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--wash); }
+.hero-portrait figcaption { display: grid; gap: 2px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-strong); color: var(--navy); font-size: .82rem; font-weight: 700; }
+.hero-portrait figcaption span, .contact-portrait figcaption span { color: var(--muted); font-weight: 500; }
+.profile-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 64px; align-items: start; }
+.profile-portrait { margin-top: 8px; }
+.contact-portrait { display: flex; align-items: center; gap: 16px; }
+.contact-portrait picture { flex: 0 0 84px; }
+.contact-portrait img { width: 84px; height: 84px; object-fit: cover; object-position: 38% 28%; }
+.contact-portrait figcaption { display: grid; gap: 2px; color: var(--navy); font-size: .9rem; font-weight: 700; line-height: 1.4; }
+.contact-portrait figcaption span { font-size: .84rem; }
+.contact-grid .hero-actions .button { margin-top: 0; }
+
+/* Homepage doors: the 30-minute conversation first, the three offers second. */
+.door-grid-lead { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); }
+.door-grid-lead .door-lead { border-top-color: var(--copper); }
+.door-grid-lead .door + .door { border-top-color: var(--navy); }
+.door-actions { display: flex; flex-wrap: wrap; gap: 12px; width: 100%; margin-top: auto; }
+.door .door-actions .button { margin-top: 0; }
+
+/* Contact form: a field only automated submitters fill in. */
+.form-trap { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+@media (max-width: 900px) {
+    .home-opening-grid { grid-template-columns: 1fr; gap: 0; }
+    .hero-portrait { order: -1; display: flex; align-items: center; gap: 14px; margin: 0 0 22px; }
+    .hero-portrait picture { flex: 0 0 76px; }
+    .hero-portrait img { width: 76px; height: 76px; object-fit: cover; object-position: 38% 28%; }
+    .hero-portrait figcaption { margin: 0; padding: 0; border: 0; }
+    .profile-hero-grid { grid-template-columns: 1fr; gap: 28px; }
+    .profile-portrait { order: -1; max-width: 200px; margin-top: 0; }
+    .door-grid-lead { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+    .door-actions { flex-direction: column; }
+    .profile-portrait { max-width: 160px; }
+}
