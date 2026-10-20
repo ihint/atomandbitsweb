@@ -14,7 +14,8 @@ This is Ian Harman's Atom & Bits website. It presents his work, approach, and of
 - `site.js` config at the top: `ANALYTICS` (PostHog loads only when provider and key are set) and `BOOKING_URL` (reveals `[data-booking-link]` when set); both are empty by default
 - `service-pages.css` - Base styles shared with the healthcare pages
 - `how-i-work/`, `ian-harman/` - Ian's approach and background
-- `ai-fit-review/`, `agent-workflows/`, `product-technology-leadership/` - Three offers
+- `practice-margin-review/` - Lead offer for independent practices that bill insurers: two weeks, $15,000 fixed, with a guarantee on the second half
+- `ai-fit-review/`, `agent-workflows/`, `product-technology-leadership/` - Offers for founders and operators
 - `healthcare-*/`, `method/` - Healthcare service pages and the operating-systems method
 - `work/` - Career case studies
 - `guides/`, `insights/` - Practice guides and essays; the two practice guides keep their own inline styles under the shared header
@@ -42,12 +43,13 @@ This is Ian Harman's Atom & Bits website. It presents his work, approach, and of
 
 ## Content Sections
 
-1. **Opening and Story**: Ian's accepted One to One Health narrative about growth, people, and the opportunity to bring care to more people
-2. **Selected Work**: TheraMatch founder experience, Paragon commercial work, and earlier enterprise results
-3. **Offers**: Assessment, agent workflow pilot, and product/technology leadership
-4. **Current Work**: Claims Native and agent workspaces, with their development stage stated
-5. **Approach**: Joy, curiosity, questions, and shared understanding of the deliverable
-6. **Contact**: Email, phone, and LinkedIn
+1. **Opening**: Independent practices lose money between the visit and the deposit; Ian finds it and helps get it back. Medical and specialty groups come first; behavioral health is welcome but not the headline
+2. **Doors**: Practice Margin Review for practices (Claims Native linked for small practices that want billing handled), and the founder and operator offers
+3. **Story**: Ian's accepted One to One Health narrative about growth, people, and the opportunity to bring care to more people
+4. **Selected Work**: TheraMatch founder experience, Paragon commercial work, and earlier enterprise results
+5. **Current Work**: Claims Native and agent workspaces, with their development stage stated
+6. **Approach**: Joy, curiosity, questions, and shared understanding of the deliverable
+7. **Contact**: Email, phone, and LinkedIn
 
 ## Development Notes
 

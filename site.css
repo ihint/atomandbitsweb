@@ -168,6 +168,7 @@ h2, h3 { text-wrap: balance; }
 .door > p:not(.door-label):not(.door-qualifier) { color: var(--muted); font-size: .96rem; line-height: 1.7; }
 .door-qualifier { display: flex; align-items: center; gap: 8px; margin: 22px 0 0; font-size: .72rem; font-weight: 600; color: var(--navy); }
 .door .button { margin-top: auto; }
+.door .door-aside { margin-top: 16px; font-size: .84rem; }
 .door-qualifier, .door-offers:not(.door-points) { margin-bottom: 26px; }
 .door-offers.door-points { margin-bottom: 22px; }
 .door-offers { width: 100%; margin: 22px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
