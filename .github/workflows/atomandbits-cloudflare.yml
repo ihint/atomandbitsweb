@@ -1,0 +1,53 @@
+name: Deploy atomandbits.com to Cloudflare
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "claimsnative/**"
+  pull_request:
+    paths-ignore:
+      - "claimsnative/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One deploy group for main, taken when a run starts, so a newer push always
+# replaces an older one. Pull request runs only test, in a group of their own.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('atomandbits-pr-{0}', github.ref) || 'atomandbits-production' }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Test the pages, redirects and contact form Worker
+        run: node --test scripts/site.test.mjs scripts/contact-worker.test.mjs
+
+  deploy:
+    needs: test
+    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: atomandbits-production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Deploy the Worker
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.151.3"
+          command: deploy
+      - name: Report a missing deploy token
+        if: ${{ env.CLOUDFLARE_API_TOKEN == '' }}
+        run: |
+          echo "Cloudflare deploy skipped: add CLOUDFLARE_API_TOKEN to the atomandbits-production environment." >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,22 @@
+// atomandbits.com on Cloudflare Workers. The repository root is the site;
+// .assetsignore keeps everything that is not a page or asset off the web.
+// Run locally with `wrangler dev`; deploy with `wrangler deploy`.
+{
+  "name": "atomandbits-site",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  // Contact form mail. The sender is on notify.atomandbits.com, the subdomain
+  // onboarded to Cloudflare Email Sending, so the apex keeps its iCloud mail
+  // records. Every message goes only to Ian.
+  "send_email": [{ "name": "EMAIL", "destination_address": "Ian@atomandbits.com" }],
+  "vars": { "CONTACT_TO": "Ian@atomandbits.com", "CONTACT_FROM": "website@notify.atomandbits.com" },
+  "workers_dev": true,
+  "observability": { "enabled": true }
+}

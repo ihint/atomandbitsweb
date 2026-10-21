@@ -57,14 +57,14 @@ done
 # The home page speaks to every specialty and EHR without overclaiming:
 # example specialties, the EHR promise with its onboarding qualifier, the
 # five first questions, and links to the chiropractic page and calculator.
-for fact in 'Your specialty. Your&nbsp;EHR. Less billing work.' \
-  'See how it works for your practice' 'Keep your existing EHR' \
+for fact in 'Medical practices nationwide' 'Across specialties' \
+  'Keep your existing EHR' \
   'confirm the connection approach during onboarding' \
   'Primary care' 'behavioral health' 'cardiology' 'dermatology' \
   'orthopedics' 'chiropractic' 'not a list you have to be on' \
   'Which specialties do you work with?' 'Where do you operate?' \
   'Do I have to change EHRs?' 'How does setup work?' \
-  'What happens if my EHR isn’t listed?' 'href="/chiropractors/"' \
+  'What happens if my EHR isn'"'"'t listed?' 'href="/chiropractors/"' \
   'href="/insurance-opportunity/"'; do
   grep -Fq -- "$fact" "$output_dir/index.html" || { echo "Home page lacks: $fact" >&2; exit 1; }
 done
@@ -214,11 +214,17 @@ for page in "$output_dir/index.html" "$output_dir/chiropractors/index.html"; do
   [ "$links" -ge 2 ] || { echo "$page links the calculator $links time(s); want body and footer" >&2; exit 1; }
 done
 
-# The home page title and the hero eyebrow above the headline say "medical
-# billing" and "small practices". The headline itself is checked with the
-# other home page facts above.
-grep -Fq '<title>Medical Billing for Small Practices · Claims Native</title>' "$output_dir/index.html" || { echo "Home page title changed" >&2; exit 1; }
-grep -Fq '</span> Medical billing for small practices nationwide</p>' "$output_dir/index.html" || { echo "Home page eyebrow changed" >&2; exit 1; }
+# The home page title and headline carry the October 2026 copy.
+grep -Fq '<title>Signed Visits Into Deposits · Claims Native</title>' "$output_dir/index.html" || { echo "Home page title changed" >&2; exit 1; }
+grep -Fq '<h1 id="hero-title">Insurance billing that turns signed visits into deposits.</h1>' "$output_dir/index.html" || { echo "Home page headline changed" >&2; exit 1; }
+
+# The proof slot ships nothing by default: no marker, no FILL-ME text.
+for word in 'proof-slot' 'FILL-ME'; do
+  if grep -Fq -- "$word" "$output_dir/index.html"; then
+    echo "Home page ships the proof slot ($word) without the flag" >&2
+    exit 1
+  fi
+done
 
 # Redirects: the retired pages send readers to the pages that replaced them.
 for rule in '/90-day-pilot/ /how-we-start/ 301' '/90-day-pilot/index.html /how-we-start/ 301' '/independent-practices/ / 301'; do

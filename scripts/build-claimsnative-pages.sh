@@ -31,6 +31,20 @@ while IFS= read -r -d '' file; do
   perl -0pi -e 's#(<meta name="viewport"[^>]*>\n)(?!\s*<link rel="icon")#$1  <link rel="icon" href="/og.png" type="image/png">\n#' "$file"
 done < <(find "$output_dir" -name '*.html' -print0)
 
+# The home page proof slot ships only when CLAIMSNATIVE_PROOF_STRIP=1 and the
+# partial has no FILL-ME marker left. Otherwise the marker comment is removed
+# so nothing about the slot reaches the page.
+proof_slot="$repo_dir/scripts/claimsnative-proof-slot.html"
+if [[ "${CLAIMSNATIVE_PROOF_STRIP:-0}" == "1" ]]; then
+  if grep -Fq "FILL-ME" "$proof_slot"; then
+    echo "Proof slot still has FILL-ME markers: $proof_slot" >&2
+    exit 1
+  fi
+  PROOF_SLOT="$proof_slot" perl -0pi -e 'open(my $h, "<", $ENV{PROOF_SLOT}) or die; local $/; my $s = <$h>; s#<!-- proof-slot -->\n#$s#' "$output_dir/index.html"
+else
+  perl -0pi -e 's#<!-- proof-slot -->\n##' "$output_dir/index.html"
+fi
+
 cp "$config_dir/_headers" "$output_dir/_headers"
 cp "$config_dir/_redirects" "$output_dir/_redirects"
 cp "$config_dir/robots.txt" "$output_dir/robots.txt"
