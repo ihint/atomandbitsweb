@@ -8,9 +8,9 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
-    // The Worker sees every request so it can redirect www; the ASSETS
-    // binding still applies _redirects.
-    "run_worker_first": true,
+    // Cloudflare applies _redirects only to requests the Worker does not
+    // serve, so the Worker runs for the form endpoint alone.
+    "run_worker_first": ["/api/*"],
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   },
@@ -19,10 +19,8 @@
   // records. Every message goes only to Ian.
   "send_email": [{ "name": "EMAIL", "destination_address": "Ian@atomandbits.com" }],
   "vars": { "CONTACT_TO": "Ian@atomandbits.com", "CONTACT_FROM": "website@notify.atomandbits.com" },
-  "routes": [
-    { "pattern": "atomandbits.com", "custom_domain": true },
-    { "pattern": "www.atomandbits.com", "custom_domain": true }
-  ],
+  // www.atomandbits.com belongs to www-redirect/wrangler.jsonc.
+  "routes": [{ "pattern": "atomandbits.com", "custom_domain": true }],
   "workers_dev": true,
   "observability": { "enabled": true }
 }
