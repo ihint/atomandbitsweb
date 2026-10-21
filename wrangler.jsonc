@@ -12,10 +12,11 @@
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   },
-  // Contact form mail. The sender must be on a domain onboarded to Cloudflare
-  // Email Service; every message goes only to Ian.
+  // Contact form mail. The sender is on notify.atomandbits.com, the subdomain
+  // onboarded to Cloudflare Email Sending, so the apex keeps its iCloud mail
+  // records. Every message goes only to Ian.
   "send_email": [{ "name": "EMAIL", "destination_address": "Ian@atomandbits.com" }],
-  "vars": { "CONTACT_TO": "Ian@atomandbits.com", "CONTACT_FROM": "website@atomandbits.com" },
+  "vars": { "CONTACT_TO": "Ian@atomandbits.com", "CONTACT_FROM": "website@notify.atomandbits.com" },
   "workers_dev": true,
   "observability": { "enabled": true }
 }
