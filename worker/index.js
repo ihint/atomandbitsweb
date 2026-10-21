@@ -1,6 +1,7 @@
 // Serves atomandbits.com from Cloudflare. The pages are static files served
 // through the ASSETS binding; this Worker runs only for /api/* and emails each
-// contact form message to Ian through the EMAIL binding.
+// contact form message to Ian through the EMAIL binding. www.atomandbits.com
+// is redirected by its own Worker in www-redirect/.
 
 export const TOPICS = {
     billing: 'Insurance billing for my practice',

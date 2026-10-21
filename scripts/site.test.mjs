@@ -110,7 +110,7 @@ test("internal redirect targets exist", () => {
 });
 
 test("repository files that are not part of the site are not served", () => {
-  for (const path of ["CLAUDE.md", "README.md", "wrangler.jsonc", "worker/index.js", "scripts/site.test.mjs", ".gitignore", ".assetsignore"]) {
+  for (const path of ["CLAUDE.md", "README.md", "wrangler.jsonc", "worker/index.js", "www-redirect/src/index.mjs", "www-redirect/wrangler.jsonc", "scripts/site.test.mjs", ".gitignore", ".assetsignore"]) {
     assert.ok(!served.has(path), `${path} would be public`);
   }
   assert.ok(![...served].some((path) => path.startsWith("claimsnative/") || path.startsWith("docs/")), "claimsnative/ or docs/ would be public");
