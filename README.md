@@ -43,9 +43,8 @@ One-time move from GitHub Pages to Cloudflare:
 1. In Cloudflare Email Service, onboard the subdomain notify.atomandbits.com for sending (`npx wrangler@4.151.3 email sending enable notify.atomandbits.com`) so `website@notify.atomandbits.com` can send, and verify `Ian@atomandbits.com` as a destination. Using a subdomain leaves the apex SPF and MX records for iCloud mail untouched.
 2. Create a Cloudflare API token that can edit Workers, and add it as `CLOUDFLARE_API_TOKEN` in a GitHub environment named `atomandbits-production`. The repository variable `CLOUDFLARE_ACCOUNT_ID` already exists for Claims Native.
 3. Merge to `main` or run `npx wrangler@4.151.3 deploy`. Check the site on its workers.dev address and send one test message.
-4. In the Worker's Domains & Routes settings, add atomandbits.com and www.atomandbits.com as custom domains. Cloudflare replaces the GitHub Pages DNS records.
-5. Add a redirect rule that sends www.atomandbits.com to atomandbits.com.
-6. Turn off GitHub Pages for this repository.
+4. `wrangler.jsonc` attaches atomandbits.com and www.atomandbits.com to the Worker as custom domains; the Worker sends www to the bare domain. The first deploy with them replaces the GitHub Pages DNS records.
+5. Turn off GitHub Pages for this repository.
 
 Claims Native builds from `claimsnative/` and deploys to [claimsnative.com](https://claimsnative.com) through its own workflow. Run `bash scripts/test-claimsnative-pages.sh` before a Claims Native release. That workflow uses the `claimsnative-production` environment.
 

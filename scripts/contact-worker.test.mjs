@@ -168,6 +168,14 @@ test("the form endpoint accepts only POST", async () => {
   assert.equal(response.headers.get("Allow"), "POST");
 });
 
+test("www is sent to the bare domain with its path and query", async () => {
+  const { env, assets } = environment();
+  const response = await worker.fetch(new Request("https://www.atomandbits.com/how-i-work/?topic=company"), env);
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get("Location"), "https://atomandbits.com/how-i-work/?topic=company");
+  assert.deepEqual(assets, []);
+});
+
 test("every other path is served from the static files", async () => {
   const { env, assets } = environment();
   const response = await worker.fetch(new Request(`${ORIGIN}/how-i-work/`), env);

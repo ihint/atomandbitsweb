@@ -1,6 +1,7 @@
 // Serves atomandbits.com from Cloudflare. The pages are static files served
-// through the ASSETS binding; this Worker runs only for /api/* and emails each
-// contact form message to Ian through the EMAIL binding.
+// through the ASSETS binding, which also applies _redirects. This Worker sends
+// www to the bare domain and emails each contact form message to Ian through
+// the EMAIL binding.
 
 export const TOPICS = {
     billing: 'Insurance billing for my practice',
@@ -19,6 +20,10 @@ const FALLBACK = 'Your message did not go through. Please email Ian@atomandbits.
 export default {
     async fetch(request, env) {
         const url = new URL(request.url);
+        if (url.hostname.startsWith('www.')) {
+            url.hostname = url.hostname.slice(4);
+            return Response.redirect(url.toString(), 301);
+        }
         if (url.pathname === '/api/contact') return handleContact(request, env);
         return env.ASSETS.fetch(request);
     },
