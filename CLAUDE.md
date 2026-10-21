@@ -12,7 +12,7 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 - `atom-bits-website.html` - Historical mirror; keep synced with `index.html`
 - `site.css` - The one stylesheet: a 650px column, system sans font, black on white, one accent color
 - `site.js` - Mobile navigation, sample workflow controls, contact form submission, and click tracking; `ANALYTICS` at the top is empty by default (PostHog loads only when provider and key are set)
-- `worker/index.js` - Cloudflare Worker; runs only for `/api/contact` and emails each message to Ian
+- `worker/index.js` - Cloudflare Worker; runs only for `/api/contact` and emails each message to Ian from website@notify.atomandbits.com
 - `wrangler.jsonc`, `.assetsignore`, `_redirects`, `404.html` - Cloudflare config, files kept off the web, 301s for moved URLs, not-found page
 - `how-i-work/`, `ian-harman/` - Ian's approach and background
 - `ai-fit-review/`, `agent-workflows/`, `product-technology-leadership/` - Product & AI assessment, Agent workflow pilot, Fractional leadership

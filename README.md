@@ -40,7 +40,7 @@ GitHub Actions runs the tests on every pull request and deploys `main` to the Cl
 
 One-time move from GitHub Pages to Cloudflare:
 
-1. In Cloudflare Email Service, onboard atomandbits.com for sending so `website@atomandbits.com` can send, and verify `Ian@atomandbits.com` as a destination. Keep the iCloud MX records for the domain as they are.
+1. In Cloudflare Email Service, onboard the subdomain notify.atomandbits.com for sending (`npx wrangler@4.151.3 email sending enable notify.atomandbits.com`) so `website@notify.atomandbits.com` can send, and verify `Ian@atomandbits.com` as a destination. Using a subdomain leaves the apex SPF and MX records for iCloud mail untouched.
 2. Create a Cloudflare API token that can edit Workers, and add it as `CLOUDFLARE_API_TOKEN` in a GitHub environment named `atomandbits-production`. The repository variable `CLOUDFLARE_ACCOUNT_ID` already exists for Claims Native.
 3. Merge to `main` or run `npx wrangler@4.151.3 deploy`. Check the site on its workers.dev address and send one test message.
 4. In the Worker's Domains & Routes settings, add atomandbits.com and www.atomandbits.com as custom domains. Cloudflare replaces the GitHub Pages DNS records.
