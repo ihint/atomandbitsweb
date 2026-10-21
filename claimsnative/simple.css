@@ -220,3 +220,28 @@ body.simple-site { color:var(--ink); background:var(--paper); -webkit-font-smoot
   .simple-site .account-actions .header-cta { padding:.55rem .85rem; }
   .sign-in-link { font-size:.82rem; }
 }
+
+/* October 2026 copy: proof line, card grids, stat tiles, plain numbered steps, the limits heading and the closing tagline. */
+.proof-line { display:flex; flex-wrap:wrap; align-items:baseline; gap:.3rem .55rem; margin:0 0 1.5rem; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.proof-line strong { font-size:1.4rem; font-weight:500; letter-spacing:-.04em; text-transform:none; color:var(--ink); }
+.section-lead { margin:0 0 1.4rem; max-width:640px; font-size:1.05rem; line-height:1.65; }
+.verb-line { margin:0 0 1.2rem; font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#6d825d; }
+.card-grid { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.card-grid.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.card-grid > li, .card-grid > article { min-width:0; display:flex; flex-direction:column; padding:1.5rem; background:#fff; border:1px solid var(--line); border-radius:20px; }
+.card-grid h3 { margin:0; font-size:1.15rem; font-weight:600; letter-spacing:-.025em; }
+.card-grid p { margin:.6rem 0 0; font-size:.95rem; line-height:1.65; color:var(--muted); }
+.card-grid .card-tagline { color:var(--ink); font-weight:500; }
+.card-grid .soft-link { margin-top:auto; padding-top:1.1rem; }
+.stat-figure { display:block; margin-bottom:.9rem; font-size:clamp(2.2rem,4vw,3rem); line-height:1; letter-spacing:-.05em; font-weight:500; }
+.section-cta { margin:1.6rem 0 0; }
+.numbered-list { margin:0; padding-left:1.5rem; font-size:1rem; line-height:1.6; }
+.numbered-list li { padding:.5rem 0 .5rem .35rem; border-bottom:1px solid var(--line); }
+.numbered-list li::marker { color:#6d825d; font-size:.85rem; }
+.numbered-list + .soft-link { margin-top:1.2rem; }
+.simple-site .limits-block h2 { margin:.3rem 0 0; font-size:clamp(1.5rem,2.2vw,2rem); letter-spacing:-.04em; }
+.simple-site .limits-block p { margin:.5rem 0 0; font-size:.95rem; line-height:1.65; color:var(--muted); }
+.invitation { flex-wrap:wrap; }
+.invitation .tagline { flex-basis:100%; margin:0; font-size:.95rem; }
+@media(max-width:900px) { .card-grid, .card-grid.three { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .card-grid, .card-grid.three { grid-template-columns:1fr; } .proof-line strong { font-size:1.2rem; } }

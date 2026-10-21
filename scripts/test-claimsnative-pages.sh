@@ -146,9 +146,17 @@ for page in "$output_dir/index.html" "$output_dir/chiropractors/index.html"; do
   [ "$links" -ge 2 ] || { echo "$page links the calculator $links time(s); want body and footer" >&2; exit 1; }
 done
 
-# The home page title and headline say "medical billing" and "small practices".
-grep -Fq '<title>Medical Billing for Small Practices · Claims Native</title>' "$output_dir/index.html" || { echo "Home page title changed" >&2; exit 1; }
-grep -Fq '<h1 id="hero-title">We do the medical billing for small practices.' "$output_dir/index.html" || { echo "Home page headline changed" >&2; exit 1; }
+# The home page title and headline carry the October 2026 copy.
+grep -Fq '<title>Signed Visits Into Deposits · Claims Native</title>' "$output_dir/index.html" || { echo "Home page title changed" >&2; exit 1; }
+grep -Fq '<h1 id="hero-title">Insurance billing that turns signed visits into deposits.</h1>' "$output_dir/index.html" || { echo "Home page headline changed" >&2; exit 1; }
+
+# The proof slot ships nothing by default: no marker, no FILL-ME text.
+for word in 'proof-slot' 'FILL-ME'; do
+  if grep -Fq -- "$word" "$output_dir/index.html"; then
+    echo "Home page ships the proof slot ($word) without the flag" >&2
+    exit 1
+  fi
+done
 
 # Redirects: the retired pages send readers to the pages that replaced them.
 for rule in '/90-day-pilot/ /how-we-start/ 301' '/90-day-pilot/index.html /how-we-start/ 301' '/independent-practices/ / 301'; do
