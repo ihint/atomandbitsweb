@@ -112,7 +112,7 @@ function oneLine(text) {
 export function validate(entry) {
     if (!entry.name) return 'Please add your name.';
     if (!entry.email || !EMAIL_PATTERN.test(entry.email)) return 'Please add an email address I can reply to.';
-    if (!entry.message) return 'Please tell me a little about what’s stuck.';
+    if (!entry.message) return 'Please tell me a little about what’s on your mind.';
     for (const [field, limit] of Object.entries(MAX_LENGTH)) {
         if (entry[field].length > limit) return `Please shorten the ${field} field to ${limit} characters.`;
     }
@@ -131,7 +131,7 @@ function bodyFor(entry) {
         `Company: ${entry.company || '—'}`,
         `Working on: ${entry.topic || '—'}`,
         '',
-        'What’s stuck?',
+        'What’s on your mind?',
         entry.message,
         '',
         'Sent from the contact form on atomandbits.com. Reply to this email to answer.',
