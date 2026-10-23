@@ -18,16 +18,22 @@ grep -Fq "connect-src 'self'" "$output_dir/_headers"
 grep -Fq "CLOUDFLARE_API_TOKEN" "$repo_dir/.github/workflows/claimsnative-cloudflare.yml"
 grep -Fq "CLOUDFLARE_ACCOUNT_ID" "$repo_dir/.github/workflows/claimsnative-cloudflare.yml"
 
-# Copy guard. Claims Native is a billing service for independent practices.
-# The site never says a payer paid, never promises or guarantees a payment,
-# never claims to replace a biller (ADR 0009 is a draft), never claims live
-# submission or AI-verified coding, never mentions behavioral health, and
-# never links the demo workspace.
+# Copy guard. Claims Native is a billing service for medical practices
+# nationwide, across specialties. The site never says a payer paid, never
+# promises or guarantees a payment, never claims to replace a biller (ADR 0009
+# is a draft), never claims live submission or AI-verified coding, and never
+# links the demo workspace. Behavioral health appears only as one example
+# specialty. No direct EHR integration is built, so the site never claims one
+# for every EHR, all specialties or all payers, and never offers a ChatGPT app.
+# Setup offers Jane, ChiroHD or "Another EHR" with no field for the name, so
+# the site never asks a practice to name its EHR at signup.
 for page in $(find "$output_dir" -name '*.html'); do
   for banned in "payer paid" "paid by the payer" "guaranteed" "guarantee" \
     "replace your biller" "replace your billing" "submits claims today" \
-    "AI-verified" "behavioral health" "office-demo" "provider-demo" \
-    "demo.claimsnative.com"; do
+    "AI-verified" "office-demo" "provider-demo" "demo.claimsnative.com" \
+    "integrates with" "integrates directly" "every EHR" "all EHRs" \
+    "EHRs we take visits from" "every specialty" "all specialties" \
+    "all payers" "ChatGPT" "name your EHR" "visits in ChiroHD and Jane"; do
     if grep -Fqi -- "$banned" "$page"; then
       echo "Copy guard: '$banned' found in $page" >&2
       exit 1
@@ -47,6 +53,68 @@ done
 for fact in '98941' 'AT modifier'; do
   grep -Fq -- "$fact" "$output_dir/chiropractors/index.html" || { echo "Chiropractors page lacks $fact" >&2; exit 1; }
 done
+
+# The home page speaks to every specialty and EHR without overclaiming:
+# example specialties, the EHR promise with its onboarding qualifier, the
+# five first questions, and links to the chiropractic page and calculator.
+for fact in 'Medical practices nationwide' 'Across specialties' \
+  'Keep your existing EHR' \
+  'confirm the connection approach during onboarding' \
+  'Primary care' 'behavioral health' 'cardiology' 'dermatology' \
+  'orthopedics' 'chiropractic' 'not a list you have to be on' \
+  'Which specialties do you work with?' 'Where do you operate?' \
+  'Do I have to change EHRs?' 'How does setup work?' \
+  'What happens if my EHR isn'"'"'t listed?' 'href="/chiropractors/"' \
+  'href="/insurance-opportunity/"'; do
+  grep -Fq -- "$fact" "$output_dir/index.html" || { echo "Home page lacks: $fact" >&2; exit 1; }
+done
+
+# Pages that describe EHR connections carry the same limit.
+for page in "$output_dir/index.html" "$output_dir/how-we-start/index.html" "$output_dir/chiropractors/index.html"; do
+  grep -Fq -- 'No direct EHR connection is live yet.' "$page" || { echo "$page lacks the EHR connection limit" >&2; exit 1; }
+done
+
+# The primary navigation names specialties and EHRs, not one specialty.
+for page in $(find "$output_dir" -name '*.html'); do
+  nav="$(sed -n '/aria-label="Primary navigation"/,/<\/nav>/p' "$page")"
+  for link in 'href="/#specialties"' 'href="/#your-ehr"' 'href="/how-we-start/"'; do
+    grep -Fq -- "$link" <<<"$nav" || { echo "$page primary nav lacks $link" >&2; exit 1; }
+  done
+  if grep -Fq -- '/chiropractors/' <<<"$nav"; then
+    echo "$page primary nav still leads with one specialty" >&2
+    exit 1
+  fi
+done
+
+# Structured data parses on every page, and each homepage FAQ question is a
+# visible question on the page.
+node - "$output_dir" <<'NODE'
+const fs = require('fs');
+const path = require('path');
+const root = process.argv[2];
+const pages = [];
+(function walk(dir) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) walk(full);
+    else if (entry.name.endsWith('.html')) pages.push(full);
+  }
+})(root);
+for (const page of pages) {
+  const html = fs.readFileSync(page, 'utf8');
+  for (const [, json] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    const data = JSON.parse(json);
+    if (!page.endsWith(`${path.sep}index.html`) || path.dirname(page) !== root) continue;
+    const faq = data['@graph'].find((node) => node['@type'] === 'FAQPage');
+    if (!faq) throw new Error('Home page JSON-LD lacks the FAQPage');
+    for (const question of faq.mainEntity) {
+      if (!html.includes(`<summary>${question.name}</summary>`)) {
+        throw new Error(`FAQPage question is not on the page: ${question.name}`);
+      }
+    }
+  }
+}
+NODE
 
 # Billing guides. The index links to every group and every guide. Each guide
 # links back to the index and to its group's overview, and to at least two

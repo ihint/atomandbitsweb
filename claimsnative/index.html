@@ -25,7 +25,7 @@
 <link href="/claimsnative/home.css" rel="stylesheet">
 <link href="/claimsnative/simple.css?v=20261020-1" rel="stylesheet">
 <script src="/claimsnative/signup-source.js?v=20261019-1" defer></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Claims Native", "url": "https://claimsnative.com/", "sameAs": ["https://x.com/claimsnative"]}, {"@type": "Service", "name": "Insurance billing for small practices", "serviceType": "Medical billing service", "url": "https://claimsnative.com/", "description": "Insurance billing that turns signed visits into deposits. We check coverage, file every claim, chase every payer and post every payment back into your EHR, so you get paid for the care you already delivered.", "areaServed": "US", "audience": {"@type": "Audience", "audienceType": "Independent medical practices"}, "provider": {"@type": "Organization", "name": "Claims Native", "url": "https://claimsnative.com/", "email": "Ian@claimsnative.com", "address": {"@type": "PostalAddress", "addressLocality": "Chattanooga", "addressRegion": "TN", "addressCountry": "US"}}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Claims Native", "url": "https://claimsnative.com/", "sameAs": ["https://x.com/claimsnative"]}, {"@type": "Service", "name": "Insurance billing for small practices", "serviceType": "Medical billing service", "url": "https://claimsnative.com/", "description": "Insurance billing that turns signed visits into deposits. We check coverage, file every claim, chase every payer and post every payment back into your EHR, so you get paid for the care you already delivered. For medical practices nationwide, across specialties, working from the EHR they already use.", "areaServed": "US", "audience": {"@type": "Audience", "audienceType": "Independent medical practices"}, "provider": {"@type": "Organization", "name": "Claims Native", "url": "https://claimsnative.com/", "email": "Ian@claimsnative.com", "address": {"@type": "PostalAddress", "addressLocality": "Chattanooga", "addressRegion": "TN", "addressCountry": "US"}}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which specialties do you work with?", "acceptedAnswer": {"@type": "Answer", "text": "Practices across medical specialties that bill professional claims to insurers. Primary care, behavioral health, cardiology, dermatology, orthopedics and chiropractic are examples, not a full list. We do not bill hospital or facility claims. Tell us your specialty, and we look at your codes and payers during setup."}}, {"@type": "Question", "name": "Where do you operate?", "acceptedAnswer": {"@type": "Answer", "text": "Nationwide. We work with practices across the U.S. from Chattanooga, Tennessee, and file claims through a national clearinghouse. That does not mean every payer is ready on day one. We add payers one at a time and confirm yours during setup. Secondary claims come later."}}, {"@type": "Question", "name": "Do I have to change EHRs?", "acceptedAnswer": {"@type": "Answer", "text": "No. Keep your existing EHR. We'll confirm the connection approach during onboarding: a visit file, which any practice can send today, or a Claims Native login in your EHR, which we set up with you."}}, {"@type": "Question", "name": "How does setup work?", "acceptedAnswer": {"@type": "Answer", "text": "It starts with how you bill today: your specialty, your payers, your EHR and who does your billing. Then you send one export of a recent week with patient details removed, you sign the agreement and the business associate agreement, and we enroll you with the clearinghouse and your payers. A shadow period on your own visits comes before live filing, and your office and your provider approve the switch. See each step."}}, {"@type": "Question", "name": "What happens if my EHR isn't listed?", "acceptedAnswer": {"@type": "Answer", "text": "Choose \"Another EHR\" when you set up your practice, or name it in an email to us. We start from a visit file and review your system with you. A direct connection to a new system is development work, and we tell you so before you rely on one."}}]}]}</script>
 </head>
 <body class="simple-site">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -47,6 +47,8 @@
 </a>
 <nav class="nav service-nav" aria-label="Primary navigation">
 <a href="/claimsnative/#what-we-do">What we do</a>
+<a href="/claimsnative/#specialties">Specialties</a>
+<a href="/claimsnative/#your-ehr">Your EHR</a>
 <a href="/claimsnative/#starter">Starter</a>
 <a href="/claimsnative/how-we-start/">How we start</a>
 </nav>
@@ -66,7 +68,7 @@
 <a class="button" href="https://app.claimsnative.com/signup">Get started</a>
 <!-- Second hero action, "See a sample claim, visit to deposit →": waits on the sample-claim asset. Add a .soft-link here when it exists. -->
 </div>
-<p class="hero-note">ChiroHD <span aria-hidden="true">·</span> Jane <span aria-hidden="true">·</span> BCBS commercial plans first</p>
+<p class="hero-note">Medical practices nationwide <span aria-hidden="true">·</span> Across specialties <span aria-hidden="true">·</span> Keep your EHR</p>
 <p class="hero-note">Could insurance fit your practice? <a href="/claimsnative/insurance-opportunity/">Try the insurance calculator&nbsp;<span aria-hidden="true">→</span></a></p>
 <p class="hero-note">Would you rather talk first? <a href="mailto:Ian@claimsnative.com?subject=Claims%20Native%20for%20my%20practice">Email Ian Harman</a>, the founder.</p>
 </div>
@@ -122,6 +124,20 @@
 </ul>
 </div>
 </section>
+<section class="service-section" id="your-ehr" aria-labelledby="ehr-title">
+<div class="section-intro">
+<p class="eyebrow">Your EHR</p>
+<h2 id="ehr-title">Keep your existing EHR.</h2>
+<p>Nothing moves to a new system. We'll confirm the connection approach during onboarding.</p>
+</div>
+<div>
+<ul class="fact-list">
+<li><strong>Today, from any EHR: a visit file.</strong> <span>Send your visits as a file in our layout, and confirm each upload before we use it. If your EHR exports a visit or charge report, we map it from one recent week with patient details removed.</span></li>
+<li><strong>Set up with you: a Claims Native login in your EHR.</strong> <span>You create a dedicated Claims Native user in your EHR. We read signed visits and post payments through that login, and a person at Claims Native approves each posting before it lands. We start with Jane and ChiroHD. For any other EHR, we review it with you first, including whether its terms allow this.</span></li>
+<li><strong>New work for each system: a direct connection.</strong> <span>A connection through an EHR's own interface takes development for that EHR. None is live yet, and you do not need one to start.</span></li>
+</ul>
+</div>
+</section>
 <!-- proof-slot -->
 <section class="service-section" id="how-we-start" aria-labelledby="start-title">
 <div class="section-intro">
@@ -134,7 +150,7 @@
 <li>Create an account, or talk to us first.</li>
 <li>Send one export of a recent week, patient details removed.</li>
 <li>Sign the agreement and the business associate agreement.</li>
-<li>We connect your EHR export and capture your contract rates.</li>
+<li>We connect your EHR and capture your contract rates.</li>
 <li>Enrollment with the clearinghouse and your payers.</li>
 <li>Shadow period: every claim prepared beside your current biller, compared weekly.</li>
 <li>Live filing.</li>
@@ -142,16 +158,20 @@
 <a class="soft-link" href="/claimsnative/how-we-start/">See how we start <span aria-hidden="true">→</span></a>
 </div>
 </section>
-<section class="service-section" id="who-we-serve" aria-labelledby="serve-title">
+<section class="service-section" id="specialties" aria-labelledby="serve-title">
 <div class="section-intro">
 <p class="eyebrow">Who we serve</p>
 <h2 id="serve-title">Built for practices without a billing department.</h2>
+<p>Across medical specialties, nationwide. The examples here are not a list you have to be on.</p>
 </div>
+<div>
+<p class="section-lead">Primary care, behavioral health, cardiology, dermatology, orthopedics, chiropractic: practices like these share the same billing steps. What differs is the codes you bill, the notes each payer wants to see and the rules each payer applies. So we start from your practice: during setup we look at the services you bill most, the payers you bill and a recent week of your visits.</p>
+<p class="section-lead">We bill professional claims: the claims a practice files for its clinicians' services. We do not bill hospital or facility claims.</p>
 <div class="card-grid three">
 <article>
 <h3>Chiropractic practices</h3>
 <p class="card-tagline">BCBS commercial first. CMT coding checked against the signed note.</p>
-<p>ChiroHD or Jane. Codes 98940 to 98942, the AT modifier, M99 codes first. The denial codes chiropractic offices see most, and who fixes each one.</p>
+<p>Codes 98940 to 98942, the AT modifier, M99 codes first. The denial codes chiropractic offices see most, and who fixes each one.</p>
 <a class="soft-link" href="/claimsnative/chiropractors/">For chiropractic practices <span aria-hidden="true">→</span></a>
 </article>
 <article>
@@ -166,6 +186,7 @@
 <p>Insurance checks before each clinic day and follow-up on unpaid claims, beside the billing you already have. Nothing about your current biller changes until you decide it should.</p>
 <a class="soft-link" href="#starter">Starter <span aria-hidden="true">→</span></a>
 </article>
+</div>
 </div>
 </section>
 <section class="service-section" id="what-it-costs" aria-labelledby="costs-title">
@@ -188,12 +209,41 @@
 <p>$990 a month per location. Insurance checks before each clinic day and follow-up on unpaid claims, beside the billing you already have. Nothing about your current biller changes until you decide it should.</p>
 </div>
 </section>
+<section class="service-section" id="questions" aria-labelledby="questions-title">
+<div class="section-intro">
+<p class="eyebrow">Questions</p>
+<h2 id="questions-title">What practices ask first.</h2>
+</div>
+<div class="simple-faq">
+<details>
+<summary>Which specialties do you work with?</summary>
+<p>Practices across medical specialties that bill professional claims to insurers. Primary care, behavioral health, cardiology, dermatology, orthopedics and chiropractic are examples, not a full list. We do not bill hospital or facility claims. Tell us your specialty, and we look at your codes and payers during setup.</p>
+</details>
+<details>
+<summary>Where do you operate?</summary>
+<p>Nationwide. We work with practices across the U.S. from Chattanooga, Tennessee, and file claims through a national clearinghouse. That does not mean every payer is ready on day one. We add payers one at a time and confirm yours during setup. Secondary claims come later.</p>
+</details>
+<details>
+<summary>Do I have to change EHRs?</summary>
+<p>No. Keep your existing EHR. We'll confirm the connection approach during onboarding: a visit file, which any practice can send today, or a Claims Native login in your EHR, which we set up with you.</p>
+</details>
+<details>
+<summary>How does setup work?</summary>
+<p>It starts with how you bill today: your specialty, your payers, your EHR and who does your billing. Then you send one export of a recent week with patient details removed, you sign the agreement and the business associate agreement, and we enroll you with the clearinghouse and your payers. A shadow period on your own visits comes before live filing, and your office and your provider approve the switch. <a href="/claimsnative/how-we-start/">See each step</a>.</p>
+</details>
+<details>
+<summary>What happens if my EHR isn't listed?</summary>
+<p>Choose "Another EHR" when you set up your practice, or name it in an email to us. We start from a visit file and review your system with you. A direct connection to a new system is development work, and we tell you so before you rely on one.</p>
+</details>
+</div>
+</section>
 <aside class="limits-block" aria-labelledby="limits-title">
 <strong>Before you sign</strong>
 <h2 id="limits-title">Where things stand.</h2>
 <ul>
 <li>New practices start with a shadow period on their own visits while enrollment with the clearinghouse and payers completes.</li>
-<li>ChiroHD and Jane are the EHRs we take visits from today. Other systems wait on a sample export from a practice.</li>
+<li>Any practice can send visits as a file today. A Claims Native login in your EHR is set up with you during onboarding, starting with Jane and ChiroHD. No direct EHR connection is live yet.</li>
+<li>We bill professional claims for practices nationwide. We add payers one at a time, and secondary claims come later.</li>
 <li>We post each payment into your EHR. Until a direct connection exists, our software works through your EHR's own screens, and a person at Claims Native approves each posting before it lands.</li>
 <li>Nothing on this page promises a payer's timing or a payer's payment.</li>
 <li>Clinical, coding, financial and release authority stay with the practice.</li>
