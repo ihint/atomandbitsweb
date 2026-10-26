@@ -113,7 +113,10 @@ main.wide > section, main.wide > article, main.wide > div { margin-bottom: 0; }
 .proof strong { font-size: 1.15rem; }
 .door + .door, .door + .quiet { margin-top: 3rem; }
 .work-item + .work-item { margin-top: 2.6rem; }
+.work-item h2 { font-size: 1.2rem; font-weight: 650; }
+.work-item h2 a,
 .work-item h3 a { color: var(--text); }
+.work-item h2 a:hover,
 .work-item h3 a:hover { color: var(--accent); }
 .result { font-style: italic; }
 
@@ -124,24 +127,8 @@ main.wide > section, main.wide > article, main.wide > div { margin-bottom: 0; }
 .workflow-demo:not(.enhanced) .demo-controls { display: none; }
 .workflow-demo:not(.enhanced) .demo-panel + .demo-panel { margin-top: 2rem; }
 
-/* Photos and placeholders */
+/* Photos. Placeholder blocks were removed; add an img.photo when Ian’s own photo is ready. */
 .photo { margin: 0 0 2rem; }
-.photo-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    aspect-ratio: 4 / 3;
-    margin: 0 0 2rem;
-    padding: 1rem;
-    background: var(--wash);
-    color: var(--muted);
-    font-size: .9rem;
-    text-align: center;
-}
-.photo-placeholder.wide { aspect-ratio: 2 / 1; }
-.photo-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 2rem 0; }
-.photo-row .photo-placeholder { aspect-ratio: 1; margin: 0; }
-@media (min-width: 600px) { .photo-row { grid-template-columns: repeat(4, 1fr); } }
 
 /* Forms */
 .field { margin-bottom: 1.2rem; }

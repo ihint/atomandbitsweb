@@ -8,8 +8,10 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 
 ## Project Structure
 
-- `index.html` - Static homepage
-- `atom-bits-website.html` - Historical mirror; keep synced with `index.html`
+- `index.html` - Static homepage. `/atom-bits-website` and `/atom-bits-website.html` 301 to `/`; do not recreate that copy
+- `llms.txt` - Short description of the site and its pages for answer engines
+- `favicon.ico`, `assets/logo.png` - Icon and Organization logo, rasterized from `assets/mark.svg`
+- `work/` - Case-study index. `/guides/` and `/insights/` 301 to `/writing/`
 - `site.css` - The one stylesheet: a 650px column, system sans font, black on white, one accent color
 - `site.js` - Mobile navigation, sample workflow controls, contact form submission, and click tracking; `ANALYTICS` at the top is empty by default (PostHog loads only when provider and key are set)
 - `worker/index.js` - Cloudflare Worker; runs only for `/api/contact` and emails each message to Ian from website@notify.atomandbits.com. Keep `run_worker_first` limited to `/api/*`: Cloudflare does not apply `_redirects` to requests the Worker serves

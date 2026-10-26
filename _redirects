@@ -1,9 +1,50 @@
 # Cloudflare applies these before serving a page. Each moved URL keeps
-# working with a permanent redirect.
+# working with a permanent redirect. Specific rules come before splats.
+
+# Old Claims Native URLs. Destinations checked live on 2026-10-26.
+# billing-setup was the readiness page (EHR handoff, enrollment, approval).
+# how-we-start is the live sequence for that setup. keep-your-ehr has no
+# successor page; the homepage states that the EHR stays the record.
+# remittance-and-deposits matches the deposit-vs-ERA guide.
+# 90-day-pilot and independent-practices already 301 on claimsnative.com;
+# these rules skip that second hop. cloudflare-pages was a repo artifact.
+/claimsnative/billing-setup https://claimsnative.com/how-we-start/ 301
+/claimsnative/billing-setup/* https://claimsnative.com/how-we-start/ 301
+/claimsnative/keep-your-ehr https://claimsnative.com/ 301
+/claimsnative/keep-your-ehr/* https://claimsnative.com/ 301
+/claimsnative/remittance-and-deposits https://claimsnative.com/learn/match-insurance-deposits/ 301
+/claimsnative/remittance-and-deposits/* https://claimsnative.com/learn/match-insurance-deposits/ 301
+/claimsnative/90-day-pilot https://claimsnative.com/how-we-start/ 301
+/claimsnative/90-day-pilot/* https://claimsnative.com/how-we-start/ 301
+/claimsnative/independent-practices https://claimsnative.com/ 301
+/claimsnative/independent-practices/* https://claimsnative.com/ 301
+/claimsnative/cloudflare-pages/robots.txt https://claimsnative.com/robots.txt 301
+/claimsnative/cloudflare-pages/sitemap.xml https://claimsnative.com/sitemap.xml 301
+/claimsnative/cloudflare-pages https://claimsnative.com/ 301
+/claimsnative/cloudflare-pages/* https://claimsnative.com/ 301
 
 # Claims Native lives on its own domain.
 /claimsnative https://claimsnative.com/ 301
 /claimsnative/* https://claimsnative.com/:splat 301
+
+# The homepage used to be copied at this URL.
+/atom-bits-website / 301
+/atom-bits-website/ / 301
+/atom-bits-website.html / 301
+
+# Guides and insights already have a hub.
+/guides /writing/ 301
+/guides/ /writing/ 301
+/insights /writing/ 301
+/insights/ /writing/ 301
+
+# privacy-policy.html and support.html are the files html_handling serves at
+# the clean URLs. Permanent redirects keep old links, including App Store
+# support URLs, on the canonical path.
+/privacy-policy.html /privacy-policy 301
+/privacy-policy/ /privacy-policy 301
+/support.html /support 301
+/support/ /support 301
 
 # Retired October 2026 with the move away from behavioral health positioning.
 /practice-margin-review / 301
