@@ -19,3 +19,15 @@
 
 /og.png
   Cache-Control: public, max-age=86400
+
+/favicon.ico
+  Cache-Control: public, max-age=86400
+
+/logo.png
+  Cache-Control: public, max-age=86400
+
+/mark.svg
+  Cache-Control: public, max-age=86400
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8

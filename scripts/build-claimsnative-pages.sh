@@ -49,5 +49,11 @@ cp "$config_dir/_headers" "$output_dir/_headers"
 cp "$config_dir/_redirects" "$output_dir/_redirects"
 cp "$config_dir/robots.txt" "$output_dir/robots.txt"
 cp "$config_dir/sitemap.xml" "$output_dir/sitemap.xml"
+# llms.txt, the favicon and the schema logo live in claimsnative/ and ship
+# at the site root. cp -R already placed them; copy again so this step fails
+# if one of them is missing from the source.
+cp "$source_dir/llms.txt" "$output_dir/llms.txt"
+cp "$source_dir/favicon.ico" "$output_dir/favicon.ico"
+cp "$source_dir/logo.png" "$output_dir/logo.png"
 
 echo "Built Claims Native Pages site at $output_dir"
