@@ -12,7 +12,8 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 - `llms.txt` - Short description of the site and its pages for answer engines
 - `favicon.ico`, `assets/logo.png` - Icon and Organization logo, rasterized from `assets/mark.svg`
 - `work/` - Case-study index. `/guides/` and `/insights/` 301 to `/writing/`
-- `site.css` - The one stylesheet: a 650px column, system sans font, black on white, one accent color
+- `site.css` - Shared styles: a readable column on warm paper, serif headings and system sans body text
+- `home.css`, `home.js` - Wide homepage chapters and optional decorative motion
 - `site.js` - Mobile navigation, sample workflow controls, contact form submission, and click tracking; `ANALYTICS` at the top is empty by default (PostHog loads only when provider and key are set)
 - `worker/index.js` - Cloudflare Worker; runs only for `/api/contact` and emails each message to Ian from website@notify.atomandbits.com. Keep `run_worker_first` limited to `/api/*`: Cloudflare does not apply `_redirects` to requests the Worker serves
 - `www-redirect/` - Separate Worker that 301s www.atomandbits.com to atomandbits.com
@@ -31,15 +32,17 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 
 ## Design
 
-- One column about 650px wide, lots of white space, no cards, borders or shadows
-- One plain system sans font for headings and body text
-- Mostly black and white; the muted Tennessee orange `--accent` (#b85600) is only for links and the main button
-- At most one button per section; everything else is a plain text link; no arrows after links
+- Homepage: warm dark background, spacious chapters, large Georgia headings,
+  Tennessee-orange accents and a cream selected-work section
+- Supporting pages: one readable column about 650px wide on warm paper
+- Use system fonts, original artwork and static text; no scroll hijacking
+- Motion is optional, respects reduced motion, pauses offscreen and has a pause control
+- At most one main button per section; decorative direction cues use aria-hidden
 - Photos are Ian's own, never stock: one hero photo, a row of three or four on About, one per page elsewhere or none
 
 ## Content
 
-1. **Homepage**: the reader's problem, four proof lines, two doors (founders and operators; Corridor Robotics), selected work, the How I work teaser, life in Chattanooga, and contact. Claims Native is one quiet line under the doors, not a card
+1. **Homepage**: love of product, curiosity, PerfectServe onboarding, early value at One to One Health, selected cases, offers and contact. Keep the TPN invoicing story off the homepage. Full career figures live on About and the cases. Claims Native remains a short link.
 2. Claims Native is a billing service; keep its price on claimsnative.com only
 3. Keep facts the same everywhere: 150,000+ verified clinicians at TPN; VP, Provider Networks & Technology, Feb 2025 to Aug 2026; TPN raised $12M after acquiring TheraMatch; $1M+ ARR and 1M members in under 12 months; first product manager at PerfectServe as it grew from $2M to $40M ARR; about 3.5M members, NPS 60+ and digital adoption more than doubled at BCBST; $500K a year at Paragon Truss, the largest contract in company history
 4. Do not mention a job search, list Corridor partners (there are none yet), or put prices on atomandbits.com

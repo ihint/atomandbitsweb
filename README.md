@@ -2,14 +2,16 @@
 
 **Live site:** [atomandbits.com](https://atomandbits.com)
 
-Ian Harman's personal site: hard systems in healthcare and finance, built so people use them. It offers founders and operators a Product & AI assessment, an Agent workflow pilot, and Fractional leadership, and introduces Corridor Robotics.
+Ian Harman's product and technology practice. The homepage follows curiosity, product decisions and useful software through his own cases. It offers a Product & AI assessment, an Agent workflow pilot, and Fractional leadership, and introduces Corridor Robotics.
 
 ## Edit
 
 The pages are static HTML. There is no build step.
 
 - `index.html` - homepage. Do not recreate `atom-bits-website.html`; those URLs redirect to `/`
-- `site.css` - the one stylesheet; colors are custom properties at the top
+- `site.css` - shared navigation and readable supporting pages on warm paper
+- `home.css` - dark homepage chapters, serif headings and Tennessee-orange accents
+- `home.js` - optional point animation, pause control and reduced-motion support
 - `site.js` - mobile menu, sample workflow, contact form, click tracking
 - `worker/index.js` - the Cloudflare Worker behind the contact form
 - `www-redirect/` - a second Worker that sends www.atomandbits.com to atomandbits.com
@@ -30,7 +32,7 @@ Open http://127.0.0.1:8787. The contact form works locally; instead of sending, 
 ## Test
 
 ```bash
-node --test scripts/site.test.mjs scripts/contact-worker.test.mjs scripts/www-redirect.test.mjs
+node --test scripts/site.test.mjs scripts/contact-worker.test.mjs scripts/www-redirect.test.mjs scripts/home-motion.test.mjs
 ```
 
 The site checks cover internal links and anchors, redirects, files kept off the web, cut phrases, page basics, and the facts table. The Worker tests cover the form's validation, spam trap, origin check, and email.
