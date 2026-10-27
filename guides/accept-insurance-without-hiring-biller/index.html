@@ -31,18 +31,18 @@
     * { box-sizing: border-box; }
 
     :root {
-      /* Atom & Bits navy, paper, and copper palette; the serif wordmark stays with Claims Native. */
-      --ink: #111827;
-      --navy: #1f4e79;
-      --navy-dark: #173a5c;
-      --copper: #ad5735;
-      --copper-soft: #f1ddd3;
-      --paper: #fbfaf6;
-      --paper-deep: #f2f5f9;
+      /* Atom & Bits navy, white and orange palette. Legacy variable names keep this guide stable. */
+      --ink: #071b34;
+      --navy: #0b3660;
+      --navy-dark: #071b34;
+      --copper: #0b3660;
+      --copper-soft: #edf3f9;
+      --paper: #ffffff;
+      --paper-deep: #f2f6fa;
       --card: #ffffff;
-      --blue-soft: #f2f5f9;
-      --muted: #586069;
-      --line: #d7dee8;
+      --blue-soft: #f2f6fa;
+      --muted: #4f6073;
+      --line: #d6dfe9;
       --white: #ffffff;
       --max: 1180px;
     }
@@ -87,10 +87,10 @@
       justify-content: center;
       gap: 9px;
       padding: 0 22px;
-      border: 1px solid var(--ink);
+      border: 1px solid var(--brand-orange);
       border-radius: 8px;
-      background: var(--ink);
-      color: var(--white);
+      background: var(--brand-orange);
+      color: var(--brand-navy);
       font-weight: 700;
       letter-spacing: -0.01em;
       line-height: 1.2;
@@ -102,8 +102,9 @@
 
     .button:hover {
       transform: translateY(-1px);
-      border-color: var(--navy-dark);
-      background: var(--navy-dark);
+      border-color: #ff9b33;
+      background: #ff9b33;
+      color: var(--brand-navy);
     }
 
     .button.secondary {
@@ -225,7 +226,7 @@
 
     .ownership-card {
       overflow: hidden;
-      border: 1px solid #b8c6d6;
+      border: 1px solid #b5c5d6;
       background: var(--card);
       box-shadow: 0 24px 55px rgba(20, 31, 43, 0.1);
     }
@@ -237,7 +238,7 @@
       color: var(--white);
     }
 
-    .ownership-card-head .section-label { margin-bottom: 10px; color: #efc6b7; }
+    .ownership-card-head .section-label { margin-bottom: 10px; color: #ff8200; }
 
     .ownership-card-head h2 {
       margin-bottom: 0;
@@ -304,7 +305,7 @@
     .section.dark h3 { color: var(--white); }
 
     .section.dark .section-intro,
-    .section.dark p { color: #d9e4f1; }
+    .section.dark p { color: #d6e3f0; }
 
     .section-head {
       display: grid;
@@ -462,9 +463,9 @@
       border-color: rgba(255,255,255,0.25);
     }
 
-    .proof-card li { border-color: rgba(255,255,255,0.2); color: #d9e4f1; }
-    .proof-card.can { border-top: 4px solid #9fb8d2; }
-    .proof-card.cannot { border-top: 4px solid #d98969; }
+    .proof-card li { border-color: rgba(255,255,255,0.2); color: #d6e3f0; }
+    .proof-card.can { border-top: 4px solid #9db2ca; }
+    .proof-card.cannot { border-top: 4px solid #ff8200; }
 
     .proof-rule {
       margin: 24px 0 0;
@@ -582,7 +583,7 @@
     .cta-actions .text-link { display: block; min-height: 0; }
     .cta-inner > * { min-width: 0; }
     @media (max-width: 680px) { .cta-actions { align-self: stretch; } .cta-actions .button { width: 100%; white-space: normal; } }
-    .section.dark .proof-card li { color: #d9e4f1; }
+    .section.dark .proof-card li { color: #d6e3f0; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://atomandbits.com/guides/accept-insurance-without-hiring-biller/#article","headline":"Can You Accept Insurance Without Hiring a Biller?","description":"A queue-by-queue ownership test for practices that want to accept insurance without hiring a biller.","datePublished":"2026-08-19","dateModified":"2026-09-23","mainEntityOfPage":"https://atomandbits.com/guides/accept-insurance-without-hiring-biller/","author":{"@id":"https://atomandbits.com/#ian-harman"},"publisher":{"@id":"https://atomandbits.com/#organization"},"about":["Insurance operations","Medical billing staffing","Independent practices"],"breadcrumb":{"@id":"https://atomandbits.com/guides/accept-insurance-without-hiring-biller/#breadcrumb"}},{"@type":"Person","@id":"https://atomandbits.com/#ian-harman","name":"Ian Harman","jobTitle":"VP Provider","url":"https://atomandbits.com/ian-harman/","description":"15 years building products for health systems, insurers and fintech. Founder of TheraMatch (acquired by TPN.health).","homeLocation":{"@type":"Place","name":"Chattanooga, Tennessee"},"sameAs":["https://www.linkedin.com/in/ianjharman"],"worksFor":{"@id":"https://atomandbits.com/#organization"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Tennessee, Haslam College of Business"},{"@type":"CollegeOrUniversity","name":"Maryville College"}]},{"@type":["Organization","ProfessionalService"],"@id":"https://atomandbits.com/#organization","name":"Atom & Bits, LLC","url":"https://atomandbits.com/","logo":{"@type":"ImageObject","url":"https://atomandbits.com/assets/logo.png","width":512,"height":512},"description":"Advisory, fractional CTO and AI builds. Ian Harman finds the real problem underneath, builds what a team will actually use, and gets it through compliance and into production.","email":"Ian@atomandbits.com","telephone":"+1-865-803-5050","areaServed":"US","founder":{"@id":"https://atomandbits.com/#ian-harman"}},{"@type":"BreadcrumbList","@id":"https://atomandbits.com/guides/accept-insurance-without-hiring-biller/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Atom & Bits","item":"https://atomandbits.com/"},{"@type":"ListItem","position":2,"name":"Guides"},{"@type":"ListItem","position":3,"name":"Accept insurance without hiring a biller","item":"https://atomandbits.com/guides/accept-insurance-without-hiring-biller/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can a small practice accept insurance without hiring a biller?","acceptedAnswer":{"@type":"Answer","text":"Possibly. A practice can avoid a new hire only when every insurance queue has a named owner, a trigger, a stop rule, evidence of completion, and backup coverage. Software can move work but cannot hold the practice's clinical or financial authority."}},{"@type":"Question","name":"What work still belongs to the practice?","acceptedAnswer":{"@type":"Answer","text":"Your practice must retain authority over clinical facts, charges, release decisions, access, contracts, patient communication, and financial records, even when software or a service does routine work."}},{"@type":"Question","name":"What can the current Claims Native pilot prove?","acceptedAnswer":{"@type":"Answer","text":"A pilot can measure source-data quality, review time, exception volume, approval flow, and artifact accuracy for one configured lane. It cannot guarantee payer access, reimbursement, payment, posting, or a no-hire result at wider scale."}}]}]}</script>
 </head>

@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: "22"
       - name: Test the pages, redirects, contact form and www Workers
-        run: node --test scripts/site.test.mjs scripts/contact-worker.test.mjs scripts/www-redirect.test.mjs
+        run: node --test scripts/site.test.mjs scripts/contact-worker.test.mjs scripts/www-redirect.test.mjs scripts/home-motion.test.mjs
 
   deploy:
     needs: test
