@@ -1,7 +1,31 @@
 # Product-first website revision
 
 Date: October 22, 2026
-Status: Local implementation checked October 27; ready for design review.
+Status: Design approved October 27; final annotations checked for release.
+
+## October 27 annotations and release
+
+Ian approved the visible design, suggested benefits and clinician-time examples,
+asked for One to One Health's 20% result in the people chapter, and said to ship.
+Expected result: add clinician time to the opening, benefits to the BlueCross
+example, and the rounded charting result to the people chapter. Preserve the
+exact 22-to-17.5-minute result and satisfaction qualifier in the detailed section.
+Run the existing suite, inspect desktop and phone layout, then merge PR 72 and
+verify the completed Cloudflare deployment and public files. A merge or CI test
+alone does not prove the release. Do not send a contact-form message.
+
+Copy audit: no stale phrase or passive construction in the two edited passages.
+No long word needs a shorter substitute. Replace “know where to go” with “get
+more from their health benefits”; add the clinician example and measured result.
+“About 20%” rounds the 20.45% charting-time reduction; it does not extend that
+measurement to every kind of clinical admin. Keep One to One Health's full name.
+
+Pre-release results: 33 automated tests and six annotation checks pass. The
+revised opening and people chapter render at 1176 × 1255 and 390 × 844 with
+no horizontal overflow. On the phone, the longer opening remains clear of the
+scroll cue and motion control. Source and prose review retained the exact
+charting result, satisfaction qualifier, personal voice and existing case links.
+Public release proof will be recorded separately after the deployment completes.
 
 ## October 27 palette correction
 
