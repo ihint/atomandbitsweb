@@ -8,7 +8,7 @@ Ian Harman's personal site: hard systems in healthcare and finance, built so peo
 
 The pages are static HTML. There is no build step.
 
-- `index.html` - homepage; copy it to `atom-bits-website.html` after every change
+- `index.html` - homepage. Do not recreate `atom-bits-website.html`; those URLs redirect to `/`
 - `site.css` - the one stylesheet; colors are custom properties at the top
 - `site.js` - mobile menu, sample workflow, contact form, click tracking
 - `worker/index.js` - the Cloudflare Worker behind the contact form
@@ -33,7 +33,7 @@ Open http://127.0.0.1:8787. The contact form works locally; instead of sending, 
 node --test scripts/site.test.mjs scripts/contact-worker.test.mjs scripts/www-redirect.test.mjs
 ```
 
-The site checks cover internal links and anchors, redirects, files kept off the web, cut phrases, the homepage mirror, page basics, and the facts table. The Worker tests cover the form's validation, spam trap, origin check, and email.
+The site checks cover internal links and anchors, redirects, files kept off the web, cut phrases, page basics, and the facts table. The Worker tests cover the form's validation, spam trap, origin check, and email.
 
 ## Deploy
 

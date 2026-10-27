@@ -1,6 +1,6 @@
 # Photos
 
-Use Ian's own photos, never stock. Each page shows a marked placeholder until its photo is here. To add one, save the file below and replace the matching `photo-placeholder` element with an `<img>` that has real alt text.
+Use Ian's own photos, never stock. The placeholder blocks were removed. To add a photo, save the file below and put an `<img class="photo">` with real alt text on the page.
 
 | File | Page | What it shows |
 | --- | --- | --- |
