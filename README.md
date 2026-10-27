@@ -45,6 +45,11 @@ The site checks cover internal links and anchors, redirects, files kept off the 
 
 GitHub Actions runs the tests on every pull request and deploys `main` to the Cloudflare Worker `atomandbits-site`.
 
+The `atomandbits-production` environment must contain the `CLOUDFLARE_API_TOKEN`
+secret. The workflow fails if it is missing. Keep the token limited to the two
+Atom & Bits Workers and their domain access; do not store it in
+the repository. A successful release must run both Worker deployment steps.
+
 One-time move from GitHub Pages to Cloudflare:
 
 1. In Cloudflare Email Service, onboard the subdomain notify.atomandbits.com for sending (`npx wrangler@4.151.3 email sending enable notify.atomandbits.com`) so `website@notify.atomandbits.com` can send, and verify `Ian@atomandbits.com` as a destination. Using a subdomain leaves the apex SPF and MX records for iCloud mail untouched.
