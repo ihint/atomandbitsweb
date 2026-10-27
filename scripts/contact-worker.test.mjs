@@ -82,7 +82,7 @@ test("missing or malformed fields are refused with a reason", async () => {
   for (const [fields, reason] of [
     [{ ...VALID, name: " " }, /your name/],
     [{ ...VALID, email: "not-an-email" }, /email address/],
-    [{ ...VALID, message: "" }, /what’s stuck/],
+    [{ ...VALID, message: "" }, /what’s on your mind/],
     [{ ...VALID, message: "x".repeat(5001) }, /message field/],
   ]) {
     const { env, sent } = environment();
