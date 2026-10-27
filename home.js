@@ -1,4 +1,4 @@
-// Original point study: a loose field gradually gathers into a sphere.
+// Original point study: a loose field around a rotating sphere.
 // It decorates the first screen; it never controls scrolling or content.
 (() => {
     const canvas = document.getElementById('product-field');
@@ -36,7 +36,7 @@
             const px = centerX + x * radius + scatter * radius * -1.2;
             const py = centerY + p.y * radius * (1 + scatter * .6) + Math.sin(phase * .18 + p.drift * 12) * 4;
             const alpha = (.12 + (z + 1) * .27) * (1 - scatter * .3);
-            context.fillStyle = p.warm ? `rgba(236,166,108,${alpha})` : `rgba(220,224,192,${alpha * .7})`;
+            context.fillStyle = p.warm ? `rgba(255,130,0,${alpha})` : `rgba(255,255,255,${alpha * .7})`;
             context.beginPath();
             context.arc(px, py, p.size * (1 + z * .25), 0, Math.PI * 2);
             context.fill();

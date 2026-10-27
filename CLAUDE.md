@@ -12,7 +12,7 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 - `llms.txt` - Short description of the site and its pages for answer engines
 - `favicon.ico`, `assets/logo.png` - Icon and Organization logo, rasterized from `assets/mark.svg`
 - `work/` - Case-study index. `/guides/` and `/insights/` 301 to `/writing/`
-- `site.css` - Shared styles: a readable column on warm paper, serif headings and system sans body text
+- `site.css` - Shared styles: a readable column in navy on white, serif headings and system sans body text
 - `home.css`, `home.js` - Wide homepage chapters and optional decorative motion
 - `site.js` - Mobile navigation, sample workflow controls, contact form submission, and click tracking; `ANALYTICS` at the top is empty by default (PostHog loads only when provider and key are set)
 - `worker/index.js` - Cloudflare Worker; runs only for `/api/contact` and emails each message to Ian from website@notify.atomandbits.com. Keep `run_worker_first` limited to `/api/*`: Cloudflare does not apply `_redirects` to requests the Worker serves
@@ -32,9 +32,11 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 
 ## Design
 
-- Homepage: warm dark background, spacious chapters, large Georgia headings,
-  Tennessee-orange accents and a cream selected-work section
-- Supporting pages: one readable column about 650px wide on warm paper
+- Ian chose deep navy (#071b34), white (#ffffff) and Tennessee orange (#ff8200).
+  Do not return to the rejected olive, cream and copper treatment.
+- Homepage: navy chapters, large Georgia headings, orange accents and white selected work
+- Supporting pages: one readable column about 650px wide in navy on white
+- Keep small links on white navy; use navy labels on orange buttons for contrast
 - Use system fonts, original artwork and static text; no scroll hijacking
 - Motion is optional, respects reduced motion, pauses offscreen and has a pause control
 - At most one main button per section; decorative direction cues use aria-hidden

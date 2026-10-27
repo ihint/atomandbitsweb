@@ -9,8 +9,8 @@ Ian Harman's product and technology practice. The homepage follows curiosity, pr
 The pages are static HTML. There is no build step.
 
 - `index.html` - homepage. Do not recreate `atom-bits-website.html`; those URLs redirect to `/`
-- `site.css` - shared navigation and readable supporting pages on warm paper
-- `home.css` - dark homepage chapters, serif headings and Tennessee-orange accents
+- `site.css` - shared navigation and supporting pages in navy on white
+- `home.css` - deep navy homepage chapters, white text and Tennessee-orange accents
 - `home.js` - optional point animation, pause control and reduced-motion support
 - `site.js` - mobile menu, sample workflow, contact form, click tracking
 - `worker/index.js` - the Cloudflare Worker behind the contact form
@@ -20,6 +20,10 @@ The pages are static HTML. There is no build step.
 - `images/` - photos; see `images/README.md` for the expected files
 
 Keep the nav and footer the same on every page.
+
+Ian chose deep navy `#071b34`, white `#ffffff` and Tennessee orange `#ff8200`.
+Use navy text on orange buttons and navy links on white to keep them readable.
+The earlier olive, cream and copper treatment was rejected.
 
 ## Run locally
 

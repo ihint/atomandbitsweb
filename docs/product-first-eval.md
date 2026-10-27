@@ -3,6 +3,31 @@
 Date: October 22, 2026
 Status: Local implementation checked October 27; ready for design review.
 
+## October 27 palette correction
+
+Ian rejected the olive, cream and copper treatment as looking generic and
+selected deep navy, white and Tennessee orange. This choice supersedes the
+first palette. Preserve copy and layout. Change shared page colors, homepage
+sections, buttons and canvas points together. Check desktop and phone renders,
+text/button contrast on navy and white, and the existing test suite before
+claiming this correction is ready. Acceptance of the rendered design stays open.
+
+Palette correction results:
+
+- Deep navy `#071b34`, white `#ffffff` and Tennessee orange `#ff8200` now
+  cover the shared styles, homepage chapters, mobile menu, buttons and points.
+  Four older pages with inline styles use the same colors.
+- All 33 automated tests still pass; syntax and whitespace checks pass.
+- Seven routes at 1280 × 800 and 390 × 844 passed 14 fresh layout checks:
+  one H1, no horizontal overflow, and the expected navy/white backgrounds.
+  Button text renders navy on orange. The phone menu opens and Escape closes it.
+- Eight text/button contrast pairs exceed 4.5:1; the lowest is 5.39:1 for
+  orange on the lightest navy chapter. White sections use navy links and an
+  orange underline, avoiding orange body text on white. This is a palette
+  contrast check, not a full accessibility audit.
+- Desktop and phone hero views and the white work section received visual
+  review. Homepage HTML and the four older page bodies are unchanged.
+
 ## Outcome and sources
 
 Build a reviewable Atom & Bits site inspired by BrainBox Labs' spacious type,

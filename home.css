@@ -1,26 +1,26 @@
-/* Product chapters. Warm ink, Tennessee orange, and room for a thought. */
+/* Product chapters in Ian's chosen navy, white and Tennessee orange. */
 .product-home {
-    --text: #f1ede5;
-    --muted: #b7b1a8;
-    --accent: #eca66c;
-    --accent-dark: #f5bf91;
-    --white: #171a18;
-    --line: #363b35;
-    background: #171a18;
+    --text: #ffffff;
+    --muted: #b7c7da;
+    --accent: var(--brand-orange);
+    --accent-dark: #ffa64d;
+    --white: var(--brand-navy);
+    --line: #334b67;
+    background: var(--brand-navy);
     font-size: 1.0625rem;
 }
 .product-home .site-nav { position: absolute; inset: 0 0 auto; z-index: 5; padding: 30px 4.5vw; }
 .product-home .nav-inner { max-width: 1440px; gap: 24px; }
 .product-home .brand { font-family: Georgia, serif; font-weight: 400; font-size: 1.65rem; white-space: nowrap; }
 .product-home .nav-links { font-size: .78rem; gap: 20px; }
-.product-home .nav-cta { border: 1px solid #64675c; background: transparent; color: var(--text); border-radius: 0; font-size: .78rem; padding: 10px 16px; }
+.product-home .nav-cta { border: 1px solid #6d85a0; background: transparent; color: var(--text); border-radius: 0; font-size: .78rem; padding: 10px 16px; }
 .product-home .nav-cta:hover { border-color: var(--accent); color: var(--accent); }
 .product-home main { max-width: none; padding: 0; }
 .product-home main > section { margin-bottom: 0; }
-.product-home .button { background: var(--accent); color: #1c201b; border-radius: 0; padding: 16px 22px; font-size: .88rem; font-weight: 600; }
-.product-home .button:hover { background: #f5bf91; }
+.product-home .button { background: var(--brand-orange); color: var(--brand-navy); border-radius: 0; padding: 16px 22px; font-size: .88rem; font-weight: 600; }
+.product-home .button:hover { background: #ff9b33; }
 .product-home .button span { margin-left: 22px; }
-.product-home .text-link { display: inline-block; font-size: .9rem; text-decoration: none; border-bottom: 1px solid #72644f; padding-bottom: 6px; }
+.product-home .text-link { display: inline-block; font-size: .9rem; text-decoration: none; border-bottom: 1px solid #6d85a0; padding-bottom: 6px; }
 .product-home .text-link span { display: inline-block; margin-left: 22px; transition: transform .2s ease; }
 .product-home .text-link:hover span { transform: translateX(4px); }
 .product-home h1, .product-home h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -.045em; text-wrap: initial; }
@@ -30,8 +30,8 @@
 
 /* The canvas is decorative. All page content is present without scripts. */
 .product-hero { position: relative; isolation: isolate; min-height: 850px; min-height: max(780px, 100svh); padding: 170px 8vw 115px; display: flex; align-items: center; overflow: hidden; }
-.hero-art { position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse at 79% 50%, #68422b44, transparent 48%), radial-gradient(ellipse at 26% 30%, #404b2c24, transparent 55%); }
-.hero-art::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #171a1844, transparent 65%); }
+.hero-art { position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse at 79% 50%, #15487766, transparent 55%); }
+.hero-art::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #071b3444, transparent 65%); }
 #product-field { display: block; width: 100%; height: 100%; opacity: .85; }
 .hero-copy { width: 100%; max-width: 1260px; margin: 0 auto; }
 .hero-copy .chapter-label { margin-bottom: 27px; }
@@ -43,7 +43,7 @@
 .scroll-cue { color: var(--muted); text-decoration: none; }
 .scroll-cue span { margin-left: 12px; }
 .hero-bottom .location { margin-left: auto; }
-.motion-toggle { border: 0; border-bottom: 1px solid #5b6055; background: transparent; padding: 3px 0; color: var(--muted); cursor: pointer; font-size: inherit; }
+.motion-toggle { border: 0; border-bottom: 1px solid #6d85a0; background: transparent; padding: 3px 0; color: var(--muted); cursor: pointer; font-size: inherit; }
 
 /* Long-form chapters keep text in the normal document flow. */
 .chapter { padding: 100px max(8vw, calc((100vw - 1260px) / 2)); scroll-margin-top: 20px; }
@@ -56,22 +56,23 @@
 .chapter-copy p { color: var(--muted); font-size: 1rem; line-height: 1.8; }
 .chapter-copy .lead-paragraph { color: var(--text); font-size: 1.19rem; line-height: 1.65; }
 .chapter-copy .text-link { margin-top: 12px; }
-.question { background: #1c201c; }
+.question { background: #0c2544; }
 .product-path { margin-top: 80px; display: grid; grid-template-columns: 1fr 1.3fr 1fr; align-items: center; text-align: center; gap: 20px; font-size: .7rem; color: var(--muted); }
 .product-path > span { display: block; }
 .product-path strong { display: inline-block; color: var(--text); font-size: 1.08rem; font-weight: 400; margin-top: 8px; }
-.product-path .path-question { padding: 16px 10px; border-top: 1px solid #60543c; border-bottom: 1px solid #60543c; color: var(--accent); font-size: .83rem; }
-.build { background: #21251f; }
+.product-path .path-question { padding: 16px 10px; border-top: 1px solid #52718f; border-bottom: 1px solid #52718f; color: var(--accent); font-size: .83rem; }
+.build { background: #103052; }
 .time-proof { display: flex; justify-content: space-between; align-items: end; margin-top: 65px; color: var(--muted); }
 .time-proof p { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin: 0; }
 .old-time, .time-proof strong { font: 400 5rem/1 Georgia, serif; letter-spacing: -.055em; }
-.old-time { color: #9f9f91; text-decoration: line-through; text-decoration-thickness: 1px; }
+.old-time { color: #9db2ca; text-decoration: line-through; text-decoration-thickness: 1px; }
 .time-proof strong { color: var(--accent); }
 .time-arrow { font-size: 1.5rem; }
 .time-unit, .time-proof > span { font-size: .7rem; }
 
 /* Work reads as a journal of decisions, with results kept in context. */
-.selected-work { --text: #272e26; --muted: #5a6156; --accent: #955125; --line: #cbcabe; background: #eeeae0; color: var(--text); }
+.selected-work { --text: var(--brand-navy); --muted: #4f6073; --accent: #0b3660; --accent-dark: #071b34; --line: #d6dfe9; background: #ffffff; color: var(--text); }
+.selected-work h2 em { color: var(--brand-navy); text-decoration: underline; text-decoration-color: var(--brand-orange); text-decoration-thickness: 3px; text-underline-offset: .13em; }
 .selected-work h2 { margin-bottom: 60px; }
 .work-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10%; border-top: 1px solid var(--line); padding: 34px 0; }
 .work-row:last-child { padding-bottom: 0; }
@@ -92,7 +93,7 @@
 .offer-list > a > span:last-child { color: var(--accent); }
 .also-building { margin-top: 45px; display: grid; grid-template-columns: 1fr 1fr; gap: 10%; color: var(--muted); font-size: .87rem; }
 .also-building .chapter-label { display: block; margin-bottom: 10px; }
-.home-contact { text-align: center; padding-top: 100px; padding-bottom: 125px; background: radial-gradient(ellipse at 50% 100%, #593d273d, transparent 70%), #1d211b; }
+.home-contact { text-align: center; padding-top: 100px; padding-bottom: 125px; background: #0c2544; }
 .home-contact h2 { font-size: clamp(3rem, 5.6vw, 5.8rem); margin: 28px 0; }
 .home-contact > p:not(.chapter-label) { color: var(--muted); }
 .home-contact .actions { justify-content: center; margin-top: 35px; }
@@ -113,14 +114,14 @@
 @media (max-width: 760px) {
     .product-home .site-nav { padding: 22px 6vw; }
     .product-home .brand { font-size: 1.5rem; }
-    .product-home .mobile-links { background: #252a23; box-shadow: 0 0 0 1px #555d4e; }
+    .product-home .mobile-links { background: #0c2544; box-shadow: 0 0 0 1px #6d85a0; }
     .product-hero { min-height: max(780px, 100svh); padding: 140px 7vw 125px; align-items: center; }
     .product-home h1 { font-size: clamp(4.6rem, 13vw, 6.3rem); }
     .hero-copy .chapter-label { max-width: 280px; font-size: .58rem; line-height: 1.8; }
     .hero-lede { max-width: 400px; font-size: 1.05rem; }
     .hero-note { max-width: 380px; font-size: .89rem; }
     .hero-art { opacity: .45; }
-    .hero-art::after { background: linear-gradient(90deg, #171a18aa, #171a1811); }
+    .hero-art::after { background: linear-gradient(90deg, #071b34aa, #071b3411); }
     .hero-bottom { inset: auto 7vw 27px; flex-wrap: wrap; gap: 15px 24px; font-size: .65rem; }
     .hero-bottom .location { display: none; }
     .desktop-break { display: none; }
@@ -159,7 +160,7 @@
     .product-home .text-link span { transition: none; }
 }
 @media print {
-    .product-home { --text: #111; --muted: #444; --accent: #773b12; --line: #ccc; background: white; color: #111; }
+    .product-home { --text: #071b34; --muted: #4f6073; --accent: #0b3660; --line: #d6dfe9; background: white; color: #071b34; }
     .hero-art, .hero-bottom, .product-home .site-nav, .product-home .site-footer { display: none; }
     .product-hero { min-height: auto; padding: 30px 0; }
     .chapter { padding: 30px 0; background: white; }
