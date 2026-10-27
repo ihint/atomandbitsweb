@@ -150,7 +150,8 @@ test("every page has one h1, a title, and the shared stylesheet", () => {
 test("pages say the facts the same way as the facts table", () => {
   const text = (page) => read(page).replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ");
   const home = text("index.html");
-  for (const fact of ["150,000+ clinicians", "$2M → $40M ARR", "3.5M members", "1M members in under 12 months", "$500K a year, the largest contract in company history", "NPS above 60", "$2M to $40M ARR"]) {
+  // Homepage leads with product decisions; the full career figures stay on About.
+  for (const fact of ["3.5M members", "$1M+ ARR and 1M members", "$500K a year, the largest contract in company history", "NPS above 60", "$2M to $40M ARR", "22 to 17.5 minutes per encounter", "with clinician and patient satisfaction maintained or improved"]) {
     assert.ok(home.includes(fact), `homepage is missing "${fact}"`);
   }
   const about = text("ian-harman/index.html");
