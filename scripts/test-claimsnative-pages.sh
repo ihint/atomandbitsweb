@@ -9,10 +9,26 @@ output_dir="$test_dir/site"
 "$repo_dir/scripts/build-claimsnative-pages.sh" "$output_dir"
 
 test -f "$output_dir/404.html"
+test -f "$output_dir/llms.txt"
+test -f "$output_dir/favicon.ico"
+test -f "$output_dir/logo.png"
 test ! -e "$output_dir/cloudflare-www-redirect"
 test ! -e "$output_dir/90-day-pilot"
 test ! -e "$output_dir/independent-practices"
 grep -Fq "Page not found | Claims Native" "$output_dir/404.html"
+if grep -Fq 'rel="canonical"' "$output_dir/404.html"; then
+  echo "404 page names a canonical URL" >&2
+  exit 1
+fi
+if grep -Fq '404.html' "$output_dir/404.html"; then
+  echo "404 page names /404.html" >&2
+  exit 1
+fi
+grep -Fq 'name="robots" content="noindex"' "$output_dir/404.html" || { echo "404 page is missing noindex" >&2; exit 1; }
+if grep -Fq '404' "$output_dir/sitemap.xml"; then
+  echo "Sitemap lists the 404 page" >&2
+  exit 1
+fi
 grep -Fq "https://static.cloudflareinsights.com" "$output_dir/_headers"
 grep -Fq "connect-src 'self'" "$output_dir/_headers"
 grep -Fq "CLOUDFLARE_API_TOKEN" "$repo_dir/.github/workflows/claimsnative-cloudflare.yml"
@@ -166,6 +182,104 @@ if grep -Fq -- "/chiropractors" "$output_dir/_redirects"; then
   echo "_redirects still redirects the chiropractors page" >&2
   exit 1
 fi
+
+# llms.txt states both plans, full billing first, and does not name the founder.
+grep -Fq 'Full billing is for a practice billing up to $10,000 a month' "$output_dir/llms.txt" || { echo "llms.txt lacks the full-billing audience" >&2; exit 1; }
+grep -Fq '$500 a month' "$output_dir/llms.txt" || { echo "llms.txt lacks full billing price" >&2; exit 1; }
+grep -Fq '$990 a month per location' "$output_dir/llms.txt" || { echo "llms.txt lacks Starter price" >&2; exit 1; }
+awk 'index($0,"$500") && !seen500 {seen500=NR} index($0,"$990") && !seen990 {seen990=NR} END {exit !(seen500 && seen990 && seen500 < seen990)}' "$output_dir/llms.txt" || { echo "llms.txt does not lead with full billing" >&2; exit 1; }
+for link in 'https://claimsnative.com/' 'https://claimsnative.com/chiropractors/' 'https://claimsnative.com/how-we-start/' 'https://claimsnative.com/insurance-opportunity/' 'https://claimsnative.com/learn/' 'https://claimsnative.com/learn/how-to-read-an-era/'; do
+  grep -Fq "$link" "$output_dir/llms.txt" || { echo "llms.txt lacks $link" >&2; exit 1; }
+done
+for banned in 'Ian Harman' 'Atom & Bits' 'Atom &amp; Bits' 'founder'; do
+  if grep -Fq -- "$banned" "$output_dir/llms.txt"; then
+    echo "llms.txt names '$banned'" >&2
+    exit 1
+  fi
+done
+
+# Favicon link, organization logo and description, both plan prices, no founder.
+for page in $(find "$output_dir" -name '*.html'); do
+  grep -Fq 'href="/favicon.ico"' "$page" || { echo "$page lacks the favicon link" >&2; exit 1; }
+  grep -Fq 'https://claimsnative.com/logo.png' "$page" || { echo "$page lacks the organization logo" >&2; exit 1; }
+  grep -Fq 'Medical billing service for independent practices.' "$page" || { echo "$page lacks the organization description" >&2; exit 1; }
+  if grep -Fq '"founder"' "$page"; then
+    echo "$page has a founder field" >&2
+    exit 1
+  fi
+done
+
+# Pages that publish a price carry both plans in schema, full billing first.
+for page in "$output_dir/index.html" "$output_dir/chiropractors/index.html" "$output_dir/how-we-start/index.html" "$output_dir/insurance-opportunity/index.html"; do
+  grep -Fq '"name": "Full billing"' "$page" || { echo "$page lacks the full billing offer" >&2; exit 1; }
+  grep -Fq '"name": "Starter"' "$page" || { echo "$page lacks the Starter offer" >&2; exit 1; }
+  python3 - "$page" <<'PY' || { echo "$page schema does not price full billing before Starter" >&2; exit 1; }
+import json, re, sys
+html = open(sys.argv[1]).read()
+data = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', html).group(1))
+offers = []
+def walk(node):
+    if isinstance(node, dict):
+        if node.get("@type") == "Service":
+            offers.extend(node.get("offers") or [])
+        for value in node.values():
+            walk(value)
+    elif isinstance(node, list):
+        for value in node:
+            walk(value)
+walk(data)
+prices = [offer.get("price") for offer in offers]
+if prices[:2] != ["500", "990"]:
+    raise SystemExit(1)
+PY
+done
+
+# Visible FAQ on the homepage and the chiropractic page matches FAQPage JSON-LD.
+python3 - "$output_dir" <<'PY'
+import json, re, sys
+from pathlib import Path
+root = Path(sys.argv[1])
+banned = ("only", "unique", "no one else", "—", "Ian Harman", "Atom & Bits", "founder")
+for rel in ("index.html", "chiropractors/index.html"):
+    html = (root / rel).read_text()
+    section = re.search(r'<section class="questions-section" id="faq"[\s\S]*?</section>', html)
+    if not section:
+        raise SystemExit(f"{rel} lacks a visible FAQ")
+    block = section.group(0)
+    for word in banned:
+        if word in block.lower() if word == "only" else word in block:
+            # "only" is matched as a word below
+            if word != "only":
+                raise SystemExit(f"{rel} FAQ contains {word}")
+    if re.search(r"\bonly\b", block, re.I):
+        raise SystemExit(f"{rel} FAQ contains only")
+    visible = []
+    for chunk in re.findall(r"<details open>\s*<summary>(.*?)</summary>(.*?)</details>", block, re.S):
+        question = chunk[0].strip()
+        answers = [re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", p)).strip() for p in re.findall(r"<p>(.*?)</p>", chunk[1], re.S)]
+        visible.append((question, " ".join(answers)))
+    data = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', html).group(1))
+    faq = next(node for node in data["@graph"] if node.get("@type") == "FAQPage")
+    schema = [(q["name"], re.sub(r"\s+", " ", q["acceptedAnswer"]["text"]).strip()) for q in faq["mainEntity"]]
+    if visible != schema:
+        raise SystemExit(f"{rel} FAQ markup does not match the visible questions")
+    names = [name for name, _ in visible]
+    expected = [
+        "What is Claims Native?",
+        "Who is it for?",
+        "What does it cost?",
+        "Do I have to switch my EHR or my biller?",
+        "Which payers and EHRs does it work with today?",
+        "Do I sign a business associate agreement?",
+        "How long does it take to go live?",
+    ]
+    if names != expected:
+        raise SystemExit(f"{rel} FAQ questions changed: {names}")
+    cost = dict(visible)["What does it cost?"]
+    if cost.find("$500") == -1 or cost.find("$990") == -1 or cost.find("$500") > cost.find("$990"):
+        raise SystemExit(f"{rel} cost answer does not lead with full billing")
+print("faq ok")
+PY
 
 node --test "$repo_dir/claimsnative/cloudflare-www-redirect/test/redirect.test.mjs"
 node --test "$repo_dir/scripts/signup-source.test.mjs"
