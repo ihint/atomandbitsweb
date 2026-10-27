@@ -110,7 +110,7 @@ test("internal redirect targets exist", () => {
 });
 
 test("repository files that are not part of the site are not served", () => {
-  for (const path of ["CLAUDE.md", "README.md", "wrangler.jsonc", "worker/index.js", "scripts/site.test.mjs", ".gitignore", ".assetsignore"]) {
+  for (const path of ["CLAUDE.md", "README.md", "wrangler.jsonc", "worker/index.js", "www-redirect/src/index.mjs", "www-redirect/wrangler.jsonc", "scripts/site.test.mjs", ".gitignore", ".assetsignore"]) {
     assert.ok(!served.has(path), `${path} would be public`);
   }
   assert.ok(![...served].some((path) => path.startsWith("claimsnative/") || path.startsWith("docs/")), "claimsnative/ or docs/ would be public");
@@ -126,8 +126,15 @@ test("cut phrases and arrows stay cut", () => {
   assert.deepEqual(found, []);
 });
 
-test("the homepage mirror matches the homepage", () => {
-  assert.equal(read("atom-bits-website.html"), read("index.html"));
+test("the old homepage mirror redirects home", () => {
+  assert.equal(existsSync(join(root, "atom-bits-website.html")), false);
+  for (const path of ["/atom-bits-website", "/atom-bits-website/", "/atom-bits-website.html"]) {
+    assert.equal(fileFor(path), null, path);
+    const rule = redirectFor(path);
+    assert.ok(rule, `${path} has no redirect`);
+    assert.equal(rule.to, "/");
+    assert.equal(rule.status, "301");
+  }
 });
 
 test("every page has one h1, a title, and the shared stylesheet", () => {
@@ -159,4 +166,120 @@ test("pages say the facts the same way as the facts table", () => {
 test("the resume link points at the current resume", () => {
   assert.ok(existsSync(join(root, "assets/Ian-Harman-Resume.pdf")));
   assert.match(read("ian-harman/index.html"), /href="\/assets\/Ian-Harman-Resume\.pdf"/);
+});
+
+test("directory hubs and old Claims Native paths redirect once", () => {
+  const rules = {
+    "/guides": "/writing/",
+    "/guides/": "/writing/",
+    "/insights": "/writing/",
+    "/insights/": "/writing/",
+    "/claimsnative/billing-setup": "https://claimsnative.com/how-we-start/",
+    "/claimsnative/billing-setup/": "https://claimsnative.com/how-we-start/",
+    "/claimsnative/keep-your-ehr/": "https://claimsnative.com/",
+    "/claimsnative/remittance-and-deposits/": "https://claimsnative.com/learn/match-insurance-deposits/",
+    "/claimsnative/90-day-pilot/": "https://claimsnative.com/how-we-start/",
+    "/claimsnative/independent-practices/": "https://claimsnative.com/",
+    "/claimsnative/cloudflare-pages/robots.txt": "https://claimsnative.com/robots.txt",
+    "/claimsnative/cloudflare-pages/sitemap.xml": "https://claimsnative.com/sitemap.xml",
+    "/privacy-policy.html": "/privacy-policy",
+    "/privacy-policy/": "/privacy-policy",
+    "/support.html": "/support",
+    "/support/": "/support",
+  };
+  for (const [path, to] of Object.entries(rules)) {
+    const rule = redirectFor(path);
+    assert.ok(rule, `${path} has no redirect`);
+    assert.equal(rule.to, to, path);
+    assert.equal(rule.status, "301");
+  }
+  assert.equal(redirectFor("/guides/how-to-choose-a-healthcare-cto/"), undefined);
+  assert.equal(redirectFor("/work/bcbst/"), undefined);
+  assert.equal(redirectFor("/insights/why-automated-claims-need-control-states/"), undefined);
+});
+
+test("privacy and support canonicals are the clean URLs", () => {
+  for (const [file, url] of [["privacy-policy.html", "https://atomandbits.com/privacy-policy"], ["support.html", "https://atomandbits.com/support"]]) {
+    const html = read(file);
+    assert.ok(html.includes(`rel="canonical" href="${url}"`), file);
+    assert.ok(html.includes('name="robots" content="index,follow,max-image-preview:large"'), file);
+    assert.ok(html.includes(`property="og:url" content="${url}"`), file);
+    assert.ok(html.includes('property="og:image" content="https://atomandbits.com/assets/og-2026-10.png"'), file);
+    assert.equal(html.includes(`${url.split("/").pop()}.html"`), false, file);
+  }
+  for (const page of pages) {
+    assert.equal(read(page).includes("Photo placeholder"), false, page);
+    assert.equal(read(page).includes('href="/privacy-policy.html"'), false, page);
+    assert.equal(read(page).includes('href="/support.html"'), false, page);
+  }
+});
+
+test("sitemap lists the canonical indexable pages", () => {
+  const xml = read("sitemap.xml");
+  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const lastmods = [...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map((match) => match[1]);
+  assert.equal(locs.length, lastmods.length);
+  assert.equal(new Set(locs).size, locs.length);
+  for (const date of lastmods) assert.match(date, /^\d{4}-\d{2}-\d{2}$/);
+  const canonicals = [];
+  for (const page of pages) {
+    const html = read(page);
+    if (/name="robots" content="noindex"/.test(html)) continue;
+    const canonical = html.match(/rel="canonical" href="(https:\/\/atomandbits.com[^"]*)"/);
+    assert.ok(canonical, `${page} has no canonical`);
+    canonicals.push(canonical[1]);
+    assert.equal(html.includes('href="/favicon.ico"'), true, `${page} does not point at the icon`);
+  }
+  assert.deepEqual(locs.slice().sort(), canonicals.slice().sort());
+  for (const loc of locs) {
+    const path = new URL(loc).pathname;
+    assert.ok(fileFor(path), `${loc} does not resolve`);
+    assert.equal(loc.endsWith(".html"), false, loc);
+  }
+});
+
+test("structured data uses one Person and one Organization", () => {
+  const personId = "https://atomandbits.com/#ian-harman";
+  const orgId = "https://atomandbits.com/#organization";
+  for (const page of pages) {
+    const html = read(page);
+    if (/name="robots" content="noindex"/.test(html)) continue;
+    for (const [, json] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+      const data = JSON.parse(json);
+      const visit = (node) => {
+        if (Array.isArray(node)) return node.forEach(visit);
+        if (!node || typeof node !== "object") return;
+        const types = [].concat(node["@type"] || []);
+        if (types.includes("Person") && (node["@id"] === personId || node.name === "Ian Harman")) {
+          assert.equal(node.jobTitle, "VP Provider", page);
+          assert.equal(node["@id"], personId, page);
+          assert.deepEqual(node.sameAs, ["https://www.linkedin.com/in/ianjharman"], page);
+        }
+        if (node["@id"] === orgId && (types.includes("Organization") || types.includes("ProfessionalService"))) {
+          assert.equal(node.url, "https://atomandbits.com/", page);
+          assert.equal(node.logo.url, "https://atomandbits.com/assets/logo.png", page);
+          assert.match(node.description, /Advisory, fractional CTO and AI builds/, page);
+          assert.equal(node.sameAs, undefined, page);
+        }
+        if (types.includes("Service")) assert.equal(node.provider["@id"], orgId, page);
+        if (types.includes("FAQPage")) {
+          for (const question of node.mainEntity) {
+            assert.equal(html.includes(question.name), true, `${page}: ${question.name}`);
+            assert.equal(html.includes(question.acceptedAnswer.text), true, `${page}: answer`);
+          }
+        }
+        Object.values(node).forEach(visit);
+      };
+      visit(data);
+    }
+  }
+  const ico = readFileSync(join(root, "favicon.ico"));
+  assert.deepEqual([...ico.subarray(0, 4)], [0, 0, 1, 0]);
+  assert.ok(existsSync(join(root, "assets/logo.png")));
+  const llms = read("llms.txt");
+  assert.match(llms, /VP Provider/);
+  assert.match(llms, /https:\/\/atomandbits.com\/privacy-policy\)/);
+  assert.match(llms, /https:\/\/atomandbits.com\/support\)/);
+  assert.match(llms, /two business days/);
+  assert.doesNotMatch(llms, /founder-operator|lives under care|privacy-policy\.html|\/method\/healthcare-operating-systems|\$5,000|\$20,000/);
 });

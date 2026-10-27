@@ -8,11 +8,14 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 
 ## Project Structure
 
-- `index.html` - Static homepage
-- `atom-bits-website.html` - Historical mirror; keep synced with `index.html`
+- `index.html` - Static homepage. `/atom-bits-website` and `/atom-bits-website.html` 301 to `/`; do not recreate that copy
+- `llms.txt` - Short description of the site and its pages for answer engines
+- `favicon.ico`, `assets/logo.png` - Icon and Organization logo, rasterized from `assets/mark.svg`
+- `work/` - Case-study index. `/guides/` and `/insights/` 301 to `/writing/`
 - `site.css` - The one stylesheet: a 650px column, system sans font, black on white, one accent color
 - `site.js` - Mobile navigation, sample workflow controls, contact form submission, and click tracking; `ANALYTICS` at the top is empty by default (PostHog loads only when provider and key are set)
-- `worker/index.js` - Cloudflare Worker; runs only for `/api/contact` and emails each message to Ian from website@notify.atomandbits.com
+- `worker/index.js` - Cloudflare Worker; runs only for `/api/contact` and emails each message to Ian from website@notify.atomandbits.com. Keep `run_worker_first` limited to `/api/*`: Cloudflare does not apply `_redirects` to requests the Worker serves
+- `www-redirect/` - Separate Worker that 301s www.atomandbits.com to atomandbits.com
 - `wrangler.jsonc`, `.assetsignore`, `_redirects`, `404.html` - Cloudflare config, files kept off the web, 301s for moved URLs, not-found page
 - `how-i-work/`, `ian-harman/` - Ian's approach and background
 - `ai-fit-review/`, `agent-workflows/`, `product-technology-leadership/` - Product & AI assessment, Agent workflow pilot, Fractional leadership
@@ -22,7 +25,7 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 - `writing/` - Index of guides and insights
 - `contact/` - Form posts to `/api/contact`; reads `?topic=` (billing, company, regulated-ai, other); `contact/thanks/` is the no-JavaScript confirmation
 - `images/` - Ian's own photos; pages show marked placeholders until they arrive
-- `scripts/site.test.mjs`, `scripts/contact-worker.test.mjs` - Site checks and Worker tests (`node --test`)
+- `scripts/site.test.mjs`, `scripts/contact-worker.test.mjs`, `scripts/www-redirect.test.mjs` - Site checks and Worker tests (`node --test`)
 - Every page shares one nav and footer; update them on all pages together
 - No package.json or build step
 
@@ -51,4 +54,4 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 
 ## Deployment
 
-Run `npx wrangler@4.151.3 dev` for local review at http://127.0.0.1:8787; it serves the pages, applies `_redirects`, and runs the contact form, writing each simulated email under `.wrangler/tmp/email/`. `node --test scripts/site.test.mjs scripts/contact-worker.test.mjs` runs the checks; `.github/workflows/atomandbits-cloudflare.yml` runs them on every pull request and deploys `main` to the `atomandbits-site` Worker when the `atomandbits-production` environment has `CLOUDFLARE_API_TOKEN`. Anything new at the repository root is public unless `.assetsignore` lists it. Retired URLs get a 301 in `_redirects`. Use a review branch for unpublished changes. Keep the separate Claims Native deployment workflow intact.
+Run `npx wrangler@4.151.3 dev` for local review at http://127.0.0.1:8787; it serves the pages, applies `_redirects`, and runs the contact form, writing each simulated email under `.wrangler/tmp/email/`. `node --test scripts/site.test.mjs scripts/contact-worker.test.mjs scripts/www-redirect.test.mjs` runs the checks; `.github/workflows/atomandbits-cloudflare.yml` runs them on every pull request and deploys `main` to the `atomandbits-site` and `atomandbits-www-redirect` Workers when the `atomandbits-production` environment has `CLOUDFLARE_API_TOKEN`. Anything new at the repository root is public unless `.assetsignore` lists it. Retired URLs get a 301 in `_redirects`. Use a review branch for unpublished changes. Keep the separate Claims Native deployment workflow intact.

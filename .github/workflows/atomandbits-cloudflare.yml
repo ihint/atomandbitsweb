@@ -27,8 +27,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Test the pages, redirects and contact form Worker
-        run: node --test scripts/site.test.mjs scripts/contact-worker.test.mjs
+      - name: Test the pages, redirects, contact form and www Workers
+        run: node --test scripts/site.test.mjs scripts/contact-worker.test.mjs scripts/www-redirect.test.mjs
 
   deploy:
     needs: test
@@ -47,6 +47,14 @@ jobs:
           accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: "4.151.3"
           command: deploy
+      - name: Deploy the www redirect
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.151.3"
+          command: deploy --config www-redirect/wrangler.jsonc
       - name: Report a missing deploy token
         if: ${{ env.CLOUDFLARE_API_TOKEN == '' }}
         run: |

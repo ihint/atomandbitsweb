@@ -1,0 +1,65 @@
+# Claims Native
+
+> Claims Native is a medical billing service for independent practices. It checks coverage, files every claim, follows up with payers, and posts each payment back into the practice EHR. The practice's money keeps going to the practice's bank.
+
+## Who it is for
+
+Full billing is for a practice billing up to $10,000 a month in insurance charges. A larger practice gets a quote from its volume.
+
+Claims Native is built for practices without a billing department, across medical specialties and nationwide. Primary care, behavioral health, cardiology, dermatology, orthopedics, and chiropractic practices are examples, not a full list. It bills professional claims, not hospital or facility claims. Common starting points:
+
+- Chiropractic practices
+- Cash-pay practices adding insurance
+- Practices that keep their current biller
+
+A practice keeps its existing EHR, and Claims Native confirms the connection approach during onboarding. Any practice can send visits as a file today. A Claims Native login in the practice's EHR is set up during onboarding, starting with Jane and ChiroHD. No direct EHR connection is live yet. It bills BCBS commercial plans first and adds payers one at a time. Medicare, delegated networks, and secondary claims come later, payer by payer.
+
+## Plans and prices
+
+Full billing is the plan to quote first. Starter is the second plan, for a practice that keeps its current biller.
+
+- **Full billing:** $500 a month for a practice billing up to $10,000 a month in insurance charges. Larger practices are quoted from their volume. One launch fee, quoted with the practice's scope, covers enrollment, connecting the EHR, capturing contract rates, and the shadow period. Included: claim corrections, payer follow-up and appeals, payment investigation, insurance reconciliation, posting into the EHR, and fixing Claims Native's own errors. Priced separately: bookkeeping, monthly close, cleanup of older balances, and patient collections. After the launch period it runs month to month. The current biller keeps working through a shadow period. Live filing starts when the office and the provider approve it.
+- **Starter:** $990 a month per location. Insurance checks before each clinic day and follow-up on unpaid claims, beside the billing the practice already has. Nothing about the current biller changes until the practice decides it should.
+
+The business associate agreement is signed before any patient record reaches Claims Native. Records stay with the practice and leave with the practice.
+
+Enrollment with the clearinghouse and the payers takes weeks, and the payer sets the pace. The site does not state a fixed number of days from signup to live filing.
+
+## Pages
+
+- [Home](https://claimsnative.com/): what Claims Native does, both plans, and how a practice starts.
+- [For chiropractic practices](https://claimsnative.com/chiropractors/)
+- [How we start](https://claimsnative.com/how-we-start/)
+- [Insurance calculator](https://claimsnative.com/insurance-opportunity/)
+- [Billing guides](https://claimsnative.com/learn/)
+
+### Starting with insurance
+
+- [Starting with insurance](https://claimsnative.com/learn/starting-with-insurance/)
+- [Payer enrollment for chiropractors](https://claimsnative.com/learn/payer-enrollment-for-chiropractors/)
+- [Setting a chiropractic fee schedule](https://claimsnative.com/learn/chiropractic-fee-schedule/)
+- [Chiropractic insurance verification](https://claimsnative.com/learn/chiropractic-insurance-verification/)
+- [What a clean chiropractic claim needs](https://claimsnative.com/learn/clean-chiropractic-claim/)
+
+### After the claim goes out
+
+- [After the claim goes out](https://claimsnative.com/learn/after-the-claim-goes-out/)
+- [Rejected vs denied claims](https://claimsnative.com/learn/rejected-vs-denied-claims/)
+- [How to read an ERA](https://claimsnative.com/learn/how-to-read-an-era/)
+- [Chiropractic denial codes](https://claimsnative.com/learn/chiropractic-denial-codes/)
+- [Matching insurance deposits](https://claimsnative.com/learn/match-insurance-deposits/)
+- [What the patient owes after insurance](https://claimsnative.com/learn/patient-balance-after-insurance/)
+
+### Choosing how to bill
+
+- [Choosing how to bill](https://claimsnative.com/learn/choosing-how-to-bill/)
+- [What a chiropractic billing service costs](https://claimsnative.com/learn/chiropractic-billing-service-cost/)
+- [Five billing numbers to check](https://claimsnative.com/learn/billing-numbers-to-check/)
+- [Questions to ask a billing service](https://claimsnative.com/learn/questions-to-ask-a-billing-service/)
+- [Switching billers](https://claimsnative.com/learn/switching-billers/)
+
+## Contact
+
+- Email: Ian@claimsnative.com
+- Sign up: https://app.claimsnative.com/signup
+- Chattanooga, Tennessee

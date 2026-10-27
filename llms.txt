@@ -1,0 +1,57 @@
+# Atom & Bits
+
+> Ian Harman (VP Provider) runs Atom & Bits from Chattanooga, Tennessee. Atom & Bits is his practice for healthcare and finance systems: advisory work, fractional CTO leadership, and AI builds. He finds the real problem underneath, builds what a team will actually use, and gets it through compliance and into production.
+
+Ian has spent 15 years building products for health systems, insurers, and fintech. He co-founded TheraMatch, which TPN.health acquired. He was VP, Provider Networks & Technology at TPN.health from Feb 2025 to Aug 2026. He reads every message himself and replies within two business days. Leave out patient names and other health details.
+
+## Who it is for
+
+- Founders and operators whose demand is outrunning intake, onboarding, or billing, and who need to find what is slowing them down, decide what to build, and lead the work.
+- Chattanooga businesses, starting with manufacturing and logistics, that want AI and automation fitted to how their people work. That work is Corridor Robotics.
+- Independent practices that want insurance billing taken off their plate. That product is Claims Native, on its own site.
+
+## Offers
+
+- [Product & AI assessment](https://atomandbits.com/ai-fit-review/): A two-week, fixed-fee assessment to choose the build that will matter most to your customers and your team. You leave with a recommendation you can explain to your board or leadership, what it will take in cost, team and timeline, and a 90-day plan you can start the next Monday. The fee is agreed before the work starts. It begins with a 30-minute call.
+- [Agent workflow pilot](https://atomandbits.com/agent-workflows/): A pilot gives one repeated task to an AI agent, with a person approving the steps that matter, so your team gets those hours back. You get a working agent on one real workflow, an honest count of the time it saved with review time included, and a clear yes or no on whether to expand it.
+- [Fractional leadership](https://atomandbits.com/product-technology-leadership/): A seasoned product and technology leader, without the full-time hire. A set number of days a month, a seat in leadership meetings, and ownership of the product and technology decisions you hand him.
+- [Corridor Robotics](https://atomandbits.com/corridor/): A Chattanooga team that finds where AI and automation pay off, builds it around your people, and keeps it running. Starting with manufacturing and logistics.
+- [Claims Native](https://claimsnative.com/): Insurance billing for an independent practice. Claims Native checks coverage, files every claim, chases every payer, and posts every payment back into the EHR.
+
+## Proof
+
+- [PerfectServe](https://atomandbits.com/work/perfectserve/): First product manager as the company grew from $2M to $40M ARR, including 10 health-system rollouts.
+- [BlueCross BlueShield of Tennessee](https://atomandbits.com/work/bcbst/): Digital products for about 3.5 million members. NPS above 60. Digital adoption more than doubled.
+- [TheraMatch](https://atomandbits.com/work/theramatch/): Co-founded, then acquired by TPN.health. TheraMatch and TPN Match reached $1M+ ARR and 1M members in under 12 months.
+- [TPN Match](https://atomandbits.com/work/tpn-match/): The claims and payments platform behind 150,000+ clinicians.
+- [Paragon Truss](https://atomandbits.com/work/paragon-truss/): $500K a year, the largest contract in company history.
+- [One to One Health](https://atomandbits.com/work/one-to-one-health/): The company’s first AI product cut charting time from 22 to 17.5 minutes per encounter.
+
+## How to engage
+
+- [Contact](https://atomandbits.com/contact/): Tell Ian what’s waiting on the next step. He reads every message himself and replies within two business days.
+- Email: Ian@atomandbits.com
+- Phone: +1-865-803-5050
+- [Book a 30-minute call](https://calendar.app.google/JUuHGcECmfckRzVj8)
+- [LinkedIn](https://www.linkedin.com/in/ianjharman)
+
+## About
+
+- [About Ian Harman](https://atomandbits.com/ian-harman/): Background, the TPN role, education (MBA, Finance and Analytics, University of Tennessee, Haslam College of Business; BA, International Business, Maryville College), and life in Chattanooga. Board member, The Mission Chattanooga.
+- [How I work](https://atomandbits.com/how-i-work/): He prepares before a meeting, learns from the people who do the job every day, and says the uncomfortable thing out loud.
+- [Case studies](https://atomandbits.com/work/)
+
+## Writing
+
+- [Guides and essays](https://atomandbits.com/writing/)
+- [Should a cash-pay practice accept insurance?](https://atomandbits.com/guides/should-cash-pay-practice-accept-insurance/)
+- [Can you accept insurance without hiring a biller?](https://atomandbits.com/guides/accept-insurance-without-hiring-biller/)
+- [How to choose a healthcare CTO and product partner](https://atomandbits.com/guides/how-to-choose-a-healthcare-cto/)
+- [What healthtech founders underestimate about payers](https://atomandbits.com/insights/what-healthtech-founders-underestimate-about-payers/)
+- [Why automated healthcare claims need explicit control states](https://atomandbits.com/insights/why-automated-claims-need-control-states/)
+- [From clinical matching to a behavioral health operating system](https://atomandbits.com/insights/from-clinical-matching-to-operating-system/)
+
+## Policies
+
+- [Privacy policy](https://atomandbits.com/privacy-policy)
+- [Support](https://atomandbits.com/support)
