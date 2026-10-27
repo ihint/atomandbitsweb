@@ -170,6 +170,9 @@ test("the resume link points at the current resume", () => {
 
 test("directory hubs and old Claims Native paths redirect once", () => {
   const rules = {
+    "/corridor": "https://corridorrobotics.com/",
+    "/corridor/": "https://corridorrobotics.com/",
+    "/corridor/team": "https://corridorrobotics.com/",
     "/guides": "/writing/",
     "/guides/": "/writing/",
     "/insights": "/writing/",
