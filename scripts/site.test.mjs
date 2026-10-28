@@ -151,14 +151,14 @@ test("pages say the facts the same way as the facts table", () => {
   const text = (page) => read(page).replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ");
   const home = text("index.html");
   // Homepage leads with product decisions; the full career figures stay on About.
-  for (const fact of ["3.5M members", "$1M+ ARR and 1M members", "$500K a year, the largest contract in company history", "NPS above 60", "$2M to $40M ARR", "22 to 17.5 minutes per encounter", "with clinician and patient satisfaction maintained or improved"]) {
+  for (const fact of ["3.5M members", "$1M+ ARR and 1M members", "$500K annual enterprise contract", "NPS above 60", "$2M to $40M ARR", "22 to 17.5 minutes per encounter", "with clinician and patient satisfaction maintained or improved"]) {
     assert.ok(home.includes(fact), `homepage is missing "${fact}"`);
   }
   const about = text("ian-harman/index.html");
-  for (const fact of ["VP, Provider Networks & Technology at TPN.health from Feb 2025 to Aug 2026", "After TPN raised $12M", "1M members in under a year", "150,000+ clinicians", "$2M to $40M ARR", "about 3.5M members"]) {
+  for (const fact of ["VP, Provider Networks & Technology at TPN.health from Feb 2025 to Aug 2026", "After TPN raised $12M", "1M members in under a year", "150,000+ clinicians", "$2M to $40M ARR", "3.5M members"]) {
     assert.ok(about.includes(fact), `About is missing "${fact}"`);
   }
-  assert.ok(text("work/paragon-truss/index.html").includes("largest contract in company history"));
+  assert.ok(text("work/paragon-truss/index.html").includes("$500,000 per year"));
   for (const page of pages) {
     assert.doesNotMatch(text(page), /lives under care|\$1 million in ARR/, `${page} uses the old TheraMatch wording`);
   }
