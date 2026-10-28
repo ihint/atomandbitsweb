@@ -19,3 +19,6 @@ On October 27, the existing short link resolved to a page titled “30 minutes w
 - Source and prose review: authoring agent, not independent review or Ian’s approval. The wording audit is in portfolio-wording-review.md. CraftingCopy source: https://craftingcopy.ai/ and its local README; no measured commercial outcome inferred.
 - 9 annotations complete; annotation 10 has the requested wording, with booking integration blocked by Google sign-in. Draft PR only; no merge or production deployment.
 - Screenshots: atom-portfolio-desktop.png and atom-portfolio-phone.png in the current task’s visualization folder.
+
+## Replacement link supplied
+Ian supplied https://calendar.app.google/tGnKdarePLAwGfhW8. It now replaces the old booking link across the homepage, contact page, assessment page and llms.txt. A fresh browser visit resolves to the same schedule and still shows a 30-minute title with 60-minute appointments. The owner was asked to update the schedule duration and title. The booking blocker remains until the public page shows 15 minutes.
