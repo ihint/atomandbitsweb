@@ -6,20 +6,25 @@ import { runInNewContext } from 'node:vm';
 const source = readFileSync(new URL('../home.js', import.meta.url), 'utf8');
 function setup({ reduced = false, contextAvailable = true } = {}) {
     const events = {}, frames = new Map(), attributes = {};
-    let nextFrame = 1, observer, draws = 0;
+    let nextFrame = 1, observer, draws = 0, time = 1, strokes = [], start;
     const media = { matches: reduced, addEventListener: (_, cb) => { events.reduce = cb; } };
     const toggle = { hidden: true, textContent: '', setAttribute: (key, value) => { attributes[key] = value; }, addEventListener: (_, cb) => { events.click = cb; } };
-    const context = { clearRect() { draws++; }, setTransform() {}, beginPath() {}, arc() {}, fill() {} };
-    const hero = { getBoundingClientRect: () => ({ width: 1280, height: 800 }) };
+    const context = { clearRect() { draws++; strokes = []; }, setTransform() {}, beginPath() {}, arc() {}, fill() {},
+        moveTo(x, y) { start = [x, y]; }, lineTo(x, y) { strokes.push({ a: start, b: [x, y], color: this.strokeStyle, width: this.lineWidth }); }, stroke() {} };
+    const play = { hidden: true, classList: { toggle() {} }, getBoundingClientRect: () => ({ top: 650 }) };
+    const trigger = { disabled: false, addEventListener: (_, cb) => { events.find = cb; } };
+    const status = { textContent: '' };
+    const hero = { getBoundingClientRect: () => ({ left: 0, top: 0, width: 1280, height: 800 }), addEventListener: (name, cb) => { events[name] = cb; } };
     const canvas = { getContext: () => contextAvailable ? context : null, closest: () => hero };
-    const document = { hidden: false, getElementById: () => canvas, querySelector: () => toggle, addEventListener: (name, cb) => { events[name] = cb; } };
+    const document = { hidden: false, getElementById: id => id === 'product-field' ? canvas : status, querySelector: selector => ({ '.motion-toggle': toggle, '.swarm-play': play, '.swarm-trigger': trigger })[selector], addEventListener: (name, cb) => { events[name] = cb; } };
     runInNewContext(source, {
         document, window: { matchMedia: () => media, devicePixelRatio: 3, IntersectionObserver: true, addEventListener: (name, cb) => { events[name] = cb; } },
         requestAnimationFrame: cb => { const id = nextFrame++; frames.set(id, cb); return id; },
         cancelAnimationFrame: id => frames.delete(id),
         IntersectionObserver: class { constructor(cb) { observer = cb; } observe() {} },
     });
-    return { events, frames, attributes, media, toggle, document, canvas, view: visible => observer([{ isIntersecting: visible }]), draws: () => draws,
+    return { events, frames, attributes, media, toggle, play, trigger, status, document, canvas, strokes: () => strokes, view: visible => observer([{ isIntersecting: visible }]), draws: () => draws,
+        advance(seconds) { for (let i = 0; i < seconds * 60; i++) { time += 1000 / 60; this.tick(time); } },
         tick(time) { const [id, cb] = frames.entries().next().value; frames.delete(id); cb(time); } };
 }
 
@@ -64,4 +69,65 @@ test('a browser without canvas keeps the optional control hidden', () => {
     const env = setup({ contextAvailable: false });
     assert.equal(env.frames.size, 0);
     assert.equal(env.toggle.hidden, true);
+});
+
+
+test('tap or keyboard activation gathers a route and announces the result once', () => {
+    const env = setup();
+    assert.equal(env.play.hidden, false);
+    env.events.find();
+    assert.equal(env.status.textContent, 'Finding the connections…');
+    env.advance(3);
+    assert.equal(env.status.textContent, 'A way through. Want to try another?');
+    const route = env.strokes().filter(s => s.width === 2);
+    assert.ok(route.length >= 5, 'a connected route crosses the graph');
+    for (let i = 1; i < route.length; i++) assert.deepEqual(route[i].a, route[i - 1].b);
+    const end = route.at(-1).b;
+    env.events.find(); env.advance(3);
+    assert.notDeepEqual(env.strokes().filter(s => s.width === 2).at(-1).b, end);
+    env.advance(10);
+    assert.ok(env.strokes().filter(s => s.width === 2).length > 0, 'button result remains visible');
+    assert.equal(env.frames.size, 1);
+});
+
+test('cursor chooses a destination; leaving returns the field to rest', () => {
+    const env = setup();
+    const point = (x, y) => ({ pointerType: 'mouse', clientX: x, clientY: y, target: { closest: () => null } });
+    env.events.pointermove(point(1180, 250)); env.advance(3);
+    const first = env.strokes().filter(s => s.width === 2).at(-1).b;
+    env.events.pointermove(point(1180, 500)); env.advance(3);
+    assert.notDeepEqual(env.strokes().filter(s => s.width === 2).at(-1).b, first);
+    env.events.pointerleave(); env.advance(3);
+    assert.equal(env.strokes().length, 0);
+});
+
+test('touch scrolling does not start a swarm and paused motion ignores pointer input', () => {
+    const env = setup();
+    env.events.pointermove({ pointerType: 'touch' }); env.advance(1);
+    assert.equal(env.strokes().length, 0);
+    env.events.click(); const count = env.draws();
+    env.events.pointermove({ pointerType: 'mouse' }); env.events.find();
+    assert.equal(env.draws(), count);
+    assert.equal(env.frames.size, 0);
+    assert.equal(env.trigger.disabled, true);
+});
+
+test('reduced motion permits a new static route without starting a loop', () => {
+    const env = setup({ reduced: true });
+    const first = env.strokes().filter(s => s.width === 2).at(-1).b;
+    env.events.find();
+    assert.notDeepEqual(env.strokes().filter(s => s.width === 2).at(-1).b, first);
+    assert.equal(env.status.textContent, 'A way through. Want to try another?');
+    assert.equal(env.frames.size, 0);
+});
+
+
+test('a paused visitor can still choose a static path after enabling reduced motion', () => {
+    const env = setup(); env.events.click();
+    env.media.matches = true; env.events.reduce();
+    assert.equal(env.trigger.disabled, false);
+    const first = env.strokes().filter(s => s.width === 2).at(-1).b;
+    env.events.find();
+    assert.notDeepEqual(env.strokes().filter(s => s.width === 2).at(-1).b, first);
+    assert.equal(env.frames.size, 0);
 });

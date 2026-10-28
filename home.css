@@ -169,3 +169,24 @@
     .product-home h2 { font-size: 2rem; }
     .chapter-layout, .work-row { display: block; }
 }
+
+/* The optional experiment lives beside the words, with a tap/keyboard entry. */
+.hero-art { pointer-events: none; }
+.swarm-play { position: absolute; top: 72%; left: 59%; width: 34%; text-align: center; }
+.swarm-caption, .swarm-status { font-size: .72rem; color: var(--muted); line-height: 1.5; margin: 0 0 8px; }
+.swarm-trigger { border: 0; border-bottom: 1px solid #6d85a0; background: transparent; color: #ffffff; font: inherit; font-size: .82rem; padding: 10px 0; min-height: 44px; cursor: pointer; }
+.swarm-trigger span { color: var(--brand-orange); margin-left: 10px; }
+.swarm-trigger:hover { color: var(--brand-orange); border-color: var(--brand-orange); }
+.swarm-trigger:focus-visible, .motion-toggle:focus-visible { outline: 2px solid var(--brand-orange); outline-offset: 5px; }
+.swarm-trigger:disabled { opacity: .5; cursor: default; }
+.swarm-status { min-height: 1.5em; margin-top: 8px; }
+.touch-hint { display: none; }
+.swarm-play.is-still .swarm-caption { visibility: hidden; }
+@media (hover: none) { .pointer-hint { display: none; } .touch-hint { display: inline; } }
+@media (max-width: 1000px) {
+    .product-hero { flex-direction: column; align-items: stretch; padding-top: 150px; padding-bottom: 110px; }
+    .swarm-play { position: relative; top: auto; left: auto; width: 100%; margin-top: 270px; }
+    .hero-art { opacity: .85; }
+    .hero-art::after { background: linear-gradient(180deg, #071b34cc 0, transparent 75%); }
+}
+@media print { .swarm-play { display: none; } }
