@@ -42,4 +42,4 @@ Partner directly with me:
 
 Or book 15 minutes
 
-Paragon’s outcome is “$500K annual enterprise contract.” PerfectServe has no separate rollout/disclaimer line. The booking label is pending a matching schedule; see the eval note.
+Paragon’s outcome is “$500K annual enterprise contract.” PerfectServe has no separate rollout/disclaimer line. The public booking schedule now confirms 15-minute appointments; see the eval note.
