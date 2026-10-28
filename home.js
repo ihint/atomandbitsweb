@@ -14,7 +14,10 @@
     let width = 0, height = 0, frame = 0, phase = 0, lastTime = 0;
     let inView = true, paused = false, active = false, blend = 0, settled = 0;
     let pointerInside = false, pinned = false, announce = false;
-    let nodes = [], edges = [], route = [], goal = 27, scene;
+    const columns = 8, rows = 5, origin = 2;
+    const lastColumn = (columns - 1) * rows, defaultGoal = lastColumn + origin;
+    const travelDelay = .55, travelDuration = 2.1, arrivalTime = travelDelay + travelDuration;
+    let nodes = [], edges = [], route = [], goal = defaultGoal, scene;
     let seed = 42;
     const random = () => {
         seed = (seed * 1664525 + 1013904223) >>> 0;
@@ -26,23 +29,23 @@
         return { x: Math.cos(angle) * ring, y, z: Math.sin(angle) * ring,
             drift: random(), size: .55 + random(), warm: random() > .35 };
     });
-    const grid = Array.from({ length: 30 }, (_, i) => ({
-        x: (Math.floor(i / 5) + (random() - .5) * .34) / 5,
-        y: (i % 5 + (random() - .5) * .34) / 4,
+    const grid = Array.from({ length: columns * rows }, (_, i) => ({
+        x: (Math.floor(i / rows) + (random() - .5) * .34) / (columns - 1),
+        y: (i % rows + (random() - .5) * .34) / (rows - 1),
     }));
     const links = [];
-    for (let col = 0; col < 6; col++) {
-        for (let row = 0; row < 5; row++) {
-            const i = col * 5 + row;
-            if (col < 5) links.push([i, i + 5]);
-            if (row < 4) links.push([i, i + 1]);
-            if (col < 5 && row < 4 && random() > .4) links.push([i, i + 6]);
+    for (let col = 0; col < columns; col++) {
+        for (let row = 0; row < rows; row++) {
+            const i = col * rows + row;
+            if (col < columns - 1) links.push([i, i + rows]);
+            if (row < rows - 1) links.push([i, i + 1]);
+            if (col < columns - 1 && row < rows - 1 && random() > .4) links.push([i, i + rows + 1]);
         }
     }
     // Dijkstra on the small, connected network. Recomputed only on target changes.
     function solve(target) {
         const distances = nodes.map(() => Infinity), previous = [], visited = new Set();
-        distances[2] = 0;
+        distances[origin] = 0;
         for (let count = 0; count < nodes.length; count++) {
             let closest = -1;
             for (let i = 0; i < nodes.length; i++) {
@@ -58,7 +61,7 @@
             }
         }
         route = [target];
-        while (route[0] !== 2) route.unshift(previous[route[0]]);
+        while (route[0] !== origin) route.unshift(previous[route[0]]);
     }
     function line(a, b, color, weight = 1) {
         context.strokeStyle = color; context.lineWidth = weight;
@@ -70,7 +73,7 @@
     }
     function draw(step = 0) {
         context.clearRect(0, 0, width, height);
-        const progress = reduced.matches ? 1 : Math.max(0, Math.min(1, (settled - .55) / 1.65));
+        const progress = reduced.matches ? 1 : Math.max(0, Math.min(1, (settled - travelDelay) / travelDuration));
         const spread = 1 - progress;
         const radius = Math.min(scene.w * .67, scene.h * .69);
         const centerX = scene.x + scene.w * .58, centerY = scene.y + scene.h * .5;
@@ -109,10 +112,30 @@
                 const a = nodes[route[i]], b = nodes[route[i + 1]], t = Math.min(1, Math.max(0, segments - i));
                 if (t) line(a, { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t }, `rgba(255,130,0,${blend * .9})`, 2);
             }
-            for (const i of [2, goal]) {
+            for (let i = 1; i < route.length - 1; i++) {
+                const reached = Math.max(0, Math.min(1, (segments - i) * 3));
+                if (!reached) continue;
+                const n = nodes[route[i]];
+                dot(n.x, n.y, 8, `rgba(255,130,0,${blend * reached * .13})`);
+                dot(n.x, n.y, 3, `rgba(255,130,0,${blend * reached})`);
+            }
+            for (const i of [origin, goal]) {
                 const n = nodes[i];
                 dot(n.x, n.y, 13, `rgba(255,130,0,${blend * .1})`);
                 dot(n.x, n.y, 4, `rgba(255,130,0,${blend})`);
+            }
+            // One soft arrival bloom, then steady light. No repeating flash.
+            const arrival = reduced.matches ? 1 : Math.max(0, Math.min(1, (settled - arrivalTime) / .8));
+            if (arrival > 0) {
+                const light = arrival * arrival * (3 - 2 * arrival);
+                const n = nodes[goal], radius = Math.min(46, scene.w * .1) * (.7 + light * .3);
+                const glow = context.createRadialGradient(n.x, n.y, 0, n.x, n.y, radius);
+                glow.addColorStop(0, `rgba(255,169,64,${blend * light * .65})`);
+                glow.addColorStop(.35, `rgba(255,130,0,${blend * light * .3})`);
+                glow.addColorStop(1, 'rgba(255,130,0,0)');
+                dot(n.x, n.y, radius, glow);
+                dot(n.x, n.y, 4 + light * 3, `rgba(255,170,70,${blend * light})`);
+                dot(n.x, n.y, 2.5, `rgba(255,255,255,${blend * light})`);
             }
         }
     }
@@ -124,12 +147,12 @@
         lastTime = time; phase += dt;
         blend += ((active ? 1 : 0) - blend) * (1 - Math.exp(-dt * 2.8));
         settled += dt;
-        if (announce && settled > 2.2) { status.textContent = 'A way through. Want to try another?'; announce = false; }
+        if (announce && settled >= arrivalTime) { status.textContent = 'A way through. Want to try another?'; announce = false; }
         draw(dt); frame = requestAnimationFrame(tick);
     }
     function choose(target, fromButton = false) {
         if (paused && !reduced.matches) return;
-        if (target === 2) target = 27;
+        if (target === origin) target = defaultGoal;
         if (target !== goal || !active || fromButton) {
             goal = target; solve(goal); settled = 0;
         }
@@ -179,7 +202,7 @@
         choose(nearest);
     }, { passive: true });
     hero.addEventListener('pointerleave', () => { pointerInside = false; if (!pinned) active = false; });
-    trigger.addEventListener('click', () => { pointerInside = false; choose(25 + ((goal + 2) % 5), true); });
+    trigger.addEventListener('click', () => { pointerInside = false; choose(lastColumn + ((goal + 2) % rows), true); });
     toggle.addEventListener('click', () => { paused = !paused; sync(); });
     reduced.addEventListener('change', sync);
     document.addEventListener('visibilitychange', sync);
