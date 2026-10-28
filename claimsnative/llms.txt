@@ -6,13 +6,13 @@
 
 Full billing is for a practice billing up to $10,000 a month in insurance charges. A larger practice gets a quote from its volume.
 
-Claims Native is built for practices without a billing department:
+Claims Native is built for practices without a billing department, across medical specialties and nationwide. Primary care, behavioral health, cardiology, dermatology, orthopedics, and chiropractic practices are examples, not a full list. It bills professional claims, not hospital or facility claims. Common starting points:
 
-- Chiropractic practices on ChiroHD or Jane
+- Chiropractic practices
 - Cash-pay practices adding insurance
 - Practices that keep their current biller
 
-ChiroHD and Jane are the EHRs it takes visits from today. Other systems wait on a sample export from a practice. It bills BCBS commercial plans first. Medicare, delegated networks, and secondary claims come later, payer by payer.
+A practice keeps its existing EHR, and Claims Native confirms the connection approach during onboarding. Any practice can send visits as a file today. A Claims Native login in the practice's EHR is set up during onboarding, starting with Jane and ChiroHD. No direct EHR connection is live yet. It bills BCBS commercial plans first and adds payers one at a time. Medicare, delegated networks, and secondary claims come later, payer by payer.
 
 ## Plans and prices
 
