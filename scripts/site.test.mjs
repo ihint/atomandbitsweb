@@ -151,8 +151,17 @@ test("pages say the facts the same way as the facts table", () => {
   const text = (page) => read(page).replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ");
   const home = text("index.html");
   // Homepage leads with product decisions; the full career figures stay on About.
-  for (const fact of ["3.5M members", "$1M+ ARR and 1M members", "$500K annual enterprise contract", "NPS above 60", "$2M to $40M ARR", "22 to 17.5 minutes per encounter", "with clinician and patient satisfaction maintained or improved"]) {
+  for (const fact of ["$2M to $40M ARR", "300K to 1.1M+", "Acquired in six months", "1M+ members and $1M+ ARR across 120+ health plans in under 12 months", "worth $500K a year", "NPS of 60+", "3.5 million members", "22 to 17.5 minutes per encounter", "with clinician and patient satisfaction maintained or improved"]) {
     assert.ok(home.includes(fact), `homepage is missing "${fact}"`);
+  }
+  // Selected work leads with results, in the order Ian chose.
+  const order = ["/work/paragon-truss/", "/work/one-to-one-health/", "/work/theramatch/", "/work/bcbst/", "/work/perfectserve/"];
+  for (const page of ["index.html", "work/index.html"]) {
+    const html = read(page);
+    const list = html.slice(html.indexOf(page === "index.html" ? 'class="work-list"' : 'aria-label="Case studies"'));
+    const positions = order.map((href) => list.indexOf(`<a href="${href}"`));
+    assert.ok(positions.every((at) => at >= 0), `${page} is missing a case`);
+    assert.deepEqual(positions, [...positions].sort((a, b) => a - b), `${page} lists the cases out of order`);
   }
   const about = text("ian-harman/index.html");
   for (const fact of ["VP, Provider Networks & Technology at TPN.health from Feb 2025 to Aug 2026", "After TPN raised $12M", "1M members in under a year", "150,000+ clinicians", "$2M to $40M ARR", "3.5M members"]) {

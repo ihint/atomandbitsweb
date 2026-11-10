@@ -120,7 +120,7 @@ main.wide > section, main.wide > article, main.wide > div { margin-bottom: 0; }
 .work-item h3 a { color: var(--text); }
 .work-item h2 a:hover,
 .work-item h3 a:hover { color: var(--accent); }
-.result { font-style: italic; }
+.result { font-weight: 650; }
 .proof-strip { display: flex; flex-wrap: wrap; gap: 1.2rem 2rem; margin: 2rem 0; }
 .proof-strip > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
 .proof-item { min-width: 0; }

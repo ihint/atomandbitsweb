@@ -83,7 +83,7 @@
 .work-row h3 a:hover { color: var(--accent); }
 .work-row h3 a span { font: 1.2rem var(--font); color: var(--accent); white-space: nowrap; }
 .work-row > div > p:not(.work-type) { font-size: .94rem; }
-.work-row .work-outcome { color: var(--accent); font-size: .81rem !important; margin: 0; }
+.work-row > div > p.work-outcome { color: var(--text); font-size: 1.0625rem; font-weight: 600; line-height: 1.5; margin: 0 0 12px; }
 .start { background: #0c2544; }
 .offer-list { margin-top: 55px; }
 .offer-list > a { display: grid; grid-template-columns: 38px 1fr 24px; gap: 16px; border-top: 1px solid var(--line); padding: 25px 0; text-decoration: none; color: var(--text); align-items: center; }
