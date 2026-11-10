@@ -11,7 +11,7 @@ Ian has spent 15 years building products for health systems, insurers, and finte
 
 ## Offers
 
-- [Fractional CPO/CTO](https://atomandbits.com/product-technology-leadership/): A seasoned product and technology leader, without the full-time hire. A set number of days a month, a seat in leadership meetings, and ownership of the product and technology decisions you hand him.
+- [Fractional CPO/CTO](https://atomandbits.com/product-technology-leadership/): A seasoned product and technology leader, without the full-time hire. Four to 20 days a month, a seat in leadership meetings, and ownership of the product and technology decisions you hand him. One-month minimum, then month to month. A fixed monthly fee, set before the start.
 - [Product & AI assessment](https://atomandbits.com/ai-fit-review/): The paid, fixed-scope way to start. A two-week, fixed-fee assessment to choose the build that will matter most to your customers and your team. You leave with a recommendation you can explain to your board or leadership, what it will take in cost, team and timeline, and a 90-day plan you can start the next Monday. The fee is agreed before the work starts. It begins with a 15-minute call.
 - [Agent workflow pilot](https://atomandbits.com/agent-workflows/): A pilot gives one repeated task to an AI agent, with a person approving the steps that matter, so your team gets those hours back. You get a working agent on one real workflow, an honest count of the time it saved with review time included, and a clear yes or no on whether to expand it.
 

@@ -25,5 +25,5 @@ A figure Ian did not supply; a price, quote, days or term he has not typed; a ti
 Ian chose to remove the resume download. The About link and `assets/Ian-Harman-Resume.pdf` are gone, and the old URL returns a 301 to `/ian-harman/` on the local server. A test fails if a page mentions a resume or the redirect is missing.
 
 ## Not done
-- Fractional leadership page: waits on days per month (20 a month is full-time), minimum term wording, first-30-days copy and a price from Ian.
+- Fractional leadership page: the starting price. Ian confirmed four to 20 days a month and a one-month minimum; the page states both, who it is for and what the first 30 days produce, and carries a TODO where the price goes. No figure is published. Ian has not yet read the page copy.
 - Testimonials: three placeholders, visible on the branch. Ian supplies the quotes. Do not publish while one remains.

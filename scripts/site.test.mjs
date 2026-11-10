@@ -215,6 +215,21 @@ test("the homepage and About say fractional CPO/CTO", () => {
   for (const page of pages) assert.doesNotMatch(read(page), /Fractional CPO and healthcare strategy|advisory, fractional CTO and founder work/, page);
 });
 
+test("the fractional leadership page states its terms", () => {
+  const html = read("product-technology-leadership/index.html");
+  const body = html.split("<main")[1].replace(/<[^>]+>/g, " ");
+  for (const term of ["Which decisions keep landing on you?", "healthcare company that sells to health plans or providers", "four to 20 days a month", "The minimum is one month, and after that we go month to month.", "The first 30 days", "a 90-day plan with owners, cost and how we’ll judge it.", "You pay a fixed monthly fee for the days we agree, and we set it before we start.", "How does next week look?", "Book 15 minutes"]) {
+    assert.ok(body.includes(term), `leadership page is missing "${term}"`);
+  }
+  // No rate appears until Ian supplies one. ($12M Series A is a fact, not a price.)
+  assert.doesNotMatch(body, /\$[\d,.]+[KkM]?\s*(a|per|\/|an)\s*(month|day|hour|week)/);
+});
+
+// Reported as a todo, not a failure, until Ian sets the figure.
+test("the fractional leadership page shows Ian's starting price", { todo: "Ian supplies the starting price" }, () => {
+  assert.equal(read("product-technology-leadership/index.html").includes("TODO(Ian)"), false);
+});
+
 test("the site has no resume download and the old link lands on About", () => {
   assert.equal(existsSync(join(root, "assets/Ian-Harman-Resume.pdf")), false);
   for (const page of pages) assert.doesNotMatch(read(page), /resume/i, `${page} mentions a resume`);
