@@ -12,8 +12,8 @@
 .product-home .site-nav { position: absolute; inset: 0 0 auto; z-index: 5; padding: 30px 4.5vw; }
 .product-home .nav-inner { max-width: 1440px; gap: 24px; }
 .product-home .brand { font-family: Georgia, serif; font-weight: 400; font-size: 1.65rem; white-space: nowrap; }
-.product-home .nav-links { font-size: .78rem; gap: 20px; }
-.product-home .nav-cta { border: 1px solid #6d85a0; background: transparent; color: var(--text); border-radius: 0; font-size: .78rem; padding: 10px 16px; }
+.product-home .nav-links { font-size: .9rem; gap: 26px; }
+.product-home .nav-cta { border: 1px solid #6d85a0; background: transparent; color: var(--text); border-radius: 0; font-size: .9rem; padding: 10px 16px; }
 .product-home .nav-cta:hover { border-color: var(--accent); color: var(--accent); }
 .product-home main { max-width: none; padding: 0; }
 .product-home main > section { margin-bottom: 0; }
@@ -25,7 +25,7 @@
 .product-home .text-link:hover span { transform: translateX(4px); }
 .product-home h1, .product-home h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -.045em; text-wrap: initial; }
 .product-home h1 em, .product-home h2 em { font-weight: 400; color: var(--accent); }
-.product-home .chapter-label { color: var(--muted); font-size: .68rem; letter-spacing: .17em; text-transform: uppercase; }
+.product-home .chapter-label { color: var(--muted); font-size: .875rem; letter-spacing: .1em; text-transform: uppercase; }
 .accent-dot { display: inline-block; width: 6px; height: 6px; margin-right: 10px; background: var(--accent); border-radius: 50%; vertical-align: 2px; }
 
 /* Hero: the headline and offer beside Ian's photo, with three results below. */
@@ -41,14 +41,14 @@
 .hero-proof li { margin: 0; }
 .hero-proof strong { display: block; font: 400 2rem/1.2 Georgia, 'Times New Roman', serif; letter-spacing: -.03em; }
 .hero-proof span { display: block; margin-top: 6px; color: var(--muted); font-size: .94rem; line-height: 1.5; }
-.hero-bottom { position: absolute; inset: auto 4.5vw 30px; display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: .7rem; }
+.hero-bottom { position: absolute; inset: auto 4.5vw 30px; display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: .875rem; }
 .scroll-cue { color: var(--muted); text-decoration: none; }
 .scroll-cue span { margin-left: 12px; }
 .hero-bottom .location { margin-left: auto; }
 
 /* Long-form chapters keep text in the normal document flow. */
 .chapter { padding: 100px max(8vw, calc((100vw - 1260px) / 2)); scroll-margin-top: 20px; }
-.chapter-index { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 20px; margin-bottom: 72px; color: var(--muted); font-size: .65rem; text-transform: uppercase; letter-spacing: .15em; }
+.chapter-index { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 20px; margin-bottom: 72px; color: var(--muted); font-size: .875rem; text-transform: uppercase; letter-spacing: .08em; }
 .chapter-index .tiny-mark { font-family: Georgia, serif; font-size: 1rem; line-height: 1; text-transform: none; letter-spacing: -.08em; }
 .chapter-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10%; }
 .product-home h2 { font-size: clamp(2.6rem, 4.3vw, 4.6rem); line-height: 1.1; margin: 0 0 30px; }
@@ -58,10 +58,10 @@
 .chapter-copy .lead-paragraph { color: var(--text); font-size: 1.19rem; line-height: 1.65; }
 .chapter-copy .text-link { margin-top: 12px; }
 .question { background: #0c2544; }
-.product-path { margin-top: 80px; display: grid; grid-template-columns: 1fr 1.3fr 1fr; align-items: center; text-align: center; gap: 20px; font-size: .7rem; color: var(--muted); }
+.product-path { margin-top: 80px; display: grid; grid-template-columns: 1fr 1.3fr 1fr; align-items: center; text-align: center; gap: 20px; font-size: .875rem; color: var(--muted); }
 .product-path > span { display: block; }
 .product-path strong { display: inline-block; color: var(--text); font-size: 1.08rem; font-weight: 400; margin-top: 8px; }
-.product-path .path-question { padding: 16px 10px; border-top: 1px solid #52718f; border-bottom: 1px solid #52718f; color: var(--accent); font-size: .83rem; }
+.product-path .path-question { padding: 16px 10px; border-top: 1px solid #52718f; border-bottom: 1px solid #52718f; color: var(--accent); font-size: .94rem; }
 .build { background: #103052; }
 .time-proof { display: flex; justify-content: space-between; align-items: end; margin-top: 65px; color: var(--muted); }
 .time-proof p { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin: 0; }
@@ -69,7 +69,7 @@
 .old-time { color: #9db2ca; text-decoration: line-through; text-decoration-thickness: 1px; }
 .time-proof strong { color: var(--accent); }
 .time-arrow { font-size: 1.5rem; }
-.time-unit, .time-proof > span { font-size: .7rem; }
+.time-unit, .time-proof > span { font-size: .875rem; }
 
 /* Work reads as a journal of decisions, with results kept in context. */
 .selected-work { --text: var(--brand-navy); --muted: #4f6073; --accent: #0b3660; --accent-dark: #071b34; --line: #d6dfe9; background: #ffffff; color: var(--text); }
@@ -77,7 +77,7 @@
 .selected-work h2 { margin-bottom: 60px; }
 .work-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10%; border-top: 1px solid var(--line); padding: 34px 0; }
 .work-row:last-child { padding-bottom: 0; }
-.work-type { color: var(--muted); font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+.work-type { color: var(--muted); font-size: .875rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px; }
 .work-row h3 { font-family: Georgia, serif; font-weight: 400; font-size: 1.75rem; line-height: 1.25; letter-spacing: -.025em; }
 .work-row h3 a { text-decoration: none; color: var(--text); }
 .work-row h3 a:hover { color: var(--accent); }
@@ -89,9 +89,9 @@
 .offer-list > a { display: grid; grid-template-columns: 38px 1fr 24px; gap: 16px; border-top: 1px solid var(--line); padding: 25px 0; text-decoration: none; color: var(--text); align-items: center; }
 .offer-list > a:last-child { border-bottom: 1px solid var(--line); }
 .offer-list > a:hover strong { color: var(--accent); }
-.offer-number { color: var(--accent); font-size: .7rem; }
+.offer-number { color: var(--accent); font-size: .875rem; }
 .offer-list strong { display: block; font-size: 1.15rem; font-weight: 400; }
-.offer-list strong + span { display: block; margin-top: 5px; color: var(--muted); font-size: .85rem; }
+.offer-list strong + span { display: block; margin-top: 5px; color: var(--muted); font-size: .94rem; }
 .offer-list > a > span:last-child { color: var(--accent); }
 /* Three quotes from people Ian has worked with. */
 .testimonials h2 { margin-bottom: 50px; }
@@ -105,15 +105,15 @@
 .home-contact h2 { font-size: clamp(3rem, 5.6vw, 5.8rem); margin: 28px 0; }
 .home-contact > p:not(.chapter-label) { color: var(--muted); }
 .home-contact .actions { justify-content: center; margin-top: 35px; }
-.home-contact .contact-note { font-size: .75rem; margin: 25px 0 0; }
+.home-contact .contact-note { font-size: .875rem; margin: 25px 0 0; }
 .product-home .site-footer { border-top: 1px solid var(--line); padding: 35px 4.5vw; }
 .product-home .footer-inner { max-width: 1440px; }
-.product-home .footer-links { font-size: .75rem; gap: 8px 24px; }
-.product-home .site-footer p { font-size: .7rem; }
+.product-home .footer-links { font-size: .875rem; gap: 8px 24px; }
+.product-home .site-footer p { font-size: .875rem; }
 
 @media (min-width: 1600px) { .product-hero { padding-top: 170px; } }
 @media (max-width: 1100px) {
-    .product-home .nav-links { gap: 12px; font-size: .72rem; }
+    .product-home .nav-links { gap: 18px; font-size: .875rem; }
     .product-home .nav-inner { gap: 16px; }
     .chapter { padding: 85px 6vw; }
     .chapter-layout, .work-row { gap: 7%; }
@@ -134,12 +134,12 @@
     .hero-proof { grid-template-columns: 1fr; gap: 18px; }
     .hero-proof strong { font-size: 1.7rem; }
     .product-home h1 { font-size: clamp(4.6rem, 13vw, 6.3rem); }
-    .hero-copy .chapter-label { max-width: 280px; font-size: .58rem; line-height: 1.8; }
+    .hero-copy .chapter-label { letter-spacing: .06em; line-height: 1.6; }
     .hero-lede { font-size: 1rem; }
-    .hero-bottom { inset: auto 7vw 27px; flex-wrap: wrap; gap: 15px 24px; font-size: .65rem; }
+    .hero-bottom { inset: auto 7vw 27px; flex-wrap: wrap; gap: 15px 24px; }
     .hero-bottom .location { display: none; }
     .chapter { padding: 65px 7vw; }
-    .chapter-index { margin-bottom: 42px; font-size: .58rem; gap: 15px; }
+    .chapter-index { margin-bottom: 42px; gap: 15px; letter-spacing: .04em; }
     .chapter-index > span:last-child { text-align: right; }
     .chapter-layout, .work-row { grid-template-columns: 1fr; gap: 22px; }
     .product-home h2 { font-size: clamp(2.65rem, 8.3vw, 3.8rem); }
@@ -160,7 +160,7 @@
     .offer-list { margin-top: 30px; }
     .offer-list > a { grid-template-columns: 22px 1fr 16px; gap: 10px; }
     .offer-list strong { font-size: 1.03rem; }
-    .offer-list strong + span { font-size: .8rem; }
+    .offer-list strong + span { font-size: .9rem; }
     .testimonials h2 { margin-bottom: 34px; }
     .quote-list { grid-template-columns: 1fr; gap: 30px; }
     .home-contact { padding-top: 75px; padding-bottom: 80px; }

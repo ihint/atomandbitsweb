@@ -240,6 +240,26 @@ test("directory hubs and old Claims Native paths redirect once", () => {
   assert.equal(redirectFor("/insights/why-automated-claims-need-control-states/"), undefined);
 });
 
+test("no stylesheet or inline style sets text below 14px", () => {
+  const small = [];
+  const check = (where, css) => {
+    for (const [, property, value] of css.matchAll(/(?:^|[;{\s])(font-size|font)\s*:\s*([^;}]+)/g)) {
+      // In the font shorthand only the first length is the size.
+      const lengths = [...value.matchAll(/(\d*\.?\d+)(rem|px)\b/g)].slice(0, property === "font" ? 1 : undefined);
+      for (const [token, number, unit] of lengths) {
+        if (Number(number) * (unit === "rem" ? 16 : 1) < 14) small.push(`${where}: ${property}: ${value.trim()} (${token})`);
+      }
+    }
+  };
+  for (const sheet of ["site.css", "home.css"]) check(sheet, read(sheet));
+  for (const page of pages) {
+    const html = read(page);
+    for (const [, css] of html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)) check(page, css);
+    for (const [, css] of html.matchAll(/\sstyle="([^"]*)"/g)) check(page, css);
+  }
+  assert.deepEqual(small, []);
+});
+
 test("privacy and support canonicals are the clean URLs", () => {
   for (const [file, url] of [["privacy-policy.html", "https://atomandbits.com/privacy-policy"], ["support.html", "https://atomandbits.com/support"]]) {
     const html = read(file);
