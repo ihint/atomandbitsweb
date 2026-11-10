@@ -147,6 +147,22 @@ test("every page has one h1, a title, and the shared stylesheet", () => {
   }
 });
 
+test("every page has the same short nav and one Also building line", () => {
+  for (const page of pages) {
+    const html = read(page);
+    const nav = html.match(/<ul class="nav-links">.*?<\/ul>/)[0];
+    assert.deepEqual([...nav.matchAll(/>([^<]+)<\/a>/g)].map((m) => m[1]), ["Work", "Services", "About", "Writing"], page);
+    const mobile = html.match(/<div class="mobile-links">.*?<\/div>/)[0];
+    assert.deepEqual([...mobile.matchAll(/>([^<]+)<\/a>/g)].map((m) => m[1]), ["Work", "Services", "About", "Writing", "Let’s talk"], page);
+    const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)[0];
+    assert.equal((footer.match(/Also building:/g) || []).length, 1, page);
+    const links = footer.match(/<nav class="footer-links"[\s\S]*?<\/nav>/)[0];
+    assert.doesNotMatch(links, /Corridor|Claims Native/, page);
+  }
+  assert.equal((read("ian-harman/index.html").match(/Also building:/g) || []).length, 2);
+  assert.doesNotMatch(read("index.html").split("<footer")[0].split("<main")[1], /Corridor Robotics|claimsnative\.com/);
+});
+
 test("pages say the facts the same way as the facts table", () => {
   const text = (page) => read(page).replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ");
   const home = text("index.html");

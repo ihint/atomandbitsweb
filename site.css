@@ -171,5 +171,8 @@ th, td { padding: 8px 12px 8px 0; text-align: left; vertical-align: top; }
 .footer-links a { color: var(--muted); }
 .footer-links a:hover { color: var(--accent); }
 .site-footer p { margin: 0; }
+.site-footer .footer-also { margin-bottom: 1rem; }
+.footer-also a { color: var(--muted); }
+.footer-also a:hover { color: var(--accent); }
 
 @media (max-width: 450px) { .proof-strip > div { grid-template-columns: 1fr; } }

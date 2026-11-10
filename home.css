@@ -93,8 +93,6 @@
 .offer-list strong { display: block; font-size: 1.15rem; font-weight: 400; }
 .offer-list strong + span { display: block; margin-top: 5px; color: var(--muted); font-size: .85rem; }
 .offer-list > a > span:last-child { color: var(--accent); }
-.also-building { margin-top: 45px; display: grid; grid-template-columns: 1fr 1fr; gap: 10%; color: var(--muted); font-size: .87rem; }
-.also-building .chapter-label { display: block; margin-bottom: 10px; }
 /* Three quotes from people Ian has worked with. */
 .testimonials h2 { margin-bottom: 50px; }
 .quote-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5%; }
@@ -163,7 +161,6 @@
     .offer-list > a { grid-template-columns: 22px 1fr 16px; gap: 10px; }
     .offer-list strong { font-size: 1.03rem; }
     .offer-list strong + span { font-size: .8rem; }
-    .also-building { grid-template-columns: 1fr; gap: 15px; margin-top: 35px; }
     .testimonials h2 { margin-bottom: 34px; }
     .quote-list { grid-template-columns: 1fr; gap: 30px; }
     .home-contact { padding-top: 75px; padding-bottom: 80px; }

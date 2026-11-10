@@ -27,7 +27,7 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 - `contact/` - Form posts to `/api/contact`; reads `?topic=` (billing, company, regulated-ai, other); `contact/thanks/` is the no-JavaScript confirmation
 - `images/` - Ian's own photos; `ian-harman.jpg` is the homepage hero
 - `scripts/site.test.mjs`, `scripts/contact-worker.test.mjs`, `scripts/www-redirect.test.mjs` - Site checks and Worker tests (`node --test`)
-- Every page shares one nav and footer; update them on all pages together
+- Every page shares one nav and footer; update them on all pages together. The nav is Work, Services, About, Writing and the Let’s talk button. Corridor Robotics and Claims Native appear only in one “Also building” line on About and in the footer
 - No package.json or build step
 
 ## Design
@@ -44,7 +44,7 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 
 ## Content
 
-1. **Homepage**: love of product, curiosity, PerfectServe onboarding, early value at One to One Health, selected cases, offers and contact. Keep the TPN invoicing story off the homepage. Full career figures live on About and the cases. Claims Native remains a short link.
+1. **Homepage**: hero with Ian’s photo and three results, services (fractional leadership, then the assessment, then the agent pilot), curiosity, PerfectServe onboarding, early value at One to One Health, selected work led by results (Paragon Truss, One to One Health, TheraMatch / TPN, BCBST, PerfectServe), testimonials and contact. Keep the TPN invoicing story off the homepage. Full career figures live on About and the cases.
 2. Claims Native is a billing service; keep its price on claimsnative.com only
 3. Keep facts the same everywhere: 150,000+ verified clinicians at TPN; VP, Provider Networks & Technology, Feb 2025 to Aug 2026; TPN raised $12M after acquiring TheraMatch; $1M+ ARR and 1M members in under 12 months; first product manager at PerfectServe as it grew from $2M to $40M ARR; about 3.5M members, NPS 60+ and digital adoption more than doubled at BCBST; $500K a year at Paragon Truss, the largest contract in company history
 4. Do not mention a job search, list Corridor partners (there are none yet), or put prices on atomandbits.com
