@@ -46,7 +46,12 @@ This is Ian Harman's Atom & Bits website. It sells one thing: fractional product
 
 1. **Homepage**: hero with Ian’s photo and three results, services (fractional leadership, then the assessment, then the agent pilot), curiosity, PerfectServe onboarding, early value at One to One Health, selected work led by results (Paragon Truss, One to One Health, TheraMatch / TPN, BCBST, PerfectServe), testimonials and contact. Keep the TPN invoicing story off the homepage. Full career figures live on About and the cases.
 2. Claims Native is a billing service; keep its price on claimsnative.com only
-3. Keep facts the same everywhere: 150,000+ verified clinicians at TPN; VP, Provider Networks & Technology, Feb 2025 to Aug 2026; TPN raised $12M after acquiring TheraMatch; $1M+ ARR and 1M members in under 12 months; first product manager at PerfectServe as it grew from $2M to $40M ARR; about 3.5M members, NPS 60+ and digital adoption more than doubled at BCBST; $500K a year at Paragon Truss, the largest contract in company history
+3. Keep facts the same everywhere (Ian’s list of November 10, 2026, checked against his resume):
+   - TheraMatch: co-founded Aug 2024, acquired by TPN.health Feb 2025, six months later. Ian partnered with Kolby on the sale
+   - TPN: acting CTO through a $12M Series A; VP, Provider Networks & Technology, Feb 2025 to Aug 2026; 1M+ members and $1M+ ARR across 120+ health plans in under 12 months, with a team of three; claims platform in production, $4M in claims volume by Aug 2026; 150,000+ verified clinicians. “120+ health plans” is the short form; the TPN case says “health plans and TPAs”
+   - BCBST: 3.5M members; $400M in annual revenue supported; $70M in budget ($17M direct for digital modernization, $53M joint with operations for the Salesforce sales and quoting overhaul); digital members from 300K to 1.1M+; NPS 60+; 18 direct reports and 130+ matrixed
+   - PerfectServe: first product manager as it grew from $2M to $40M ARR
+   - Paragon Truss: first enterprise contract, worth $500K a year (annual contract value, not collected revenue)
 4. Do not mention a job search, list Corridor partners (there are none yet), or put prices on atomandbits.com
 
 ## Writing Notes

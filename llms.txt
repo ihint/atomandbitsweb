@@ -22,13 +22,13 @@ Ian has spent 15 years building products for health systems, insurers, and finte
 
 ## Proof
 
-- [PerfectServe](https://atomandbits.com/work/perfectserve/): First product manager as the company grew from $2M to $40M ARR, including 10 health-system rollouts.
-- [BlueCross BlueShield of Tennessee](https://atomandbits.com/work/bcbst/): Digital products for 3.5 million members. NPS above 60. Digital adoption more than doubled.
-- [TheraMatch](https://atomandbits.com/work/theramatch/): Co-founded, then acquired by TPN.health. TheraMatch and TPN Match reached $1M+ ARR and 1M members in under 12 months.
-- [TPN Match](https://atomandbits.com/work/tpn-match/): The claims and payments platform behind 150,000+ clinicians.
-- [CraftingCopy](https://craftingcopy.ai/): Product direction and technology for AI content workflows, with brand guidance and human review.
-- [Paragon Truss](https://atomandbits.com/work/paragon-truss/): $500K annual enterprise contract.
+- [Paragon Truss](https://atomandbits.com/work/paragon-truss/): First enterprise contract, worth $500K a year.
 - [One to One Health](https://atomandbits.com/work/one-to-one-health/): The company’s first AI product cut charting time from 22 to 17.5 minutes per encounter.
+- [TheraMatch](https://atomandbits.com/work/theramatch/): Co-founded in August 2024 and acquired by TPN.health six months later. TheraMatch and TPN Match reached 1M+ members and $1M+ ARR across 120+ health plans in under 12 months.
+- [TPN Match](https://atomandbits.com/work/tpn-match/): Acting CTO through TPN’s $12M Series A. The claims and payments platform behind 150,000+ clinicians, in production.
+- [BlueCross BlueShield of Tennessee](https://atomandbits.com/work/bcbst/): Digital products for 3.5 million members. Digital members grew from 300K to 1.1M+, with an NPS of 60+.
+- [PerfectServe](https://atomandbits.com/work/perfectserve/): First product manager as the company grew from $2M to $40M ARR, including 10 health-system rollouts.
+- [CraftingCopy](https://craftingcopy.ai/): Product direction and technology for AI content workflows, with brand guidance and human review.
 
 ## How to engage
 

@@ -180,12 +180,22 @@ test("pages say the facts the same way as the facts table", () => {
     assert.deepEqual(positions, [...positions].sort((a, b) => a - b), `${page} lists the cases out of order`);
   }
   const about = text("ian-harman/index.html");
-  for (const fact of ["VP, Provider Networks & Technology at TPN.health from Feb 2025 to Aug 2026", "After TPN raised $12M", "1M members in under a year", "150,000+ clinicians", "$2M to $40M ARR", "3.5M members"]) {
+  for (const fact of ["VP, Provider Networks & Technology at TPN.health from Feb 2025 to Aug 2026", "acting CTO through TPN’s $12M Series A", "TheraMatch in August 2024", "TPN.health six months later", "With a team of three", "1M+ members across 120+ health plans in under 12 months", "150,000+ clinicians", "$2M to $40M ARR", "3.5M members", "18 direct reports and 130+ people across matrixed teams", "300K to 1.1M+"]) {
     assert.ok(about.includes(fact), `About is missing "${fact}"`);
   }
   assert.ok(text("work/paragon-truss/index.html").includes("$500,000 per year"));
+  const bcbst = text("work/bcbst/index.html");
+  for (const fact of ["3.5 million members", "$400 million in annual revenue", "$70 million in budget", "$17 million directly for digital modernization", "$53 million jointly with operations", "300K to 1.1M+", "18 direct reports", "matrix of more than 130 people", "NPS stayed above 60"]) {
+    assert.ok(bcbst.includes(fact), `BCBST case is missing "${fact}"`);
+  }
+  const tpn = text("work/tpn-match/index.html");
+  for (const fact of ["Acting CTO through the $12M Series A", "1M+ members and $1M+ ARR across 120+ health plans in under 12 months", "$4 million in claims volume", "A team of three", "claims platform into production"]) {
+    assert.ok(tpn.includes(fact), `TPN case is missing "${fact}"`);
+  }
+  assert.ok(text("work/theramatch/index.html").includes("six months after we founded TheraMatch in August 2024"));
   for (const page of pages) {
     assert.doesNotMatch(text(page), /lives under care|\$1 million in ARR/, `${page} uses the old TheraMatch wording`);
+    assert.doesNotMatch(read(page), /nine months|more than doubled|22 direct reports|\$10 million|\$60 million|1\.5 million eligible lives|120 TPAs|[^-]Founder of TheraMatch|1M members in under a year/, `${page} states a superseded figure`);
   }
 });
 
