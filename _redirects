@@ -32,6 +32,9 @@
 /atom-bits-website/ / 301
 /atom-bits-website.html / 301
 
+# The resume download was removed in November 2026. Old links land on About.
+/assets/Ian-Harman-Resume.pdf /ian-harman/ 301
+
 # Guides and insights already have a hub.
 /guides /writing/ 301
 /guides/ /writing/ 301

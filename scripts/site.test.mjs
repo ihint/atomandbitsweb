@@ -215,9 +215,13 @@ test("the homepage and About say fractional CPO/CTO", () => {
   for (const page of pages) assert.doesNotMatch(read(page), /Fractional CPO and healthcare strategy|advisory, fractional CTO and founder work/, page);
 });
 
-test("the resume link points at the current resume", () => {
-  assert.ok(existsSync(join(root, "assets/Ian-Harman-Resume.pdf")));
-  assert.match(read("ian-harman/index.html"), /href="\/assets\/Ian-Harman-Resume\.pdf"/);
+test("the site has no resume download and the old link lands on About", () => {
+  assert.equal(existsSync(join(root, "assets/Ian-Harman-Resume.pdf")), false);
+  for (const page of pages) assert.doesNotMatch(read(page), /resume/i, `${page} mentions a resume`);
+  const rule = redirectFor("/assets/Ian-Harman-Resume.pdf");
+  assert.ok(rule, "the old resume URL has no redirect");
+  assert.equal(rule.to, "/ian-harman/");
+  assert.equal(rule.status, "301");
 });
 
 test("directory hubs and old Claims Native paths redirect once", () => {

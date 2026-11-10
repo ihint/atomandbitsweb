@@ -52,7 +52,7 @@ This is Ian Harman's Atom & Bits website. It sells one thing: fractional product
    - BCBST: 3.5M members; $400M in annual revenue supported; $70M in budget ($17M direct for digital modernization, $53M joint with operations for the Salesforce sales and quoting overhaul); digital members from 300K to 1.1M+; NPS 60+; 18 direct reports and 130+ matrixed
    - PerfectServe: first product manager as it grew from $2M to $40M ARR
    - Paragon Truss: first enterprise contract, worth $500K a year (annual contract value, not collected revenue)
-4. Do not mention a job search, list Corridor partners (there are none yet), or put prices on atomandbits.com
+4. Do not mention a job search, list Corridor partners (there are none yet), or put prices on atomandbits.com. The site has no resume download; Ian removed it in November 2026 and the old PDF URL 301s to About
 
 ## Writing Notes
 

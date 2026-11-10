@@ -21,7 +21,9 @@ A figure Ian did not supply; a price, quote, days or term he has not typed; a ti
 - “$1M+ ARR” keeps the resume’s wording and its “under 12 months” claim. Ian’s chat answer said $1M ARR and $4M in claims volume at his departure; the TPN case dates the $4M “by August 2026,” which is the agent’s reading of that answer.
 - “120+ health plans” is used in short lines; the TPN case says “health plans and TPAs.” Ian said both are accurate.
 
+## Resume removed
+Ian chose to remove the resume download. The About link and `assets/Ian-Harman-Resume.pdf` are gone, and the old URL returns a 301 to `/ian-harman/` on the local server. A test fails if a page mentions a resume or the redirect is missing.
+
 ## Not done
 - Fractional leadership page: waits on days per month (20 a month is full-time), minimum term wording, first-30-days copy and a price from Ian.
-- Resume download: Ian asked whether it belongs; the old link and file are unchanged.
 - Testimonials: three placeholders, visible on the branch. Ian supplies the quotes. Do not publish while one remains.
