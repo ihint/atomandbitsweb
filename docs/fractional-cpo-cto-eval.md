@@ -75,7 +75,7 @@ Neither is the buyer the site names. They are the people the buyer sells to, and
 - A plan executive knows a health plan from a TPA. The hero result now says “120+ health plans and TPAs,” and the BCBST result gives its denominator, 3.5 million members.
 - The homepage did not show that Ian understands either reader. The Curiosity chapter now says what each needs from a vendor, in two sentences, and links the payers essay.
 - The site never mentions an EHR by name and gives no revenue-cycle figure a practice administrator would look for. None was supplied, so none was added.
-- The BCBST case publishes budget, revenue-supported and team-size figures. Left as they are; Ian’s call.
+- The BCBST case publishes budget, revenue-supported and team-size figures. Ian decided on November 10 to keep them.
 - The headline speaks to sellers to health plans; the subline adds providers. Left as it is; Ian’s call.
 
 Checks: 37 tests, 35 pass, 2 todo. Author review only.
