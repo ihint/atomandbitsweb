@@ -32,7 +32,7 @@
 .product-hero { position: relative; min-height: max(780px, 100svh); padding: 122px 8vw 96px; display: flex; flex-direction: column; justify-content: center; gap: 36px; background: radial-gradient(ellipse at 79% 42%, #15487766, transparent 55%); }
 .hero-main { width: 100%; max-width: 1260px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(240px, .8fr); gap: 6%; align-items: center; }
 .hero-copy .chapter-label { margin-bottom: 24px; }
-.product-home h1 { font-size: clamp(3.6rem, 6vw, 6.2rem); line-height: 1.05; margin: 0 0 26px; }
+.product-home h1 { font-size: clamp(3rem, 5vw, 5.2rem); line-height: 1.07; margin: 0 0 24px; }
 .hero-sub { max-width: 560px; font-size: 1.36rem; line-height: 1.45; margin-bottom: 0; }
 .hero-copy .actions { margin-top: 28px; }
 .hero-photo { width: 100%; max-width: 380px; justify-self: end; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; }
@@ -131,7 +131,8 @@
     .hero-sub { font-size: 1.2rem; }
     .hero-proof { grid-template-columns: 1fr; gap: 18px; }
     .hero-proof strong { font-size: 1.7rem; }
-    .product-home h1 { font-size: clamp(2.6rem, 11.5vw, 4rem); }
+    .product-home h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); }
+    .wide-only { display: none; }
     .hero-copy .chapter-label { letter-spacing: .06em; line-height: 1.6; }
     .hero-bottom { inset: auto 7vw 27px; flex-wrap: wrap; gap: 15px 24px; }
     .hero-bottom .location { display: none; }

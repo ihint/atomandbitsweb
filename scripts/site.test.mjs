@@ -167,7 +167,7 @@ test("pages say the facts the same way as the facts table", () => {
   const text = (page) => read(page).replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ");
   const home = text("index.html");
   // Homepage leads with product decisions; the full career figures stay on About.
-  for (const fact of ["$2M to $40M ARR", "300K to 1.1M+", "TPN.health acquired TheraMatch in six months", "1M+ members and $1M+ ARR across 120+ health plans in under 12 months", "worth $500K a year", "NPS of 60+", "3.5 million members", "22 to 17.5 minutes per encounter", "with clinician and patient satisfaction maintained or improved"]) {
+  for (const fact of ["120+ health plans", "$2M to $40M ARR", "300K to 1.1M+", "TPN.health acquired TheraMatch in six months", "1M+ members and $1M+ ARR across 120+ health plans in under 12 months", "worth $500K a year", "NPS of 60+", "3.5 million members", "22 to 17.5 minutes per encounter", "with clinician and patient satisfaction maintained or improved"]) {
     assert.ok(home.includes(fact), `homepage is missing "${fact}"`);
   }
   // Selected work leads with results, in the order Ian chose.
@@ -200,7 +200,12 @@ test("pages say the facts the same way as the facts table", () => {
 });
 
 // Reported as a todo, not a failure, until Ian's quotes are in.
-test("testimonial placeholders are replaced with Ian's quotes", { todo: "Ian supplies three quotes; keep the block off production until then" }, () => {
+test("placeholder quotes never show to visitors", () => {
+  const home = read("index.html");
+  if (home.includes("data-placeholder")) assert.match(home, /<section class="chapter testimonials"[^>]*\shidden>/);
+});
+
+test("testimonial placeholders are replaced with Ian's quotes", { todo: "Ian supplies three quotes; the block is hidden until then" }, () => {
   assert.equal(read("index.html").includes("data-placeholder"), false);
 });
 
@@ -211,7 +216,7 @@ test("the homepage and About say fractional CPO/CTO", () => {
   assert.match(home, /Fractional product and technology leadership for healthcare companies selling to health plans and providers\./);
   // Ian retired "I love a good problem." on November 10, 2026: it read as negative.
   const heading = home.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-  assert.equal(heading, "What would you love to make possible?");
+  assert.equal(heading, "You’re selling to health plans. I spent seven years inside one.");
   for (const page of pages) assert.doesNotMatch(read(page).replace(/<[^>]+>/g, " ").replace(/\s+/g, " "), /good problem/i, page);
   const about = read("ian-harman/index.html");
   assert.match(about.match(/<title>([^<]+)<\/title>/)[1], /fractional CPO\/CTO/);

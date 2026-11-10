@@ -52,6 +52,24 @@ After reading the result, Ian said “I love a good problem.” reads as negativ
 
 The headline is the agent’s pick from Ian’s own words. He has not yet confirmed it.
 
+## Buyer pass: copywriter, go-to-market and triage lenses
+Ian asked for the site to be read as a top copywriter, a go-to-market team and an emergency doctor would read it. Treated as one triage.
+
+Checks on November 10: atomandbits.com returns 200 in under a second and still serves the old version; the booking link returns 200; the contact endpoint answers; analytics is off, so visits and clicks are not measured; delivery of contact form mail to Ian’s inbox is still to be confirmed.
+
+Changes on the branch:
+- Headline: “You’re selling to health plans. I spent seven years inside one.” It names the buyer and gives a reason to believe. This replaces the question headline from earlier the same day.
+- Hero results now lead with 120+ health plans in under 12 months. That replaces “six months to acquisition,” one of the three figures in Ian’s original brief; it stays in selected work.
+- One action in the hero and the close: “Book 15 minutes.”
+- The three offers state their terms. The close says Ian will say plainly if he is not the right fit, a promise the CTO guide already makes.
+- The leadership page names three buying moments, each tied to his record.
+- Writing leads with pieces for founders and operators; the contact form lists the buyer’s option first.
+- The placeholder quotes are hidden so the branch can ship; a test fails if a placeholder shows.
+
+Checks: 37 tests, 35 pass, 2 todo. Hero inspected at 1280 by 800; hero results and services at 375 wide.
+
+Limits: no page change creates demand. Whether this copy converts is untested; nothing here is live. The headline and the swapped hero result are the agent’s choices and await Ian’s confirmation.
+
 ## Not done
 - Fractional leadership page: the starting price. Ian confirmed four to 20 days a month and a one-month minimum; the page states both, who it is for and what the first 30 days produce, and carries a TODO where the price goes. No figure is published. Ian has not yet read the page copy.
 - Testimonials: three placeholders, visible on the branch. Ian supplies the quotes. Do not publish while one remains.

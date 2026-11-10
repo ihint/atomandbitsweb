@@ -64,7 +64,7 @@ Ian’s voice rules of November 10, 2026. Write as Ian: first person, warm, curi
 - Put numbers inside sentences that tell what happened and for whom. No bullet lists of metrics in body copy. The case pages no longer carry metric strips. The hero’s three results stay as large numbers with a full-sentence caption, as Ian asked
 - Credit teams and partners wherever a result was shared
 - End each page with one specific, low-pressure ask (“How does next week look?” / “Book 15 minutes”). The last section of each page holds exactly one link; the contact form, its confirmation, the not-found page, privacy and support are exempt. A test checks this
-- The homepage headline is “What would you love to make possible?” Ian retired “I love a good problem.” later on November 10: to him it read as negative. Do not bring it back. The page should highlight results, then guide an interested reader toward contacting him
+- The homepage headline is “You’re selling to health plans. I spent seven years inside one.” It names the buyer and gives the reason to believe Ian. Ian retired “I love a good problem.” on November 10 because to him it read as negative; do not bring it back. The page should highlight results, then guide an interested reader toward contacting him. The hero and the close share one action, “Book 15 minutes”
 - Avoid: leveraged, gleaned, culminating, massively, passionate, synergy, “the opportunity to” more than once per page, and sentence fragments
 - Never invent a fact, number, quote or client. Leave a TODO and ask Ian
 
