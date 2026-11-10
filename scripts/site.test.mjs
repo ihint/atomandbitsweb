@@ -167,7 +167,7 @@ test("pages say the facts the same way as the facts table", () => {
   const text = (page) => read(page).replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ");
   const home = text("index.html");
   // Homepage leads with product decisions; the full career figures stay on About.
-  for (const fact of ["$2M to $40M ARR", "300K to 1.1M+", "Acquired in six months", "1M+ members and $1M+ ARR across 120+ health plans in under 12 months", "worth $500K a year", "NPS of 60+", "3.5 million members", "22 to 17.5 minutes per encounter", "with clinician and patient satisfaction maintained or improved"]) {
+  for (const fact of ["$2M to $40M ARR", "300K to 1.1M+", "TPN.health acquired TheraMatch in six months", "1M+ members and $1M+ ARR across 120+ health plans in under 12 months", "worth $500K a year", "NPS of 60+", "3.5 million members", "22 to 17.5 minutes per encounter", "with clinician and patient satisfaction maintained or improved"]) {
     assert.ok(home.includes(fact), `homepage is missing "${fact}"`);
   }
   // Selected work leads with results, in the order Ian chose.
@@ -228,6 +228,14 @@ test("the fractional leadership page states its terms", () => {
 // Reported as a todo, not a failure, until Ian sets the figure.
 test("the fractional leadership page shows Ian's starting price", { todo: "Ian supplies the starting price" }, () => {
   assert.equal(read("product-technology-leadership/index.html").includes("TODO(Ian)"), false);
+});
+
+test("pages avoid the words Ian asked to keep out", () => {
+  for (const page of pages) {
+    const html = read(page);
+    assert.doesNotMatch(html, /\b(leveraged|gleaned|culminating|massively|passionate|synergy)\b/i, page);
+    assert.ok((html.match(/the opportunity to/gi) || []).length <= 1, `${page} says "the opportunity to" more than once`);
+  }
 });
 
 test("the site has no resume download and the old link lands on About", () => {

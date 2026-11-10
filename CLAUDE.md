@@ -56,6 +56,20 @@ This is Ian Harman's Atom & Bits website. It sells one thing: fractional product
 
 ## Writing Notes
 
+Ian’s voice rules of November 10, 2026. Write as Ian: first person, warm, curious, plain words.
+
+- Start with the reader or the problem, not with Ian. Ask a real question early where it fits (“What would you love to make possible?”)
+- Let curiosity carry the pitch: say why the problem interests him before saying why he is qualified
+- Use his concede-then-claim turn: acknowledge the limit or the honest doubt, then state the strength directly. One per page at most
+- Put numbers inside sentences that tell what happened and for whom. No bullet lists of metrics in body copy
+- Credit teams and partners wherever a result was shared
+- End each page with one specific, low-pressure ask (“How does next week look?” / “Book 15 minutes”)
+- Keep existing lines such as “I love a good problem.”
+- Avoid: leveraged, gleaned, culminating, massively, passionate, synergy, “the opportunity to” more than once per page, and sentence fragments
+- Never invent a fact, number, quote or client. Leave a TODO and ask Ian
+
+Older notes, still in force:
+
 
 - Case studies should explain an opportunity and founder judgment, with accurate historical roles, results, and qualifiers
 - The full One to One Health and TPN invoicing stories live on How I work. Explain why clinical notes came early: staff needed value while the broader product suite was being built. Keep the operating plan separate from the measured charting improvement.
