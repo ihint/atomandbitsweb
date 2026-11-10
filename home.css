@@ -28,22 +28,23 @@
 .product-home .chapter-label { color: var(--muted); font-size: .68rem; letter-spacing: .17em; text-transform: uppercase; }
 .accent-dot { display: inline-block; width: 6px; height: 6px; margin-right: 10px; background: var(--accent); border-radius: 50%; vertical-align: 2px; }
 
-/* The canvas is decorative. All page content is present without scripts. */
-.product-hero { position: relative; isolation: isolate; min-height: 850px; min-height: max(780px, 100svh); padding: 170px 8vw 115px; display: flex; align-items: center; overflow: hidden; }
-.hero-art { position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse at 79% 50%, #15487766, transparent 55%); }
-.hero-art::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #071b3444, transparent 65%); }
-#product-field { display: block; width: 100%; height: 100%; opacity: .85; }
-.hero-copy { width: 100%; max-width: 1260px; margin: 0 auto; }
-.hero-copy .chapter-label { margin-bottom: 27px; }
-.product-home h1 { font-size: clamp(4.8rem, 8.4vw, 8.75rem); line-height: 1.04; margin: 0 0 30px; }
-.hero-lede { max-width: 490px; font-size: 1.18rem; line-height: 1.65; margin-bottom: 15px; }
-.hero-note { max-width: 510px; color: var(--muted); font-size: .94rem; line-height: 1.7; }
-.hero-copy .actions { margin-top: 30px; }
+/* Hero: the headline and offer beside Ian's photo, with three results below. */
+.product-hero { position: relative; min-height: max(780px, 100svh); padding: 122px 8vw 96px; display: flex; flex-direction: column; justify-content: center; gap: 36px; background: radial-gradient(ellipse at 79% 42%, #15487766, transparent 55%); }
+.hero-main { width: 100%; max-width: 1260px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(240px, .8fr); gap: 6%; align-items: center; }
+.hero-copy .chapter-label { margin-bottom: 24px; }
+.product-home h1 { font-size: clamp(4.4rem, 7.4vw, 7.6rem); line-height: 1.04; margin: 0 0 26px; }
+.hero-sub { max-width: 560px; font-size: 1.36rem; line-height: 1.45; margin-bottom: 14px; }
+.hero-lede { max-width: 500px; color: var(--muted); font-size: 1.02rem; line-height: 1.7; margin-bottom: 0; }
+.hero-copy .actions { margin-top: 28px; }
+.hero-photo { width: 100%; max-width: 380px; justify-self: end; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; }
+.hero-proof { width: 100%; max-width: 1260px; margin: 0 auto; padding: 24px 0 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 5%; border-top: 1px solid var(--line); }
+.hero-proof li { margin: 0; }
+.hero-proof strong { display: block; font: 400 2rem/1.2 Georgia, 'Times New Roman', serif; letter-spacing: -.03em; }
+.hero-proof span { display: block; margin-top: 6px; color: var(--muted); font-size: .94rem; line-height: 1.5; }
 .hero-bottom { position: absolute; inset: auto 4.5vw 30px; display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: .7rem; }
 .scroll-cue { color: var(--muted); text-decoration: none; }
 .scroll-cue span { margin-left: 12px; }
 .hero-bottom .location { margin-left: auto; }
-.motion-toggle { border: 0; border-bottom: 1px solid #6d85a0; background: transparent; padding: 3px 0; color: var(--muted); cursor: pointer; font-size: inherit; }
 
 /* Long-form chapters keep text in the normal document flow. */
 .chapter { padding: 100px max(8vw, calc((100vw - 1260px) / 2)); scroll-margin-top: 20px; }
@@ -103,7 +104,7 @@
 .product-home .footer-links { font-size: .75rem; gap: 8px 24px; }
 .product-home .site-footer p { font-size: .7rem; }
 
-@media (min-width: 1600px) { .product-hero { padding-top: 190px; } }
+@media (min-width: 1600px) { .product-hero { padding-top: 170px; } }
 @media (max-width: 1100px) {
     .product-home .nav-links { gap: 12px; font-size: .72rem; }
     .product-home .nav-inner { gap: 16px; }
@@ -111,20 +112,25 @@
     .chapter-layout, .work-row { gap: 7%; }
     .product-hero { padding-left: 7vw; }
 }
+/* Below 900px the photo sits under the words. */
+@media (max-width: 900px) {
+    .hero-main { grid-template-columns: 1fr; gap: 34px; }
+    .hero-photo { justify-self: start; }
+}
 @media (max-width: 760px) {
     .product-home .site-nav { padding: 22px 6vw; }
     .product-home .brand { font-size: 1.5rem; }
     .product-home .mobile-links { background: #0c2544; box-shadow: 0 0 0 1px #6d85a0; }
-    .product-hero { min-height: max(780px, 100svh); padding: 140px 7vw 125px; align-items: center; }
+    .product-hero { min-height: 0; padding: 120px 7vw 110px; gap: 34px; }
+    .hero-photo { max-width: none; aspect-ratio: 1 / 1; object-position: 50% 22%; }
+    .hero-sub { font-size: 1.2rem; }
+    .hero-proof { grid-template-columns: 1fr; gap: 18px; }
+    .hero-proof strong { font-size: 1.7rem; }
     .product-home h1 { font-size: clamp(4.6rem, 13vw, 6.3rem); }
     .hero-copy .chapter-label { max-width: 280px; font-size: .58rem; line-height: 1.8; }
-    .hero-lede { max-width: 400px; font-size: 1.05rem; }
-    .hero-note { max-width: 380px; font-size: .89rem; }
-    .hero-art { opacity: .45; }
-    .hero-art::after { background: linear-gradient(90deg, #071b34aa, #071b3411); }
+    .hero-lede { font-size: 1rem; }
     .hero-bottom { inset: auto 7vw 27px; flex-wrap: wrap; gap: 15px 24px; font-size: .65rem; }
     .hero-bottom .location { display: none; }
-    .desktop-break { display: none; }
     .chapter { padding: 65px 7vw; }
     .chapter-index { margin-bottom: 42px; font-size: .58rem; gap: 15px; }
     .chapter-index > span:last-child { text-align: right; }
@@ -161,7 +167,7 @@
 }
 @media print {
     .product-home { --text: #071b34; --muted: #4f6073; --accent: #0b3660; --line: #d6dfe9; background: white; color: #071b34; }
-    .hero-art, .hero-bottom, .product-home .site-nav, .product-home .site-footer { display: none; }
+    .hero-bottom, .product-home .site-nav, .product-home .site-footer { display: none; }
     .product-hero { min-height: auto; padding: 30px 0; }
     .chapter { padding: 30px 0; background: white; }
     .chapter-index { margin-bottom: 20px; }
@@ -169,24 +175,3 @@
     .product-home h2 { font-size: 2rem; }
     .chapter-layout, .work-row { display: block; }
 }
-
-/* The optional experiment lives beside the words, with a tap/keyboard entry. */
-.hero-art { pointer-events: none; }
-.swarm-play { position: absolute; top: 72%; left: 59%; width: 34%; text-align: center; }
-.swarm-caption, .swarm-status { font-size: .72rem; color: var(--muted); line-height: 1.5; margin: 0 0 8px; }
-.swarm-trigger { border: 0; border-bottom: 1px solid #6d85a0; background: transparent; color: #ffffff; font: inherit; font-size: .82rem; padding: 10px 0; min-height: 44px; cursor: pointer; }
-.swarm-trigger span { color: var(--brand-orange); margin-left: 10px; }
-.swarm-trigger:hover { color: var(--brand-orange); border-color: var(--brand-orange); }
-.swarm-trigger:focus-visible, .motion-toggle:focus-visible { outline: 2px solid var(--brand-orange); outline-offset: 5px; }
-.swarm-trigger:disabled { opacity: .5; cursor: default; }
-.swarm-status { min-height: 1.5em; margin-top: 8px; }
-.touch-hint { display: none; }
-.swarm-play.is-still .swarm-caption { visibility: hidden; }
-@media (hover: none) { .pointer-hint { display: none; } .touch-hint { display: inline; } }
-@media (max-width: 1000px) {
-    .product-hero { flex-direction: column; align-items: stretch; padding-top: 150px; padding-bottom: 110px; }
-    .swarm-play { position: relative; top: auto; left: auto; width: 100%; margin-top: 270px; }
-    .hero-art { opacity: .85; }
-    .hero-art::after { background: linear-gradient(180deg, #071b34cc 0, transparent 75%); }
-}
-@media print { .swarm-play { display: none; } }

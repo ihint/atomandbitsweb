@@ -13,7 +13,7 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 - `favicon.ico`, `assets/logo.png` - Icon and Organization logo, rasterized from `assets/mark.svg`
 - `work/` - Case-study index. `/guides/` and `/insights/` 301 to `/writing/`
 - `site.css` - Shared styles: a readable column in navy on white, serif headings and system sans body text
-- `home.css`, `home.js` - Wide homepage chapters and optional decorative motion
+- `home.css` - Wide homepage chapters. The hero shows Ian's photo (`images/ian-harman.jpg`) and three results; the dot animation and `home.js` were removed in November 2026
 - `site.js` - Mobile navigation, sample workflow controls, contact form submission, and click tracking; `ANALYTICS` at the top is empty by default (PostHog loads only when provider and key are set)
 - `worker/index.js` - Cloudflare Worker; runs only for `/api/contact` and emails each message to Ian from website@notify.atomandbits.com. Keep `run_worker_first` limited to `/api/*`: Cloudflare does not apply `_redirects` to requests the Worker serves
 - `www-redirect/` - Separate Worker that 301s www.atomandbits.com to atomandbits.com
@@ -25,7 +25,7 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 - `guides/`, `insights/` - Practice guides and essays; the two practice guides keep their own inline styles under the shared header (`<main class="wide">`)
 - `writing/` - Index of guides and insights
 - `contact/` - Form posts to `/api/contact`; reads `?topic=` (billing, company, regulated-ai, other); `contact/thanks/` is the no-JavaScript confirmation
-- `images/` - Ian's own photos; pages show marked placeholders until they arrive
+- `images/` - Ian's own photos; `ian-harman.jpg` is the homepage hero
 - `scripts/site.test.mjs`, `scripts/contact-worker.test.mjs`, `scripts/www-redirect.test.mjs` - Site checks and Worker tests (`node --test`)
 - Every page shares one nav and footer; update them on all pages together
 - No package.json or build step
@@ -38,7 +38,7 @@ This is Ian Harman's Atom & Bits website. It presents his work in healthcare and
 - Supporting pages: one readable column about 650px wide in navy on white
 - Keep small links on white navy; use navy labels on orange buttons for contrast
 - Use system fonts, original artwork and static text; no scroll hijacking
-- Motion is optional, respects reduced motion, pauses offscreen and has a pause control
+- The site has no motion today. If any returns, it must be optional, respect reduced motion, pause offscreen and have a pause control
 - At most one main button per section; decorative direction cues use aria-hidden
 - Photos are Ian's own, never stock: one hero photo, a row of three or four on About, one per page elsewhere or none
 
