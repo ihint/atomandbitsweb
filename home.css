@@ -139,8 +139,7 @@
     .hero-bottom { inset: auto 7vw 27px; flex-wrap: wrap; gap: 15px 24px; }
     .hero-bottom .location { display: none; }
     .chapter { padding: 65px 7vw; }
-    .chapter-index { margin-bottom: 42px; gap: 15px; letter-spacing: .04em; }
-    .chapter-index > span:last-child { text-align: right; }
+    .chapter-index { margin-bottom: 42px; flex-direction: column; gap: 4px; letter-spacing: .04em; }
     .chapter-layout, .work-row { grid-template-columns: 1fr; gap: 22px; }
     .product-home h2 { font-size: clamp(2.65rem, 8.3vw, 3.8rem); }
     .chapter-aside { margin-bottom: 6px; }
