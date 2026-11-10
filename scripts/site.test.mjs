@@ -173,6 +173,11 @@ test("pages say the facts the same way as the facts table", () => {
   }
 });
 
+// Reported as a todo, not a failure, until Ian's quotes are in.
+test("testimonial placeholders are replaced with Ian's quotes", { todo: "Ian supplies three quotes; keep the block off production until then" }, () => {
+  assert.equal(read("index.html").includes("data-placeholder"), false);
+});
+
 test("the resume link points at the current resume", () => {
   assert.ok(existsSync(join(root, "assets/Ian-Harman-Resume.pdf")));
   assert.match(read("ian-harman/index.html"), /href="\/assets\/Ian-Harman-Resume\.pdf"/);
