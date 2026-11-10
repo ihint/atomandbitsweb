@@ -105,7 +105,6 @@
 .home-contact h2 { font-size: clamp(3rem, 5.6vw, 5.8rem); margin: 28px 0; }
 .home-contact > p:not(.chapter-label) { color: var(--muted); }
 .home-contact .actions { justify-content: center; margin-top: 35px; }
-.home-contact .contact-note { font-size: .875rem; margin: 25px 0 0; }
 .product-home .site-footer { border-top: 1px solid var(--line); padding: 35px 4.5vw; }
 .product-home .footer-inner { max-width: 1440px; }
 .product-home .footer-links { font-size: .875rem; gap: 8px 24px; }
