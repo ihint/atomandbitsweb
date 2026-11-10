@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is Ian Harman's Atom & Bits website. It presents his work in healthcare and finance systems, his approach, his offers for founders and operators, and Corridor Robotics.
+This is Ian Harman's Atom & Bits website. It sells one thing: fractional product and technology leadership (fractional CPO/CTO) for healthcare companies that sell to health plans and providers. His cases, approach and two smaller offers support that. Use “fractional CPO/CTO” in the homepage title, description and hero label, on About, and in the structured data.
 
 ## Project Structure
 

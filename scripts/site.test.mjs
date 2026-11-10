@@ -194,6 +194,17 @@ test("testimonial placeholders are replaced with Ian's quotes", { todo: "Ian sup
   assert.equal(read("index.html").includes("data-placeholder"), false);
 });
 
+test("the homepage and About say fractional CPO/CTO", () => {
+  const home = read("index.html");
+  assert.match(home.match(/<title>([^<]+)<\/title>/)[1], /Fractional CPO\/CTO/);
+  assert.match(home.match(/<meta name="description" content="([^"]+)">/)[1], /fractional CPO\/CTO/);
+  assert.match(home, /Fractional product and technology leadership for healthcare companies selling to health plans and providers\./);
+  const about = read("ian-harman/index.html");
+  assert.match(about.match(/<title>([^<]+)<\/title>/)[1], /fractional CPO\/CTO/);
+  assert.match(about.split("<main")[1], /fractional CPO\/CTO/);
+  for (const page of pages) assert.doesNotMatch(read(page), /Fractional CPO and healthcare strategy|advisory, fractional CTO and founder work/, page);
+});
+
 test("the resume link points at the current resume", () => {
   assert.ok(existsSync(join(root, "assets/Ian-Harman-Resume.pdf")));
   assert.match(read("ian-harman/index.html"), /href="\/assets\/Ian-Harman-Resume\.pdf"/);
@@ -282,14 +293,14 @@ test("structured data uses one Person and one Organization", () => {
         if (!node || typeof node !== "object") return;
         const types = [].concat(node["@type"] || []);
         if (types.includes("Person") && (node["@id"] === personId || node.name === "Ian Harman")) {
-          assert.equal(node.jobTitle, "VP Provider", page);
+          assert.equal(node.jobTitle, "Fractional CPO/CTO", page);
           assert.equal(node["@id"], personId, page);
           assert.deepEqual(node.sameAs, ["https://www.linkedin.com/in/ianjharman"], page);
         }
         if (node["@id"] === orgId && (types.includes("Organization") || types.includes("ProfessionalService"))) {
           assert.equal(node.url, "https://atomandbits.com/", page);
           assert.equal(node.logo.url, "https://atomandbits.com/assets/logo.png", page);
-          assert.match(node.description, /Advisory, fractional CTO and AI builds/, page);
+          assert.match(node.description, /^Fractional CPO\/CTO for healthcare companies selling to health plans and providers\./, page);
           assert.equal(node.sameAs, undefined, page);
         }
         if (types.includes("Service")) assert.equal(node.provider["@id"], orgId, page);
@@ -308,7 +319,7 @@ test("structured data uses one Person and one Organization", () => {
   assert.deepEqual([...ico.subarray(0, 4)], [0, 0, 1, 0]);
   assert.ok(existsSync(join(root, "assets/logo.png")));
   const llms = read("llms.txt");
-  assert.match(llms, /VP Provider/);
+  assert.match(llms, /Ian Harman is a fractional CPO\/CTO/);
   assert.match(llms, /https:\/\/atomandbits.com\/privacy-policy\)/);
   assert.match(llms, /https:\/\/atomandbits.com\/support\)/);
   assert.match(llms, /two business days/);

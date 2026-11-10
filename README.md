@@ -2,7 +2,7 @@
 
 **Live site:** [atomandbits.com](https://atomandbits.com)
 
-Ian Harman's product and technology practice. The homepage follows curiosity, product decisions and useful software through his own cases. It offers a Product & AI assessment, an Agent workflow pilot, and Fractional leadership, and introduces Corridor Robotics.
+Ian Harman's fractional CPO/CTO practice for healthcare companies that sell to health plans and providers. The homepage opens with his photo, three results and the services, then follows curiosity, product decisions and useful software through his own cases. The services are fractional leadership, a Product & AI assessment, and an Agent workflow pilot.
 
 ## Edit
 
