@@ -24,6 +24,24 @@ A figure Ian did not supply; a price, quote, days or term he has not typed; a ti
 ## Resume removed
 Ian chose to remove the resume download. The About link and `assets/Ian-Harman-Resume.pdf` are gone, and the old URL returns a 301 to `/ian-harman/` on the local server. A test fails if a page mentions a resume or the redirect is missing.
 
+## Voice pass on every page
+Ian supplied voice rules mid-task and then asked for them on all pages. Applied:
+- One closing ask per page. The last section of each of 21 pages holds exactly one link; a test checks it. The contact form, its confirmation, the not-found page, privacy and support are exempt.
+- No metric strips. The strips on the BCBST, TPN and PerfectServe cases are removed; each figure sits in a sentence. BCBST’s “What changed” list is two sentences.
+- Reader or problem first on the leadership page, the BCBST and Paragon cases and the Writing index.
+- Fragments in body copy rewritten as sentences on the homepage, About, the offer pages, Corridor, the Writing index and the article notes.
+- First person in “Experience behind this article” on three essays.
+
+Checks after the pass: 36 tests, 34 pass, 2 todo. Browser measurement on all 26 pages at 1280 and 375 wide, 3,607 text nodes: smallest 14px, lowest contrast 4.94:1, no overflow. BCBST at 1280 and a practice guide’s closing ask at 375 were inspected.
+
+Limits of the voice pass:
+- The six long guides and essays were not line-edited. Their endings, first-person slips, one-word answers, notes and card text changed; the body prose did not.
+- The hero lines under “I love a good problem.” are four fragments and were left as they are because they carry Ian’s own October edit. His call.
+- The homepage’s two visual callouts (onboarding before and after; 22 to 17.5 minutes) stay as design elements. Both figures also sit in sentences above them.
+- The two practice guides lost their “See Claims Native” and calculator buttons, and the essays lost their second and third buttons, to leave one ask.
+- Fragment detection was a manual read plus a rough script. It is not a grammar check.
+- Review by the authoring agent only.
+
 ## Not done
 - Fractional leadership page: the starting price. Ian confirmed four to 20 days a month and a one-month minimum; the page states both, who it is for and what the first 30 days produce, and carries a TODO where the price goes. No figure is published. Ian has not yet read the page copy.
 - Testimonials: three placeholders, visible on the branch. Ian supplies the quotes. Do not publish while one remains.

@@ -230,6 +230,20 @@ test("the fractional leadership page shows Ian's starting price", { todo: "Ian s
   assert.equal(read("product-technology-leadership/index.html").includes("TODO(Ian)"), false);
 });
 
+test("each page ends with one ask and none shows a strip of metrics", () => {
+  // The form, its confirmation, the not-found page and the two policy pages are not pitches.
+  const exempt = new Set(["contact/index.html", "contact/thanks/index.html", "404.html", "privacy-policy.html", "support.html"]);
+  for (const page of pages) {
+    const html = read(page);
+    assert.doesNotMatch(html, /class="proof-strip"/, `${page} shows a strip of metrics`);
+    if (exempt.has(page)) continue;
+    const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
+    const sections = [...main.matchAll(/<section[^>]*>[\s\S]*?<\/section>/g)];
+    const last = sections.at(-1)[0];
+    assert.equal((last.match(/<a\s/g) || []).length, 1, `${page} should end with exactly one ask`);
+  }
+});
+
 test("pages avoid the words Ian asked to keep out", () => {
   for (const page of pages) {
     const html = read(page);

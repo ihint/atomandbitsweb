@@ -61,9 +61,9 @@ Ian’s voice rules of November 10, 2026. Write as Ian: first person, warm, curi
 - Start with the reader or the problem, not with Ian. Ask a real question early where it fits (“What would you love to make possible?”)
 - Let curiosity carry the pitch: say why the problem interests him before saying why he is qualified
 - Use his concede-then-claim turn: acknowledge the limit or the honest doubt, then state the strength directly. One per page at most
-- Put numbers inside sentences that tell what happened and for whom. No bullet lists of metrics in body copy
+- Put numbers inside sentences that tell what happened and for whom. No bullet lists of metrics in body copy. The case pages no longer carry metric strips. The hero’s three results stay as large numbers with a full-sentence caption, as Ian asked
 - Credit teams and partners wherever a result was shared
-- End each page with one specific, low-pressure ask (“How does next week look?” / “Book 15 minutes”)
+- End each page with one specific, low-pressure ask (“How does next week look?” / “Book 15 minutes”). The last section of each page holds exactly one link; the contact form, its confirmation, the not-found page, privacy and support are exempt. A test checks this
 - Keep existing lines such as “I love a good problem.”
 - Avoid: leveraged, gleaned, culminating, massively, passionate, synergy, “the opportunity to” more than once per page, and sentence fragments
 - Never invent a fact, number, quote or client. Leave a TODO and ask Ian
