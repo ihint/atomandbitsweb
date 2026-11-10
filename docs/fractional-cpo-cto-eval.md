@@ -70,6 +70,16 @@ Checks: 37 tests, 35 pass, 2 todo. Hero inspected at 1280 by 800; hero results a
 
 Limits: no page change creates demand. Whether this copy converts is untested; nothing here is live. The headline and the swapped hero result are the agent’s choices and await Ian’s confirmation.
 
+## Two more readers: a health plan executive and a large practice administrator
+Neither is the buyer the site names. They are the people the buyer sells to, and they may read the site when a vendor names Ian. Findings:
+- A plan executive knows a health plan from a TPA. The hero result now says “120+ health plans and TPAs,” and the BCBST result gives its denominator, 3.5 million members.
+- The homepage did not show that Ian understands either reader. The Curiosity chapter now says what each needs from a vendor, in two sentences, and links the payers essay.
+- The site never mentions an EHR by name and gives no revenue-cycle figure a practice administrator would look for. None was supplied, so none was added.
+- The BCBST case publishes budget, revenue-supported and team-size figures. Left as they are; Ian’s call.
+- The headline speaks to sellers to health plans; the subline adds providers. Left as it is; Ian’s call.
+
+Checks: 37 tests, 35 pass, 2 todo. Author review only.
+
 ## Not done
 - Fractional leadership page: the starting price. Ian confirmed four to 20 days a month and a one-month minimum; the page states both, who it is for and what the first 30 days produce, and carries a TODO where the price goes. No figure is published. Ian has not yet read the page copy.
 - Testimonials: three placeholders, visible on the branch. Ian supplies the quotes. Do not publish while one remains.

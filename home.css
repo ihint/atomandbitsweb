@@ -56,6 +56,7 @@
 .chapter-copy p { color: var(--muted); font-size: 1rem; line-height: 1.8; }
 .chapter-copy .lead-paragraph { color: var(--text); font-size: 1.19rem; line-height: 1.65; }
 .chapter-copy .text-link { margin-top: 12px; }
+.chapter-copy p a:not(.text-link) { color: var(--text); text-decoration-color: var(--accent); }
 .question { background: #0c2544; }
 .product-path { margin-top: 80px; display: grid; grid-template-columns: 1fr 1.3fr 1fr; align-items: center; text-align: center; gap: 20px; font-size: .875rem; color: var(--muted); }
 .product-path > span { display: block; }
