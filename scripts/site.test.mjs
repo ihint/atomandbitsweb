@@ -209,6 +209,10 @@ test("the homepage and About say fractional CPO/CTO", () => {
   assert.match(home.match(/<title>([^<]+)<\/title>/)[1], /Fractional CPO\/CTO/);
   assert.match(home.match(/<meta name="description" content="([^"]+)">/)[1], /fractional CPO\/CTO/);
   assert.match(home, /Fractional product and technology leadership for healthcare companies selling to health plans and providers\./);
+  // Ian retired "I love a good problem." on November 10, 2026: it read as negative.
+  const heading = home.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  assert.equal(heading, "What would you love to make possible?");
+  for (const page of pages) assert.doesNotMatch(read(page).replace(/<[^>]+>/g, " ").replace(/\s+/g, " "), /good problem/i, page);
   const about = read("ian-harman/index.html");
   assert.match(about.match(/<title>([^<]+)<\/title>/)[1], /fractional CPO\/CTO/);
   assert.match(about.split("<main")[1], /fractional CPO\/CTO/);
@@ -218,7 +222,7 @@ test("the homepage and About say fractional CPO/CTO", () => {
 test("the fractional leadership page states its terms", () => {
   const html = read("product-technology-leadership/index.html");
   const body = html.split("<main")[1].replace(/<[^>]+>/g, " ");
-  for (const term of ["Which decisions keep landing on you?", "healthcare company that sells to health plans or providers", "four to 20 days a month", "The minimum is one month, and after that we go month to month.", "The first 30 days", "a 90-day plan with owners, cost and how we’ll judge it.", "You pay a fixed monthly fee for the days we agree, and we set it before we start.", "How does next week look?", "Book 15 minutes"]) {
+  for (const term of ["Where would a seasoned product and technology leader help you most?", "healthcare company that sells to health plans or providers", "four to 20 days a month", "The minimum is one month, and after that we go month to month.", "The first 30 days", "a 90-day plan with owners, cost and how we’ll judge it.", "You pay a fixed monthly fee for the days we agree, and we set it before we start.", "How does next week look?", "Book 15 minutes"]) {
     assert.ok(body.includes(term), `leadership page is missing "${term}"`);
   }
   // No rate appears until Ian supplies one. ($12M Series A is a fact, not a price.)

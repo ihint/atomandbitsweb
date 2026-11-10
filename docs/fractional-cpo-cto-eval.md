@@ -36,11 +36,21 @@ Checks after the pass: 36 tests, 34 pass, 2 todo. Browser measurement on all 26 
 
 Limits of the voice pass:
 - The six long guides and essays were not line-edited. Their endings, first-person slips, one-word answers, notes and card text changed; the body prose did not.
-- The hero lines under “I love a good problem.” are four fragments and were left as they are because they carry Ian’s own October edit. His call.
+- The hero lines under the old headline were left as they were during the voice pass. They were removed later with the headline change below.
 - The homepage’s two visual callouts (onboarding before and after; 22 to 17.5 minutes) stay as design elements. Both figures also sit in sentences above them.
 - The two practice guides lost their “See Claims Native” and calculator buttons, and the essays lost their second and third buttons, to leave one ask.
 - Fragment detection was a manual read plus a rough script. It is not a grammar check.
 - Review by the authoring agent only.
+
+## Headline changed after the voice pass
+After reading the result, Ian said “I love a good problem.” reads as negative. He asked for positive framing that highlights results and then guides an interested reader toward contacting him. This supersedes the “keep” instruction in the expected behavior above.
+
+- The homepage headline is now “What would you love to make possible?”, the example question from his own voice rules. The four fragment lines under the old headline are removed; their content already sits in the Curiosity chapter. The hero reads question, offer, one button, photo, three results, all visible at 1280 by 800.
+- The services heading, which used that question, is now “Where would you like to start?”
+- The leadership page opens with “Where would a seasoned product and technology leader help you most?” in place of a line about decisions landing on the founder.
+- A test checks the headline and fails if any page says “good problem.” 36 tests, 34 pass, 2 todo. Hero inspected at 1280 by 800 and 375 by 812.
+
+The headline is the agent’s pick from Ian’s own words. He has not yet confirmed it.
 
 ## Not done
 - Fractional leadership page: the starting price. Ian confirmed four to 20 days a month and a one-month minimum; the page states both, who it is for and what the first 30 days produce, and carries a TODO where the price goes. No figure is published. Ian has not yet read the page copy.

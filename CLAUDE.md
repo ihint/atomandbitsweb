@@ -58,13 +58,13 @@ This is Ian Harman's Atom & Bits website. It sells one thing: fractional product
 
 Ian’s voice rules of November 10, 2026. Write as Ian: first person, warm, curious, plain words.
 
-- Start with the reader or the problem, not with Ian. Ask a real question early where it fits (“What would you love to make possible?”)
+- Frame every page positively. Start with the reader and what they want to make possible, not with a problem or a pain, and not with Ian. Ask a real question early where it fits (“What would you love to make possible?”)
 - Let curiosity carry the pitch: say why the problem interests him before saying why he is qualified
 - Use his concede-then-claim turn: acknowledge the limit or the honest doubt, then state the strength directly. One per page at most
 - Put numbers inside sentences that tell what happened and for whom. No bullet lists of metrics in body copy. The case pages no longer carry metric strips. The hero’s three results stay as large numbers with a full-sentence caption, as Ian asked
 - Credit teams and partners wherever a result was shared
 - End each page with one specific, low-pressure ask (“How does next week look?” / “Book 15 minutes”). The last section of each page holds exactly one link; the contact form, its confirmation, the not-found page, privacy and support are exempt. A test checks this
-- Keep existing lines such as “I love a good problem.”
+- The homepage headline is “What would you love to make possible?” Ian retired “I love a good problem.” later on November 10: to him it read as negative. Do not bring it back. The page should highlight results, then guide an interested reader toward contacting him
 - Avoid: leveraged, gleaned, culminating, massively, passionate, synergy, “the opportunity to” more than once per page, and sentence fragments
 - Never invent a fact, number, quote or client. Leave a TODO and ask Ian
 
