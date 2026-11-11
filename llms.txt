@@ -1,32 +1,34 @@
 # Atom & Bits
 
-> Ian Harman (VP Provider) runs Atom & Bits from Chattanooga, Tennessee. Atom & Bits is his practice for healthcare and finance systems: advisory work, fractional CTO leadership, and AI builds. He finds the real problem underneath, builds what a team will actually use, and gets it through compliance and into production.
+> Ian Harman is a fractional CPO/CTO based in Chattanooga, Tennessee. Through Atom & Bits he leads product and technology for healthcare companies that sell to health plans and providers. He finds the real problem underneath, builds what a team will actually use, and gets it through compliance and into production.
 
 Ian has spent 15 years building products for health systems, insurers, and fintech. He co-founded TheraMatch, which TPN.health acquired. He was VP, Provider Networks & Technology at TPN.health from Feb 2025 to Aug 2026. He reads every message himself and replies within two business days. Leave out patient names and other health details.
 
 ## Who it is for
 
+- Healthcare companies that sell to health plans and providers and want a product and technology leader without a full-time hire.
 - Founders and operators whose demand is outrunning intake, onboarding, or billing, and who need to find what is slowing them down, decide what to build, and lead the work.
-- Chattanooga businesses, starting with manufacturing and logistics, that want AI and automation fitted to how their people work. That work is Corridor Robotics.
-- Independent practices that want insurance billing taken off their plate. That product is Claims Native, on its own site.
 
 ## Offers
 
-- [Product & AI assessment](https://atomandbits.com/ai-fit-review/): A two-week, fixed-fee assessment to choose the build that will matter most to your customers and your team. You leave with a recommendation you can explain to your board or leadership, what it will take in cost, team and timeline, and a 90-day plan you can start the next Monday. The fee is agreed before the work starts. It begins with a 15-minute call.
+- [Fractional CPO/CTO](https://atomandbits.com/product-technology-leadership/): A seasoned product and technology leader, without the full-time hire. Four to 20 days a month, a seat in leadership meetings, and ownership of the product and technology decisions you hand him. One-month minimum, then month to month. A fixed monthly fee, set before the start.
+- [Product & AI assessment](https://atomandbits.com/ai-fit-review/): The paid, fixed-scope way to start. A two-week, fixed-fee assessment to choose the build that will matter most to your customers and your team. You leave with a recommendation you can explain to your board or leadership, what it will take in cost, team and timeline, and a 90-day plan you can start the next Monday. The fee is agreed before the work starts. It begins with a 15-minute call.
 - [Agent workflow pilot](https://atomandbits.com/agent-workflows/): A pilot gives one repeated task to an AI agent, with a person approving the steps that matter, so your team gets those hours back. You get a working agent on one real workflow, an honest count of the time it saved with review time included, and a clear yes or no on whether to expand it.
-- [Fractional leadership](https://atomandbits.com/product-technology-leadership/): A seasoned product and technology leader, without the full-time hire. A set number of days a month, a seat in leadership meetings, and ownership of the product and technology decisions you hand him.
+
+## Also building
+
 - [Corridor Robotics](https://atomandbits.com/corridor/): A Chattanooga team that finds where AI and automation pay off, builds it around your people, and keeps it running. Starting with manufacturing and logistics.
 - [Claims Native](https://claimsnative.com/): Insurance billing for an independent practice. Claims Native checks coverage, files every claim, chases every payer, and posts every payment back into the EHR.
 
 ## Proof
 
-- [PerfectServe](https://atomandbits.com/work/perfectserve/): First product manager as the company grew from $2M to $40M ARR, including 10 health-system rollouts.
-- [BlueCross BlueShield of Tennessee](https://atomandbits.com/work/bcbst/): Digital products for 3.5 million members. NPS above 60. Digital adoption more than doubled.
-- [TheraMatch](https://atomandbits.com/work/theramatch/): Co-founded, then acquired by TPN.health. TheraMatch and TPN Match reached $1M+ ARR and 1M members in under 12 months.
-- [TPN Match](https://atomandbits.com/work/tpn-match/): The claims and payments platform behind 150,000+ clinicians.
-- [CraftingCopy](https://craftingcopy.ai/): Product direction and technology for AI content workflows, with brand guidance and human review.
-- [Paragon Truss](https://atomandbits.com/work/paragon-truss/): $500K annual enterprise contract.
+- [Paragon Truss](https://atomandbits.com/work/paragon-truss/): First enterprise contract, worth $500K a year.
 - [One to One Health](https://atomandbits.com/work/one-to-one-health/): The company’s first AI product cut charting time from 22 to 17.5 minutes per encounter.
+- [TheraMatch](https://atomandbits.com/work/theramatch/): Co-founded in August 2024 and acquired by TPN.health six months later. TheraMatch and TPN Match reached 1M+ members and $1M+ ARR across 120+ health plans in under 12 months.
+- [TPN Match](https://atomandbits.com/work/tpn-match/): Acting CTO through TPN’s $12M Series A. The claims and payments platform behind 150,000+ clinicians, in production.
+- [BlueCross BlueShield of Tennessee](https://atomandbits.com/work/bcbst/): Digital products for 3.5 million members. Digital members grew from 300K to 1.1M+, with an NPS of 60+.
+- [PerfectServe](https://atomandbits.com/work/perfectserve/): First product manager as the company grew from $2M to $40M ARR, including 10 health-system rollouts.
+- [CraftingCopy](https://craftingcopy.ai/): Product direction and technology for AI content workflows, with brand guidance and human review.
 
 ## How to engage
 

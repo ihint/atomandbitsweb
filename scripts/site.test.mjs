@@ -147,26 +147,127 @@ test("every page has one h1, a title, and the shared stylesheet", () => {
   }
 });
 
+test("every page has the same short nav and one Also building line", () => {
+  for (const page of pages) {
+    const html = read(page);
+    const nav = html.match(/<ul class="nav-links">.*?<\/ul>/)[0];
+    assert.deepEqual([...nav.matchAll(/>([^<]+)<\/a>/g)].map((m) => m[1]), ["Work", "Services", "About", "Writing"], page);
+    const mobile = html.match(/<div class="mobile-links">.*?<\/div>/)[0];
+    assert.deepEqual([...mobile.matchAll(/>([^<]+)<\/a>/g)].map((m) => m[1]), ["Work", "Services", "About", "Writing", "Let’s talk"], page);
+    const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)[0];
+    assert.equal((footer.match(/Also building:/g) || []).length, 1, page);
+    const links = footer.match(/<nav class="footer-links"[\s\S]*?<\/nav>/)[0];
+    assert.doesNotMatch(links, /Corridor|Claims Native/, page);
+  }
+  assert.equal((read("ian-harman/index.html").match(/Also building:/g) || []).length, 2);
+  assert.doesNotMatch(read("index.html").split("<footer")[0].split("<main")[1], /Corridor Robotics|claimsnative\.com/);
+});
+
 test("pages say the facts the same way as the facts table", () => {
   const text = (page) => read(page).replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ");
   const home = text("index.html");
   // Homepage leads with product decisions; the full career figures stay on About.
-  for (const fact of ["3.5M members", "$1M+ ARR and 1M members", "$500K annual enterprise contract", "NPS above 60", "$2M to $40M ARR", "22 to 17.5 minutes per encounter", "with clinician and patient satisfaction maintained or improved"]) {
+  for (const fact of ["120+ health plans", "$2M to $40M ARR", "300K to 1.1M+", "TPN.health acquired TheraMatch in six months", "1M+ members and $1M+ ARR across 120+ health plans in under 12 months", "worth $500K a year", "NPS of 60+", "3.5 million members", "22 to 17.5 minutes per encounter", "with clinician and patient satisfaction maintained or improved"]) {
     assert.ok(home.includes(fact), `homepage is missing "${fact}"`);
   }
+  // Selected work leads with results, in the order Ian chose.
+  const order = ["/work/paragon-truss/", "/work/one-to-one-health/", "/work/theramatch/", "/work/bcbst/", "/work/perfectserve/"];
+  for (const page of ["index.html", "work/index.html"]) {
+    const html = read(page);
+    const list = html.slice(html.indexOf(page === "index.html" ? 'class="work-list"' : 'aria-label="Case studies"'));
+    const positions = order.map((href) => list.indexOf(`<a href="${href}"`));
+    assert.ok(positions.every((at) => at >= 0), `${page} is missing a case`);
+    assert.deepEqual(positions, [...positions].sort((a, b) => a - b), `${page} lists the cases out of order`);
+  }
   const about = text("ian-harman/index.html");
-  for (const fact of ["VP, Provider Networks & Technology at TPN.health from Feb 2025 to Aug 2026", "After TPN raised $12M", "1M members in under a year", "150,000+ clinicians", "$2M to $40M ARR", "3.5M members"]) {
+  for (const fact of ["VP, Provider Networks & Technology at TPN.health from Feb 2025 to Aug 2026", "acting CTO through TPN’s $12M Series A", "TheraMatch in August 2024", "TPN.health six months later", "With a team of three", "1M+ members across 120+ health plans in under 12 months", "150,000+ clinicians", "$2M to $40M ARR", "3.5M members", "18 direct reports and 130+ people across matrixed teams", "300K to 1.1M+"]) {
     assert.ok(about.includes(fact), `About is missing "${fact}"`);
   }
   assert.ok(text("work/paragon-truss/index.html").includes("$500,000 per year"));
+  const bcbst = text("work/bcbst/index.html");
+  for (const fact of ["3.5 million members", "$400 million in annual revenue", "$70 million in budget", "$17 million directly for digital modernization", "$53 million jointly with operations", "300K to 1.1M+", "18 direct reports", "matrix of more than 130 people", "NPS stayed above 60"]) {
+    assert.ok(bcbst.includes(fact), `BCBST case is missing "${fact}"`);
+  }
+  const tpn = text("work/tpn-match/index.html");
+  for (const fact of ["Acting CTO through the $12M Series A", "1M+ members and $1M+ ARR across 120+ health plans in under 12 months", "$4 million in claims volume", "A team of three", "claims platform into production"]) {
+    assert.ok(tpn.includes(fact), `TPN case is missing "${fact}"`);
+  }
+  assert.ok(text("work/theramatch/index.html").includes("six months after we founded TheraMatch in August 2024"));
   for (const page of pages) {
     assert.doesNotMatch(text(page), /lives under care|\$1 million in ARR/, `${page} uses the old TheraMatch wording`);
+    assert.doesNotMatch(read(page), /nine months|more than doubled|22 direct reports|\$10 million|\$60 million|1\.5 million eligible lives|120 TPAs|[^-]Founder of TheraMatch|1M members in under a year/, `${page} states a superseded figure`);
   }
 });
 
-test("the resume link points at the current resume", () => {
-  assert.ok(existsSync(join(root, "assets/Ian-Harman-Resume.pdf")));
-  assert.match(read("ian-harman/index.html"), /href="\/assets\/Ian-Harman-Resume\.pdf"/);
+// Reported as a todo, not a failure, until Ian's quotes are in.
+test("placeholder quotes never show to visitors", () => {
+  const home = read("index.html");
+  if (home.includes("data-placeholder")) assert.match(home, /<section class="chapter testimonials"[^>]*\shidden>/);
+});
+
+test("testimonial placeholders are replaced with Ian's quotes", { todo: "Ian supplies three quotes; the block is hidden until then" }, () => {
+  assert.equal(read("index.html").includes("data-placeholder"), false);
+});
+
+test("the homepage and About say fractional CPO/CTO", () => {
+  const home = read("index.html");
+  assert.match(home.match(/<title>([^<]+)<\/title>/)[1], /Fractional CPO\/CTO/);
+  assert.match(home.match(/<meta name="description" content="([^"]+)">/)[1], /fractional CPO\/CTO/);
+  assert.match(home, /Fractional product and technology leadership for healthcare companies selling to health plans and providers\./);
+  // Ian retired "I love a good problem." on November 10, 2026: it read as negative.
+  const heading = home.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  assert.equal(heading, "You’re selling to health plans. I spent seven years inside one.");
+  for (const page of pages) assert.doesNotMatch(read(page).replace(/<[^>]+>/g, " ").replace(/\s+/g, " "), /good problem/i, page);
+  const about = read("ian-harman/index.html");
+  assert.match(about.match(/<title>([^<]+)<\/title>/)[1], /fractional CPO\/CTO/);
+  assert.match(about.split("<main")[1], /fractional CPO\/CTO/);
+  for (const page of pages) assert.doesNotMatch(read(page), /Fractional CPO and healthcare strategy|advisory, fractional CTO and founder work/, page);
+});
+
+test("the fractional leadership page states its terms", () => {
+  const html = read("product-technology-leadership/index.html");
+  const body = html.split("<main")[1].replace(/<[^>]+>/g, " ");
+  for (const term of ["Where would a seasoned product and technology leader help you most?", "healthcare company that sells to health plans or providers", "four to 20 days a month", "The minimum is one month, and after that we go month to month.", "The first 30 days", "a 90-day plan with owners, cost and how we’ll judge it.", "You pay a fixed monthly fee for the days we agree, and we set it before we start.", "How does next week look?", "Book 15 minutes"]) {
+    assert.ok(body.includes(term), `leadership page is missing "${term}"`);
+  }
+  // No rate appears until Ian supplies one. ($12M Series A is a fact, not a price.)
+  assert.doesNotMatch(body, /\$[\d,.]+[KkM]?\s*(a|per|\/|an)\s*(month|day|hour|week)/);
+});
+
+// Reported as a todo, not a failure, until Ian sets the figure.
+test("the fractional leadership page shows Ian's starting price", { todo: "Ian supplies the starting price" }, () => {
+  assert.equal(read("product-technology-leadership/index.html").includes("TODO(Ian)"), false);
+});
+
+test("each page ends with one ask and none shows a strip of metrics", () => {
+  // The form, its confirmation, the not-found page and the two policy pages are not pitches.
+  const exempt = new Set(["contact/index.html", "contact/thanks/index.html", "404.html", "privacy-policy.html", "support.html"]);
+  for (const page of pages) {
+    const html = read(page);
+    assert.doesNotMatch(html, /class="proof-strip"/, `${page} shows a strip of metrics`);
+    if (exempt.has(page)) continue;
+    const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
+    const sections = [...main.matchAll(/<section[^>]*>[\s\S]*?<\/section>/g)];
+    const last = sections.at(-1)[0];
+    assert.equal((last.match(/<a\s/g) || []).length, 1, `${page} should end with exactly one ask`);
+  }
+});
+
+test("pages avoid the words Ian asked to keep out", () => {
+  for (const page of pages) {
+    const html = read(page);
+    assert.doesNotMatch(html, /\b(leveraged|gleaned|culminating|massively|passionate|synergy)\b/i, page);
+    assert.ok((html.match(/the opportunity to/gi) || []).length <= 1, `${page} says "the opportunity to" more than once`);
+  }
+});
+
+test("the site has no resume download and the old link lands on About", () => {
+  assert.equal(existsSync(join(root, "assets/Ian-Harman-Resume.pdf")), false);
+  for (const page of pages) assert.doesNotMatch(read(page), /resume/i, `${page} mentions a resume`);
+  const rule = redirectFor("/assets/Ian-Harman-Resume.pdf");
+  assert.ok(rule, "the old resume URL has no redirect");
+  assert.equal(rule.to, "/ian-harman/");
+  assert.equal(rule.status, "301");
 });
 
 test("directory hubs and old Claims Native paths redirect once", () => {
@@ -197,6 +298,26 @@ test("directory hubs and old Claims Native paths redirect once", () => {
   assert.equal(redirectFor("/guides/how-to-choose-a-healthcare-cto/"), undefined);
   assert.equal(redirectFor("/work/bcbst/"), undefined);
   assert.equal(redirectFor("/insights/why-automated-claims-need-control-states/"), undefined);
+});
+
+test("no stylesheet or inline style sets text below 14px", () => {
+  const small = [];
+  const check = (where, css) => {
+    for (const [, property, value] of css.matchAll(/(?:^|[;{\s])(font-size|font)\s*:\s*([^;}]+)/g)) {
+      // In the font shorthand only the first length is the size.
+      const lengths = [...value.matchAll(/(\d*\.?\d+)(rem|px)\b/g)].slice(0, property === "font" ? 1 : undefined);
+      for (const [token, number, unit] of lengths) {
+        if (Number(number) * (unit === "rem" ? 16 : 1) < 14) small.push(`${where}: ${property}: ${value.trim()} (${token})`);
+      }
+    }
+  };
+  for (const sheet of ["site.css", "home.css"]) check(sheet, read(sheet));
+  for (const page of pages) {
+    const html = read(page);
+    for (const [, css] of html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)) check(page, css);
+    for (const [, css] of html.matchAll(/\sstyle="([^"]*)"/g)) check(page, css);
+  }
+  assert.deepEqual(small, []);
 });
 
 test("privacy and support canonicals are the clean URLs", () => {
@@ -252,14 +373,14 @@ test("structured data uses one Person and one Organization", () => {
         if (!node || typeof node !== "object") return;
         const types = [].concat(node["@type"] || []);
         if (types.includes("Person") && (node["@id"] === personId || node.name === "Ian Harman")) {
-          assert.equal(node.jobTitle, "VP Provider", page);
+          assert.equal(node.jobTitle, "Fractional CPO/CTO", page);
           assert.equal(node["@id"], personId, page);
           assert.deepEqual(node.sameAs, ["https://www.linkedin.com/in/ianjharman"], page);
         }
         if (node["@id"] === orgId && (types.includes("Organization") || types.includes("ProfessionalService"))) {
           assert.equal(node.url, "https://atomandbits.com/", page);
           assert.equal(node.logo.url, "https://atomandbits.com/assets/logo.png", page);
-          assert.match(node.description, /Advisory, fractional CTO and AI builds/, page);
+          assert.match(node.description, /^Fractional CPO\/CTO for healthcare companies selling to health plans and providers\./, page);
           assert.equal(node.sameAs, undefined, page);
         }
         if (types.includes("Service")) assert.equal(node.provider["@id"], orgId, page);
@@ -278,7 +399,7 @@ test("structured data uses one Person and one Organization", () => {
   assert.deepEqual([...ico.subarray(0, 4)], [0, 0, 1, 0]);
   assert.ok(existsSync(join(root, "assets/logo.png")));
   const llms = read("llms.txt");
-  assert.match(llms, /VP Provider/);
+  assert.match(llms, /Ian Harman is a fractional CPO\/CTO/);
   assert.match(llms, /https:\/\/atomandbits.com\/privacy-policy\)/);
   assert.match(llms, /https:\/\/atomandbits.com\/support\)/);
   assert.match(llms, /two business days/);

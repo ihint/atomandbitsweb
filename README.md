@@ -2,7 +2,7 @@
 
 **Live site:** [atomandbits.com](https://atomandbits.com)
 
-Ian Harman's product and technology practice. The homepage follows curiosity, product decisions and useful software through his own cases. It offers a Product & AI assessment, an Agent workflow pilot, and Fractional leadership, and introduces Corridor Robotics.
+Ian Harman's fractional CPO/CTO practice for healthcare companies that sell to health plans and providers. The homepage opens with his photo, three results and the services, then follows curiosity, product decisions and useful software through his own cases. The services are fractional leadership, a Product & AI assessment, and an Agent workflow pilot.
 
 ## Edit
 
@@ -11,13 +11,12 @@ The pages are static HTML. There is no build step.
 - `index.html` - homepage. Do not recreate `atom-bits-website.html`; those URLs redirect to `/`
 - `site.css` - shared navigation and supporting pages in navy on white
 - `home.css` - deep navy homepage chapters, white text and Tennessee-orange accents
-- `home.js` - optional point animation, pause control and reduced-motion support
 - `site.js` - mobile menu, sample workflow, contact form, click tracking
 - `worker/index.js` - the Cloudflare Worker behind the contact form
 - `www-redirect/` - a second Worker that sends www.atomandbits.com to atomandbits.com
 - `_redirects` - 301s for moved or retired URLs
 - `.assetsignore` - repository files Cloudflare must not serve; add anything new at the root that is not part of the site
-- `images/` - photos; see `images/README.md` for the expected files
+- `images/` - Ian's photos; `ian-harman.jpg` is the homepage hero. See `images/README.md`
 
 Keep the nav and footer the same on every page.
 
@@ -36,7 +35,7 @@ Open http://127.0.0.1:8787. The contact form works locally; instead of sending, 
 ## Test
 
 ```bash
-node --test scripts/site.test.mjs scripts/contact-worker.test.mjs scripts/www-redirect.test.mjs scripts/home-motion.test.mjs
+node --test scripts/site.test.mjs scripts/contact-worker.test.mjs scripts/www-redirect.test.mjs
 ```
 
 The site checks cover internal links and anchors, redirects, files kept off the web, cut phrases, page basics, and the facts table. The Worker tests cover the form's validation, spam trap, origin check, and email.
