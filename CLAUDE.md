@@ -20,14 +20,14 @@ This is Ian Harman's Atom & Bits website. It sells one thing: fractional product
 - `wrangler.jsonc`, `.assetsignore`, `_redirects`, `404.html` - Cloudflare config, files kept off the web, 301s for moved URLs, not-found page
 - `how-i-work/`, `ian-harman/` - Ian's approach and background
 - `ai-fit-review/`, `agent-workflows/`, `product-technology-leadership/` - Product & AI assessment, Agent workflow pilot, Fractional leadership
-- `corridor/` - Corridor Robotics, the team that puts AI to work in Chattanooga businesses
+- Corridor Robotics lives at corridorrobotics.com. This site has no Corridor page; `/corridor` and any path under it 301 there
 - `work/` - Career case studies
 - `guides/`, `insights/` - Practice guides and essays; the two practice guides keep their own inline styles under the shared header (`<main class="wide">`)
 - `writing/` - Index of guides and insights
 - `contact/` - Form posts to `/api/contact`; reads `?topic=` (billing, company, regulated-ai, other); `contact/thanks/` is the no-JavaScript confirmation
 - `images/` - Ian's own photos; `ian-harman.jpg` is the homepage hero
 - `scripts/site.test.mjs`, `scripts/contact-worker.test.mjs`, `scripts/www-redirect.test.mjs` - Site checks and Worker tests (`node --test`)
-- Every page shares one nav and footer; update them on all pages together. The nav is Work, Services, About, Writing and the Let’s talk button. Corridor Robotics and Claims Native appear only in one “Also building” line on About and in the footer
+- Every page shares one nav and footer; update them on all pages together. The nav is Work, Services, About, Writing and the Let’s talk button. Corridor Robotics and Claims Native appear only in one “Also building” line on About and in the footer, linking to corridorrobotics.com and claimsnative.com
 - No package.json or build step
 
 ## Design

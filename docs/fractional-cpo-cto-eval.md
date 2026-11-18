@@ -80,6 +80,16 @@ Neither is the buyer the site names. They are the people the buyer sells to, and
 
 Checks: 37 tests, 35 pass, 2 todo. Author review only.
 
+## Merge with main, November 18
+Two older pull requests were merged to `main` after this branch was opened, and both overlapped it. Main was merged into this branch; nothing was rebased.
+
+- Corridor Robotics moved to corridorrobotics.com and its page here was removed. This branch had already taken Corridor out of the nav. Its one “Also building” line, on About and in the footer, now links to corridorrobotics.com, as does `llms.txt`. The site has 25 pages.
+- Main changed the homepage description to a line about the messy middle. This branch requires “fractional CPO/CTO” there. The merged description keeps this branch’s first sentence and main’s second.
+- Main retitled the leadership page “Fractional CPO and CTO for healthcare companies.” The merged title uses this branch’s “CPO/CTO” in main’s wording, and the description joins main’s sentence with the four to 20 days Ian confirmed.
+- Main’s new TPN title and headline are kept as written.
+
+Checks after the merge: 37 tests, 35 pass, 2 todo; no conflict markers; no link to `/corridor/` left in a served file. The two joined descriptions are the agent’s wording and await Ian’s read.
+
 ## Not done
 - Fractional leadership page: the starting price. Ian confirmed four to 20 days a month and a one-month minimum; the page states both, who it is for and what the first 30 days produce, and carries a TODO where the price goes. No figure is published. Ian has not yet read the page copy.
 - Testimonials: three placeholders, visible on the branch. Ian supplies the quotes. Do not publish while one remains.
