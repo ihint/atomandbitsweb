@@ -27,6 +27,11 @@
 /claimsnative https://claimsnative.com/ 301
 /claimsnative/* https://claimsnative.com/:splat 301
 
+# Corridor Robotics lives on its own domain.
+/corridor https://corridorrobotics.com/ 301
+/corridor/ https://corridorrobotics.com/ 301
+/corridor/* https://corridorrobotics.com/ 301
+
 # The homepage used to be copied at this URL.
 /atom-bits-website / 301
 /atom-bits-website/ / 301

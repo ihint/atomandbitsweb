@@ -37,6 +37,7 @@ Enrollment with the clearinghouse and the payers takes weeks, and the payer sets
 
 - [Starting with insurance](https://claimsnative.com/learn/starting-with-insurance/)
 - [Payer enrollment for chiropractors](https://claimsnative.com/learn/payer-enrollment-for-chiropractors/)
+- [BlueCross BlueShield of Tennessee credentialing](https://claimsnative.com/learn/bluecross-tennessee-credentialing/)
 - [Setting a chiropractic fee schedule](https://claimsnative.com/learn/chiropractic-fee-schedule/)
 - [Chiropractic insurance verification](https://claimsnative.com/learn/chiropractic-insurance-verification/)
 - [What a clean chiropractic claim needs](https://claimsnative.com/learn/clean-chiropractic-claim/)
