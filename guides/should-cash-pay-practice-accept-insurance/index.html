@@ -31,18 +31,18 @@
     * { box-sizing: border-box; }
 
     :root {
-      /* Atom & Bits navy, paper, and copper palette; the serif wordmark stays with Claims Native. */
-      --ink: #111827;
-      --navy: #1f4e79;
-      --navy-dark: #173a5c;
-      --copper: #ad5735;
-      --copper-soft: #f1ddd3;
-      --paper: #fbfaf6;
-      --paper-deep: #f2f5f9;
+      /* Atom & Bits navy, white and orange palette. Legacy variable names keep this guide stable. */
+      --ink: #071b34;
+      --navy: #0b3660;
+      --navy-dark: #071b34;
+      --copper: #0b3660;
+      --copper-soft: #edf3f9;
+      --paper: #ffffff;
+      --paper-deep: #f2f6fa;
       --card: #ffffff;
-      --blue-soft: #f2f5f9;
-      --muted: #586069;
-      --line: #d7dee8;
+      --blue-soft: #f2f6fa;
+      --muted: #4f6073;
+      --line: #d6dfe9;
       --white: #ffffff;
       --max: 1180px;
     }
@@ -87,10 +87,10 @@
       justify-content: center;
       gap: 9px;
       padding: 0 22px;
-      border: 1px solid var(--ink);
+      border: 1px solid var(--brand-orange);
       border-radius: 8px;
-      background: var(--ink);
-      color: var(--white);
+      background: var(--brand-orange);
+      color: var(--brand-navy);
       font-weight: 700;
       letter-spacing: -0.01em;
       line-height: 1.2;
@@ -102,8 +102,9 @@
 
     .button:hover {
       transform: translateY(-1px);
-      border-color: var(--navy-dark);
-      background: var(--navy-dark);
+      border-color: #ff9b33;
+      background: #ff9b33;
+      color: var(--brand-navy);
     }
 
     .button.secondary {
@@ -225,7 +226,7 @@
 
     .answer-card {
       padding: 30px;
-      border: 1px solid #b8c6d6;
+      border: 1px solid #b5c5d6;
       border-top: 4px solid var(--copper);
       background: var(--card);
       box-shadow: 0 24px 55px rgba(20, 31, 43, 0.1);
@@ -280,7 +281,7 @@
     .section.dark h3 { color: var(--white); }
 
     .section.dark .section-intro,
-    .section.dark p { color: #d9e4f1; }
+    .section.dark p { color: #d6e3f0; }
 
     .section-head {
       display: grid;
