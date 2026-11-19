@@ -90,6 +90,17 @@ Two older pull requests were merged to `main` after this branch was opened, and 
 
 Checks after the merge: 37 tests, 35 pass, 2 todo; no conflict markers; no link to `/corridor/` left in a served file. The two joined descriptions are the agent’s wording and await Ian’s read.
 
+## Figures updated, November 19
+Ian supplied a newer resume and asked for the site’s figures to follow it.
+
+- TheraMatch: co-founded July 2024 (was August). The acquisition was announced February 27, 2025, so the pages now say seven months (was six). The count of seven is the agent’s arithmetic from those two dates.
+- TPN: “about $1M ARR and 1 million covered lives across 120+ health plans in under 12 months” (was “$1M+ ARR” and “1M+ members”).
+- BlueCross: the title reads Digital Product Manager / Senior Digital Product Manager. The $400M is now stated as annual recurring revenue tied to products on the Salesforce quoting platform, where booking time fell 75%.
+
+Left as they were: the acting CTO role and the $12M Series A, which Ian stated directly on November 10; and One to One Health, where the newer document gives two further figures the site does not carry and whose measures are not yet defined here.
+
+Checks: 37 tests, 35 pass, 2 todo. The facts test now fails on “six months,” “August 2024,” “$1M+ ARR” and “1M+ members.”
+
 ## Not done
 - Fractional leadership page: the starting price. Ian confirmed four to 20 days a month and a one-month minimum; the page states both, who it is for and what the first 30 days produce, and carries a TODO where the price goes. No figure is published. Ian has not yet read the page copy.
 - Testimonials: three placeholders, visible on the branch. Ian supplies the quotes. Do not publish while one remains.
