@@ -97,9 +97,21 @@ Ian supplied a newer resume and asked for the site’s figures to follow it.
 - TPN: “about $1M ARR and 1 million covered lives across 120+ health plans in under 12 months” (was “$1M+ ARR” and “1M+ members”).
 - BlueCross: the title reads Digital Product Manager / Senior Digital Product Manager. The $400M is now stated as annual recurring revenue tied to products on the Salesforce quoting platform, where booking time fell 75%.
 
-Left as they were: the acting CTO role and the $12M Series A, which Ian stated directly on November 10; and One to One Health, where the newer document gives two further figures the site does not carry and whose measures are not yet defined here.
+Left as they were: one TPN role and funding line that the newer document omits (removed on November 20, below); and One to One Health, where the newer document gives two further figures the site does not carry and whose measures are not yet defined here.
 
 Checks: 37 tests, 35 pass, 2 todo. The facts test now fails on “six months,” “August 2024,” “$1M+ ARR” and “1M+ members.”
+
+## Acting CTO and the funding round removed, November 20
+Ian decided the site should not say “acting CTO” or name TPN’s funding round. Both are gone from About, the fractional leadership page, the TPN case and `llms.txt`. `main` never carried either.
+
+- About and the TPN case keep his title, VP, Provider Networks & Technology, and the results that were already there.
+- The fractional leadership page tied its second buying moment, a raise, to that round. The moment now reads “a raise or a sale,” and the record behind it is the sale of TheraMatch to TPN.health. That pairing is the agent’s wording and awaits Ian’s read.
+- The same page’s background paragraph now gives his TPN title and the claims platform reaching production.
+- `llms.txt` now gives the $4M in claims volume by August 2026 on the TPN line.
+
+Checks: 37 tests, 35 pass, 2 todo. A test fails if any page or `llms.txt` says “acting CTO” or “Series A.” The three changed pages were read on the local server at 1280 and 375 wide.
+
+Limit: earlier commits on this branch still contain the removed wording.
 
 ## Not done
 - Fractional leadership page: the starting price. Ian confirmed four to 20 days a month and a one-month minimum; the page states both, who it is for and what the first 30 days produce, and carries a TODO where the price goes. No figure is published. Ian has not yet read the page copy.

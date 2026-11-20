@@ -180,7 +180,7 @@ test("pages say the facts the same way as the facts table", () => {
     assert.deepEqual(positions, [...positions].sort((a, b) => a - b), `${page} lists the cases out of order`);
   }
   const about = text("ian-harman/index.html");
-  for (const fact of ["VP, Provider Networks & Technology at TPN.health from Feb 2025 to Aug 2026", "acting CTO through TPN’s $12M Series A", "TheraMatch in July 2024", "TPN.health seven months later", "With a team of three", "1 million covered lives across 120+ health plans in under 12 months", "150,000+ clinicians", "$2M to $40M ARR", "3.5M members", "18 direct reports and 130+ people across matrixed teams", "300K to 1.1M+"]) {
+  for (const fact of ["VP, Provider Networks & Technology at TPN.health from Feb 2025 to Aug 2026", "TheraMatch in July 2024", "TPN.health seven months later", "With a team of three", "1 million covered lives across 120+ health plans in under 12 months", "150,000+ clinicians", "$2M to $40M ARR", "3.5M members", "18 direct reports and 130+ people across matrixed teams", "300K to 1.1M+"]) {
     assert.ok(about.includes(fact), `About is missing "${fact}"`);
   }
   assert.ok(text("work/paragon-truss/index.html").includes("$500,000 per year"));
@@ -189,12 +189,14 @@ test("pages say the facts the same way as the facts table", () => {
     assert.ok(bcbst.includes(fact), `BCBST case is missing "${fact}"`);
   }
   const tpn = text("work/tpn-match/index.html");
-  for (const fact of ["Acting CTO through the $12M Series A", "about $1M ARR and 1 million covered lives across 120+ health plans in under 12 months", "$4 million in claims volume", "A team of three", "claims platform into production"]) {
+  for (const fact of ["VP, Provider Networks & Technology · TPN.health · February 2025 to August 2026", "about $1M ARR and 1 million covered lives across 120+ health plans in under 12 months", "$4 million in claims volume", "A team of three", "claims platform into production"]) {
     assert.ok(tpn.includes(fact), `TPN case is missing "${fact}"`);
   }
   assert.ok(text("work/theramatch/index.html").includes("seven months after we founded TheraMatch in July 2024"));
   for (const page of pages) {
     assert.doesNotMatch(text(page), /lives under care|\$1 million in ARR/, `${page} uses the old TheraMatch wording`);
+    // Ian took this role and the funding round off the site on November 20, 2026.
+    assert.doesNotMatch(read(page), /acting CTO|Series A/i, `${page} names a role or funding round Ian removed`);
     assert.doesNotMatch(read(page), /nine months|six months|August 2024|\$1M\+ ARR|1M\+ members|more than doubled|22 direct reports|\$10 million|\$60 million|1\.5 million eligible lives|120 TPAs|[^-]Founder of TheraMatch|1M members in under a year/, `${page} states a superseded figure`);
   }
 });
@@ -230,7 +232,7 @@ test("the fractional leadership page states its terms", () => {
   for (const term of ["Where would a seasoned product and technology leader help you most?", "healthcare company that sells to health plans or providers", "four to 20 days a month", "The minimum is one month, and after that we go month to month.", "The first 30 days", "a 90-day plan with owners, cost and how we’ll judge it.", "You pay a fixed monthly fee for the days we agree, and we set it before we start.", "How does next week look?", "Book 15 minutes"]) {
     assert.ok(body.includes(term), `leadership page is missing "${term}"`);
   }
-  // No rate appears until Ian supplies one. ($12M Series A is a fact, not a price.)
+  // No rate appears until Ian supplies one. The pattern matches a rate per month, day, hour or week, not any dollar figure.
   assert.doesNotMatch(body, /\$[\d,.]+[KkM]?\s*(a|per|\/|an)\s*(month|day|hour|week)/);
 });
 
@@ -403,6 +405,7 @@ test("structured data uses one Person and one Organization", () => {
   assert.ok(existsSync(join(root, "assets/logo.png")));
   const llms = read("llms.txt");
   assert.match(llms, /Ian Harman is a fractional CPO\/CTO/);
+  assert.doesNotMatch(llms, /acting CTO|Series A/i);
   assert.match(llms, /https:\/\/atomandbits.com\/privacy-policy\)/);
   assert.match(llms, /https:\/\/atomandbits.com\/support\)/);
   assert.match(llms, /two business days/);
