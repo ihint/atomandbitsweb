@@ -3,11 +3,7 @@ name: Deploy atomandbits.com to Cloudflare
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - "claimsnative/**"
   pull_request:
-    paths-ignore:
-      - "claimsnative/**"
   workflow_dispatch:
 
 permissions:
