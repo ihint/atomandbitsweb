@@ -1,11 +1,16 @@
 name: Notify IndexNow of changed pages
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - Deploy atomandbits.com to Cloudflare
+      - Deploy Claims Native to Cloudflare
+    types: [completed]
     branches: [main]
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
 
 jobs:
@@ -14,12 +19,20 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      # A queued deploy can outlast any fixed delay, and a cancelled run is
+      # replaced by a later one. Submit only after the deploy that published
+      # this commit, using the previous published commit as the baseline.
       - name: Submit changed URLs
         env:
-          BEFORE: ${{ github.event.before }}
+          GH_TOKEN: ${{ github.token }}
+          DEPLOY_RUN_ID: ${{ github.event.workflow_run.id }}
+          DEPLOY_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          DEPLOY_WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
           SHA: ${{ github.sha }}
         run: node scripts/indexnow.mjs

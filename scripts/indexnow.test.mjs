@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { KEY, SITES, canonicalUrl, parseDiff, selectUrls } from "./indexnow.mjs";
+import { KEY, SITES, canonicalUrl, deployTarget, earlierSuccess, parseDiff, selectUrls, stepSucceeded } from "./indexnow.mjs";
 
 const root = new URL("..", import.meta.url);
 const read = (file) => readFileSync(new URL(file, root), "utf8");
@@ -66,6 +66,30 @@ test("a missing diff submits the sitemap, and an empty diff submits nothing", ()
   const sitemap = ["https://atomandbits.com/", "https://claimsnative.com/"];
   assert.deepEqual(selectUrls(SITES[0], null, () => "", sitemap), ["https://atomandbits.com/"]);
   assert.deepEqual(selectUrls(SITES[0], [], () => "", sitemap), []);
+});
+
+test("a deploy notifies its own site only after the publish step succeeds", () => {
+  assert.equal(deployTarget("Deploy atomandbits.com to Cloudflare").host, "atomandbits.com");
+  assert.equal(deployTarget("Deploy Claims Native to Cloudflare").step, "Deploy the Pages site");
+  assert.equal(deployTarget("Something else"), null);
+  const jobs = [
+    { name: "test", steps: [{ name: "Test", conclusion: "success" }] },
+    { name: "deploy", steps: [{ name: "Deploy the Pages site", conclusion: "skipped" }, { name: "Deploy the www redirect", conclusion: "skipped" }] },
+  ];
+  assert.equal(stepSucceeded(jobs, "Deploy the Pages site"), false);
+  jobs[1].steps[0].conclusion = "success";
+  assert.equal(stepSucceeded(jobs, "Deploy the Pages site"), true);
+  assert.equal(stepSucceeded(jobs, "Deploy the Worker"), false);
+});
+
+test("the baseline is the latest publish created before this run", () => {
+  const runs = [
+    { id: 3, created_at: "2026-11-24T15:00:00Z", head_sha: "ccc" },
+    { id: 2, created_at: "2026-11-24T14:00:00Z", head_sha: "bbb" },
+    { id: 1, created_at: "2026-11-24T13:00:00Z", head_sha: "aaa" },
+  ];
+  assert.equal(earlierSuccess(runs, 2).head_sha, "aaa");
+  assert.equal(earlierSuccess(runs, 1), null);
 });
 
 test("parseDiff keeps additions, deletions, and both sides of a rename", () => {
